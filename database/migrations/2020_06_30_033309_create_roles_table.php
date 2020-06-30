@@ -4,21 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConfigsTable extends Migration {
+class CreateRolesTable extends Migration {
 	/**
 	 * Run the migrations.
 	 *
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('configs', function (Blueprint $table) {
+		Schema::create('roles', function (Blueprint $table) {
 			$table->increments('id');
-			$table->string('name')->unique();
-			$table->string('slug');
-			$table->string('value');
-			$table->tinyInteger('status')->default(1)->comment('1 la Hien, 0 la An');
+			$table->string('name');
+			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->timestamps();
-
 		});
 	}
 
@@ -28,6 +25,6 @@ class CreateConfigsTable extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::dropIfExists('configs');
+		Schema::dropIfExists('roles');
 	}
 }
