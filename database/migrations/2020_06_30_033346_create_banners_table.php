@@ -18,7 +18,6 @@ class CreateBannersTable extends Migration {
 			$table->string('image');
 			$table->string('content');
 			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
-			$table->Integer('parent_id')->default(0);
 			$table->timestamps();
 		});
 	}

@@ -555,6 +555,7 @@
         <script src="{{url('public')}}/backend/libs/node-waves/waves.min.js"></script>
         <!-- App js -->
         <script src="{{url('public')}}/backend/js/app.js"></script>
+        <script src="{{url('public')}}/backend/ckeditor/ckeditor.js"></script>
     </body>
 
 

@@ -12,7 +12,6 @@ class CreateProductAttrsTable extends Migration {
 	 */
 	public function up() {
 		Schema::create('product_attrs', function (Blueprint $table) {
-			$table->increments('id');
 			$table->unsignedInteger('id_attr');
 			$table->unsignedInteger('id_pro_detail');
 			$table->foreign('id_attr')->references('id')->on('attrs');

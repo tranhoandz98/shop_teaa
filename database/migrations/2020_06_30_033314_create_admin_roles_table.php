@@ -15,7 +15,7 @@ class CreateAdminRolesTable extends Migration {
 			$table->increments('id');
 			$table->unsignedInteger('id_admin');
 			$table->unsignedInteger('id_role');
-			$table->Integer('route_name');
+			$table->string('route_name');
 			$table->timestamps();
 			$table->foreign('id_admin')->references('id')->on('admins');
 			$table->foreign('id_role')->references('id')->on('roles');
