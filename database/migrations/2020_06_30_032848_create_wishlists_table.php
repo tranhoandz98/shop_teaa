@@ -15,7 +15,7 @@ class CreateWishlistsTable extends Migration {
 			$table->increments('id');
 			$table->unsignedInteger('id_product');
 			$table->unsignedInteger('id_user');
-			$table->tinyInteger('status')->default(1)->comment('1 la Hien, 0 la An');
+			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->timestamps();
 			$table->foreign('id_user')->references('id')->on('users');
 			$table->foreign('id_product')->references('id')->on('products');

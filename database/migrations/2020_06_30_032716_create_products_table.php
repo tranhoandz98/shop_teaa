@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration {
 			$table->unsignedInteger('id_cate');
 			$table->string('image');
 			$table->text('description');
-			$table->tinyInteger('status')->default(1)->comment('1 la Hien, 0 la An');
+			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->timestamps();
 			$table->foreign('id_cate')->references('id')->on('categories');
 		});

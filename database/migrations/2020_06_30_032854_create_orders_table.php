@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration {
 			$table->float('total_price');
 			$table->string('address_ship');
 			$table->string('note');
-			$table->tinyInteger('status')->default(1)->comment('1 la Hien, 0 la An');
+			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->timestamps();
 			$table->foreign('id_user')->references('id')->on('users');
 		});

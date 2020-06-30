@@ -21,7 +21,7 @@ class CreateBlogsTable extends Migration {
 			$table->string('meta_title');
 			$table->string('meta_keyword');
 			$table->string('meta_desc');
-			$table->tinyInteger('status')->default(1)->comment('1 la Hien, 0 la An');
+			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->timestamps();
 			$table->foreign('id_cate')->references('id')->on('categories');
 			$table->foreign('id_admin')->references('id')->on('admins');
