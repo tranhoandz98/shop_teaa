@@ -10,14 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
-require_once 'backend.php';
-
 Route::get('/', function () {
 	return view('welcome');
 });
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('backend', 'BackendController@index')->name('backend');
+
+Route::get('/backend','BackendController@index')->name('backend');
+Route::group(['prefix'=>'backend','namespace'=>'Backend'],function(){
+	Route::resources(['category'=>'CategoryController']);
+});
+
+
