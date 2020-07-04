@@ -34,11 +34,11 @@
 									<td>{!!($value->status==1)?'<span class="badge badge-pill badge-soft-success font-size-12">Hiện</span>':'<span class="badge badge-pill badge-soft-danger font-size-12">Ẩn</span>'!!}</td>
 									<td>
 										<div class="row">
-											<div class="col-md-4">
+											<div class="col-md-3">
 												<!-- Sửa -->
 												<a href="{{route('product.edit',$value->id)}}" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa"><i class="mdi mdi-pencil btn-success btn "></i></a>
 											</div>
-											<div class="col-md-4">
+											<div class="col-md-3">
 												<!-- Xóa -->
 										<form action="{{route('product.destroy',$value->id)}}" method="POST">
 											@csrf
