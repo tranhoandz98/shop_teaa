@@ -21,6 +21,7 @@ Route::get('/backend','BackendController@index')->name('backend');
 Route::group(['prefix'=>'backend','namespace'=>'Backend'],function(){
 	Route::resources(['category'=>'CategoryController']);
 	Route::resources(['product'=>'ProductController']);
+	Route::resources(['attr'=>'AttrController']);
 });
 
 
