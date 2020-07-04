@@ -314,6 +314,12 @@
                                 <li><a href="{{route('product.create')}}" aria-expanded="false"><i class="dripicons-dot"></i>Thêm mới</a></li>
                             </ul>
                         </li>
+                        <li class=""><a href="javascript: void(0);" class="has-arrow" aria-expanded="true"><i class="bx bx-store"></i>Tin tức</a>
+                            <ul class="sub-menu mm-collapse" aria-expanded="true" style="">
+                                <li class=""><a href="{{route('product.index')}}" aria-expanded="false"><i class="dripicons-dot"></i>Danh sách</a></li>
+                                <li><a href="{{route('product.create')}}" aria-expanded="false"><i class="dripicons-dot"></i>Thêm mới</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>
