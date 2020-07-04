@@ -6,8 +6,12 @@
 	<div class="col-12">
 		<div class="card">
 			<div class="card-body">
-
 				<div class="row">
+					<div class="col-sm-12">
+						<div class="text-sm-left">
+							<a href="{{route('category.create')}}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-plus mr-1"></i>Thêm mới danh mục</a>
+						</div>
+					</div>
 					<div class="col-sm-12">
 						<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline" role="grid" aria-describedby="datatable-buttons_info">
 							<thead>
@@ -19,8 +23,6 @@
 									<th class="sorting">Trạng thái</th>
 									<th class="sorting">Ngày tạo</th>
 									<th class="sorting">Hành động</th>
-
-
 								</tr>
 							</thead>
 							<tbody>
@@ -41,13 +43,13 @@
 											</div>
 											<div class="col-md-4">
 												<!-- Xóa -->
-										<form action="{{route('category.destroy',$value->id)}}" method="POST">
-											@csrf
-											@method('DELETE')
-											<button class="btn btn-danger mdi mdi-close" onclick="return confirm('Xóa danh mục -{{$value->name}}- không?')" type="submit" title="" data-original-title="Xóa" data-toggle="tooltip">
-											</button>
-											
-										</form>
+												<form action="{{route('category.destroy',$value->id)}}" method="POST">
+													@csrf
+													@method('DELETE')
+													<button class="btn btn-danger mdi mdi-close" onclick="return confirm('Xóa danh mục -{{$value->name}}- không?')" type="submit" title="" data-original-title="Xóa" data-toggle="tooltip">
+													</button>
+
+												</form>
 											</div>
 										</div>
 										
@@ -64,5 +66,5 @@
 		</div>
 	</div>
 </div> <!-- end col -->
-</div>
+
 @stop

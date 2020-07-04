@@ -17,10 +17,10 @@ class CreateBlogsTable extends Migration {
 			$table->unsignedInteger('id_cate');
 			$table->unsignedInteger('id_admin');
 			$table->string('image');
-			$table->text('content');
-			$table->string('meta_title');
-			$table->string('meta_keyword');
-			$table->string('meta_desc');
+			$table->text('content')->nullable();
+			$table->string('meta_title')->nullable();
+			$table->string('meta_keyword')->nullable();
+			$table->string('meta_desc')->nullable();
 			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->timestamps();
 			$table->foreign('id_cate')->references('id')->on('categories');

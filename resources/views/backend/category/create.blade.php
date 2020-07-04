@@ -11,7 +11,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="name">Tên danh mục</label>
-							<input type="text" class="form-control" id="name" placeholder="Nhập tên danh mục" name="name" onchange="ChangeToSlug()">
+							<input type="text" class="form-control" id="name" placeholder="Nhập tên danh mục" name="name" onkeyup="ChangeToSlug()">
 							
 						</div>
 					</div>
@@ -62,7 +62,7 @@
 						<label for="">Danh mục cha</label>
 						<div class="form-group">
 							<select class="custom-select" id="classCoverageDistribution" aria-label="Example select with button addon" name="parent_id">
-								<option value="">Choose...</option>
+								<option value="">---Không---</option>
 								@foreach ($category as $value)
 								<option value="{{$value->id}}">{{$value->name}}</option>
 								@endforeach
