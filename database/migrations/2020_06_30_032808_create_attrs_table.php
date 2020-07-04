@@ -16,10 +16,8 @@ class CreateAttrsTable extends Migration {
 			$table->string('name')->unique();
 			$table->string('slug');
 			$table->string('value');
-			// $table->unsignedInteger('id_pro_detail');
 			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->timestamps();
-			// $table->foreign('id_pro_detail')->references('id')->on('product_details');
 		});
 	}
 
