@@ -13,8 +13,8 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{url('public')}}/backend/images/favicon.ico">
     <!-- Bootstrap Css -->
-     <!-- admin lte -->
-     <link href="{{url('public')}}/backend/css/AdminLTE.css" id="app-style" rel="stylesheet" type="text/css" />
+    <!-- admin lte -->
+    <link href="{{url('public')}}/backend/css/AdminLTE.css" id="app-style" rel="stylesheet" type="text/css" />
     <link href="{{url('public')}}/backend/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
     <link href="{{url('public')}}/backend/css/icons.min.css" rel="stylesheet" type="text/css" />
@@ -25,9 +25,15 @@
     <link href="{{url('public')}}/backend/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="{{url('public')}}/backend/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <!-- Responsive datatable examples -->
-    <link href="{{url('public')}}/backend/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />  
+    <link href="{{url('public')}}/backend/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <!-- select2 css -->
+    <link href="{{url('public')}}/backend/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
 
+    <!-- dropzone css -->
+    <link href="{{url('public')}}/backend/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />  
+    <link href="{{url('public')}}/backend/css/style.css" rel="stylesheet" type="text/css" />  
 
+    
 </head>
 
 <body data-sidebar="dark">
@@ -277,20 +283,37 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="javascript: void(0);" class="waves-effect">
+                    <a href="{{route('backend')}}" class="waves-effect">
                         <i class="bx bx-home-circle"></i><span class="badge badge-pill badge-info float-right">03</span>
                         <span>Dashboards</span>
                     </a>
                 </li>
                 <li class="menu-title">Apps</li>
-                <li>
+              <!--   <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="dripicons-blog"></i>
-                        <span>Quản lý danh mục</span>
+                        <span>Quản lý bán hàng</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('category.index')}}"><i class="dripicons-dot"></i>Danh sách danh mục</a></li>
-                        <li><a href="{{route('category.create')}}"><i class="dripicons-dot"></i>Thêm mới danh mục</a></li>
+                        <li><a href="{{route('category.index')}}"><i class="dripicons-dot"></i>Danh mục</a></li>
+                        <li><a href="{{route('product.index')}}"><i class="dripicons-dot"></i>Sản phẩm</a></li>
+                    </ul>
+
+                </li> -->
+                <li class="">
+                    <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="true">
+                        <i class="bx bx-store"></i>
+                        <span>Quản lý bán hàng</span>
+                    </a>
+                    <ul class="sub-menu mm-collapse" aria-expanded="true" style="">
+                        <li class=""><a href="{{route('category.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Danh mục</a></li>
+
+                        <li class=""><a href="javascript: void(0);" class="has-arrow" aria-expanded="true"><i class="bx bx-store"></i>Sản phẩm</a>
+                            <ul class="sub-menu mm-collapse" aria-expanded="true" style="">
+                                <li class=""><a href="{{route('product.index')}}" aria-expanded="false"><i class="dripicons-dot"></i>Danh sách</a></li>
+                                <li><a href="{{route('product.create')}}" aria-expanded="false"><i class="dripicons-dot"></i>Thêm mới</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -299,7 +322,6 @@
     </div>
 </div>
 <!-- Left Sidebar End -->
-
 <!-- ============================================================== -->
 <!-- Start right Content here -->
 <!-- ============================================================== -->
@@ -325,7 +347,6 @@
                 </div>
             </div>
             <!-- end page title -->
-
             @yield('main')
         </div>
         <!-- container-fluid -->
@@ -464,51 +485,53 @@
 <script src="{{url('public')}}/backend/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
 <script src="{{url('public')}}/backend/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
 <script src="{{url('public')}}/backend/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
-
 <!-- Responsive examples -->
 <script src="{{url('public')}}/backend/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="{{url('public')}}/backend/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
-
 <!-- Datatable init js -->
 <script src="{{url('public')}}/backend/js/pages/datatables.init.js"></script> 
+
+<!-- select 2 plugin -->
+<script src="{{url('public')}}/backend/libs/select2/js/select2.min.js"></script>
+<!-- dropzone plugin -->
+<script src="{{url('public')}}/backend/libs/dropzone/min/dropzone.min.js"></script>
+<!-- init js -->
+<script src="{{url('public')}}/backend/js/pages/ecommerce-select2.init.js"></script>
 <!-- ck editor -->
-<script src="{{url('public')}}/backend/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="{{url('public')}}/backend/ckeditor/ckeditor.js"></script>
+
 <!-- slug -->
+<script src="{{url('public')}}/backend/js/slug.js"></script>
+<!-- ckedittor -->
 <script>
-    function ChangeToSlug()
-{
-    var title, slug;
-
-    //Lấy text từ thẻ input title 
-    title = document.getElementById("name").value;
-
-    //Đổi chữ hoa thành chữ thường
-    slug = title.toLowerCase();
-
-    //Đổi ký tự có dấu thành không dấu
-    slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
-    slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
-    slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
-    slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
-    slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
-    slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
-    slug = slug.replace(/đ/gi, 'd');
-    //Xóa các ký tự đặt biệt
-    slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
-    //Đổi khoảng trắng thành ký tự gạch ngang
-    slug = slug.replace(/ /gi, "-");
-    //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
-    //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
-    slug = slug.replace(/\-\-\-\-\-/gi, '-');
-    slug = slug.replace(/\-\-\-\-/gi, '-');
-    slug = slug.replace(/\-\-\-/gi, '-');
-    slug = slug.replace(/\-\-/gi, '-');
-    //Xóa các ký tự gạch ngang ở đầu và cuối
-    slug = '@' + slug + '@';
-    slug = slug.replace(/\@\-|\-\@|\@/gi, '');
-    //In slug ra textbox có id “slug”
-    document.getElementById('slug').value = slug;
-}
+CKEDITOR.replace( 'description' ,{
+    filebrowserBrowseUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
+    filebrowserUploadUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
+    filebrowserImageBrowseUrl : '../../filemanager/dialog.php?type=1&editor=ckeditor&fldr='
+});
+</script>
+<!-- Get value Image product -->
+<script>
+    // 1 image
+    $('#modalImage').on('hide.bs.modal',function(){
+      // Lấy value của input có id = image
+      var image = $('#image').val();
+     $('#img').attr('src',image);
+    });
+    // Many image
+     $('#modalImages').on('hide.bs.modal',function(){
+      // Lấy value của input có id = images
+      var images = $('#images').val();
+      var imgList= $.parseJSON(images);
+        console.log(imgList);
+        var _html='';
+      imgList.forEach( function(element, index) {
+        _html+='<div class="col-md-3"><div class="card text-center">';
+        _html+='<img class="card-img-top imgs" src='+element+'>';
+        _html+='</div></div>';
+      });
+       $('.anh-nhieu').html(_html);
+    });
 </script>
 </body>
 
