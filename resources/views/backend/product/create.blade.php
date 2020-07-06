@@ -13,7 +13,9 @@
 							<div class="form-group">
 								<label for="name">Tên sản phẩm</label>
 								<input type="text" class="form-control" id="name" placeholder="Nhập tên danh mục" name="name" onkeyup="ChangeToSlug()">
-
+								@error('name')
+								<span class="text-red">{{$message}}</span>
+								@enderror
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -35,6 +37,9 @@
 										@endforeach
 									</select>
 								</div>
+								@error('id_cate')
+								<span class="text-red">{{$message}}</span>
+								@enderror
 
 							</div>
 						</div>
@@ -55,36 +60,47 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="image">Hình ảnh </label>
-						<!-- Button trigger modal -->
-						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalImage">
+						<label for="get_image">Hình ảnh </label>
+						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalImage" id="get_image">
 							<i class="bx bx-image-add"></i>
 						</button>
-						<input type="text" class="form-control" id="image" placeholder=""  name="image">
-						<div class="row">
+						<input type="text" class="form-control hide" id="image" placeholder=""  name="image">
+					</div>
+					<div class="form-group">
+						<div class="row" >
 							<div class="card text-center col-md-3">
 								<img class="card-img-top img" src="" id="img">
 							</div>
 						</div>
+					</div>
+					@error('image')
+					<span class="text-red">{{$message}}</span>
+					@enderror
+					{{-- end hình ảnh --}}
+					<div class="form-group">
+						<label for="get_images">Ảnh mô tả sản phẩm</label>
+						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalImages" id="get_images">
+							<i class="bx bx-image-add"></i>
+						</button>
 
 					</div>
 					<div class="form-group">
-						<label for="image">Ảnh mô tả sản phẩm</label>
-						<!-- Button trigger modal -->
-						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalImages">
-							<i class="bx bx-image-add"></i>
-						</button>
-						<input type="text" class="form-control" id="images" placeholder=""  name="images" multiple="multiple">
-						<div class="row anh-nhieu">
-							
+						<input type="text" class="form-control hide" id="images" placeholder=""  name="images" multiple="multiple">
+						<div class="row anh-nhieu form-group">
+
 						</div>
 					</div>
+
+					@error('images')
+					<span class="text-red">{{$message}}</span>
+					@enderror
+					{{-- end ảnh mô tả --}}
 					<div class="form-group">
 						<label for="description">Mô tả sản phẩm</label>
 						<textarea name="description" id="description" class="form-control" rows="5" ></textarea>
 					</div>
 					<div class="form-group">
-						<p class="btn btn-primary col-md-6 disabled text-left">Thông tin SEO</p>
+						<p class="btn btn-info col-md-6 disabled text-left">Thông tin SEO</p>
 					</div>
 
 					<div class="form-group">
@@ -100,7 +116,7 @@
 						<textarea name="meta_desc" id="textarea" class="form-control" rows="5"></textarea>
 					</div>
 
-					<button class="btn btn-primary" type="submit">Thêm mới</button>
+					<button class="btn btn-info" type="submit">Thêm mới</button>
 				</form>					
 				<!-- Modal 1 image-->
 				<div class="modal fade" id="modalImage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">

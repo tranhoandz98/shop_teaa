@@ -17,7 +17,7 @@ class CreateFeedbackProsTable extends Migration {
 			$table->unsignedInteger('id_user');
 			$table->Integer('star');
 			$table->text('content')->nullable();
-			$table->unsignedInteger('parent_id');
+			$table->Integer('parent_id')->nullable();
 			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->timestamps();
 			$table->foreign('id_user')->references('id')->on('users');
