@@ -527,9 +527,9 @@
 
 <script src="{{url('public')}}/backend/js/pages/ecommerce-cart.init.js"></script>
 <!-- apexcharts -->
-<!-- <script src="{{url('public')}}/backend/libs/apexcharts/apexcharts.min.js"></script> -->
+{{-- <script src="{{url('public')}}/backend/libs/apexcharts/apexcharts.min.js"></script>
 
-<script src="{{url('public')}}/backend/js/pages/dashboard.init.js"></script>
+<script src="{{url('public')}}/backend/js/pages/dashboard.init.js"></script> --}}
 <!-- form advanced init -->
 <script src="{{url('public')}}/backend/js/pages/form-advanced.init.js"></script>
 

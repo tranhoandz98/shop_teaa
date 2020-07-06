@@ -16,7 +16,7 @@ class CreateImgProsTable extends Migration {
 			$table->unsignedInteger('id_product');
 			$table->string('image');
 			$table->timestamps();
-			$table->foreign('id_product')->references('id')->on('products');
+			$table->foreign('id_product')->references('id')->on('products')->onDelete('cascade');
 		});
 	}
 

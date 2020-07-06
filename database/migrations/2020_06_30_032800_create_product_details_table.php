@@ -15,8 +15,7 @@ class CreateProductDetailsTable extends Migration {
 			$table->increments('id');
 			$table->unsignedInteger('id_product');
 			$table->float('price');
-			$table->float('discount');
-			$table->text('description');
+			$table->float('discount')->nullable();
 			$table->Integer('quantity');
 			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->timestamps();

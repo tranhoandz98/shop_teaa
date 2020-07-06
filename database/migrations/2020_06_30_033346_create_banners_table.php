@@ -16,7 +16,7 @@ class CreateBannersTable extends Migration {
 			$table->string('name')->unique();
 			$table->string('slug');
 			$table->string('image');
-			$table->string('content')->nullable();
+			$table->text('content')->nullable();
 			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->timestamps();
 		});

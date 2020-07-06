@@ -13,7 +13,9 @@
 						<div class="form-group">
 							<label for="name">Tên danh mục</label>
 							<input type="text" class="form-control" id="name" placeholder="Nhập tên danh mục" name="name" onkeyup="ChangeToSlug()" value="{{$category_id->name}}">
-							
+							@error('name')
+							<span class="text-red">{{$message}}</span>
+							@enderror
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -69,7 +71,7 @@
 								@foreach ($category as $value)
 								<option value="{{$value->id}}"
 									{{($category_id->parent_id==$value->id)?'selected':''}}
-									class="{{($category_id->id==$value->id)?'hide':''}}"
+									
 								>
 									{{$value->name}}
 								</option>
