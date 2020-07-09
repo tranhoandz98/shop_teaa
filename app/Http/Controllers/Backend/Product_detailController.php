@@ -88,6 +88,21 @@ class Product_detailController extends Controller
      //    ]);
 
      // }
+      $request->validate([
+            'sku' => 'required|unique:products|max:255',
+            'size' => 'required',
+            'price' => 'required',
+            'discount' => 'required',
+            'quantity' => 'required',
+        ],[
+            'sku.required' =>'Mã sản phẩm không được bỏ trống',
+            'sku.unique' =>'Mã sản phẩm đã tồn tại',
+            'sku.max' =>'Mã sản phẩm không vượt quá 255 kí tự',
+            'size.required' =>'Size không được bỏ trống',
+            'price.required' =>'Giá sản phẩm không được bỏ trống',
+            'discount.required' =>'Phần trăm giảm giá không được bỏ trống',
+            'quantity.required' =>'Số lượng sản phẩm không được bỏ trống',
+        ]);
       $product_detail =Product_detail::create([
             'id_product' =>$id,
             'sku' =>$request->sku,

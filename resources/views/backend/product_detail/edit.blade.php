@@ -3,13 +3,13 @@
 @section('main')
 
 @if(Session::has('success'))
-			<div class="alert alert-success alert-dismissible fade show" role="alert">
-				{{Session::get('success')}}
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">×</span>
-				</button>
-			</div>
-			@endif
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+	{{Session::get('success')}}
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">×</span>
+	</button>
+</div>
+@endif
 <div class="row">
 	<div class="col-12">
 		<div class="card">
@@ -58,27 +58,43 @@
 						<div class="form-group col">
 							<label for="sku">SKU</label>
 							<input type="text" class="form-control " placeholder="Sku" id="sku"name="sku" value="{{$product->sku}}"/>
+							@error('sku')
+							<span class="text-red">{{$message}}</span>
+							@enderror
 						</div>
+
 						<div class="form-group  col">
 							<label for="size">Size</label><a href="{{route('attr.index')}}" class="">Thêm</a>
 							<select name="size" id="input" class="form-control " >
-							<option value="">--Size--</option>
-							@foreach($attr as $value)
-							<option value="{{$value->id}}">{{$value->value}}</option>
-							@endforeach
-						</select>
+								<option value="">--Size--</option>
+								@foreach($attr as $value)
+								<option value="{{$value->id}}">{{$value->value}}</option>
+								@endforeach
+							</select>
+							@error('size')
+							<span class="text-red">{{$message}}</span>
+							@enderror
 						</div>
 						<div class="form-group  col">
 							<label for="price">Price</label>
 							<input type="text" class="form-control " placeholder="Price" name="price" value=""/>
+							@error('price')
+							<span class="text-red">{{$message}}</span>
+							@enderror
 						</div>
 						<div class="form-group  col">
 							<label for="discount">Discount</label>
-							<input type="text" class="form-control " placeholder="Discout" name="discount" value=""/>
+							<input type="text" class="form-control " placeholder="Discount" name="discount" value=""/>
+							@error('discount')
+							<span class="text-red">{{$message}}</span>
+							@enderror
 						</div>
 						<div class="form-group  col">
 							<label for="quantity">Quantity</label>
 							<input type="text" class="form-control " placeholder="Quantity" name="quantity" value=""/>
+							@error('quantity')
+							<span class="text-red">{{$message}}</span>
+							@enderror
 						</div>
 						<div class="form-group col">
 							<label for="">Status</label>
@@ -104,7 +120,7 @@
 	
 </div>
 <div class="row">					
-<div class="col-12">
+	<div class="col-12">
 		<div class="card text-center">
 			<div class="card-body">
 				<div class="row">
