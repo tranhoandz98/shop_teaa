@@ -29,6 +29,12 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
+								<label for="sku">SKU</label>
+								<input type="text" class="form-control" id="sku" placeholder="sku"  name="sku" value="{{$product->sku}}">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
 								<label for="">Danh mục cha</label>
 								<div class="form-group">
 									<select class="custom-select" id="classCoverageDistribution" aria-label="Example select with button addon" name="id_cate">
@@ -37,15 +43,16 @@
 										<option value="{{$value->id}}" {{($product->id_cate==$value->id)?'selected':''}}
 											
 											>{{$value->name}}</option>
-										@endforeach
-									</select>
+											@endforeach
+										</select>
+									</div>
+									@error('id_cate')
+									<span class="text-red">{{$message}}</span>
+									@enderror
 								</div>
-								@error('id_cate')
-								<span class="text-red">{{$message}}</span>
-								@enderror
-
 							</div>
 						</div>
+
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="">Status</label>
@@ -61,107 +68,112 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="get_image">Hình ảnh</label>
-						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalImage" id="get_image">
-							<i class="bx bx-image-add"></i>
-						</button>
-						<input type="text" class="form-control hide" id="image" placeholder=""  name="image">
-					</div>
-					<div class="form-group">
-						<div class="row" >
-							<div class="card text-center col-md-3">
-								<img class="card-img-top img" src="{{url('/public/uploads/')}}/{{$product->image}}" id="img">
+						<div class="form-group">
+							<label for="get_image">Hình ảnh</label>
+							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalImage" id="get_image">
+								<i class="bx bx-image-add"></i>
+							</button>
+							<input type="text" class="form-control hide" id="image" placeholder=""  name="image">
+						</div>
+						<div class="form-group">
+							<div class="row" >
+								<div class="card text-center col-md-3">
+									<img class="card-img-top img" src="{{url('/public/uploads/')}}/{{$product->image}}" id="img">
+								</div>
 							</div>
 						</div>
-					</div>
-					@error('image')
-					<span class="text-red">{{$message}}</span>
-					@enderror
-					{{-- end hình ảnh --}}
-					<div class="form-group">
-						<label for="get_images">Ảnh mô tả sản phẩm</label>
-						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalImages" id="get_images">
-							<i class="bx bx-image-add"></i>
-						</button>
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control hide" id="images" placeholder=""  name="images" multiple="multiple">
-						<div class="row anh-nhieu form-group">
-							@foreach($img_pro as $value)
-							<div class="card text-center col-md-3">
-								<img class="card-img-top imgs" src="{{url('public/uploads')}}/{{$value->image}}" alt="Card image cap">
-							</div>
-							@endforeach
+						@error('image')
+						<span class="text-red">{{$message}}</span>
+						@enderror
+						{{-- end hình ảnh --}}
+						<div class="form-group">
+							<label for="get_images">Ảnh mô tả sản phẩm</label>
+							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalImages" id="get_images">
+								<i class="bx bx-image-add"></i>
+							</button>
 						</div>
-					</div>
-
-					@error('images')
-					<span class="text-red">{{$message}}</span>
-					@enderror
-					{{-- end ảnh mô tả --}}
-					<div class="form-group">
-						<label for="description">Mô tả sản phẩm</label>
-						<textarea name="description" id="description" class="form-control" rows="5" >
-							{{$product->description}}
-						</textarea>
-					</div>
-					<div class="form-group">
-						<p class="btn btn-info col-md-6 disabled text-left">Thông tin SEO</p>
-					</div>
-
-					<div class="form-group">
-						<label for="meta_title">Meta title</label>
-						<input type="text" class="form-control" id="meta_title" placeholder=""  name="meta_title" multiple="multiple" value="{{$product->meta_title}}">
-					</div>
-					<div class="form-group">
-						<label for="meta_key">Meta keyword</label>
-						<input type="text" class="form-control" id="meta_key" placeholder=""  name="meta_keyword" multiple="multiple" value="{{$product->meta_keyword}}">
-					</div>
-					<div class="form-group">
-						<label for="textarea">Meta description</label>
-						<textarea name="meta_desc" id="textarea" class="form-control" rows="5">{{$product->meta_desc}}</textarea>
-					</div>
-
-					<button class="btn btn-info" type="submit">Cập nhật</button>
-				</form>					
-				<!-- Modal 1 image-->
-				<div class="modal fade" id="modalImage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document" >
-						<div class="modal-content ">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLongTitle">Quản lý upload file</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<iframe src="{{url('filemanager')}}/dialog.php?field_id=image" class="upload-image"></iframe>
+						<div class="form-group">
+							<input type="text" class="form-control hide" id="images" placeholder=""  name="images" multiple="multiple">
+							<div class="row anh-nhieu form-group">
+								@foreach($img_pro as $value)
+								<div class="card text-center col-md-3">
+									<img class="card-img-top imgs" src="{{url('public/uploads')}}/{{$value->image}}" alt="Card image cap">
+								</div>
+								@endforeach
 							</div>
 						</div>
-					</div>
-				</div> 			<!-- end modal -->
 
-				<!-- Modal many image-->
-				<div class="modal fade" id="modalImages" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document" >
-						<div class="modal-content ">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLongTitle">Quản lý upload file</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<iframe src="{{url('filemanager')}}/dialog.php?field_id=images" class="upload-image"></iframe>
+						@error('images')
+						<span class="text-red">{{$message}}</span>
+						@enderror
+						{{-- end ảnh mô tả --}}
+						<div class="form-group">
+							<label for="description">Mô tả sản phẩm</label>
+							<textarea name="description" id="description" class="form-control" rows="5" >
+								{{$product->description}}
+							</textarea>
+						</div>
+						<div class="form-group">
+							<p class="btn btn-info col-md-6 disabled text-left">Thông tin SEO</p>
+						</div>
+
+						<div class="form-group">
+							<label for="meta_title">Meta title</label>
+							<input type="text" class="form-control" id="meta_title" placeholder=""  name="meta_title" multiple="multiple" value="{{$product->meta_title}}">
+						</div>
+						<div class="form-group">
+							<label for="meta_key">Meta keyword</label>
+							<input type="text" class="form-control" id="meta_key" placeholder=""  name="meta_keyword" multiple="multiple" value="{{$product->meta_keyword}}">
+						</div>
+						<div class="form-group">
+							<label for="textarea">Meta description</label>
+							<textarea name="meta_desc" id="textarea" class="form-control" rows="5">{{$product->meta_desc}}</textarea>
+						</div>
+
+						<button class="btn btn-info" type="submit">Cập nhật</button>
+					</form>					
+					<!-- Modal 1 image-->
+					<div class="modal fade" id="modalImage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document" >
+							<div class="modal-content ">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLongTitle">Quản lý upload file</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<iframe src="{{url('filemanager')}}/dialog.php?type=1&field_id=image" class="upload-image"></iframe>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div> 			<!-- end modal -->
-			</div>	<!-- end card body -->
-		</div>	<!-- end card	 -->
-	</div><!-- end col -->
-</div><!-- end row -->
+					</div> 			<!-- end modal -->
 
-@stop
+					<!-- Modal many image-->
+					<div class="modal fade" id="modalImages" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document" >
+							<div class="modal-content ">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLongTitle">Quản lý upload file</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<iframe src="{{url('filemanager')}}/dialog.php?type=1&field_id=images" class="upload-image"></iframe>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div> 			<!-- end modal -->
+				</div>	<!-- end card body -->
+			</div>	<!-- end card	 -->
+		</div><!-- end col -->
+	</div><!-- end row -->
+
+	@stop

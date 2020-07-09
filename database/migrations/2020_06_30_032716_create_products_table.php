@@ -15,6 +15,7 @@ class CreateProductsTable extends Migration {
 			$table->increments('id');
 			$table->string('name')->unique();
 			$table->string('slug');
+			$table->string('sku');
 			$table->unsignedInteger('id_cate');
 			$table->string('image');
 			$table->text('description')->nullable();
@@ -23,7 +24,7 @@ class CreateProductsTable extends Migration {
 			$table->text('meta_desc')->nullable();
 			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->timestamps();
-			$table->foreign('id_cate')->references('id')->on('categories');
+			$table->foreign('id_cate')->references('id')->on('categories')->onDelete('cascade');
 		});
 	}
 

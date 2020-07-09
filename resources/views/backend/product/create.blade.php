@@ -12,7 +12,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="name">Tên sản phẩm</label>
-								<input type="text" class="form-control" id="name" placeholder="Nhập tên danh mục" name="name" onkeyup="ChangeToSlug()">
+								<input type="text" class="form-control" id="name" placeholder="Nhập tên sản phẩm" name="name" onkeyup="ChangeToSlug()">
 								@error('name')
 								<span class="text-red">{{$message}}</span>
 								@enderror
@@ -26,6 +26,15 @@
 						</div>
 					</div>
 					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="sku">SKU</label>
+								<input type="text" class="form-control" id="sku" placeholder="sku"  name="sku">
+								@error('sku')
+								<span class="text-red">{{$message}}</span>
+								@enderror
+							</div>
+						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="">Danh mục cha</label>
@@ -43,16 +52,16 @@
 
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col">
 							<div class="form-group">
 								<label for="">Status</label>
-								<div class="radio">
+								<div class="radio" class="row">
 									<label>
-										<input type="radio" name="status" id="input" value="1" checked="checked">
+										<input type="radio"  name="status" id="input" value="1" checked="checked">
 										Hiện
 									</label>
 									<label>
-										<input type="radio" name="status" id="input" value="0">
+										<input type="radio"  name="status" id="input" value="0">
 										Ẩn
 									</label>
 								</div>
@@ -129,7 +138,10 @@
 								</button>
 							</div>
 							<div class="modal-body">
-								<iframe src="{{url('filemanager')}}/dialog.php?field_id=image" class="upload-image"></iframe>
+								<iframe src="{{url('filemanager')}}/dialog.php?type=1&field_id=image" class="upload-image"></iframe>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
 							</div>
 						</div>
 					</div>
@@ -146,7 +158,10 @@
 								</button>
 							</div>
 							<div class="modal-body">
-								<iframe src="{{url('filemanager')}}/dialog.php?field_id=images" class="upload-image"></iframe>
+								<iframe src="{{url('filemanager')}}/dialog.php?type=1&field_id=images" class="upload-image"></iframe>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
 							</div>
 						</div>
 					</div>

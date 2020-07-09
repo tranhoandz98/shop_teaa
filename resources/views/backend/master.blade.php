@@ -39,7 +39,7 @@
 
     <!-- dropzone css -->
     <link href="{{url('public')}}/backend/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
-     <!-- css custom -->
+    <!-- css custom -->
     <link href="{{url('public')}}/backend/css/style.css" rel="stylesheet" type="text/css" />  
 
     
@@ -538,7 +538,7 @@
 
 <!-- slug -->
 <script src="{{url('public')}}/backend/js/slug.js"></script>
-<!-- ckedittor custom-->
+<!-- ckedittor custom url image-->
 <script>
     CKEDITOR.replace( 'description' ,{
         filebrowserBrowseUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
@@ -546,20 +546,9 @@
         filebrowserImageBrowseUrl : '../../filemanager/dialog.php?type=1&editor=ckeditor&fldr='
     });
 </script >
+{{-- lấy ảnh từ reponsive filemanager --}}
 <script src="{{url('public')}}/backend/js/getImage.js"></script>
-<script>
-    $('#color').hide();
-    $('#attr').change(function(event) {
-        var attr=$('#attr').val();
-        if (attr==1) {
-            $('#color').hide();
-            $('#size').show();
-        }
-        else{
-            $('#size').hide();
-            $('#color').show();
-        }
-    });
-</script>
+ {{--  use jquery to build a dynamic add/ remove form  --}}
+<script src="{{url('public')}}/backend/js/dynamic.js"></script>
 </body>
 </html>

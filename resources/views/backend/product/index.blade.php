@@ -26,6 +26,8 @@
 								<tr role="row">
 									<th class="sorting">STT</th>
 									<th class="sorting">Tên sản phẩm</th>
+									<th class="sorting">SKU</th>
+									<th class="sorting">Thuộc tính</th>
 									<th class="sorting">Danh mục</th>
 									<th class="sorting">Ảnh đại diện</th>
 									<th class="sorting">Trạng thái</th>
@@ -37,9 +39,11 @@
 								<tr role="row" class="odd">
 									<td class="dtr-control" tabindex="0">{{$loop->index+1}}</td>
 									<td class="sorting_1">{{$value->name}}</td>
-									<td>{{$value->category->name}}</td>
+									<td class="sorting_1">{{$value->sku}}</td>
+									<td class="sorting_1"><a href="{{route('product_detail.edit',$value->id)}}" class="btn btn-info">Xem thuộc tính</a></td>
+									<td>{{$value->categories->name}}</td>
 
-									<td><img src="{{url('public')}}/uploads/{{$value->image}}" alt="" width="100px"></td>
+									<td><img src="{{url('public/uploads')}}/{{$value->image}}" alt="" width="100px"></td>
 									<td>{!!($value->status==1)?'<span class="badge badge-pill badge-soft-success font-size-12">Hiện</span>':'<span class="badge badge-pill badge-soft-danger font-size-12">Ẩn</span>'!!}</td>
 									<td>
 										<div class="row">
