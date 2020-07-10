@@ -57,7 +57,7 @@
 					<div class="row">
 						<div class="form-group col">
 							<label for="sku">SKU</label>
-							<input type="text" class="form-control " placeholder="Sku" id="sku"name="sku" value="{{$product->sku}}"/>
+							<input type="text" class="form-control " placeholder="Sku" id="sku"name="sku" value="{{$product->sku}}-"/>
 							@error('sku')
 							<span class="text-red">{{$message}}</span>
 							@enderror

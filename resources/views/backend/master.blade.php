@@ -543,9 +543,15 @@
     CKEDITOR.replace( 'description' ,{
         filebrowserBrowseUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
         filebrowserUploadUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
-        filebrowserImageBrowseUrl : '../../filemanager/dialog.php?type=1&editor=ckeditor&fldr='
+        filebrowserImageBrowseUrl : '../../filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
     });
 </script >
+<script>
+     KEDITOR.replace( 'description', { width: 800, height: 1000 } );
+</script >
+<script>
+    function ResizeEditor(
+</script>
 {{-- lấy ảnh từ reponsive filemanager --}}
 <script src="{{url('public')}}/backend/js/getImage.js"></script>
  {{--  use jquery to build a dynamic add/ remove form  --}}

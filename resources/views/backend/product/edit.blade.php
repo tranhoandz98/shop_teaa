@@ -10,7 +10,7 @@
 					@csrf
 					@method('PUT')
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col">
 							<div class="form-group">
 								<label for="name">Tên sản phẩm</label>
 								<input type="text" class="form-control" id="name" placeholder="Nhập tên danh mục" name="name" onkeyup="ChangeToSlug()" value="{{$product->name}}">
@@ -19,7 +19,7 @@
 								@enderror
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col">
 							<div class="form-group">
 								<label for="slug">Slug</label>
 								<input type="text" class="form-control" id="slug" placeholder="Slug"  name="slug" value="{{$product->slug}}">
@@ -27,13 +27,13 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col">
 							<div class="form-group">
 								<label for="sku">SKU</label>
 								<input type="text" class="form-control" id="sku" placeholder="sku"  name="sku" value="{{$product->sku}}">
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col">
 							<div class="form-group">
 								<label for="">Danh mục cha</label>
 								<div class="form-group">
@@ -52,9 +52,38 @@
 								</div>
 							</div>
 						</div>
-
-						<div class="col-md-6">
+							<div class="row">
+						<div class="col">
 							<div class="form-group">
+								<label for="price">Giá</label>
+								<input type="text" class="form-control" id="price" placeholder="giá"  name="price" value="{{$product->price}}">
+								@error('price')
+								<span class="text-red">{{$message}}</span>
+								@enderror
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<label for="discount">% khuyến mại</label>
+								<input type="text" class="form-control" id="discount" placeholder="%"  name="discount" value="{{$product->discount}}">
+								@error('discount')
+								<span class="text-red">{{$message}}</span>
+								@enderror
+							</div>
+						</div>
+					</div>
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label for="quantity">Số lượng</label>
+									<input type="text" class="form-control" id="quantity" placeholder="Số lượng"  name="quantity" value="{{$product->quantity}}">
+									@error('quantity')
+									<span class="text-red">{{$message}}</span>
+									@enderror
+								</div>
+							</div>
+							<div class="col">
+								<div class="form-group">
 								<label for="">Status</label>
 								<div class="radio">
 									<label>
@@ -66,6 +95,7 @@
 										Ẩn
 									</label>
 								</div>
+							</div>
 							</div>
 						</div>
 						<div class="form-group">
@@ -114,7 +144,7 @@
 							</textarea>
 						</div>
 						<div class="form-group">
-							<p class="btn btn-info col-md-6 disabled text-left">Thông tin SEO</p>
+							<p class="btn btn-info col disabled text-left">Thông tin SEO</p>
 						</div>
 
 						<div class="form-group">

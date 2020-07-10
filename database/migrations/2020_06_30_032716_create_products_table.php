@@ -15,8 +15,11 @@ class CreateProductsTable extends Migration {
 			$table->increments('id');
 			$table->string('name')->unique();
 			$table->string('slug');
-			$table->string('sku');
+			$table->string('sku')->unique();
 			$table->unsignedInteger('id_cate');
+			// $table->float('price');
+   //          $table->float('discount')->nullable();
+   //          $table->Integer('quantity');
 			$table->string('image');
 			$table->text('description')->nullable();
 			$table->string('meta_title')->nullable();

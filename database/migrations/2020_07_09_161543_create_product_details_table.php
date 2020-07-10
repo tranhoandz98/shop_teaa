@@ -15,7 +15,7 @@ class CreateProductDetailsTable extends Migration {
             $table->increments('id');
             $table->unsignedInteger('id_product');
             $table->unsignedInteger('id_attr');
-            $table->string('sku');
+            $table->string('sku')->unique();
             $table->float('price');
             $table->float('discount')->nullable();
             $table->Integer('quantity');

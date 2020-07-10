@@ -1,7 +1,7 @@
 @extends('backend.master')
 @section('title','Thuộc tính sản phẩm')
 @section('main')
-<div class="row">
+{{-- <div class="row">
 	<div class="col-12">
 		<div class="card">
 			@if(Session::has('success'))
@@ -51,6 +51,6 @@
 			</div>
 		</div>
 	</div>
-</div> <!-- end col -->
+</div> <!-- end col --> --}}
 
 @stop
