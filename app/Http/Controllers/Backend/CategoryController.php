@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Http\Requests\CategoryRequest;
+use Illuminate\Validation\Rule;
 class CategoryController extends Controller
 {
     /**
@@ -82,13 +84,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request);
          $request->validate([
-            'name' => 'required|max:100'
+            'name' => ['required','max:100',Rule::unique('categories')->ignore($id)],
         ],[
             'name.required' =>'Tên danh mục không được bỏ trống',
-            // 'name.unique' =>'Tên danh mục đã tồn tại',
+            'name.unique' =>'Tên danh mục đã tồn tại',
             'name.max' =>'Tên danh mục không vượt quá 100 kí tự'
         ]);
+        
         $category=Category::find($id);
         $category->update($request->all());
         return redirect()->route('category.index')->with('success','Cập nhật thành công');

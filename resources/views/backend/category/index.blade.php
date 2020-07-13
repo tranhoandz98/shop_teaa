@@ -45,11 +45,11 @@
 									<td>
 										
 										<div class="row">
-											<div class="col-md-3">
+											<div class="col">
 												<!-- Sửa -->
 												<a href="{{route('category.edit',$value->id)}}" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa"><i class="mdi mdi-pencil btn-success btn "></i></a>
 											</div>
-											<div class="col-md-3">
+											<div class="col">
 												<!-- Xóa -->
 												<form action="{{route('category.destroy',$value->id)}}" method="POST">
 													@csrf

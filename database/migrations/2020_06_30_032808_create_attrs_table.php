@@ -14,7 +14,7 @@ class CreateAttrsTable extends Migration {
 		Schema::create('attrs', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('name');
-			$table->string('value');
+			$table->string('value')->unique();
 			$table->timestamps();
 		});
 	}

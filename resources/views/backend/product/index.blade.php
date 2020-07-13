@@ -25,9 +25,14 @@
 							<thead>
 								<tr role="row">
 									<th class="sorting">STT</th>
-									<th class="sorting">Tên sản phẩm</th>
-									<th class="sorting">Danh mục</th>
 									<th class="sorting">Ảnh đại diện</th>
+									<th class="sorting">Tên sản phẩm</th>
+									<th class="sorting">SKU</th>
+									<th class="sorting">Thuộc tính</th>
+									<th class="sorting">Danh mục</th>
+									{{-- <th class="sorting">Giá</th>
+									<th class="sorting">% giảm giá</th>
+									<th class="sorting">Số lượng</th> --}}
 									<th class="sorting">Trạng thái</th>
 									<th class="sorting">Hành động</th>
 								</tr>
@@ -36,18 +41,24 @@
 								@foreach($product as $value)
 								<tr role="row" class="odd">
 									<td class="dtr-control" tabindex="0">{{$loop->index+1}}</td>
+									<td><img src="{{url('public/uploads')}}/{{$value->image}}" alt="" width="100px"></td>
 									<td class="sorting_1">{{$value->name}}</td>
-									<td>{{$value->category->name}}</td>
+									<td class="sorting_1">{{$value->sku}}</td>
+									<td class="sorting_1"><a href="{{route('product_detail.edit',$value->id)}}" class="btn btn-info">Xem thuộc tính</a></td>
+									<td>{{$value->categories->name}}</td>
+							{{-- 		<td class="sorting_1">{{$value->price}}</td>
+									<td class="sorting_1">{{$value->discount}}</td>
+									<td class="sorting_1">{{$value->quantity}}</td> --}}
 
-									<td><img src="{{url('public')}}/uploads/{{$value->image}}" alt="" width="100px"></td>
+									
 									<td>{!!($value->status==1)?'<span class="badge badge-pill badge-soft-success font-size-12">Hiện</span>':'<span class="badge badge-pill badge-soft-danger font-size-12">Ẩn</span>'!!}</td>
 									<td>
 										<div class="row">
-											<div class="col-md-3">
+											<div class="col">
 												<!-- Sửa -->
 												<a href="{{route('product.edit',$value->id)}}" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa"><i class="mdi mdi-pencil btn-success btn "></i></a>
 											</div>
-											<div class="col-md-3">
+											<div class="col">
 												<!-- Xóa -->
 										<form action="{{route('product.destroy',$value->id)}}" method="POST">
 											@csrf

@@ -6,7 +6,8 @@ class Product extends Model
 {
     protected $guarded = [];
     
-    public function category(){
+    public function categories(){
     	return $this->belongsTo('App\Models\Category','id_cate');
     }
+   
 }

@@ -8,7 +8,10 @@ class Category extends Model
 {
    protected $guarded=[];
    
-   public function parentCate(){
+    public function parentCate(){
     	return $this->belongsTo('App\Models\Category','parent_id');
+    }
+     public function products(){
+    	return $this->hasMany('App\Models\Product');
     }
 }

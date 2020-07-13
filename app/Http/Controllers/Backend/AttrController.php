@@ -35,6 +35,12 @@ class AttrController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'value' => 'required|unique:attrs'
+        ],[
+            'value.required' =>'Giá trị không được bỏ trống',
+            'value.unique' =>'Giá trị đã tồn tại',
+        ]);
         Attr::create($request->all());
         return redirect()->route('attr.index')->with('success','Thêm mới thành công');;
     }
@@ -58,7 +64,9 @@ class AttrController extends Controller
      */
     public function edit($id)
     {
-
+        $attr=Attr::all();
+        $attr_id= Attr::find($id);
+        return view('backend.attr.edit',compact('attr','attr_id'));
     }
 
     /**
@@ -70,6 +78,16 @@ class AttrController extends Controller
      */
     public function update(Request $request, $id)
     {
+         $request->validate([
+            'value' => 'required|unique:attrs'
+        ],[
+            'value.required' =>'Giá trị không được bỏ trống',
+            'value.unique' =>'Giá trị đã tồn tại',
+        ]);
+        $attr= Attr::find($id);
+        // dd($attr);
+        $attr->update($request->all());
+         return redirect()->route('attr.index')->with('success','Cập nhật thành công');
 
   }
 

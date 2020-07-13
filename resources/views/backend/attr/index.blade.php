@@ -26,8 +26,8 @@
 								<div class="col">
 									<div class="form-group">
 										
-										<label>Tên </label>
-										<input type="text" class="form-control disabled" name="name" value="size" >
+										<label>Khối lượng </label>
+										<input type="text" class="form-control" readonly="" name="name" value="size" >
 									</div>
 									<!-- <select name="name" id="attr" class="form-control">
 										<option value="1">Size</option>
@@ -36,7 +36,7 @@
 								</div>
 								<div class="col"> 
 									<div class="form-group">
-										<label>Giá trị</label>
+										<label>Giá trị (g)</label>
 										<div class="input-group " id="size" >
 											<input type="text" class="form-control input-lg" name="value" >
 										</div>
@@ -46,9 +46,12 @@
 												<span class="input-group-text colorpicker-input-addon" data-original-title="" title="" tabindex="0" aria-describedby="popover416910"><i style="background: rgb(96, 106, 134);"></i></span>
 											</span>
 										</div> -->
-										
+										@error('value')
+								<span class="text-red">{{$message}}</span>
+								@enderror
 									</div>
 								</div>
+								
 
 							</div>
 							<button class="btn btn-success" type="submit">Thêm mới</button>
@@ -59,8 +62,8 @@
 							<thead>
 								<tr role="row">
 									<th class="sorting">STT</th>
-									<th class="sorting">Tên thuộc tính</th>
-									<th class="sorting">Giá trị</th>
+									<th class="sorting">Khối lượng</th>
+									<th class="sorting">Giá trị (g)</th>
 									<th class="sorting">Hành động</th>
 								</tr>
 							</thead>
@@ -71,7 +74,13 @@
 									<td>{{$value->name}}</td>
 									<td>{{$value->value}}</td>
 									<td>
-											<div class="col-md-3">
+											
+											<div class="row">
+											<div class="col">
+												<!-- Sửa -->
+												<a href="{{route('attr.edit',$value->id)}}" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa"><i class="mdi mdi-pencil btn-success btn "></i></a>
+											</div>
+											<div class="col">
 												<!-- Xóa -->
 												<form action="{{route('attr.destroy',$value->id)}}" method="POST">
 													@csrf
@@ -81,6 +90,7 @@
 
 												</form>
 											</div>
+										</div>
 									</td>
 								</tr>
 								@endforeach
