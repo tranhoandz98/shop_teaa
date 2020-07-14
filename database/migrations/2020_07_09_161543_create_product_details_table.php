@@ -18,10 +18,10 @@ class CreateProductDetailsTable extends Migration {
             $table->string('sku')->unique();
             $table->float('price');
             $table->float('discount')->nullable();
-            $table->Integer('quantity');
+            $table->Integer('quantity')->nullable();;
             $table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
             $table->timestamps();
-            $table->foreign('id_product')->references('id')->on('products');
+            $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('id_attr')->references('id')->on('attrs');
             
         });

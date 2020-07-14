@@ -11,4 +11,7 @@ class Product_detail extends Model
   	public function attrs(){
   		return $this->belongsTo('App\Models\Attr','id_attr');
   	}
+  	public function products(){
+  		return $this->belongsTo('App\Models\Attr','id_product');
+  	}
 }

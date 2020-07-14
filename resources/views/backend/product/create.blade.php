@@ -137,7 +137,7 @@
 						{{-- end ảnh mô tả --}}
 						<div class="form-group">
 							<label for="description">Mô tả sản phẩm</label>
-							<textarea name="description" id="description" class="form-control" rows="5" ></textarea>
+							<textarea name="description" id="description" class="form-control" rows="10" ></textarea>
 						</div>
 						<div class="form-group">
 							<p class="btn btn-info col disabled text-left">Thông tin SEO</p>
