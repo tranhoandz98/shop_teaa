@@ -9,5 +9,7 @@ class Product extends Model
     public function categories(){
     	return $this->belongsTo('App\Models\Category','id_cate');
     }
-   
+   public function product_details(){
+  		return $this->hasMany('App\Models\Attr');
+  	}
 }

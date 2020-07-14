@@ -44,13 +44,8 @@
 									<td><img src="{{url('public/uploads')}}/{{$value->image}}" alt="" width="100px"></td>
 									<td class="sorting_1">{{$value->name}}</td>
 									<td class="sorting_1">{{$value->sku}}</td>
-									<td class="sorting_1"><a href="{{route('product_detail.edit',$value->id)}}" class="btn btn-info">Xem thuộc tính</a></td>
+									<td class="sorting_1"><a href="{{route('product_detail',$value->id)}}" class="btn btn-info">Xem thuộc tính</a></td>
 									<td>{{$value->categories->name}}</td>
-							{{-- 		<td class="sorting_1">{{$value->price}}</td>
-									<td class="sorting_1">{{$value->discount}}</td>
-									<td class="sorting_1">{{$value->quantity}}</td> --}}
-
-									
 									<td>{!!($value->status==1)?'<span class="badge badge-pill badge-soft-success font-size-12">Hiện</span>':'<span class="badge badge-pill badge-soft-danger font-size-12">Ẩn</span>'!!}</td>
 									<td>
 										<div class="row">
