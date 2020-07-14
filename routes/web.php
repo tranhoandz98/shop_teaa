@@ -18,14 +18,7 @@
 require_once('backend.php');
 require_once('frontend.php');
 // Auth::routes();
-// Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/login', 'HomeController@index')->name('login');
 
 
-Route::get('/backend','BackendController@index')->name('backend');
-Route::group(['prefix'=>'backend','namespace'=>'Backend'],function(){
-	Route::resources(['category'=>'CategoryController']);
-	Route::resources(['product'=>'ProductController']);
-	Route::resources(['attr'=>'AttrController']);
-});
-
-
+?>

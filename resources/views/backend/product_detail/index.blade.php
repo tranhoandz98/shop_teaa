@@ -13,7 +13,7 @@
 <div class="row">
 	<div class="col-12">
 		<div class="card">
-			
+			<a href="{{route('product.index')}}" class="btn btn-success col-5">Quay lại danh sách sản phẩm</a>
 			<div class="card-body">
 				<h4>Thuộc tính của sp: {{$product->name}}</h4>
 				<h4>Code: {{$product->sku}}</h4>

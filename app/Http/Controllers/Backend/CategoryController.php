@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Http\Requests\CategoryRequest;
 use Illuminate\Validation\Rule;
 class CategoryController extends Controller
 {

@@ -16,8 +16,6 @@ class CreateBlogsTable extends Migration {
 			$table->string('name');
 			$table->string('slug');
 			$table->unsignedInteger('id_cate');
-			$table->unsignedInteger('id_admin');
-			$table->string('image')->nullable();
 			$table->text('content');
 			$table->string('meta_title')->nullable();
 			$table->string('meta_keyword')->nullable();
