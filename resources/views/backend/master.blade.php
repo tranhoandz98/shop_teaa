@@ -547,14 +547,14 @@
     });
 </script >
 <script>
-     KEDITOR.replace( 'description', { width: 800, height: 1000 } );
+   KEDITOR.replace( 'description', { width: 800, height: 1000 } );
 </script >
 <script>
     function ResizeEditor(
 </script>
 {{-- lấy ảnh từ reponsive filemanager --}}
 <script src="{{url('public')}}/backend/js/getImage.js"></script>
- {{--  use jquery to build a dynamic add/ remove form  --}}
+{{--  use jquery to build a dynamic add/ remove form  --}}
 <script src="{{url('public')}}/backend/js/dynamic.js"></script>
 </body>
 </html>

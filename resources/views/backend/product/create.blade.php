@@ -53,36 +53,7 @@
 							</div>
 						</div>
 					</div>
-					{{-- <div class="row">
-						<div class="col">
-							<div class="form-group">
-								<label for="price">Giá</label>
-								<input type="text" class="form-control" id="price" placeholder="giá"  name="price">
-								@error('price')
-								<span class="text-red">{{$message}}</span>
-								@enderror
-							</div>
-						</div>
-						<div class="col">
-							<div class="form-group">
-								<label for="discount">% khuyến mại</label>
-								<input type="text" class="form-control" id="discount" placeholder="%"  name="discount">
-								@error('discount')
-								<span class="text-red">{{$message}}</span>
-								@enderror
-							</div>
-						</div>
-					</div> --}}
 						<div class="row">
-							{{-- <div class="col">
-								<div class="form-group">
-									<label for="quantity">Số lượng</label>
-									<input type="text" class="form-control" id="quantity" placeholder="Số lượng"  name="quantity">
-									@error('quantity')
-									<span class="text-red">{{$message}}</span>
-									@enderror
-								</div>
-							</div> --}}
 							<div class="col">
 								<div class="form-group">
 									<label for="">Status</label>
@@ -137,7 +108,7 @@
 						{{-- end ảnh mô tả --}}
 						<div class="form-group">
 							<label for="description">Mô tả sản phẩm</label>
-							<textarea name="description" id="description" class="form-control" rows="10" ></textarea>
+							<textarea name="description" id="description" class="form-control ckedit " rows="10" ></textarea>
 						</div>
 						<div class="form-group">
 							<p class="btn btn-info col disabled text-left">Thông tin SEO</p>

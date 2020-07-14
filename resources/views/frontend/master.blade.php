@@ -36,8 +36,18 @@
                         <nav class="d-flex justify-content-center">
                             <ul>
                                 <li class="active"><a href="{{route('frontend')}}">Trang chủ</a></li>
-                                <li ><a href="{{route('frontend')}}">Hàng mới về</a></li>
-                                <li><a href="">Trà<i class="fa fa-angle-down"></i></a>
+                                <li ><a href="#">Hàng mới về</a></li>
+                                <li class="active"><a href="index.html">home home <i class="fa fa-angle-down"></i></a>
+                                        <ul>
+                                            <li><a href="index.html">Home One</a></li>
+                                            <li><a href="index-2.html">Home Two</a></li>
+                                            <li><a href="index-3.html">Home Three</a></li>
+                                            <li><a href="index-4.html">Home Four</a></li>
+                                            <li><a href="index-5.html">Home Five</a></li>
+                                            <li><a href="index-6.html">Home Six</a></li>
+                                        </ul>
+                                    </li>
+                                <li><a href="#">Trà<i class="fa fa-angle-down"></i></a>
                                     <ul class="ht-mega-menu">
                                         @foreach($category_pro as $value)
                                         <li>
