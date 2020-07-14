@@ -10,4 +10,6 @@ CKEDITOR.editorConfig = function( config ) {
 // config.extraPlugins = 'autogrow';
 // config.autoGrow_minHeight = 250;
 // config.autoGrow_maxHeight = 600;
+// config.resize_enabled=false;
+// config.height = '800px';
 };

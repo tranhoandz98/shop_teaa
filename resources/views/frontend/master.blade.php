@@ -36,8 +36,8 @@
                         <nav class="d-flex justify-content-center">
                             <ul>
                                 <li class="active"><a href="{{route('frontend')}}">Trang chủ</a></li>
-                                <li ><a href="{{route('frontend')}}">Hàng mới về</a></li>
-                                <li><a href="">Trà<i class="fa fa-angle-down"></i></a>
+                                <li ><a href="#">Hàng mới về</a></li>
+                                <li><a href="#">Trà<i class="fa fa-angle-down"></i></a>
                                     <ul class="ht-mega-menu">
                                         @foreach($category_pro as $value)
                                         <li>
