@@ -67,7 +67,7 @@
 						<label for="">Danh mục cha</label>
 						<div class="form-group">
 							<select class="custom-select" id="classCoverageDistribution" aria-label="Example select with button addon" name="parent_id">
-								<option value="">--Không---</option>
+								<option value="0">--Không---</option>
 								@foreach ($category as $value)
 								<option value="{{$value->id}}"
 									{{($category_id->parent_id==$value->id)?'selected':''}}

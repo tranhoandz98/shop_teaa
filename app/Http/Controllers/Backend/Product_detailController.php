@@ -71,7 +71,7 @@ class Product_detailController extends Controller
             'id_attr' =>$request->size,
             'price' =>$request->price,
             'discount' =>$request->discount,
-            'quantity' =>$request->quantitu,
+            'quantity' =>$request->quantity,
             'status' =>$request->status,
         ]);
      return redirect()->back()->with('success','Thêm mới thành công');
