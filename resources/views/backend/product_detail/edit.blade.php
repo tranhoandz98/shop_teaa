@@ -29,14 +29,14 @@
 						</div>
 
 						<div class="form-group  col">
-							<label for="size">Size</label><a href="{{route('attr.index')}}" class=""> --Thêm mới--</a>
-							<select name="size" id="input" class="form-control " >
+							<label for="id_attr">Size (g)</label><a href="{{route('attr.index')}}" class=""> --Thêm mới--</a>
+							<select name="id_attr" id="input" class="form-control " >
 								<option value="">--Size--</option>
 								@foreach($attr as $value)
 								<option value="{{$value->id}}" {{$product_detail->id_attr==$value->id?'selected':''}}>{{$value->value}}</option>
 								@endforeach
 							</select>
-							@error('size')
+							@error('id_attr')
 							<span class="text-red">{{$message}}</span>
 							@enderror
 						</div>

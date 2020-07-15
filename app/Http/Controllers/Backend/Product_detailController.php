@@ -42,33 +42,27 @@ class Product_detailController extends Controller
     public function store(Request $request, $id)
     {
          $product=Product::find($id);
-        // dd($request);
-     //    foreach ($request->sku as $key => $value) {
-     //     Product_detail::create([
-     //        'id_product' =>$id,
-     //        'sku' =>$value,
-     //        'size' =>$request->size[$key],
-     //        'price' =>$request->price[$key],
-     //        'discount' =>$request->discount[$key],
-     //        'quantity' =>$request->quantity[$key],
-     //    ]);
-
-     // }
       $request->validate([
             'sku' => 'required|unique:product_details|max:255',
-            'size' => 'required',
-            'price' => 'required',
+            'id_attr' => 'required|unique:product_details',
+            'price' => 'required|numeric',
+            'discount' => 'numeric',
+            'quantity' => 'numeric',
         ],[
             'sku.required' =>'Mã sản phẩm không được bỏ trống',
             'sku.unique' =>'Mã sản phẩm đã tồn tại',
             'sku.max' =>'Mã sản phẩm không vượt quá 255 kí tự',
-            'size.required' =>'Size không được bỏ trống',
+            'id_attr.unique' =>'Size sản phẩm đã tồn tại',
+            'id_attr.required' =>'Size không được bỏ trống',
             'price.required' =>'Giá sản phẩm không được bỏ trống',
+            'price.numeric' =>'Giá sản phẩm phải là số',
+            'discount.numeric' =>'Giá sản phẩm phải là số',
+            'quantity.numeric' =>'Giá sản phẩm phải là số',
         ]);
       $product_detail =Product_detail::create([
             'id_product' =>$id,
             'sku' =>$request->sku,
-            'id_attr' =>$request->size,
+            'id_attr' =>$request->id_attr,
             'price' =>$request->price,
             'discount' =>$request->discount,
             'quantity' =>$request->quantity,
@@ -114,14 +108,20 @@ class Product_detailController extends Controller
         $product_detail=Product_detail::find($id_detail);
          $request->validate([
             'sku' => ['required','max:255',Rule::unique('product_details')->ignore($id_detail)],
-            'size' => 'required',
-            'price' => 'required',
+            'size' => ['required',Rule::unique('product_details')->ignore($id_detail)],
+            'price' => 'required|numeric',
+            'discount' => 'numeric',
+            'quantity' => 'numeric',
         ],[
             'sku.required' =>'Mã sản phẩm không được bỏ trống',
             'sku.unique' =>'Mã sản phẩm đã tồn tại',
             'sku.max' =>'Mã sản phẩm không vượt quá 255 kí tự',
             'size.required' =>'Size không được bỏ trống',
+            'size.unique' =>'Size sản phẩm đã tồn tại',
             'price.required' =>'Giá sản phẩm không được bỏ trống',
+            'price.numeric' =>'Giá sản phẩm phải là số',
+            'discount.numeric' =>'Giá sản phẩm phải là số',
+            'quantity.numeric' =>'Giá sản phẩm phải là số',
         ]);
       $product_detail->update([
             'id_product' =>$id,
