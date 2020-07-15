@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Validation\Rule;
 class CategoryController extends Controller
 {
     /**
@@ -37,8 +38,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|unique:categories|max:100'
+        ],[
+            'name.required' =>'Tên danh mục không được bỏ trống',
+            'name.unique' =>'Tên danh mục đã tồn tại',
+            'name.max' =>'Tên danh mục không vượt quá 100 kí tự'
+        ]);
         Category::create($request->all());
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('success','Thêm mới thành công');
     }
 
     /**
@@ -60,6 +68,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+
         $category=Category::all();
         $category_id=Category::find($id);
         return view('backend.category.edit',compact('category_id','category'));
@@ -74,9 +83,18 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request);
+         $request->validate([
+            'name' => ['required','max:100',Rule::unique('categories')->ignore($id)],
+        ],[
+            'name.required' =>'Tên danh mục không được bỏ trống',
+            'name.unique' =>'Tên danh mục đã tồn tại',
+            'name.max' =>'Tên danh mục không vượt quá 100 kí tự'
+        ]);
+        
         $category=Category::find($id);
         $category->update($request->all());
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('success','Cập nhật thành công');
     }
 
     /**
@@ -89,6 +107,6 @@ class CategoryController extends Controller
     {
         $category=Category::find($id);
         $category->delete();
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('success','Xóa thành công');
     }
 }

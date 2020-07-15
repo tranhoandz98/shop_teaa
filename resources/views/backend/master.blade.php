@@ -12,15 +12,23 @@
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{url('public')}}/backend/images/favicon.ico">
-    <!-- Bootstrap Css -->
     <!-- admin lte -->
     <link href="{{url('public')}}/backend/css/AdminLTE.css" id="app-style" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap Css -->
     <link href="{{url('public')}}/backend/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
     <link href="{{url('public')}}/backend/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{url('public')}}/backend/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
-
+    <!-- Bootrstrap touchspin -->
+    <link href="{{url('public')}}/backend/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+    <!-- Pick -->
+    <link href="{{url('public')}}/backend/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
+    <link href="{{url('public')}}/backend/libs/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css">
+    <link href="{{url('public')}}/backend/libs/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css">
+    <link href="{{url('public')}}/backend/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{url('public')}}/backend/libs/@chenfengyuan/datepicker/datepicker.min.css">
+    
     <!-- DataTables -->
     <link href="{{url('public')}}/backend/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="{{url('public')}}/backend/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -30,7 +38,8 @@
     <link href="{{url('public')}}/backend/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
 
     <!-- dropzone css -->
-    <link href="{{url('public')}}/backend/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />  
+    <link href="{{url('public')}}/backend/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+    <!-- css custom -->
     <link href="{{url('public')}}/backend/css/style.css" rel="stylesheet" type="text/css" />  
 
     
@@ -314,12 +323,7 @@
                                 <li><a href="{{route('product.create')}}" aria-expanded="false"><i class="dripicons-dot"></i>Thêm mới</a></li>
                             </ul>
                         </li>
-                        <li class=""><a href="javascript: void(0);" class="has-arrow" aria-expanded="true"><i class="bx bx-store"></i>Tin tức</a>
-                            <ul class="sub-menu mm-collapse" aria-expanded="true" style="">
-                                <li class=""><a href="{{route('product.index')}}" aria-expanded="false"><i class="dripicons-dot"></i>Danh sách</a></li>
-                                <li><a href="{{route('product.create')}}" aria-expanded="false"><i class="dripicons-dot"></i>Thêm mới</a></li>
-                            </ul>
-                        </li>
+                        <li class=""><a href="{{route('attr.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Thuộc tính sản phẩm</a></li>
                     </ul>
                 </li>
             </ul>
@@ -340,12 +344,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0 font-size-18">Dashboard</h4>
+                        <h4 class="mb-0 font-size-18">@yield('title')</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboards</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
+                                <li class="breadcrumb-item active">@yield('title')</li>
                             </ol>
                         </div>
 
@@ -466,9 +470,12 @@
 
 </div>
 <!-- END layout-wrapper -->
+<!-- Right Sidebar -->
 
+<!-- /Right-bar -->
 <!-- Right bar overlay-->
 <div class="rightbar-overlay"></div>
+
 
 <!-- JAVASCRIPT -->
 <script src="{{url('public')}}/backend/libs/jquery/jquery.min.js"></script>
@@ -503,42 +510,45 @@
 <script src="{{url('public')}}/backend/libs/dropzone/min/dropzone.min.js"></script>
 <!-- init js -->
 <script src="{{url('public')}}/backend/js/pages/ecommerce-select2.init.js"></script>
+
+
+<!-- Ion Range Slider-->
+<script src="{{url('public')}}/backend/libs/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
+</script>
+
+<script src="{{url('public')}}/backend/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="{{url('public')}}/backend/libs/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<script src="{{url('public')}}/backend/libs/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+<script src="{{url('public')}}/backend/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+<script src="{{url('public')}}/backend/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+<script src="{{url('public')}}/backend/libs/@chenfengyuan/datepicker/datepicker.min.js"></script>
+<!-- Bootrstrap touchspin -->
+<script src="{{url('public')}}/backend/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+
+<script src="{{url('public')}}/backend/js/pages/ecommerce-cart.init.js"></script>
+<!-- apexcharts -->
+{{-- <script src="{{url('public')}}/backend/libs/apexcharts/apexcharts.min.js"></script>
+
+<script src="{{url('public')}}/backend/js/pages/dashboard.init.js"></script> --}}
+<!-- form advanced init -->
+<script src="{{url('public')}}/backend/js/pages/form-advanced.init.js"></script>
+
 <!-- ck editor -->
 <script type="text/javascript" src="{{url('public')}}/backend/ckeditor/ckeditor.js"></script>
 
 <!-- slug -->
 <script src="{{url('public')}}/backend/js/slug.js"></script>
-<!-- ckedittor -->
+<!-- ckedittor custom url image-->
 <script>
-CKEDITOR.replace( 'description' ,{
-    filebrowserBrowseUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
-    filebrowserUploadUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
-    filebrowserImageBrowseUrl : '../../filemanager/dialog.php?type=1&editor=ckeditor&fldr='
-});
-</script>
-<!-- Get value Image product -->
-<script>
-    // 1 image
-    $('#modalImage').on('hide.bs.modal',function(){
-      // Lấy value của input có id = image
-      var image = $('#image').val();
-     $('#img').attr('src',image);
-    });
-    // Many image
-     $('#modalImages').on('hide.bs.modal',function(){
-      // Lấy value của input có id = images
-      var images = $('#images').val();
-      var imgList= $.parseJSON(images);
-        console.log(imgList);
-        var _html='';
-      imgList.forEach( function(element, index) {
-        _html+='<div class="col-md-3"><div class="card text-center">';
-        _html+='<img class="card-img-top imgs" src='+element+'>';
-        _html+='</div></div>';
-      });
-       $('.anh-nhieu').html(_html);
+    CKEDITOR.replace( 'description' ,{
+        filebrowserBrowseUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
+        filebrowserUploadUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
+        filebrowserImageBrowseUrl : '../../filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
     });
 </script>
+{{-- lấy ảnh từ reponsive filemanager --}}
+<script src="{{url('public')}}/backend/js/getImage.js"></script>
+{{--  use jquery to build a dynamic add/ remove form  --}}
+<script src="{{url('public')}}/backend/js/dynamic.js"></script>
 </body>
-
 </html>

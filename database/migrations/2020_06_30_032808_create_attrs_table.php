@@ -13,10 +13,8 @@ class CreateAttrsTable extends Migration {
 	public function up() {
 		Schema::create('attrs', function (Blueprint $table) {
 			$table->increments('id');
-			$table->string('name')->unique();
-			$table->string('slug');
-			$table->string('value');
-			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
+			$table->string('name');
+			$table->string('value')->unique();
 			$table->timestamps();
 		});
 	}
