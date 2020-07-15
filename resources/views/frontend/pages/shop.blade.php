@@ -1,7 +1,6 @@
 @extends('frontend.master')
 @section('title','Trang chủ')
 @section('main')
-	
         <!-- Breadcrumb Area Start -->
         <div class="breadcrumb-area bg-12 text-center headingt">
             <div class="container">
@@ -25,10 +24,12 @@
                             <div class="sidebar-widget">
                                 <h3>Categories</h3>
                                 <div class="sidebar-widget-option-wrapper">
+                                @foreach ($category as $item)
                                     <div class="sidebar-widget-option">
-                                        <input type="checkbox" id="cat1">
-                                        <label for="cat1">Categories1 <span>(4)</span></label>
+                                        <input type="checkbox" id="{{$item->id}}">
+                                        <label for="{{$item->id}}">{{$item->name}} <span>{{product_cate}}</span></label>
                                     </div>
+                                    @endforeach
                                     <div class="sidebar-widget-option">
                                         <input type="checkbox" id="cat2">
                                         <label for="cat2">Categories2 <span>(5)</span></label>
