@@ -12,6 +12,7 @@ Route::group(['prefix'=>'backend','namespace'=>'Backend'],function(){
 	Route::post('product/{id}/product_detail/{id_detail}/edit','Product_detailController@update');
 	Route::get('product/{id}/product_detail/{id_detail}/delete','Product_detailController@destroy')->name('destroy_product_detail');
 	Route::resources(['banner'=>'BannerController']);
+	Route::resources(['config'=>'ConfigController']);
 });
 
 
