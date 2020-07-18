@@ -1,7 +1,7 @@
 @extends('backend.master')
 @section('title','Cập nhật danh mục')
 @section('main')
-<div class="col-xl-6">
+
 	<div class="card">
 		<div class="card-body">
 			<h4 class="card-title text-red">Cập nhật danh mục</h4>
@@ -63,11 +63,11 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-lg-12">
+					<div class="col-lg-6">
 						<label for="">Danh mục cha</label>
 						<div class="form-group">
 							<select class="custom-select" id="classCoverageDistribution" aria-label="Example select with button addon" name="parent_id">
-								<option value="0">--Không---</option>
+								<option value="">--Không---</option>
 								@foreach ($category as $value)
 								<option value="{{$value->id}}"
 									{{($category_id->parent_id==$value->id)?'selected':''}}
@@ -85,5 +85,5 @@
 		</div>
 	</div>
 	<!-- end card -->
-</div>
+
 @stop
