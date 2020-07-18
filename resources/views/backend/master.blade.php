@@ -326,6 +326,9 @@
                         <li class=""><a href="{{route('attr.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Thuộc tính sản phẩm</a></li>
                     </ul>
                 </li>
+                <li>
+                    <li class=""><a href="{{route('banner.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Quản lý banner</a></li>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->
