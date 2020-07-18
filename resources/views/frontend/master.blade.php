@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{url('public')}}/frontend/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{url('public')}}/frontend/css/ie7.css">
     <link rel="stylesheet" href="{{url('public')}}/frontend/css/plugins.css">
+    <link rel="stylesheet" href="{{url('public')}}/frontend/css/app.min.css">
+    <link rel="stylesheet" href="{{url('public')}}/frontend/css/icons.min.css">
     <link rel="stylesheet" href="{{url('public')}}/frontend/css/style.css">
     <link rel="stylesheet" href="{{url('public')}}/frontend/css/style1.css">
     <script src="{{url('public')}}/frontend/js/vendor/modernizr-3.5.0.min.js"></script>
@@ -77,8 +79,8 @@
                             <div class="settings-content">
                                 <h4>My Account <i class="fa fa-angle-down"></i></h4>
                                 <ul>
-                                    <li><a href="#" class="modal-view button" data-toggle="modal" data-target="#register_box">Register</a></li>
-                                    <li><a href="#" class="modal-view button" data-toggle="modal" data-target="#login_box">login</a></li>
+                                    <li><a href="{{route('dang-ky')}}">Đăng ký</a></li>
+                                    <li><a href="{{route('dang-nhap')}}">Đăng nhập</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -189,59 +191,7 @@
                 </div>
             </div>
             <!--End of Login Form-->
-            <!--Start of Register Form-->
-            <div class="modal fade" id="register_box" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-close"></i></span></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-pop-up-content">
-                                <h2>Sign Up</h2>
-                                <form action="#" method="post">
-                                    <div class="form-box">
-                                        <div class="form-group">
-                                            Họ và tên
-                                            <input type="text" placeholder="Full Name" name="fullname">
-                                        </div>
-
-                                        Tài khoản
-                                        <input type="text" placeholder="User Name" name="username">
-                                        Email
-                                        <input type="email" placeholder="Email" name="email">
-                                        Mật khẩu
-                                        <input type="password" placeholder="Password" name="pass">
-                                        Nhập lại mật khẩu
-                                        <input type="password" placeholder="Confirm Password" name="re_pass">
-                                        Số điện thoại
-                                        <input type="text" placeholder="Số điện thoại" name="re_pass">
-                                        Giới tính
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="" id="input" value="1" checked="checked">
-                                                Nam
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="" id="input" value="0">
-                                                Nữ 
-                                            </label>
-
-                                        </div>
-                                    </div>
-                                    <div class="checkobx-link">
-                                        <div class="left-col">
-                                            <input type="checkbox" id="remember_reg"><label for="remember_reg">Remember Me</label>
-                                        </div>
-                                    </div>
-                                    <button class="text-uppercase" type="submit">Register</button>
-                                </form>
-                            </div>
-                        </div>  
-                    </div>  
-                </div>
-            </div>
-            <!--End of Register Form-->
+           
         </header>
         <!-- Header Area End -->
 

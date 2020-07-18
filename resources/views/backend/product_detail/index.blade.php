@@ -118,11 +118,11 @@
 										<div class="row">
 												<!-- Sửa -->
 											<div class="col">
-												<a href="{{route('edit_product_detail',['id'=>$product->id,'id_detail'=>$value->id])}}" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa"><i class="mdi mdi-pencil btn-success btn "></i></a>
+												<a href="{{route('edit_product_detail_backend',['id'=>$product->id,'id_detail'=>$value->id])}}" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa"><i class="mdi mdi-pencil btn-success btn "></i></a>
 											</div>
 											{{-- Xóa --}}
 											<div class="col">
-												<form action="{{route('destroy_product_detail',['id'=>$product->id,'id_detail'=>$value->id])}}" method="GET">
+												<form action="{{route('destroy_product_detail_backend',['id'=>$product->id,'id_detail'=>$value->id])}}" method="GET">
 													@csrf
 													<button class="btn btn-danger mdi mdi-close" onclick="return confirm('Xóa danh mục -{{$value->name}}- không?')" type="submit" title="" data-original-title="Xóa" data-toggle="tooltip">
 													</button>

@@ -42,7 +42,7 @@
 									<td class="dtr-control" tabindex="0">{{$loop->index+1}}</td>
 									<td><img src="{{url('public/uploads')}}/{{$value->image}}" alt="" width="100px"></td>
 									<td class="sorting_1">{{$value->name}}</td>
-									<td class="sorting_1"><a href="{{route('product_detail',$value->id)}}" class="btn btn-info">Xem thuộc tính</a></td>
+									<td class="sorting_1"><a href="{{route('product_detail_backend',$value->id)}}" class="btn btn-info">Xem thuộc tính</a></td>
 									<td>{{$value->categories->name}}</td>
 									<td class="sorting_1">{{$value->price}}</td>
 									<td class="sorting_1">{{$value->discount}}</td>

@@ -566,7 +566,7 @@
  {{--  use jquery to build a dynamic add/ remove form  --}}
 <script src="{{url('public')}}/backend/js/dynamic.js"></script>
 <script>
-    $("#name").change(function(event) {
+    $("#name").keyup(function(event) {
        var name=$("#name").val();
        //Đổi ký tự có dấu thành không dấu
     name = name.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');

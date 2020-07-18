@@ -10,7 +10,6 @@ class FrontendController extends Controller {
 		$product=Product::all();
 		return view('frontend.pages.home',compact('product'));
 	}
-	
 	public function shop(){
 		$category=Category::where([['status','=','1'],['type','=','1']])->orderby('name')->get();
 		$attr=Attr::all();
