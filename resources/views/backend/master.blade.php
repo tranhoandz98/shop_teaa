@@ -325,6 +325,10 @@
                         </li>
                         <li class=""><a href="{{route('attr.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Thuộc tính sản phẩm</a></li>
                     </ul>
+                    
+                </li>
+                <li>
+                    <li class=""><a href="{{route('blog.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Quản lý tin tức</a></li>
                 </li>
             </ul>
         </div>
@@ -344,12 +348,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0 font-size-18">@yield('title')</h4>
+                        <h4 class="mb-0 font-size-18">Dashboard</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboards</a></li>
-                                <li class="breadcrumb-item active">@yield('title')</li>
+                                <li class="breadcrumb-item active">Dashboard</li>
                             </ol>
                         </div>
 
@@ -548,7 +552,7 @@
 </script>
 {{-- lấy ảnh từ reponsive filemanager --}}
 <script src="{{url('public')}}/backend/js/getImage.js"></script>
-{{--  use jquery to build a dynamic add/ remove form  --}}
+ {{--  use jquery to build a dynamic add/ remove form  --}}
 <script src="{{url('public')}}/backend/js/dynamic.js"></script>
 </body>
 </html>
