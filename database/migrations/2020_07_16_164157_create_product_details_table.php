@@ -16,9 +16,9 @@ class CreateProductDetailsTable extends Migration {
             $table->unsignedInteger('id_product');
             $table->unsignedInteger('id_attr');
             $table->string('sku')->unique();
-            $table->float('price');
+            $table->float('price',16,2);
             $table->float('discount')->nullable();
-            $table->Integer('quantity')->nullable();;
+            $table->Integer('quantity')->nullable();
             $table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
             $table->timestamps();
             $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade');

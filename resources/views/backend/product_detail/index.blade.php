@@ -16,13 +16,13 @@
 			<a href="{{route('product.index')}}" class="btn btn-success col-5">Quay lại danh sách sản phẩm</a>
 			<div class="card-body">
 				<h4>Thuộc tính của sp: {{$product->name}}</h4>
-				<h4>Code: {{$product->sku}}</h4>
+				<h4>Code: <span id="sku">{{$product->sku}}</span> </h4>
 				<form action="" method="POST">
 					@csrf
 					<div class="row">
 						<div class="form-group col">
-							<label for="sku">SKU</label>
-							<input type="text" class="form-control " placeholder="Sku" id="sku"name="sku" value="{{$product->sku}}-"/>
+							<label for="sku_detail">SKU</label>
+							<input type="text" class="form-control " placeholder="Sku" id="sku_detail"name="sku" value="{{$product->sku}}"/>
 							@error('sku')
 							<span class="text-red">{{$message}}</span>
 							@enderror
@@ -30,7 +30,7 @@
 
 						<div class="form-group  col">
 							<label for="id_attr">Size(g)</label><a href="{{route('attr.index')}}" class=""> --Thêm mới--</a>
-							<select name="id_attr" id="input" class="form-control " >
+							<select name="id_attr" id="id_attr" class="form-control " >
 								<option value="">--Size--</option>
 								@foreach($attr as $value)
 								<option value="{{$value->id}}">{{$value->value}}</option>
@@ -49,14 +49,14 @@
 						</div>
 						<div class="form-group  col">
 							<label for="discount">Discount</label>
-							<input type="text" class="form-control " placeholder="Discount" name="discount" value=""/>
+							<input type="text" class="form-control " placeholder="Discount" name="discount" value="0"/>
 							@error('discount')
 							<span class="text-red">{{$message}}</span>
 							@enderror
 						</div>
 						<div class="form-group  col">
 							<label for="quantity">Quantity</label>
-							<input type="text" class="form-control " placeholder="Quantity" name="quantity" value=""/>
+							<input type="text" class="form-control " placeholder="Quantity" name="quantity" value="0"/>
 							@error('quantity')
 							<span class="text-red">{{$message}}</span>
 							@enderror
@@ -96,8 +96,8 @@
 									<th class="sorting">STT</th>
 									<th class="sorting">SKU</th>
 									<th class="sorting">Size (g)</th>
-									<th class="sorting">Price</th>
-									<th class="sorting">Discount</th>
+									<th class="sorting">Price (đ)</th>
+									<th class="sorting">Discount (%)</th>
 									<th class="sorting">Quantity</th>
 									<th class="sorting">Status</th>
 									<th class="sorting">Hành động</th>
@@ -110,9 +110,10 @@
 									<td>{{$value->sku}}</td>
 									<td>{{$value->attrs->value}}</td>
 									<td>{{number_format($value->price)}}</td>
-									<td>{{$value->discount}}%</td>
+									<td>{{$value->discount}}</td>
 									<td>{{$value->quantity}}</td>
-									<td>{{$value->status==1?'Hiện':'Ẩn'}}</td>
+									<td>{!!($value->status==1)?'<span class="badge badge-pill badge-soft-success font-size-12">Hiện</span>':'<span class="badge badge-pill badge-soft-danger font-size-12">Ẩn</span>'!!}</td>
+
 									<td>
 										<div class="row">
 												<!-- Sửa -->

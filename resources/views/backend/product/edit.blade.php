@@ -52,26 +52,26 @@
 								</div>
 							</div>
 						</div>
-							<div class="row">
-						<div class="col">
-							<div class="form-group">
-								<label for="price">Giá</label>
-								<input type="text" class="form-control" id="price" placeholder="giá"  name="price" value="{{$product->price}}">
-								@error('price')
-								<span class="text-red">{{$message}}</span>
-								@enderror
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label for="price">Giá</label>
+									<input type="text" class="form-control" id="price" placeholder="giá"  name="price" value="{{$product->price}}">
+									@error('price')
+									<span class="text-red">{{$message}}</span>
+									@enderror
+								</div>
+							</div>
+							<div class="col">
+								<div class="form-group">
+									<label for="discount">% khuyến mại</label>
+									<input type="text" class="form-control" id="discount" placeholder="%"  name="discount" value="{{$product->discount}}">
+									@error('discount')
+									<span class="text-red">{{$message}}</span>
+									@enderror
+								</div>
 							</div>
 						</div>
-						<div class="col">
-							<div class="form-group">
-								<label for="discount">% khuyến mại</label>
-								<input type="text" class="form-control" id="discount" placeholder="%"  name="discount" value="{{$product->discount}}">
-								@error('discount')
-								<span class="text-red">{{$message}}</span>
-								@enderror
-							</div>
-						</div>
-					</div>
 						<div class="row">
 							<div class="col">
 								<div class="form-group">
@@ -82,8 +82,21 @@
 									@enderror
 								</div>
 							</div>
-							<div class="col">
-								<div class="form-group">
+							<div class="form-group  col">
+								<label for="id_attr">Size (g)</label><a href="{{route('attr.index')}}" class=""> --Thêm mới--</a>
+								<select name="id_attr" id="input" class="form-control " >
+									<option value="">--Size--</option>
+									@foreach($attr as $value)
+									<option value="{{$value->id}}" {{$product->id_attr==$value->id?'selected':''}}>{{$value->value}}</option>
+									@endforeach
+								</select>
+								@error('id_attr')
+								<span class="text-red">{{$message}}</span>
+								@enderror
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
 								<label for="">Status</label>
 								<div class="radio">
 									<label>
@@ -95,7 +108,6 @@
 										Ẩn
 									</label>
 								</div>
-							</div>
 							</div>
 						</div>
 						<div class="form-group">
@@ -156,9 +168,10 @@
 							<input type="text" class="form-control" id="meta_key" placeholder=""  name="meta_keyword" multiple="multiple" value="{{$product->meta_keyword}}">
 						</div>
 						<div class="form-group">
-							<label for="textarea">Meta description</label>
-							<textarea name="meta_desc" id="textarea" class="form-control" rows="5">{{$product->meta_desc}}</textarea>
+							<label for="meta_desc">Meta description</label>
+							<textarea name="meta_desc" id="meta_desc" class="form-control" rows="10">{{$product->meta_desc}}</textarea>
 						</div>
+
 
 						<button class="btn btn-info" type="submit">Cập nhật</button>
 					</form>					
