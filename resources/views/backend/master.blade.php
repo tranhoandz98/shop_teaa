@@ -330,6 +330,12 @@
                 <li>
                     <li class=""><a href="{{route('blog.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Quản lý tin tức</a></li>
                 </li>
+                <li>
+                    <li class=""><a href="{{route('banner.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Quản lý banner</a></li>
+                </li>
+                <li>
+                    <li class=""><a href="{{route('config.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Quản lý cấu hình</a></li>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->
