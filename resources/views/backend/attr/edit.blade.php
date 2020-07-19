@@ -7,7 +7,7 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="row">
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 						<form method="POST" action="{{route('attr.update',$attr_id->id)}}">
 							@csrf
 							@method('PUT')
@@ -16,8 +16,8 @@
 								<div class="col">
 									<div class="form-group">
 										
-										<label>Tên </label>
-										<input type="text" class="form-control " readonly="" name="name" value="size" >
+										<label>Tên thuộc tính</label>
+										<input type="text" class="form-control " name="name" value="{{$attr_id->name}}" >
 									</div>
 									<!-- <select name="name" id="attr" class="form-control">
 										<option value="1">Size</option>
@@ -45,13 +45,13 @@
 							<button class="btn btn-success" type="submit">Cập nhật</button>
 						</form>
 					</div>
-					<div class="col-sm-8">
+					<div class="col-sm-9">
 						<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline" role="grid" aria-describedby="datatable-buttons_info">
 							<thead>
 								<tr role="row">
 									<th class="sorting">STT</th>
-									<th class="sorting">Khối lượng</th>
-									<th class="sorting">Giá trị (g)</th>
+									<th class="sorting">Tên thuộc tính</th>
+									<th class="sorting">Giá trị</th>
 									
 								</tr>
 							</thead>

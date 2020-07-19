@@ -24,14 +24,10 @@
 						<table id="datatable-buttons" class="table  table-bordered dt-responsive nowrap dataTable no-footer dtr-inline table-hover" role="grid" aria-describedby="datatable-buttons_info">
 							<thead>
 								<tr role="row">
-									<th class="sorting">STT</th>
-									<th class="sorting">Ảnh đại diện</th>
-									<th class="sorting">Tên sản phẩm</th>
-									<th class="sorting">Thuộc tính</th>
+									<th class="sorting">STT</th>									
+									<th class="sorting">Tên sản phẩm</th>									
 									<th class="sorting">Danh mục</th>
-									<th class="sorting">Giá</th>
-									<th class="sorting">% giảm giá</th>
-									<th class="sorting">Số lượng</th>
+									<th class="sorting">Ảnh đại diện</th>
 									<th class="sorting">Trạng thái</th>
 									<th class="sorting">Hành động</th>
 								</tr>
@@ -39,15 +35,10 @@
 							<tbody>
 								@foreach($product as $value)
 								<tr role="row" class="odd">
-									<td class="dtr-control" tabindex="0">{{$loop->index+1}}</td>
-									<td><img src="{{url('public/uploads')}}/{{$value->image}}" alt="" width="100px"></td>
-									<td class="sorting_1">{{$value->name}}</td>
-									<td class="sorting_1"><a href="{{route('product_detail_backend',$value->id)}}" class="btn btn-info">Xem thuộc tính</a></td>
+									<td class="dtr-control" tabindex="0">{{$loop->index+1}}</td>		
+									<td class="sorting_1">{{$value->name}}</td>									
 									<td>{{$value->categories->name}}</td>
-									<td class="sorting_1">{{$value->price}}</td>
-									<td class="sorting_1">{{$value->discount}}</td>
-									<td class="sorting_1">{{$value->quantity}}</td>
-
+									<td><img src="{{url('public/uploads')}}/{{$value->image}}" alt="" width="100px"></td>
 									<td>{!!($value->status==1)?'<span class="badge badge-pill badge-soft-success font-size-12">Hiện</span>':'<span class="badge badge-pill badge-soft-danger font-size-12">Ẩn</span>'!!}</td>
 									<td>
 										<div class="row">

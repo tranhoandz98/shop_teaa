@@ -15,11 +15,11 @@ class Product_detailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
-    {
-        $product=Product::find($id);
+    public function index()
+    {  
         $attr= Attr::all();
-        $product_detail=Product_detail::where('id_product','=',$id)->get();
+        $product_detail=Product_detail::all();
+        $product= Product::all();
         return view('backend.product_detail.index',compact('attr','product','product_detail'));
     }
 
@@ -30,7 +30,10 @@ class Product_detailController extends Controller
      */
     public function create()
     {
-        //
+        $product=Product::all();
+        $weight = Attr::where('name','Khối lượng')->get();
+        $size = Attr::where('name','Size')->get();
+        return view('backend.product_detail.create',compact('product','weight','size'));
     }
 
     /**

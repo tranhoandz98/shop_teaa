@@ -1,59 +1,65 @@
 @extends('backend.master')
-@section('title','Thêm mới sản phẩm')
+@section('title','Thêm mới chi tiết sản phẩm')
 @section('main')
 <div class="row">
 	<div class="col-xl-12">
 		<div class="card">
 			<div class="card-body">
-				<h4 class="card-title text-red">Thêm mới sản phẩm</h4>
-				<form action="{{route('product.store')}}" method="POST" role="form" enctype="multipart/form-data">
+				<h4 class="card-title text-red">Thêm mới chi tiết sản phẩm</h4>
+				<form action="{{route('product_detail.store')}}" method="POST" role="form" enctype="multipart/form-data">
 					@csrf
 					<div class="row">
-						<div class="col">
-							<div class="form-group">
-								<label for="name">Tên sản phẩm</label>
-								<input type="text" class="form-control" id="name" placeholder="Nhập tên sản phẩm" name="name" onkeyup="ChangeToSlug()">
-								@error('name')
-								<span class="text-red">{{$message}}</span>
-								@enderror
-							</div>
+						<div class="col">		
+                            <div class="form-group">
+                                <label for="">Tên sản phẩm</label>
+                                <select name="id_product" id="input" class="form-control" required="required">
+                                    <option value="0">------Tên sản phẩm ------</option>
+                                    @foreach($product as $value)
+                                    <option value="{{$value->id}}">{{$value->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 						</div>
-						<div class="col">
-							<div class="form-group">
-								<label for="slug">Slug</label>
-								<input type="text" class="form-control" id="slug" placeholder="Slug"  name="slug">
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						{{-- <div class="col">
-							<div class="form-group">
-								<label for="sku">SKU</label>
-								<input type="text" class="form-control" id="sku" placeholder="sku"  name="sku" value="">
-								@error('sku')
-								<span class="text-red">{{$message}}</span>
-								@enderror
-							</div>
-						</div> --}}
 						
-							<div class="col-md-6">
-								
-									<label for="">Danh mục cha</label>
-									<div class="form-group">
-										<select class="custom-select" id="classCoverageDistribution" aria-label="Example select with button addon" name="id_cate">
-											<option value="">---Trống---</option>
-											@foreach($category as $value)
-											<option value="{{$value->id}}">{{$value->name}}</option>
-											@endforeach
-										</select>
-									</div>
-									@error('id_cate')
-									<span class="text-red">{{$message}}</span>
-									@enderror
-	
-								
-							</div>
-							
+					</div>
+                    <div class="form-group">
+                        <label for="">Khối lượng</label>
+                        <div class="checkbox">
+                            @foreach($weight as $data)
+                            <label>
+                                <input type="checkbox" value="{{$data->id}}" name="weight[]">
+                               <div style="width: 20px; height: 20px; background: {{$data->value}}"></div>
+                            </label>
+                            @endforeach
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Size</label>
+                        <div class="checkbox">
+                            @foreach($size as $data)
+                            <label>
+                               <label>{{$data->value}}</label>
+                                <input type="checkbox" value="{{$data->id}}" name="size[]">
+                            </label>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Giá</label>
+                        <input type="text" class="form-control" id="" placeholder="Input field" name="price">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Sale (%)</label>
+                        <input type="text" class="form-control" id="" placeholder="Input field" name="discount">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Số lượng</label>
+                        <input type="text" class="form-control" id="" placeholder="Input field" name="quantity">
+                    </div>
+
+
 							<div class="col-md-6">
 								
 									<label for="">Status</label>
@@ -128,8 +134,6 @@
 						<label for="meta_desc">Meta description</label>
 						<textarea name="meta_desc" id="meta_desc" class="form-control" rows="5"></textarea>
 					</div>
-					
-
 					<button class="btn btn-info" type="submit">Thêm mới</button>
 				</form>					
 				<!-- Modal 1 image-->
