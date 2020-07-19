@@ -10,6 +10,6 @@ class Product extends Model
     	return $this->belongsTo('App\Models\Category','id_cate');
     }
    public function product_details(){
-  		return $this->hasMany('App\Models\Attr');
+  		return $this->hasMany('App\Models\Product_detail');
   	}
 }

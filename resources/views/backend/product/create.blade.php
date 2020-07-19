@@ -53,7 +53,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="row">
+					{{-- <div class="row">
 						<div class="col">
 							<div class="form-group">
 								<label for="price">Giá</label>
@@ -95,8 +95,8 @@
 							<span class="text-red">{{$message}}</span>
 							@enderror
 						</div>
-					</div>
-						<div class="col">
+					</div> --}}
+					
 							<div class="form-group">
 								<label for="">Status</label>
 								<div class="radio" class="row">
@@ -110,7 +110,6 @@
 									</label>
 								</div>
 							</div>
-						</div>
 					<div class="form-group">
 						<label for="get_image">Hình ảnh </label>
 						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalImage" id="get_image">
@@ -143,14 +142,15 @@
 						</div>
 					</div>
 
-					@error('images')
+					{{-- @error('images')
 					<span class="text-red">{{$message}}</span>
-					@enderror
+					@enderror --}}
 					{{-- end ảnh mô tả --}}
 					<div class="form-group">
 						<label for="description">Mô tả sản phẩm</label>
 						<textarea name="description" id="description" class="form-control ckedit" rows="10" ></textarea>
 					</div>
+					
 					<div class="form-group">
 						<p class="btn btn-info col disabled text-left">Thông tin SEO</p>
 					</div>

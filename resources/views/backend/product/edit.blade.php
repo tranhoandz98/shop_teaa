@@ -52,7 +52,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="row">
+						{{-- <div class="row">
 							<div class="col">
 								<div class="form-group">
 									<label for="price">Giá</label>
@@ -94,7 +94,7 @@
 								<span class="text-red">{{$message}}</span>
 								@enderror
 							</div>
-						</div>
+						</div> --}}
 						<div class="col">
 							<div class="form-group">
 								<label for="">Status</label>

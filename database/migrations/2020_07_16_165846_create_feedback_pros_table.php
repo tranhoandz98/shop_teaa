@@ -14,6 +14,7 @@ class CreateFeedbackProsTable extends Migration {
         Schema::create('feedback_pros', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('id_product');
+            $table->unsignedInteger('id_admin');
             $table->unsignedInteger('id_user');
             $table->Integer('star');
             $table->text('content')->nullable();
@@ -21,6 +22,7 @@ class CreateFeedbackProsTable extends Migration {
             $table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_admin')->references('id')->on('admins');
             $table->foreign('id_product')->references('id')->on('products');
         });
     }
