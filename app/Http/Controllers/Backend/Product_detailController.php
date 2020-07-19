@@ -128,7 +128,7 @@ class Product_detailController extends Controller
             'quantity' =>$request->quantity,
             'status' =>$request->status,
         ]);
-     return redirect()->route('product_detail',$id)->with('success','Cập nhật thành công');
+     return redirect()->route('product_detail_backend',$id)->with('success','Cập nhật thành công');
     }
 
     /**
@@ -141,6 +141,6 @@ class Product_detailController extends Controller
     {
         $product_detail= Product_detail::find($id_detail);
         $product_detail->delete();
-        return redirect()->route('product_detail',$id)->with('success','Xóa thành công');
+        return redirect()->route('product_detail_backend',$id)->with('success','Xóa thành công');
     }
 }

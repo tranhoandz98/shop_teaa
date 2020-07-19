@@ -16,8 +16,6 @@
     <link rel="stylesheet" href="{{url('public')}}/frontend/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{url('public')}}/frontend/css/ie7.css">
     <link rel="stylesheet" href="{{url('public')}}/frontend/css/plugins.css">
-    <link rel="stylesheet" href="{{url('public')}}/frontend/css/app.min.css">
-    <link rel="stylesheet" href="{{url('public')}}/frontend/css/icons.min.css">
     <link rel="stylesheet" href="{{url('public')}}/frontend/css/style.css">
     <link rel="stylesheet" href="{{url('public')}}/frontend/css/style1.css">
     <script src="{{url('public')}}/frontend/js/vendor/modernizr-3.5.0.min.js"></script>

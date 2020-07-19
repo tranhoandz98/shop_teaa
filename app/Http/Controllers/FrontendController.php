@@ -14,12 +14,25 @@ class FrontendController extends Controller {
 		$category=Category::where([['status','=','1'],['type','=','1']])->orderby('name')->get();
 		$attr=Attr::all();
 		// $product_cate=Product::where('id_cate','=','$category->id')->get();
-		// $product=Product::where('status','=','1');
-		$product= Product::where('status','=','1')->get();
-		// $product=Product::join('product_details','products.id','=','product_details.id_product')
+		// // $product=Product::where('status','=','1');
+		// $product= Product::where('status','=','1')->get();
+		$product=Product::join('product_details', function ($join) {
+            $join->on('products.id', '=', 'product_details.id_product')
+                 ->where('products.status', '1');
+        })
+
+
+		// join('product_details','products.id','=','product_details.id_product')
 		// ->select('products.*','product_details.price','product_details.discount')
-		// ->get();
-		// dd($product);
+		->get();
+
+// 		dump($product->price);
+// foreach ($product as $value) {
+// 	dump($value);
+//     }
+
+// 		dd($product);
+
 		return view('frontend.pages.shop',compact('category','product','attr'));
 	}
 	public function product_detail($id){
