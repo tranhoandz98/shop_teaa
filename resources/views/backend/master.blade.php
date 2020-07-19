@@ -555,10 +555,47 @@
         filebrowserUploadUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
         filebrowserImageBrowseUrl : '../../filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
     });
+    // CKEDITOR.replace( 'meta_desc' ,{
+    //     filebrowserBrowseUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
+    //     filebrowserUploadUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
+    //     filebrowserImageBrowseUrl : '../../filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
+    // });
 </script>
 {{-- lấy ảnh từ reponsive filemanager --}}
 <script src="{{url('public')}}/backend/js/getImage.js"></script>
  {{--  use jquery to build a dynamic add/ remove form  --}}
 <script src="{{url('public')}}/backend/js/dynamic.js"></script>
+<script>
+    $("#name").keyup(function(event) {
+       var name=$("#name").val();
+       //Đổi ký tự có dấu thành không dấu
+    name = name.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
+    name = name.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+    name = name.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+    name = name.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+    name = name.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+    name = name.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+    name = name.replace(/đ/gi, 'd');
+     //Xóa các ký tự đặt biệt
+    name = name.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
+       var arr=name.split(" ");
+       var sku=[];
+       for ( i = 0; i < arr.length; i++) {
+           sku+=arr[i].charAt(0);
+       }
+       sku=sku.toUpperCase();
+        // console.log(arr);
+        // console.log(sku);
+        var d= new Date().getMilliseconds();
+        $('#sku').val(sku+d);
+    });
+    $("#id_attr").change(function(event) {
+       var sku_detail= $('#sku').text();
+       var id_attr= $('#id_attr option:selected').text();
+       var sku_done=sku_detail+id_attr;
+        console.log(sku_detail,id_attr);
+        $('#sku_detail').val(sku_done);
+    });
+</script>
 </body>
 </html>
