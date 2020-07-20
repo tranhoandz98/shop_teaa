@@ -16,24 +16,30 @@ class FrontendController extends Controller {
 		// $product_cate=Product::where('id_cate','=','$category->id')->get();
 		// // $product=Product::where('status','=','1');
 		// $product= Product::where('status','=','1')->get();
-		$product=Product::join('product_details', function ($join) {
-            $join->on('products.id', '=', 'product_details.id_product')
-                 ->where('products.status', '1');
-        })
+		// $product=Product::join('product_details', function ($join) {
+        //     $join->on('products.id', '=', 'product_details.id_product')
+        //          ->where('products.status', '1');
+		// })
+		
+		$products=Product::where('status','=','1')
 
 
 		// join('product_details','products.id','=','product_details.id_product')
 		// ->select('products.*','product_details.price','product_details.discount')
 		->get();
 
+		foreach ($products as $product) {
+			$details = $product->product_details;
+			$product->setAttribute('min_price', $details->min('price'));
+		}
 // 		dump($product->price);
 // foreach ($product as $value) {
 // 	dump($value);
 //     }
 
-// 		dd($product);
+		// dd($products);
 
-		return view('frontend.pages.shop',compact('category','product','attr'));
+		return view('frontend.pages.shop',compact('category','products','attr'));
 	}
 	public function product_detail($id){
 		$attr=Attr::all();

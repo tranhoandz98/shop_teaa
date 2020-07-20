@@ -97,7 +97,7 @@
                 <div class="ht-product-shop tab-content text-center">
                     <div class="tab-pane active show fade" id="grid" role="tabpanel">
                         <div class="custom-row">
-                            @foreach($product as $value)
+                            @foreach($products as $value)
                             <div class="custom-col">
                                 <div class="single-product-item">
 
@@ -136,11 +136,11 @@
                                         @if($value->discount>0)
                                         <div class="pro-price">
                                             <span class="new-price">{{number_format($value->price-($value->price*$value->discount/100))}}đ</span> 
-                                            <span class="old-price">{{number_format($value->price)}}đ</span>
+                                            <span class="old-price">{{number_format($value->min_price)}}đ</span>
                                         </div>
                                         @else
                                         <div class="pro-price">
-                                            <span class="new-price">{{number_format($value->price)}}đ</span>
+                                            <span class="new-price">{{number_format($value->min_price)}}đ</span>
                                         </div>
                                         @endif
 
@@ -153,7 +153,7 @@
                         </div>
                     </div>
                     <div class="tab-pane fade text-left" id="list" role="tabpanel">
-                        @foreach($product as $value)
+                        @foreach($products as $value)
                         <div class="single-product-item">
                             <div class="product-image image-cus">
                                 <a href="product-details.html">
