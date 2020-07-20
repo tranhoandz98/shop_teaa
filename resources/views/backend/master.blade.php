@@ -309,22 +309,18 @@
                     </ul>
 
                 </li> -->
-                <li class="">
+                <li>
+                    <li class=""><a href="{{route('category.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Quản lý danh mục</a></li>
+                </li>
+                <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="true">
                         <i class="bx bx-store"></i>
-                        <span>Quản lý bán hàng</span>
+                        <span>Quản lý sản phẩm</span>
                     </a>
                     <ul class="sub-menu mm-collapse" aria-expanded="true" style="">
-                        <li class=""><a href="{{route('category.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Danh mục</a></li>
-
-                      {{--   <li class=""><a href="javascript: void(0);" class="has-arrow" aria-expanded="true"><i class="bx bx-store"></i>Sản phẩm</a>
-                            <ul class="sub-menu mm-collapse" aria-expanded="true" style="">
-                                <li class=""><a href="{{route('product.index')}}" aria-expanded="false"><i class="dripicons-dot"></i>Danh sách</a></li>
-                                <li><a href="{{route('product.create')}}" aria-expanded="false"><i class="dripicons-dot"></i>Thêm mới</a></li>
-                            </ul>
-                        </li> --}}
-                        <li class=""><a href="{{route('product.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>sản phẩm</a></li>
                         <li class=""><a href="{{route('attr.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Thuộc tính sản phẩm</a></li>
+                        <li class=""><a href="{{route('product.index')}}" aria-expanded="true"><i class="bx bx-list-ul"></i>Sản phẩm</a></li>
+                                       
                     </ul>
                     
                 </li>
