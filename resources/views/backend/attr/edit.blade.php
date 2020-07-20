@@ -15,9 +15,11 @@
 							<div class="form-row">
 								<div class="col">
 									<div class="form-group">
-										
-										<label>Tên </label>
-										<input type="text" class="form-control " readonly="" name="name" value="size" >
+										<label>Thuộc tính </label>
+										<select name="name" id="input" class="form-control" required="required">
+											<option value="size" {{$attr_id->name=="size"?'selected':''}}>Size</option>
+											<option value="khoi-luong" {{$attr_id->name=="khoi-luong"?'selected':''}}>Khối lượng</option>
+										</select>
 									</div>
 									<!-- <select name="name" id="attr" class="form-control">
 										<option value="1">Size</option>
@@ -26,7 +28,7 @@
 								</div>
 								<div class="col"> 
 									<div class="form-group">
-										<label>Giá trị (g)</label>
+										<label>Giá trị</label>
 										<div class="input-group " id="size" >
 											<input type="text" class="form-control input-lg" name="value" value="{{$attr_id->value}}">
 										</div>
@@ -50,7 +52,7 @@
 							<thead>
 								<tr role="row">
 									<th class="sorting">STT</th>
-									<th class="sorting">Khối lượng</th>
+									<th class="sorting">Thuộc tính</th>
 									<th class="sorting">Giá trị (g)</th>
 									
 								</tr>

@@ -29,7 +29,7 @@
 						</div>
 
 						<div class="form-group  col">
-							<label for="id_attr">Size(g)</label><a href="{{route('attr.index')}}" class=""> --Thêm mới--</a>
+							<label for="id_attr">Size</label><a href="{{route('attr.index')}}" class=""> -Thêm-</a>
 							<select name="id_attr" id="id_attr" class="form-control " >
 								<option value="">--Size--</option>
 								@foreach($attr as $value)
@@ -40,6 +40,18 @@
 							<span class="text-red">{{$message}}</span>
 							@enderror
 						</div>
+						{{-- <div class="form-group  col">
+							<label for="id_attr">Khối lượng</label><a href="{{route('attr.index')}}" class=""> -Thêm-</a>
+							<select name="id_attr" id="id_attr" class="form-control " >
+								<option value="">--Khối lượng-</option>
+								@foreach($attr as $value)
+								<option value="{{$value->id}}">{{$value->value}}</option>
+								@endforeach
+							</select>
+							@error('id_attr')
+							<span class="text-red">{{$message}}</span>
+							@enderror
+						</div> --}}
 						<div class="form-group  col">
 							<label for="price">Price</label>
 							<input type="text" class="form-control " placeholder="Price" name="price" value=""/>
@@ -95,7 +107,8 @@
 								<tr role="row">
 									<th class="sorting">STT</th>
 									<th class="sorting">SKU</th>
-									<th class="sorting">Size (g)</th>
+									<th class="sorting">Size</th>
+									<th class="sorting">Khối lượng (g)</th>
 									<th class="sorting">Price (đ)</th>
 									<th class="sorting">Discount (%)</th>
 									<th class="sorting">Quantity</th>
@@ -108,7 +121,9 @@
 								<tr>
 									<td>{{$loop->index +1}}</td>
 									<td>{{$value->sku}}</td>
-									<td>{{$value->attrs->value}}</td>
+									<td>{{$value->attrs->name=="size"?$value->attrs->value:''}}</td>
+									<td>{{$value->attrs->name=="khoi-luong"?$value->attrs->value:''}}</td>
+									{{-- <td>{{$value->attrs->name}}</td> --}}
 									<td>{{number_format($value->price)}}</td>
 									<td>{{$value->discount}}</td>
 									<td>{{$value->quantity}}</td>
