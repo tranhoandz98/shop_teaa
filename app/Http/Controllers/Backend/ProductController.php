@@ -50,7 +50,6 @@ class ProductController extends Controller
         // $file_name = $request->image->getClientOriginalName();
         // // đẩy file vào thư mục uploads
         // $request->image->move(base_path('public/uploads/'),$file_name);
-        
         $image= trim($request->image,url('/public/uploads/'));
 
         $request->validate([

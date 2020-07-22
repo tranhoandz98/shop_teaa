@@ -27,7 +27,7 @@
 .single-product-item {
 	position: relative;
 }
-.product-image .pro-percent{
+.product-image .pro-discount{
 	position: absolute;
     top: 5px;
     left: 5px;
@@ -38,6 +38,25 @@
     border-radius: 50%;
     line-height: 60px;
     font-size: 16px;
+}
+
+.pro-detail-discount{
+    position: absolute;
+    top: 11px;
+    left: -450px;
+    background: #78A206;
+    color: #fff;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    line-height: 70px;
+    font-size: 22px;
+}
+.btn-green{
+	background: #78A206!important;
+}
+.bg-green{
+	background: #78A206!important;
 }
 /*  .product-details-text .pro-meta-desc p {
 	border: none!important;

@@ -102,10 +102,10 @@
                                 <div class="single-product-item">
 
                                     <div class="product-image image-cus">
-                                        <a href="{{ route('product_detail',$value->id) }}">
+                                        <a href="{{ route('product_detail',['slug'=>$value->slug,'id_detail'=>$value->id_detail]) }}">
                                             <img src="{{url('public/uploads')}}/{{$value->image}}" alt="">
                                             @if($value->discount>0)
-                                            <div class="pro-percent text-center hide">-{{$value->discount}}%</div>
+                                            <div class="pro-discount text-center">-{{$value->discount}}%</div>
                                             @endif
                                         </a>  
 
@@ -136,11 +136,11 @@
                                         @if($value->discount>0)
                                         <div class="pro-price">
                                             <span class="new-price">{{number_format($value->price-($value->price*$value->discount/100))}}đ</span> 
-                                            <span class="old-price">{{number_format($value->min_price)}}đ</span>
+                                            <span class="old-price">{{number_format($value->price)}}đ</span>
                                         </div>
                                         @else
                                         <div class="pro-price">
-                                            <span class="new-price">{{number_format($value->min_price)}}đ</span>
+                                            <span class="new-price">{{number_format($value->price)}}đ</span>
                                         </div>
                                         @endif
 
@@ -241,8 +241,9 @@
 
                     </div>
                 </div>
-                <div class="pagination-wrapper">
-                    <p>Showing 1 to 9 of 11 (2 Pages)</p>
+                {{ $products->links() }}
+                {{-- <div class="pagination-wrapper">
+                    <p>Showing 1 to 9 of {{ $paginator->total() }} ({{ $paginator->lastPage() }} Pages)</p>
                     <nav aria-label="navigation">
                         <ul class="pagination">
                             <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -251,7 +252,7 @@
                             <li class="page-item"><a class="page-link" href="#">>|</a></li>
                         </ul>
                     </nav>
-                </div>
+                </div> --}}
             </div>
 
         </div>

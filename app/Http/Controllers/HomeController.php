@@ -26,10 +26,10 @@ class HomeController extends Controller {
 	// {
 	//     return view('home');
 	// }
-	public function dangky() {
+	public function dang_ky() {
 		return view('frontend.pages.register');
 	}
-	public function postDangky(Request $request) {
+	public function post_dang_ky(Request $request) {
 		$request->validate([
 			'name' => 'required',
 			'email' => 'required|unique:users',
@@ -61,21 +61,21 @@ class HomeController extends Controller {
 		]);
 		return redirect()->route('dang-nhap')->with('success', 'Đăng ký thành công');
 	}
-	public function dangnhap() {
+	public function dang_nhap() {
 		return view('frontend.pages.login');
 	}
-	public function postDangnhap(Request $request) {
-		// dd($request->all());
-		// dd(Auth::attempt($request->only('email','password')));
-		if (Auth::attempt($request->only('email', 'password'))) {
+	public function post_dang_nhap(Request $request) {
+		// dump($request->all());
+		// dd(Auth::guard('user')->attempt($request->only('email','password')));
+		if (Auth::guard('user')->attempt($request->only('email', 'password'))) {
 			return redirect()->route('home')->with('success', 'Đăng nhập thành công');
 		} else {
 			return redirect()->back()->with('error', 'Tài khoản hoặc mật khẩu
                 không đúng');
 		}
 	}
-	public function dangxuat() {
-		Auth::logout();
+	public function dang_xuat() {
+		Auth::guard('user')->logout();
 		return redirect()->route('home')->with('success', 'Đăng xuất thành công');
 	}
 	public function profile() {

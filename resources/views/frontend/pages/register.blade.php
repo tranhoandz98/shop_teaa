@@ -106,16 +106,16 @@
                 </div>
             </div>
         </div>
-        <div class="form-group form-check">
+        {{-- <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Remember me</label>
-        </div>
+        </div> --}}
         <button type="submit" class="btn btn-success">Đăng ký</button>
 
     </form>
     <div class="mt-2 ">
         <div>
-            <p>Already have an account ? <a href="auth-login.html" class="font-weight-medium text-primary"> Login</a> </p>
+            <p>Bạn đã có tài khoản ? <a href="{{ route('dang-nhap') }}" class="font-weight-medium text-primary"> Đăng nhập</a> </p>
         </div>
     </div>
     <!--End of Register Form-->

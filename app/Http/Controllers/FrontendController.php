@@ -5,6 +5,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Product_detail;
 use App\Models\Attr;
+use Illuminate\Http\Request;
 class FrontendController extends Controller {
 	public function index() {
 		$product=Product::all();
@@ -13,45 +14,22 @@ class FrontendController extends Controller {
 	public function shop(){
 		$category=Category::where([['status','=','1'],['type','=','1']])->orderby('name')->get();
 		$attr=Attr::all();
-		// $product_cate=Product::where('id_cate','=','$category->id')->get();
-		// // $product=Product::where('status','=','1');
-		// $product= Product::where('status','=','1')->get();
-		// $product=Product::join('product_details', function ($join) {
-        //     $join->on('products.id', '=', 'product_details.id_product')
-        //          ->where('products.status', '1');
-		// })
-		
-		$products=Product::where('status','=','1')
-
-
-		// join('product_details','products.id','=','product_details.id_product')
-		// ->select('products.*','product_details.price','product_details.discount')
-		->get();
-
+		$products=Product::where('status','=','1')->paginate(6);
 		foreach ($products as $product) {
 			$details = $product->product_details;
-			$product->setAttribute('min_price', $details->min('price'));
+			$product->setAttribute('price', $details[0]['price']);
+			$product->setAttribute('discount', $details[0]['discount']);
+			$product->setAttribute('id_detail', $details[0]['id']);
+			$product->setAttribute('quantity', $details[0]['quantity']);
+			// dd($product);
 		}
-// 		dump($product->price);
-// foreach ($product as $value) {
-// 	dump($value);
-//     }
-
-		// dd($products);
-
 		return view('frontend.pages.shop',compact('category','products','attr'));
 	}
-	public function product_detail($id){
+	public function product_detail($slug, $id_detail){
 		$attr=Attr::all();
-		// $product_cate=Product::where('id_cate','=','$category->id')->get();
-		// $product=Product::where('status','=','1');
-		// $product= Product::where('status','=','1')->get();
-		// $product=Product::join('product_details','products.id','=','product_details.id_product')
-		// ->select('products.*','product_details.price','product_details.discount')
-		// ->get();
-		$product=Product::find($id);
-		// dd($product);
-		return view('frontend.pages.product_detail',compact('product','attr'));
+		$product=Product::where('slug','=',$slug)->first();
+		$product_detail=Product_detail::where('id_product','=',$product->id)->get();
+		$product_detail_id=Product_detail::find($id_detail);
+		return view('frontend.pages.product_detail',compact('product','product_detail','product_detail_id','attr'));
 	}
-
 }

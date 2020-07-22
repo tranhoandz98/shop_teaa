@@ -27,7 +27,7 @@
 		<form method="POST" action="">
 			@csrf
 			<div class="form-group">
-				<label for="email">Email address</label>
+				<label for="email">Email </label>
 				<input type="email" class="form-control" id="email" {{-- aria-describedby="emailHelp" --}} placeholder="Enter email" name="email">
 				{{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
 				@error('email')
@@ -47,6 +47,7 @@
 				<label class="form-check-label" for="exampleCheck1">Remember me</label>
 			</div>
 			<button type="submit" class="btn btn-success">Đăng nhập</button>
+			
 		</form>
 		<!--End of Register Form-->
 	</div>
