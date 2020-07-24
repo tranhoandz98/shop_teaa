@@ -1,112 +1,125 @@
 @extends('frontend.master')
 @section('title','Trang đăng ký')
 @section('main')
-<!-- Breadcrumb Area Start -->
-{{-- <div class="breadcrumb-area bg-12 text-center headingt">
-    <div class="container">
-        <h1>Shop</h1>
-        <nav aria-label="breadcrumb">
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Shop</li>
-            </ul>
-        </nav>
-    </div>
-</div> --}}
-<!-- Breadcrumb Area End -->
-<!-- Shop Area Start -->
-<div class="shop-area pt-110 pb-100 bg-gray mb-95">
-	
-	<div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8 col-lg-6 col-xl-5">
-                        <div class="card overflow-hidden">
-                            <div class="bg-soft-primary">
-                                <div class="row">
-                                    <div class="col-7">
-                                        <div class="text-primary p-4">
-                                            <h5 class="text-primary">Free Register</h5>
-                                            <p>Get your free Skote account now.</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-5 align-self-end">
-                                        <img src="assets/images/profile-img.png" alt="" class="img-fluid">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body pt-0"> 
-                                <div>
-                                    <a href="index.html">
-                                        <div class="avatar-md profile-user-wid mb-4">
-                                            <span class="avatar-title rounded-circle bg-light">
-                                                <img src="assets/images/logo.svg" alt="" class="rounded-circle" height="34">
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="p-2">
-                                    <form class="form-horizontal" action="index.html">
-            
-                                        <div class="form-group">
-                                            <label for="useremail">Email</label>
-                                            <input type="email" class="form-control" id="useremail" placeholder="Enter email">        
-                                        </div>
-                
-                                        <div class="form-group">
-                                            <label for="username">Username</label>
-                                            <input type="text" class="form-control" id="username" placeholder="Enter username">
-                                        </div>
-                
-                                        <div class="form-group">
-                                            <label for="userpassword">Password</label>
-                                            <input type="password" class="form-control" id="userpassword" placeholder="Enter password">        
-                                        </div>
-                    
-                                        <div class="mt-4">
-                                            <button class="btn btn-primary btn-block waves-effect waves-light" type="submit">Register</button>
-                                        </div>
+<div class="shop-area pt-110 bg-gray">
+	<div class="breadcrumb-area bg-12 text-center">
+            <div class="container">
+                <h1>Đăng ký tài khoản</h1>
+                <nav aria-label="breadcrumb">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('dang-ky') }}">Đăng ký</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    {{-- <hr> --}}
+    <div class="container mt-25">
 
-                                        <div class="mt-4 text-center">
-                                            <h5 class="font-size-14 mb-3">Sign up using</h5>
-            
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item">
-                                                    <a href="javascript::void()" class="social-list-item bg-primary text-white border-primary">
-                                                        <i class="mdi mdi-facebook"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="javascript::void()" class="social-list-item bg-info text-white border-info">
-                                                        <i class="mdi mdi-twitter"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="javascript::void()" class="social-list-item bg-danger text-white border-danger">
-                                                        <i class="mdi mdi-google"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                
-                                        <div class="mt-4 text-center">
-                                            <p class="mb-0">By registering you agree to the Skote <a href="#" class="text-primary">Terms of Use</a></p>
-                                        </div>
-                                    </form>
-                                </div>
-            
-                            </div>
-                        </div>
-                        <div class="mt-5 text-center">
-                            
-                            <div>
-                                <p>Already have an account ? <a href="auth-login.html" class="font-weight-medium text-primary"> Login</a> </p>
-                                <p>© 2020 Skote. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
-                            </div>
-                        </div>
+        <form method="POST" action="">
+            @csrf
 
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="name">Họ và tên</label>
+                        <input type="text" class="form-control" placeholder="Nhập họ và tên" id="name" name="name">
+                            @error('name')
+                            <span class="text-red">{{$message}}</span>
+                            @enderror
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                         @error('email')
+                            <span class="text-red">{{$message}}</span>
+                            @enderror
                     </div>
                 </div>
             </div>
-	
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="password" >Mật khẩu</label>
+                        <input type="password" class="form-control" id="password" name="password"  placeholder="Nhập mật khẩu">
+                         @error('password')
+                            <span class="text-red">{{$message}}</span>
+                            @enderror
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="re_password">Nhập lại mật khẩu</label>
+                        <input type="password" class="form-control" id="re_password" name="re_password" placeholder="Nhập lại mật khẩu">
+                         @error('re_password')
+                            <span class="text-red">{{$message}}</span>
+                            @enderror
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="phone">Số điện thoại</label>
+                        <input type="tel" class="form-control" name="phone" id="phone" placeholder="Nhập số điện thoại">
+                         @error('phone')
+                            <span class="text-red">{{$message}}</span>
+                            @enderror
+                    </div>
+                </div>
+                <div class="col">
+                    <label for="">Giới tính</label>
+                    <div class="radio">
+                       <label>
+                           <input type="radio" name="gender" id="input" value="1" checked="checked">
+                           Nam
+                       </label>
+                       <label>
+                           <input type="radio" name="gender" id="input" value="0">
+                           Nữ
+                       </label>
+                   </div>
+               </div>
+           </div>
+           <div class="row">
+             <div class="col">
+                <div class="form-group">
+                    <label for="address" class="">Địa chỉ:</label>
+                        {{-- <textarea name="address" id="textarea" class="form-control" rows="2">
+                        </textarea> --}}
+                        <input type="text" class="form-control" id="address" name="address" placeholder="1 Hoàng Quốc Việt, Hà Nội">
+                         @error('address')
+                            <span class="text-red">{{$message}}</span>
+                            @enderror
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="birthday">Sinh nhật</label>
+                    <input type="date" class="form-control" id="birthday" name="birthday">
+                     @error('birthday')
+                            <span class="text-red">{{$message}}</span>
+                            @enderror
+                </div>
+            </div>
+        </div>
+        {{-- <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+        </div> --}}
+        <button type="submit" class="btn btn-success">Đăng ký</button>
+
+    </form>
+    <div class="mt-2 ">
+        <div>
+            <p>Bạn đã có tài khoản ? <a href="{{ route('dang-nhap') }}" class="font-weight-medium text-primary"> Đăng nhập</a> </p>
+        </div>
+    </div>
+    <!--End of Register Form-->
 </div>
+</div>
+
 @stop
