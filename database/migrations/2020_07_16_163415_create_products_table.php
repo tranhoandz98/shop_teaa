@@ -17,9 +17,10 @@ class CreateProductsTable extends Migration {
 			$table->string('slug');
 			$table->string('sku')->unique();
 			$table->unsignedInteger('id_cate');
-			// $table->float('price');
+			// $table->unsignedInteger('id_attr');
+			// $table->float('price',16,2);
    //          $table->float('discount')->nullable();
-   //          $table->Integer('quantity');
+   //          $table->Integer('quantity')->nullable();
 			$table->string('image');
 			$table->text('description')->nullable();
 			$table->string('meta_title')->nullable();
@@ -28,6 +29,7 @@ class CreateProductsTable extends Migration {
 			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->timestamps();
 			$table->foreign('id_cate')->references('id')->on('categories')->onDelete('cascade');
+			// $table->foreign('id_attr')->references('id')->on('attrs');
 		});
 	}
 

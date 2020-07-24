@@ -262,17 +262,14 @@
     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <img class="rounded-circle header-profile-user" src="{{url('public')}}/backend/images/users/avatar-1.jpg"
     alt="Header Avatar">
-    <span class="d-none d-xl-inline-block ml-1">Henry</span>
+    <span class="d-none d-xl-inline-block ml-1">Admin</span>
     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
 </button>
 <div class="dropdown-menu dropdown-menu-right">
     <!-- item-->
-    <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle mr-1"></i> Profile</a>
-    <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle mr-1"></i> My Wallet</a>
-    <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">11</span><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
     <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle mr-1"></i> Lock screen</a>
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item text-danger" href="#"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
+    <a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
 </div>
 </div>
 
@@ -309,22 +306,29 @@
                     </ul>
 
                 </li> -->
-                <li class="">
+                <li>
+                    <li class=""><a href="{{route('category.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Quản lý danh mục</a></li>
+                </li>
+                <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="true">
                         <i class="bx bx-store"></i>
-                        <span>Quản lý bán hàng</span>
+                        <span>Quản lý sản phẩm</span>
                     </a>
                     <ul class="sub-menu mm-collapse" aria-expanded="true" style="">
-                        <li class=""><a href="{{route('category.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Danh mục</a></li>
-
-                        <li class=""><a href="javascript: void(0);" class="has-arrow" aria-expanded="true"><i class="bx bx-store"></i>Sản phẩm</a>
-                            <ul class="sub-menu mm-collapse" aria-expanded="true" style="">
-                                <li class=""><a href="{{route('product.index')}}" aria-expanded="false"><i class="dripicons-dot"></i>Danh sách</a></li>
-                                <li><a href="{{route('product.create')}}" aria-expanded="false"><i class="dripicons-dot"></i>Thêm mới</a></li>
-                            </ul>
-                        </li>
                         <li class=""><a href="{{route('attr.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Thuộc tính sản phẩm</a></li>
+                        <li class=""><a href="{{route('product.index')}}" aria-expanded="true"><i class="bx bx-list-ul"></i>Sản phẩm</a></li>
+                                       
                     </ul>
+                    
+                </li>
+                <li>
+                    <li class=""><a href="{{route('blog.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Quản lý tin tức</a></li>
+                </li>
+                <li>
+                    <li class=""><a href="{{route('banner.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Quản lý banner</a></li>
+                </li>
+                <li>
+                    <li class=""><a href="{{route('config.index')}}" aria-expanded="false"><i class="bx bx-list-ul"></i>Quản lý cấu hình</a></li>
                 </li>
             </ul>
         </div>
@@ -344,12 +348,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0 font-size-18">@yield('title')</h4>
+                        <h4 class="mb-0 font-size-18">Dashboard</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboards</a></li>
-                                <li class="breadcrumb-item active">@yield('title')</li>
+                                <li class="breadcrumb-item active">Dashboard</li>
                             </ol>
                         </div>
 
@@ -545,10 +549,47 @@
         filebrowserUploadUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
         filebrowserImageBrowseUrl : '../../filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
     });
+    // CKEDITOR.replace( 'meta_desc' ,{
+    //     filebrowserBrowseUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
+    //     filebrowserUploadUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
+    //     filebrowserImageBrowseUrl : '../../filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
+    // });
 </script>
 {{-- lấy ảnh từ reponsive filemanager --}}
 <script src="{{url('public')}}/backend/js/getImage.js"></script>
-{{--  use jquery to build a dynamic add/ remove form  --}}
+ {{--  use jquery to build a dynamic add/ remove form  --}}
 <script src="{{url('public')}}/backend/js/dynamic.js"></script>
+<script>
+    $("#name").keyup(function(event) {
+       var name=$("#name").val();
+       //Đổi ký tự có dấu thành không dấu
+    name = name.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
+    name = name.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+    name = name.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+    name = name.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+    name = name.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+    name = name.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+    name = name.replace(/đ/gi, 'd');
+     //Xóa các ký tự đặt biệt
+    name = name.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
+       var arr=name.split(" ");
+       var sku=[];
+       for ( i = 0; i < arr.length; i++) {
+           sku+=arr[i].charAt(0);
+       }
+       sku=sku.toUpperCase();
+        // console.log(arr);
+        // console.log(sku);
+        var d= new Date().getMilliseconds();
+        $('#sku').val(sku+d);
+    });
+    $("#id_attr").change(function(event) {
+       var sku_detail= $('#sku').text();
+       var id_attr= $('#id_attr option:selected').text();
+       var sku_done=sku_detail+id_attr;
+        console.log(sku_detail,id_attr);
+        $('#sku_detail').val(sku_done);
+    });
+</script>
 </body>
 </html>

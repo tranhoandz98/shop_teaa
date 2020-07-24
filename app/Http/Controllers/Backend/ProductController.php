@@ -8,7 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Attr;
 use App\Models\Img_pro;
-use App\Models\Product_attr;
+use App\Models\Product_detail;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File; 
@@ -34,7 +34,8 @@ class ProductController extends Controller
     public function create()
     {
         $category=Category::all();
-        return view('backend.product.create',compact('category'));
+        $attr=Attr::all();
+        return view('backend.product.create',compact('category','attr'));
     }
 
     /**
@@ -49,17 +50,18 @@ class ProductController extends Controller
         // $file_name = $request->image->getClientOriginalName();
         // // đẩy file vào thư mục uploads
         // $request->image->move(base_path('public/uploads/'),$file_name);
-        
         $image= trim($request->image,url('/public/uploads/'));
 
         $request->validate([
             'name' => 'required|unique:products|max:255',
             'sku' => 'required|unique:products|max:255',
             'id_cate' => 'required',
+            'image' => 'required',
+            // 'id_attr' => 'required',
             // 'image' => 'required|ends_with:jpg,jpeg,gif,png',
             // 'price' => 'required|numeric',
-            // 'discount' => 'required|numeric',
-            // 'quantity' => 'required|numeric',
+            // 'discount' => 'numeric',
+            // 'quantity' => 'numeric',
         ],[
             'name.required' =>'Tên sản phẩm không được bỏ trống',
             'name.unique' =>'Tên sản phẩm đã tồn tại',
@@ -69,13 +71,13 @@ class ProductController extends Controller
             'sku.max' =>'Mã sản phẩm không vượt quá 255 kí tự',
             'id_cate.required' =>'Tên danh mục không được bỏ trống',
             'image.required' =>'Ảnh không được bỏ trống',
-            'image.ends_with' =>'Ảnh phải là đuôi jpg,jpeg,gif,png',
+            // 'image.ends_with' =>'Ảnh phải là đuôi jpg,jpeg,gif,png',
             // 'price.required' =>'Giá sản phẩm không được bỏ trống',
-            // 'discount.required' =>'Phần trăm giảm giá không được bỏ trống',
-            // 'quantity.required' =>'Số lượng sản phẩm không được bỏ trống',
-            // 'price.numeric' =>'Giá sản phẩm phải là sô',
-            // 'discount.numeric' =>'Phần trăm giảm giá phải là sô',
-            // 'quantity.numeric' =>'Số lượng sản phẩm phải là sô',
+            // // 'discount.required' =>'Phần trăm giảm giá không được bỏ trống',
+            // // 'quantity.required' =>'Số lượng sản phẩm không được bỏ trống',
+            // 'price.numeric' =>'Giá sản phẩm phải là số',
+            // 'discount.numeric' =>'Phần trăm giảm giá phải là số',
+            // 'quantity.numeric' =>'Số lượng sản phẩm phải là số',
 
         ]);
         $product =Product::create([
@@ -83,9 +85,6 @@ class ProductController extends Controller
             'slug'=>$request->slug,
             'sku'=>$request->sku,
             'id_cate'=>$request->id_cate,
-            // 'price'=>$request->price,
-            // 'discount'=>$request->discount,
-            // 'quantity'=>$request->quantity,
             'image'=>$image,
             'description'=>$request->description,
             'meta_title'=>$request->meta_title,
@@ -104,6 +103,14 @@ class ProductController extends Controller
             ]);
         }
     }
+    //     Product_detail::create([
+    //         'id_product'=> $product->id,
+    //         'id_attr' =>$product->id_attr,
+    //         'sku' =>$product->sku,
+    //         'price' =>$product->price,
+    //         'discount' =>$product->discount,
+    //         'quantity' =>$product->quantity,
+    //     ]);
 
     return redirect()->route('product.index')->with('success','Thêm mới thành công');
 }
@@ -129,10 +136,11 @@ class ProductController extends Controller
     {
         $product=Product::find($id);
         $category = Category::all();
+        $attr=Attr::all();
         $img_pro= Img_pro::where('id_product',$id)->get();
         
         // dd($img_pro);
-        return view('backend.product.edit',compact('category','product','img_pro'));
+        return view('backend.product.edit',compact('category','product','img_pro','attr'));
     }
 
     /**
@@ -153,23 +161,23 @@ class ProductController extends Controller
        }
        $request->validate([
         'name' => ['required','max:255',Rule::unique('products')->ignore($id)],
+        'sku' => ['required','max:255',Rule::unique('products')->ignore($id)],
         'sku' => 'required|max:255',
-        'id_cate' => 'required',
         // 'price' => 'required|numeric',
-        // 'discount' => 'required|numeric',
-        // 'quantity' => 'required|numeric',
+        // // 'discount' => 'numeric',
+        // 'quantity' => 'numeric',
     ],[
         'name.required' =>'Tên sản phẩm không được bỏ trống',
-        'sku.required' =>'Mã sản phẩm không được bỏ trống',
         'name.unique' =>'Tên sản phẩm đã tồn tại',
         'name.max' =>'Tên sản phẩm không vượt quá 255 kí tự',
+        'sku.required' =>'Mã sản phẩm không được bỏ trống',
         'sku.max' =>'Mã sản phẩm không vượt quá 255 kí tự',
         // 'price.required' =>'Giá sản phẩm không được bỏ trống',
-        // 'discount.required' =>'Phần trăm giảm giá không được bỏ trống',
-        // 'quantity.required' =>'Số lượng sản phẩm không được bỏ trống',
-        // 'price.numeric' =>'Giá sản phẩm phải là sô',
-        // 'discount.numeric' =>'Phần trăm giảm giá phải là sô',
-        // 'quantity.numeric' =>'Số lượng sản phẩm phải là sô',
+        // // 'discount.required' =>'Phần trăm giảm giá không được bỏ trống',
+        // // 'quantity.required' =>'Số lượng sản phẩm không được bỏ trống',
+        // 'price.numeric' =>'Giá sản phẩm phải là số',
+        // // 'discount.numeric' =>'Phần trăm giảm giá phải là số',
+        // 'quantity.numeric' =>'Số lượng sản phẩm phải là số',
 
 
     ]);
@@ -178,6 +186,7 @@ class ProductController extends Controller
         'slug'=>$request->slug,
         'sku'=>$request->sku,
         'id_cate'=>$request->id_cate,
+        // 'id_attr'=>$request->id_attr,
         // 'price'=>$request->price,
         // 'discount'=>$request->discount,
         // 'quantity'=>$request->quantity,

@@ -16,21 +16,21 @@
 			<a href="{{route('product.index')}}" class="btn btn-success col-5">Quay lại danh sách sản phẩm</a>
 			<div class="card-body">
 				<h4>Thuộc tính của sp: {{$product->name}}</h4>
-				<h4>Code: {{$product->sku}}</h4>
+				<h4>Code: <span id="sku">{{$product->sku}}</span> </h4>
 				<form action="" method="POST">
 					@csrf
 					<div class="row">
 						<div class="form-group col">
-							<label for="sku">SKU</label>
-							<input type="text" class="form-control " placeholder="Sku" id="sku"name="sku" value="{{$product->sku}}-"/>
+							<label for="sku_detail">SKU</label>
+							<input type="text" class="form-control " placeholder="Sku" id="sku_detail"name="sku" value="{{$product->sku}}"/>
 							@error('sku')
 							<span class="text-red">{{$message}}</span>
 							@enderror
 						</div>
 
 						<div class="form-group  col">
-							<label for="id_attr">Size(g)</label><a href="{{route('attr.index')}}" class=""> --Thêm mới--</a>
-							<select name="id_attr" id="input" class="form-control " >
+							<label for="id_attr">Size</label><a href="{{route('attr.index')}}" class=""> -Thêm-</a>
+							<select name="id_attr" id="id_attr" class="form-control " >
 								<option value="">--Size--</option>
 								@foreach($attr as $value)
 								<option value="{{$value->id}}">{{$value->value}}</option>
@@ -40,6 +40,18 @@
 							<span class="text-red">{{$message}}</span>
 							@enderror
 						</div>
+						{{-- <div class="form-group  col">
+							<label for="id_attr">Khối lượng</label><a href="{{route('attr.index')}}" class=""> -Thêm-</a>
+							<select name="id_attr" id="id_attr" class="form-control " >
+								<option value="">--Khối lượng-</option>
+								@foreach($attr as $value)
+								<option value="{{$value->id}}">{{$value->value}}</option>
+								@endforeach
+							</select>
+							@error('id_attr')
+							<span class="text-red">{{$message}}</span>
+							@enderror
+						</div> --}}
 						<div class="form-group  col">
 							<label for="price">Price</label>
 							<input type="text" class="form-control " placeholder="Price" name="price" value=""/>
@@ -49,14 +61,14 @@
 						</div>
 						<div class="form-group  col">
 							<label for="discount">Discount</label>
-							<input type="text" class="form-control " placeholder="Discount" name="discount" value=""/>
+							<input type="text" class="form-control " placeholder="Discount" name="discount" value="0"/>
 							@error('discount')
 							<span class="text-red">{{$message}}</span>
 							@enderror
 						</div>
 						<div class="form-group  col">
 							<label for="quantity">Quantity</label>
-							<input type="text" class="form-control " placeholder="Quantity" name="quantity" value=""/>
+							<input type="text" class="form-control " placeholder="Quantity" name="quantity" value="0"/>
 							@error('quantity')
 							<span class="text-red">{{$message}}</span>
 							@enderror
@@ -95,9 +107,10 @@
 								<tr role="row">
 									<th class="sorting">STT</th>
 									<th class="sorting">SKU</th>
-									<th class="sorting">Size (g)</th>
-									<th class="sorting">Price</th>
-									<th class="sorting">Discount</th>
+									<th class="sorting">Size</th>
+									<th class="sorting">Khối lượng (g)</th>
+									<th class="sorting">Price (đ)</th>
+									<th class="sorting">Discount (%)</th>
 									<th class="sorting">Quantity</th>
 									<th class="sorting">Status</th>
 									<th class="sorting">Hành động</th>
@@ -108,20 +121,23 @@
 								<tr>
 									<td>{{$loop->index +1}}</td>
 									<td>{{$value->sku}}</td>
-									<td>{{$value->attrs->value}}</td>
+									<td>{{$value->attrs->name=="size"?$value->attrs->value:''}}</td>
+									<td>{{$value->attrs->name=="khoi-luong"?$value->attrs->value:''}}</td>
+									{{-- <td>{{$value->attrs->name}}</td> --}}
 									<td>{{number_format($value->price)}}</td>
-									<td>{{$value->discount}}%</td>
+									<td>{{$value->discount}}</td>
 									<td>{{$value->quantity}}</td>
-									<td>{{$value->status==1?'Hiện':'Ẩn'}}</td>
+									<td>{!!($value->status==1)?'<span class="badge badge-pill badge-soft-success font-size-12">Hiện</span>':'<span class="badge badge-pill badge-soft-danger font-size-12">Ẩn</span>'!!}</td>
+
 									<td>
 										<div class="row">
 												<!-- Sửa -->
 											<div class="col">
-												<a href="{{route('edit_product_detail',['id'=>$product->id,'id_detail'=>$value->id])}}" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa"><i class="mdi mdi-pencil btn-success btn "></i></a>
+												<a href="{{route('edit_product_detail_backend',['id'=>$product->id,'id_detail'=>$value->id])}}" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa"><i class="mdi mdi-pencil btn-success btn "></i></a>
 											</div>
 											{{-- Xóa --}}
 											<div class="col">
-												<form action="{{route('destroy_product_detail',['id'=>$product->id,'id_detail'=>$value->id])}}" method="GET">
+												<form action="{{route('destroy_product_detail_backend',['id'=>$product->id,'id_detail'=>$value->id])}}" method="GET">
 													@csrf
 													<button class="btn btn-danger mdi mdi-close" onclick="return confirm('Xóa danh mục -{{$value->name}}- không?')" type="submit" title="" data-original-title="Xóa" data-toggle="tooltip">
 													</button>

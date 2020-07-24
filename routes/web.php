@@ -18,7 +18,7 @@
 require_once('backend.php');
 require_once('frontend.php');
 // Auth::routes();
-// Route::get('/login', 'HomeController@index')->name('login');
+
 
 
 ?>
