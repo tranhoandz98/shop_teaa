@@ -13,10 +13,10 @@ class CreateCategoriesTable extends Migration {
 	public function up() {
 		Schema::create('categories', function (Blueprint $table) {
 			$table->increments('id');
-			$table->string('name')->unique();
-			$table->string('slug');
+			$table->string('name',100)->unique();
+			$table->string('slug',100)->unique();
 			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
-			$table->string('type')->default(1)->comment('1 là Danh mục sản phẩm,0 là Danh mục tin tức');;
+			$table->tinyInteger('type')->default(1)->comment('1 là Danh mục sản phẩm,0 là Danh mục tin tức');;
 			$table->Integer('parent_id')->nullable();
 			$table->timestamps();
 		});

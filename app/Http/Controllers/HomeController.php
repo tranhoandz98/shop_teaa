@@ -35,7 +35,7 @@ class HomeController extends Controller {
 			'email' => 'required|unique:users',
 			'password' => 'required|min:8',
 			're_password' => 'required|min:8',
-			'phone' => 'required|unique:users',
+			'phone' => 'required|unique:users|max:15',
 			'birthday' => 'required',
 			'address' => 'required',
 		], [
@@ -48,6 +48,7 @@ class HomeController extends Controller {
 			're_password.min' => 'Mật khẩu phải có đủ 8 ký tự không được bỏ trống',
 			'phone.required' => 'Số điện thoại không được bỏ trống',
 			'phone.unique' => 'Số điện thoại đã tồn tại',
+			'phone.max' => 'Số điện thoại không vượt quá 15 kí tự',
 			'birthday.required' => 'Ngày sinh không được bỏ trống',
 			'address.required' => 'Địa chỉ không được bỏ trống',
 		]);

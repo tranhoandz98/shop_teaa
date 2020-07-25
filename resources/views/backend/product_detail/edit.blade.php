@@ -1,5 +1,6 @@
 @extends('backend.master')
 @section('title','Cập nhật Thuộc tính sản phẩm')
+@section('namepage','Sản phẩm')
 @section('main')
 
 @if(Session::has('success'))

@@ -1,5 +1,6 @@
   @extends('backend.master')
   @section('title','Trang chủ')
+  @section('namepage','Trang chủ')
   @section('main')
   <div class="row">
     <div class="col-lg-12">

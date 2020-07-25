@@ -26,6 +26,7 @@ class CreateProductsTable extends Migration {
 			$table->string('meta_title')->nullable();
 			$table->string('meta_keyword')->nullable();
 			$table->text('meta_desc')->nullable();
+			$table->tinyInteger('featured')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->timestamps();
 			$table->foreign('id_cate')->references('id')->on('categories')->onDelete('cascade');

@@ -20,9 +20,9 @@
         <div class="row">
             <div class="col-xl-3 col-lg-4">
                 <div class="sidebar-wrapper">
-                    <h3>Layered Navigation</h3>
+                    {{-- <h3>Layered Navigation</h3> --}}
                     <div class="sidebar-widget">
-                        <h3>Categories</h3>
+                        <h3>Danh mục</h3>
                         <div class="sidebar-widget-option-wrapper">
                             @foreach ($category as $item)
                             <div class="sidebar-widget-option">
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="sidebar-widget price-widget">
-                        <h3>Price Filter</h3>
+                        <h3>Lọc theo giá</h3>
                         <div class="price-slider-container">
                             <div id="slider-range"></div>
                             <div class="price_slider_amount">

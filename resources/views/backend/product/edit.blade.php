@@ -1,5 +1,6 @@
 @extends('backend.master')
 @section('title','Sửa sản phẩm')
+@section('namepage','Sản phẩm')
 @section('main')
 <div class="row">
 	<div class="col-xl-12">
@@ -52,63 +53,38 @@
 								</div>
 							</div>
 						</div>
-						{{-- <div class="row">
-							<div class="col">
-								<div class="form-group">
-									<label for="price">Giá</label>
-									<input type="text" class="form-control" id="price" placeholder="giá"  name="price" value="{{$product->price}}">
-									@error('price')
-									<span class="text-red">{{$message}}</span>
-									@enderror
-								</div>
-							</div>
-							<div class="col">
-								<div class="form-group">
-									<label for="discount">% khuyến mại</label>
-									<input type="text" class="form-control" id="discount" placeholder="%"  name="discount" value="{{$product->discount}}">
-									@error('discount')
-									<span class="text-red">{{$message}}</span>
-									@enderror
-								</div>
-							</div>
-						</div>
 						<div class="row">
 							<div class="col">
 								<div class="form-group">
-									<label for="quantity">Số lượng</label>
-									<input type="text" class="form-control" id="quantity" placeholder="Số lượng"  name="quantity" value="{{$product->quantity}}">
-									@error('quantity')
-									<span class="text-red">{{$message}}</span>
-									@enderror
+									<label for="">Featured</label>
+									<div class="radio">
+										<label>
+											<input type="radio" name="featured" id="input" value="1" {{($product->featured)==1?'checked':''}}>
+											Hiện
+										</label>
+										<label>
+											<input type="radio" name="featured" id="input" value="0" {{($product->featured)==0?'checked':''}}>
+											Ẩn
+										</label>
+									</div>
 								</div>
 							</div>
-							<div class="form-group  col">
-								<label for="id_attr">Size (g)</label><a href="{{route('attr.index')}}" class=""> --Thêm mới--</a>
-								<select name="id_attr" id="input" class="form-control " >
-									<option value="">--Size--</option>
-									@foreach($attr as $value)
-									<option value="{{$value->id}}" {{$product->id_attr==$value->id?'selected':''}}>{{$value->value}}</option>
-									@endforeach
-								</select>
-								@error('id_attr')
-								<span class="text-red">{{$message}}</span>
-								@enderror
-							</div>
-						</div> --}}
-						<div class="col">
-							<div class="form-group">
-								<label for="">Status</label>
-								<div class="radio">
-									<label>
-										<input type="radio" name="status" id="input" value="1" {{($product->status)==1?'checked':''}}>
-										Hiện
-									</label>
-									<label>
-										<input type="radio" name="status" id="input" value="0" {{($product->status)==0?'checked':''}}>
-										Ẩn
-									</label>
+							<div class="col">
+								<div class="form-group">
+									<label for="">Status</label>
+									<div class="radio">
+										<label>
+											<input type="radio" name="status" id="input" value="1" {{($product->status)==1?'checked':''}}>
+											Hiện
+										</label>
+										<label>
+											<input type="radio" name="status" id="input" value="0" {{($product->status)==0?'checked':''}}>
+											Ẩn
+										</label>
+									</div>
 								</div>
 							</div>
+							
 						</div>
 						<div class="form-group">
 							<label for="get_image">Hình ảnh</label>

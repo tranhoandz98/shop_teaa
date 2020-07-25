@@ -1,5 +1,6 @@
 @extends('backend.master')
 @section('title','Thêm mới cấu hình')
+@section('namepage','Cấu hình')
 @section('main')
 <div class="row">
 	<div class="col-xl-12">
