@@ -544,15 +544,15 @@
 ---------------------------------------*/  
     $( "#slider-range" ).slider({
         range: true,
-        min: 55,
-        max: 1000,
-        values: [ 55, 1000 ],
+        min: 10000,
+        max: 1000000,
+        values: [ 10000, 1000000 ],
         slide: function( event, ui ) {
-            $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+            $( "#amount" ).val( new Intl.NumberFormat(['ban', 'id']).format(ui.values[ 0 ]) +"đ" + " - " + new Intl.NumberFormat(['ban', 'id']).format(ui.values[ 1 ]) +"đ" );
         }
     });
-    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-	   " - $" + $( "#slider-range" ).slider( "values", 1 ) );  
+    $( "#amount" ).val(  $( "#slider-range" ).slider( "values", 0 ) +
+	   " - " + $( "#slider-range" ).slider( "values", 1 ) );  
     
 /*--------------------------------------
     EasyZoom instances

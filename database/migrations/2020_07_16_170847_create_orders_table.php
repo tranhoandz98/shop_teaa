@@ -14,7 +14,7 @@ class CreateOrdersTable extends Migration {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('id_user');
-            $table->float('total_price');
+            $table->float('total_price',16,2);
             $table->string('address_ship');
             $table->string('note')->nullable();
             $table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');

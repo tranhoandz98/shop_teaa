@@ -1,5 +1,6 @@
 @extends('backend.master')
 @section('title','Tin tức')
+@section('namepage','Tin tức')
 @section('main')
 
 <div class="row">

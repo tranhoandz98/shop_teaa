@@ -1,5 +1,6 @@
 @extends('backend.master')
 @section('title','Cập nhật danh mục')
+@section('namepage','Danh mục')
 @section('main')
 
 	<div class="card">

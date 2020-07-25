@@ -13,8 +13,8 @@ class CreateConfigsTable extends Migration {
 	public function up() {
 		Schema::create('configs', function (Blueprint $table) {
 			$table->increments('id');
-			$table->string('name')->unique();
-			$table->string('slug');
+			$table->string('name',100)->unique();
+			$table->string('slug',100)->unique();
 			$table->string('value');
 			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->timestamps();

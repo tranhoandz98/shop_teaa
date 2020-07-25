@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Http\Request;
-
+use App\Models\Admin;
 class BackendController extends Controller {
 	public function index() {
 		// dump((Auth::guard('admin')->check()));

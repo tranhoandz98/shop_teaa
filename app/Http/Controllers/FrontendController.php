@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Product_detail;
+use App\Models\Img_pro;
 use App\Models\Attr;
 use Illuminate\Http\Request;
 class FrontendController extends Controller {
@@ -29,7 +30,9 @@ class FrontendController extends Controller {
 		$attr=Attr::all();
 		$product=Product::where('slug','=',$slug)->first();
 		$product_detail=Product_detail::where('id_product','=',$product->id)->get();
+		$img_pro=Img_pro::where('id_product','=',$product->id)->get();
+
 		$product_detail_id=Product_detail::find($id_detail);
-		return view('frontend.pages.product_detail',compact('product','product_detail','product_detail_id','attr'));
+		return view('frontend.pages.product_detail',compact('product','product_detail','product_detail_id','img_pro','attr'));
 	}
 }

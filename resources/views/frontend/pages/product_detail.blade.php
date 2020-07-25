@@ -22,41 +22,37 @@
             <div class="col-lg-5 col-md-5">
                 <div class="product-image-slider d-flex flex-column">
                     <!--Product Tab Content Start-->
-                     {{-- @if($product_detail_id->discount>0)
-                    <div class="pro-detail-discount">-{{$product_detail_id->discount}}%</div>
-                    @endif --}}
                     <div class="tab-content product-large-image-list">
                         <div class="tab-pane fade show active" id="product-slide1" role="tabpanel" aria-labelledby="product-slide-tab-1">
-
                             <div class="single-product-img easyzoom img-full">
-                                <a href="{{url('public')}}/frontend/img/product/2.jpg"><img src="" class="img-fluid" alt=""></a>
+                                <a href="{{url('public/uploads')}}/{{ $product->image }}"><img src="{{url('public/uploads')}}/{{ $product->image }}" class="img-fluid" alt=""></a>
                             </div>
                         </div>
-                        @foreach ($array as $element)
-                            {{-- expr --}}
-                       
-                        <div class="tab-pane fade" id="product-slide2" role="tabpanel" aria-labelledby="product-slide-tab-2">
+                        @foreach ($img_pro as $value)
+                        <div class="tab-pane fade" id="product-slide{{ $loop->index+1+1 }}" role="tabpanel" aria-labelledby="product-slide-tab-{{ $loop->index+1+1 }}">
                             <div class="single-product-img easyzoom img-full">
-                                <a href="{{url('public')}}/frontend/img/product/1.jpg"><img src="{{url('public')}}/frontend/img/product/1.jpg" class="img-fluid" alt=""></a>
+                                <a href="{{url('public/uploads')}}/{{ $value->image }}"><img src="{{url('public/uploads')}}/{{ $value->image }}" class="img-fluid" alt=""></a>
                             </div>
                         </div>
-
+                          @endforeach
                     </div>
                     <!--Product Content End-->
                     <!--Product Tab Menu Start-->
                     <div class="product-small-image-list"> 
                         <div class="nav small-image-slider-single-product-tabstyle-3" role="tablist">
                             <div class="single-small-image img-full">
-                                <a data-toggle="tab" id="product-slide-tab-1" href="#product-slide1"><img src="{{url('public')}}/frontend/img/product/2.jpg" class="img-fluid" alt=""></a>
+                                <a data-toggle="tab" id="product-slide-tab-1" href="#product-slide1"><img src="{{url('public/uploads')}}/{{ $product->image }}" class="img-fluid" alt=""></a>
                             </div>
+                            @foreach ($img_pro as $value)
                             <div class="single-small-image img-full">
-                                <a data-toggle="tab" id="product-slide-tab-2" href="#product-slide2"><img src="{{url('public')}}/frontend/img/product/1.jpg" class="img-fluid" alt=""></a>
+                                <a data-toggle="tab" id="product-slide-tab-{{ $loop->index+1+1 }}" href="#product-slide{{ $loop->index+1+1 }}"><img src="{{url('public/uploads')}}/{{ $value->image }}" class="img-fluid" alt=""></a>
                             </div>
-
-                            
+                           @endforeach
                         </div>
                     </div>
                     <!--Product Tab Menu End-->
+
+
                 </div>
             </div>
             <div class="col-lg-7 col-md-7">
