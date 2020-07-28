@@ -14,11 +14,18 @@
         </div>
 <div class="shop-area pt-25 bg-gray">
 	{{-- <hr> --}}
-
 	<div class="container col-md-6">
 		@if(Session::has('error'))
-	<div class="alert alert-success alert-dismissible fade show" role="alert">
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
 		{{Session::get('error')}}
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">×</span>
+		</button>
+	</div>
+	@endif
+	@if(Session::has('success'))
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+		{{Session::get('success')}}
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 			<span aria-hidden="true">×</span>
 		</button>
@@ -47,8 +54,11 @@
 				<label class="form-check-label" for="exampleCheck1">Remember me</label>
 			</div>
 			<button type="submit" class="btn btn-success">Đăng nhập</button>
-			
 		</form>
+		<div class="mt-2">
+			<p>Bạn chưa có tài khoản? <a href="{{ route('dang-ky') }}" class="text-primary">Đăng ký</a></p>
+
+		</div>
 		<!--End of Register Form-->
 	</div>
 </div>

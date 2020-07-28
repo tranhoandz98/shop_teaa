@@ -17,7 +17,7 @@ class CreateCategoriesTable extends Migration {
 			$table->string('slug',100)->unique();
 			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->tinyInteger('type')->default(1)->comment('1 là Danh mục sản phẩm,0 là Danh mục tin tức');;
-			$table->Integer('parent_id')->nullable();
+			$table->Integer('parent_id')->default(0);
 			$table->timestamps();
 		});
 	}

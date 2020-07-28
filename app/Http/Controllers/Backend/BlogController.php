@@ -94,8 +94,6 @@ class BlogController extends Controller
     {
         $blog=Blog::find($id);
         $category = Category::where('type',0)->get();
-       
-        
         // dd($img_pro);
         return view('backend.blog.edit',compact('category','blog'));
     }

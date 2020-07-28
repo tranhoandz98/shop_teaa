@@ -51,7 +51,7 @@
 										<form action="{{route('banner.destroy',$value->id)}}" method="POST">
 											@csrf
 											@method('DELETE')
-											<button class="btn btn-danger mdi mdi-close" onclick="return confirm('Xóa banner {{$value->name}} không?')" type="submit" title="" data-original-title="Xóa" data-toggle="tooltip">
+											<button class="btn btn-danger mdi mdi-close" onclick="return confirm('Xóa banner -{{$value->name}}- không?')" type="submit" title="" data-original-title="Xóa" data-toggle="tooltip">
 											</button>
 
 										</form>

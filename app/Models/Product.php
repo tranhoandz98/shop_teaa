@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product_detail;
+use App\Models\Feedback_pro;
 
 class Product extends Model
 {
@@ -14,5 +15,8 @@ class Product extends Model
     }
    public function product_details() {
   		return $this->hasMany(Product_detail::class, 'id_product', 'id');
+  	}
+  	public function feedback_pros() {
+  		return $this->hasMany(Feedback_pro::class, 'id_product', 'id');
   	}
 }
