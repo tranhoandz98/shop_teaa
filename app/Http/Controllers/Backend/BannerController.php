@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banner;
+use Illuminate\Validation\Rule;
 
 class BannerController extends Controller
 {
@@ -26,8 +27,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        $banner=Banner::all();
-        return view('backend.banner.create',compact('banner'));
+        return view('backend.banner.create');
     }
 
     /**
@@ -98,9 +98,13 @@ class BannerController extends Controller
            $image= trim($request->image,url('/public/uploads/'));
        }
         $request->validate([
-            'name' => ['required'],                 
+            'name' => ['required',Rule::unique('banners')->ignore($id)],                
+            'slug' => ['required',Rule::unique('banners')->ignore($id)],                
         ],[
             'name.required' =>'Tên banner không được bỏ trống',                   
+            'name.unique' =>'Tên banner đã tồn tại',                   
+            'slug.required' =>'Tên banner không được bỏ trống',                   
+            'slug.unique' =>'Tên slug đã tồn tại',                   
         ]);
         $banner->update([
             'name'=>$request->name,

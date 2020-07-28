@@ -5,18 +5,19 @@
 <!-- Breadcrumb Area Start -->
 <div class="breadcrumb-area bg-12 text-center">
     <div class="container">
-        <h1>Single Shop</h1>
+        <h1>Chi tiết sản phẩm</h1>
         <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Single Shop</li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('shop') }}">Shop</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
             </ul>
         </nav>
     </div>
 </div>
 <!-- Breadcrumb Area End -->
 <!-- Product DEtails Area Start -->
-<div class="product-detials-area bg-gray pt-110">
+<div class="product-detials-area pt-20">
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-md-5">
@@ -34,7 +35,7 @@
                                 <a href="{{url('public/uploads')}}/{{ $value->image }}"><img src="{{url('public/uploads')}}/{{ $value->image }}" class="img-fluid" alt=""></a>
                             </div>
                         </div>
-                          @endforeach
+                        @endforeach
                     </div>
                     <!--Product Content End-->
                     <!--Product Tab Menu Start-->
@@ -47,7 +48,7 @@
                             <div class="single-small-image img-full">
                                 <a data-toggle="tab" id="product-slide-tab-{{ $loop->index+1+1 }}" href="#product-slide{{ $loop->index+1+1 }}"><img src="{{url('public/uploads')}}/{{ $value->image }}" class="img-fluid" alt=""></a>
                             </div>
-                           @endforeach
+                            @endforeach
                         </div>
                     </div>
                     <!--Product Tab Menu End-->
@@ -92,10 +93,11 @@
                         @endforeach
                     </div>
 
-                    <form action="#" method="post">
+                    <form action="{{ route('add-cart',$product_detail_id->id) }}" method="post">
+                        @csrf
                         <div class="add-cart-product">
-                            <input type="number" placeholder="1">
-                            <button type="button" class="default-btn">Add to cart</button>
+                            <input type="number" placeholder="1" name="qty">
+                            <button type="submit" class="default-btn">Thêm vào giỏ hàng</button>
                             <button type="button"><i class="icon icon-Heart"></i></button>
                             <button type="button"><i class="icon icon-Restart"></i></button>
                         </div>
@@ -128,8 +130,8 @@
         <div class="p-d-tab-container">
             <div class="p-tab-btn">
                 <div class="nav" role="tablist">
-                    <a class="active" href="#tab1" data-toggle="tab" role="tab" aria-selected="true" aria-controls="tab1">Description</a>
-                    <a href="#tab2" data-toggle="tab" role="tab" aria-selected="false" aria-controls="tab2">Reviews (2)</a>
+                    <a class="active" href="#tab1" data-toggle="tab" role="tab" aria-selected="true" aria-controls="tab1">Mô tả sản phẩm</a>
+                    <a href="#tab2" data-toggle="tab" role="tab" aria-selected="false" aria-controls="tab2">Đánh giá (2)</a>
                 </div>
             </div>
             <div class="p-d-tab tab-content">
@@ -143,63 +145,194 @@
                 <div class="tab-pane fade scroll-area" id="tab2" role="tabpanel">
                     <div class="tab-items">
                         <div class="p-review-wrapper">
-                            <h3>2 reviews for Ornare sed consequat</h3>
-                            <div class="single-review-item">
-                                <div class="review-logo">
-                                    <img src="{{url('public')}}/frontend/img/icon/logo.jpg" alt="">
-                                </div>
-                                <div class="p-review-text">
-                                    <div class="rating-number">
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
+                            <div class="style-rating row">
+                                <div class="card text-center col mr-1">
+                                    <div class="card-body">
+                                        <h4 class="title">Đánh giá trung bình</h4>
+                                        <p class="score text-red">4/5</p>
+                                        <div class="rating-number">
+                                            <i class="fa fa-star color"></i>
+                                            <i class="fa fa-star color"></i>
+                                            <i class="fa fa-star color"></i>
+                                            <i class="fa fa-star color"></i>
+                                            <i class="fa fa-star "></i>
+                                        </div>
+                                        <p>(21 nhận xét)</p>
                                     </div>
-                                    <span class="p-review-info"><span>admin</span> – March 23, 2018</span>
-                                    <p>Lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi.</p>
+                                </div>
+                                <div class="card col mr-1">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-2">
+                                             <span>5</span>  
+                                             <i class="fa fa-star color"></i>
+                                         </div>
+                                         <div class="col btn-lg">
+                                            <div class="progress">
+                                              <div 
+                                              class="progress-bar bg-green" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-2">
+                                    25%
                                 </div>
                             </div>
-                            <div class="single-review-item">
-                                <div class="review-logo">
-                                    <img src="{{url('public')}}/frontend/img/icon/logo.jpg" alt="">
+                            <div class="row">
+                                <div class="col-2">
+                                    <span>4</span>  
+                                    <i class="fa fa-star color"></i>
                                 </div>
-                                <div class="p-review-text">
-                                    <div class="rating-number">
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star color"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <span class="p-review-info"><span>admin</span> – March 23, 2018</span>
-                                    <p>Lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi.</p>
-                                </div>
+                                <div class="col btn-lg">
+                                    <div class="progress">
+                                      <div class="progress-bar bg-primary" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-2">
+                                25%
                             </div>
                         </div>
-                        <form action="#" method="post" class="rating-form">
-                            <h5>Add your rating</h5>
-                            <div class="submit-rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
+                        <div class="row">
+                            <div class="col-2">
+                                <span>3</span>  
+                                <i class="fa fa-star color"></i>
                             </div>
-                            <label for="r-textarea">Your Review</label>
-                            <textarea name="review" id="r-textarea" cols="30" rows="10"></textarea>
-                            <label for="r-name">Name *</label>
-                            <input type="text" placeholder="" id="r-name">
-                            <label for="r-email">Email *</label>
-                            <input type="email" placeholder="" id="r-email">
-                            <button type="button" class="default-btn">Submit</button>
-                        </form>
+                            <div class="col btn-lg">
+                                <div class="progress">
+                                  <div class="progress-bar bg-info" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-2">
+                            25%
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <span>2</span>  
+                            <i class="fa fa-star color"></i>
+                        </div>
+                        <div class="col btn-lg">
+                            <div class="progress">
+                              <div class="progress-bar bg-warning" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-2">
+                        25%
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <span>1</span>  
+                        <i class="fa fa-star color"></i>
+                    </div>
+                    <div class="col btn-lg">
+                        <div class="progress">
+                          <div class="progress-bar bg-danger" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-2">
+                    25%
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="card text-center col">
+        <div class="card-body">
+         <p>Chia sẻ nhận xét về sản phẩm</p>
+         <!-- Button trigger modal -->
+         <button type="button" class="btn btn-green text-white" data-toggle="modal" data-target="#exampleModal">
+          Viết nhận xét của bạn
+      </button>
+      <!-- End Button trigger modal -->
+  </div>
 </div>
+</div>
+@foreach ($feedback_pro as $feedback)
+<div class="single-review-item">
+    <div class="review-logo avatar">
+        @if ($feedback->users->avatar)
+        <img src="{{url('public/uploads/Users')}}/{{ $feedback->users->avatar }}" alt="">
+        @else
+        <img src="{{url('public')}}/frontend/img/icon/logo.jpg" alt="">
+        @endif
+    </div>
+    <div class="p-review-text">
+        <div class="rating-number">
+            @for ($i = 0; $i <$feedback->star ; $i++)
+            {{-- <label for="rate1"></label> --}}
+            <i class="fa fa-star color"></i>
+            @endfor
+            @for ($i = 0; $i <5-$feedback->star ; $i++)
+            {{-- <label for="rate1"></label> --}}
+            <i class="fa fa-star"></i>
+            @endfor
+    </div>
+    <span class="p-review-info"><span>{{ $feedback->users->name }}</span> – {{ $feedback->created_at }}</span>
+    <p>{{ $feedback->content }}</p>
+</div>
+</div>
+@endforeach
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  @if(Auth::check())
+  <div class="modal-body">
+    <div class="container p-5">
+        <h4>Nhận xét của bạn:</h4>
+        <form action="{{ route('comment',['id'=>$product->id,'id_user'=>Auth::user()->id]) }}" method="POST" role="form">
+            @csrf
+            <fieldset class="starability-fade"> 
+                <input type="radio" id="rate1" name="rating" value="1" />
+                <label for="rate1" title="Rất tệ">1 star</label>
+                <input type="radio" id="rate2" name="rating" value="2" />
+                <label for="rate2" title="Không tốt">2 stars</label>
+                <input type="radio" id="rate3" name="rating" value="3" />
+                <label for="rate3" title="Bình thường">3 stars</label>
+                <input type="radio" id="rate4" name="rating" value="4" />
+                <label for="rate4" title="Rất tốt">4 stars</label>
+                <input type="radio" id="rate5" name="rating" value="5" checked />
+                <label for="rate5" title="Tuyệt">5 stars</label>
+            </fieldset>
+            <div class="form-group">
+                <label for="content">Nhận xét</label>
+                <textarea name="content" id="content" class="form-control" rows="7"> </textarea>
+            </div>
+            <button type="submit" class="btn btn-green text-white">Gửi</button>
+        </form>
+    </div>
+</div>
+@else
+<div class="modal-body">
+    <div class="container p-5">
+        <h4>Bạn chưa đăng nhập</h4>
+        <a href="{{ route('dang-nhap') }}" class="btn btn-green text-white">Đăng nhập</a>
+    </div>
+</div>
+@endif
+</div>
+</div>
+</div>
+{{-- end modal --}}
 <!-- Product Review Tab Area End -->
 <!-- Protuct Area Start -->
 <div class="product-area bg-gray pb-80 mb-95 related-product">
@@ -568,79 +701,4 @@
 </div>
 <!-- Protuct Area End -->
 <!-- Footer Area Start -->
-<footer class="footer-area">
-    <!-- Footer Top Area Start -->
-    <div class="footer-top bg-4 pt-120 pb-120">
-        <!-- Newsletter Area Start -->
-        <div class="newsletter-area">
-            <div class="container text-center">
-                <div class="newsletter-container">
-                    <h2>Subscribe Newsletter.</h2>
-                    <p>Get e-mail updates about our latest shop and special offers.</p>
-                    <div class="newsletter-form mc_embed_signup">
-                        <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                            <div id="mc_embed_signup_scroll" class="mc-form">
-                                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter you email address here..." required>
-                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                <div class="mc-news" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
-                                <button id="mc-embedded-subscribe" type="submit" name="subscribe" class="default-btn">Subscribe</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="social-icon">
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-youtube"></i></a>
-                    <a href="#"><i class="fa fa-flickr"></i></a>
-                </div>
-            </div>
-        </div>
-        <!-- Newsletter Area End -->
-        <!-- Service Area Start -->
-        <div class="service-area pt-50">
-            <div class="container">
-                <div class="service-container">
-                    <div class="service-content">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4">
-                                <div class="single-service">
-                                    <div class="service-image">
-                                        <img src="{{url('public')}}/frontend/img/icon/rocket.png" alt="">
-                                    </div>
-                                    <div class="service-text">
-                                        <h3>Free delivery</h3>
-                                        <p>Nam liber tempor cum soluta nobis eleifend option congue.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4">
-                                <div class="single-service">
-                                    <div class="service-image">
-                                        <img src="{{url('public')}}/frontend/img/icon/money.png" alt="">
-                                    </div>
-                                    <div class="service-text">
-                                        <h3>Money guarantee</h3>
-                                        <p>Nam liber tempor cum soluta nobis eleifend option congue.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4">
-                                <div class="single-service">
-                                    <div class="service-image">
-                                        <img src="{{url('public')}}/frontend/img/icon/support.png" alt="">
-                                    </div>
-                                    <div class="service-text">
-                                        <h3>Online support</h3>
-                                        <p>Nam liber tempor cum soluta nobis eleifend option congue.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Service Area End -->
-        @stop
+@stop

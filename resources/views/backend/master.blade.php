@@ -144,17 +144,17 @@
                         </li>
 
                         <li>
-                            <li class=""><a href="{{route('config.index')}}" aria-expanded="false"><i class="bx bx-message"></i>Feedback</a></li>
+                            <li class=""><a href="#" aria-expanded="false"><i class="bx bx-message"></i>Feedback</a></li>
                         </li>
 
                     </ul>
                     
                 </li>
                 <li>
-                    <li class=""><a href="{{route('config.index')}}" aria-expanded="false"><i class="bx bx-cart"></i>Quản lý Đơn hàng</a></li>
+                    <li class=""><a href="#" aria-expanded="false"><i class="bx bx-cart"></i>Quản lý Đơn hàng</a></li>
                 </li>
                 <li>
-                    <li class=""><a href="{{route('config.index')}}" aria-expanded="false"><i class="bx bx-terminal"></i>Thống kê</a></li>
+                    <li class=""><a href="#" aria-expanded="false"><i class="bx bx-terminal"></i>Thống kê</a></li>
                 </li>
 
                 <li>
@@ -164,7 +164,7 @@
                     <li class=""><a href="{{route('banner.index')}}" aria-expanded="false"><i class="bx bx-images"></i>Quản lý banner</a></li>
                 </li>
                 <li>
-                    <li class=""><a href="{{route('config.index')}}" aria-expanded="false"><i class="bx bx-user"></i>Quản lý tài khoản</a></li>
+                    <li class=""><a href="#" aria-expanded="false"><i class="bx bx-user"></i>Quản lý tài khoản</a></li>
                 </li>
                 <li>
                     <li class=""><a href="{{route('config.index')}}" aria-expanded="false"><i class="bx bx-cog"></i>Quản lý cấu hình</a></li>
@@ -389,11 +389,6 @@
         filebrowserUploadUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
         filebrowserImageBrowseUrl : '../../filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
     });
-    // CKEDITOR.replace( 'meta_desc' ,{
-    //     filebrowserBrowseUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
-    //     filebrowserUploadUrl : '../../filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
-    //     filebrowserImageBrowseUrl : '../../filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
-    // });
 </script>
 {{-- lấy ảnh từ reponsive filemanager --}}
 <script src="{{url('public')}}/backend/js/getImage.js"></script>

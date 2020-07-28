@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{url('public')}}/frontend/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{url('public/uploads')}}/logo_03.png">
     <!-- All css here -->
     <link rel="stylesheet" href="{{url('public')}}/frontend/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{url('public')}}/frontend/css/font-awesome.min.css">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{url('public')}}/frontend/css/plugins.css">
     <link rel="stylesheet" href="{{url('public')}}/frontend/css/style.css">
     <link rel="stylesheet" href="{{url('public')}}/frontend/css/style1.css">
-    <script src="{{url('public')}}/frontend/js/vendor/modernizr-3.5.0.min.js"></script>
+    <link rel="stylesheet" href="{{url('public')}}/frontend/starability-master/starability-minified/starability-fade.min.css">
 </head>
 <body>
     <!-- Header Area Start -->
@@ -23,10 +23,11 @@
         <div class="header-container">
             <div class="row">
                 <div class="col-lg-2 col-sm-4">
-                    <div class="logo text-center">
-                        <a href="index.html"><img src="{{url('public/uploads')}}/logo_03.png" alt="NatureCircle" class="img-responsive w-25"></a>
+                    <div class="logo text-center logo-img">
+                        <a href="{{route('home')}}"><img src="{{url('public/uploads')}}/logo_03.png" alt="NatureCircle" class="w-25"></a>
                     </div>
                 </div>
+                {{-- menu --}}
                 <div class="col-lg-8 display-none-md display-none-xs">
                     <div class="ht-main-menu">
                         <nav class="d-flex justify-content-center">
@@ -34,7 +35,7 @@
                                 <li class="active"><a href="{{route('home')}}">Trang chủ</a></li>
                                 <li ><a href="#">Hàng mới về</a></li>
                                 <li><a href="#">Trà<i class="fa fa-angle-down"></i></a>
-                                    <!-- !-- <ul class="ht-mega-menu menu-con">
+                                    <ul class="ht-mega-menu menu-con">
                                         @foreach($category_pro as $value)
                                         <li>
                                             <ul>
@@ -49,7 +50,7 @@
                                             </ul>
                                         </li>
                                         @endforeach
-                                    </ul> -->
+                                    </ul> 
                                 </li>
                                 <li><a href="{{route('shop')}}">Shop</a>
                                 </li>
@@ -59,6 +60,7 @@
                         </nav>
                     </div>
                 </div>
+                {{-- end menu --}}
                 <div class="col-lg-2 col-sm-8">
                     <div class="header-content d-flex justify-content-end">
                         <div class="search-wrapper">
@@ -98,53 +100,43 @@
                                 <span>2</span>
                             </a>
                             <div class="cart-item-wrapper">
+                                @foreach ($carts as $cart)
                                 <div class="single-cart-item">
-                                    <div class="cart-img">
-                                        <a href="cart.html"><img src="{{url('public')}}/frontend/img/cart/1.jpg" alt=""></a>
+                                    <div class="cart-img img-pro">
+                                         <a href="{{ route('product_detail',['slug'=>$cart->slug,'id_detail'=>$cart->id]) }}">
+                                            <img src="{{url('public/uploads')}}/{{ $cart->image }}" alt="" class="">
+                                        </a>
                                     </div>
-                                    <div class="cart-text-btn">
+                                        <div class="cart-text-btn">
                                         <div class="cart-text">
-                                            <h5><a href="cart.html">Fresh Fruit Juice</a></h5>
-                                            <span class="cart-qty">×1</span>
-                                            <span class="cart-price">$68.00</span>
+                                            <h5><a href="{{ route('product_detail',['slug'=>$cart->slug,'id_detail'=>$cart->id]) }}">{{ $cart->name }}</a></h5>
+                                            <span class="cart-qty col">×{{ $cart->qty }}</span>
+                                            <span class="col">
+                                               {{ is_numeric($cart->options['size'])?$cart->options['size'].'g':$cart->options['size'] }}
+                                            </span>
+                                            <span class="cart-price">{{ number_format($cart->price) }} đ</span>
                                         </div>
                                         <button type="button"><i class="fa fa-close"></i></button>
                                     </div>
                                 </div>
-                                <div class="single-cart-item">
-                                    <div class="cart-img">
-                                        <a href="cart.html"><img src="{{url('public')}}/frontend/img/cart/2.jpg" alt=""></a>
-                                    </div>
-                                    <div class="cart-text-btn">
-                                        <div class="cart-text">
-                                            <h5><a href="cart.html">Fresh Vegetables</a></h5>
-                                            <span class="cart-qty">×1</span>
-                                            <span class="cart-price">$98.00</span>
-                                        </div>
-                                        <button type="button"><i class="fa fa-close"></i></button>
-                                    </div>
-                                </div>
+                                @endforeach
                                 <div class="cart-price-total">
                                     <div class="cart-price-info d-flex justify-content-between">
                                         <span>Sub-Total :</span>
-                                        <span>$135.00</span>
+                                        <span> {{ number_format($subtotal) }} đ</span>
                                     </div>
                                     <div class="cart-price-info d-flex justify-content-between">
-                                        <span>Eco Tax (-2.00) :</span>
-                                        <span>$4.00</span>
-                                    </div>
-                                    <div class="cart-price-info d-flex justify-content-between">
-                                        <span>VAT (20%) :</span>
-                                        <span>$27.00</span>
+                                        <span>Ship :</span>
+                                        <span>{{ number_format($fee_ship) }} đ</span>
                                     </div>
                                     <div class="cart-price-info d-flex justify-content-between">
                                         <span>Total :</span>
-                                        <span>$166.00</span>
+                                        <span>{{ number_format($subtotal+$fee_ship) }} đ</span>
                                     </div>
                                 </div>
                                 <div class="cart-links">
-                                    <a href="cart.html">View cart</a>
-                                    <a href="checkout.html">Checkout</a>
+                                    <a href="{{ route('cart') }}">View cart</a>
+                                    <a href="#">Checkout</a>
                                 </div>
                             </div>
                         </div>
@@ -429,17 +421,27 @@
     </div>
     <!-- END QUICKVIEW PRODUCT -->
     <!-- All js here -->
+    <script src="{{url('public')}}/frontend/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="{{url('public')}}/frontend/js/vendor/jquery-3.2.1.min.js"></script>
     <script src="{{url('public')}}/frontend/js/popper.min.js"></script>
     <script src="{{url('public')}}/frontend/js/bootstrap.min.js"></script>
     <script src="{{url('public')}}/frontend/js/plugins.js"></script>
     <script src="{{url('public')}}/frontend/js/ajax-mail.js"></script>
     <script src="{{url('public')}}/frontend/js/main.js"></script>
+    {{-- submit form --}}
     <script>
-        $('#id_attr').select(function(event) {
-            var id =$('id_attr').val();
-            Console_log(id);
-        });
-    --></script>
+      $('#page').change(function(event) {
+        $('#submit').click();
+    });
+      $('#sort').change(function(event) {
+        $('#submit').click();
+    });
+      $('#qty').change(function(event) {
+        $('#submit').click();
+    });
+</script>
+{{-- end submit form --}}
+<script>
+</script>
 </body>
 </html>
