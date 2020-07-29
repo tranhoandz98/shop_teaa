@@ -79,7 +79,9 @@
                                     <i class="fa fa-angle-down"></i>
                                 </h4>
                                 <ul>
-                                    <li><a href="{{route('dang-ky')}}">Tài khoản của tôi</a></li>
+                                    <li><a href="{{route('profile',Auth::user()->id)}}">Tài khoản của tôi</a></li>
+                                    <li><a href="">Đơn mua</a></li>
+                                    <li><a href="">Lịch sử mua hàng</a></li>
                                     <li><a href="{{route('dang-xuat')}}">Đăng xuất</a></li>
                                 </ul>
                                 <h4>

@@ -1,24 +1,22 @@
 @extends('frontend.master')
 @section('title','Trang đăng ký')
 @section('main')
-<div class="shop-area pt-110 bg-gray">
-	<div class="breadcrumb-area bg-12 text-center">
-        <div class="container">
-            <h1>Đăng ký tài khoản</h1>
-            <nav aria-label="breadcrumb">
-                <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('dang-ky') }}">Đăng ký</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-    {{-- <hr> --}}
-    <div class="container mt-25">
 
+<div class="breadcrumb-area bg-12 text-center">
+    <div class="container">
+        <h1>Đăng ký tài khoản</h1>
+        <nav aria-label="breadcrumb">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('dang-ky') }}">Đăng ký</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<div class="shop-area pt-50">
+    <div class="container mt-25">
         <form method="POST" action="" enctype="multipart/form-data">
             @csrf
-
             <div class="row">
                 <div class="col">
                     <div class="form-group">
@@ -39,7 +37,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col">
                     <div class="form-group">
@@ -74,28 +71,26 @@
                     <div class="col">
                         <label for="">Giới tính</label>
                         <div class="radio">
-                         <label>
-                             <input type="radio" name="gender" id="input" value="1" checked="checked">
-                             Nam
-                         </label>
-                         <label>
-                             <input type="radio" name="gender" id="input" value="0">
-                             Nữ
-                         </label>
-                     </div>
-                 </div>
-                 <div class="col">
+                           <label>
+                               <input type="radio" name="gender" id="input" value="1" checked="checked">
+                               Nam
+                           </label>
+                           <label>
+                               <input type="radio" name="gender" id="input" value="0">
+                               Nữ
+                           </label>
+                       </div>
+                   </div>
+                   <div class="col">
                     <label for="avatar">Avatar</label>
                     <input type="file" name="image" id="avatar">
                 </div>
             </div>
-        </div>
-        <div class="row">
-           <div class="col">
-            <div class="form-group">
-                <label for="address" class="">Địa chỉ:</label>
-                        {{-- <textarea name="address" id="textarea" class="form-control" rows="2">
-                        </textarea> --}}
+                </div>
+                <div class="row">
+                 <div class="col">
+                    <div class="form-group">
+                        <label for="address" class="">Địa chỉ:</label>
                         <input type="text" class="form-control" id="address" name="address" placeholder="1 Hoàng Quốc Việt, Hà Nội">
                         @error('address')
                         <span class="text-red">{{$message}}</span>
@@ -112,20 +107,14 @@
                     </div>
                 </div>
             </div>
-        {{-- <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Remember me</label>
-        </div> --}}
-        <button type="submit" class="btn btn-success">Đăng ký</button>
-
-    </form>
-    <div class="mt-2 ">
-        <div>
-            <p>Bạn đã có tài khoản ? <a href="{{ route('dang-nhap') }}" class="font-weight-medium text-primary"> Đăng nhập</a> </p>
+            <button type="submit" class="btn btn-success">Đăng ký</button>
+        </form>
+        <div class="mt-2 ">
+            <div>
+                <p>Bạn đã có tài khoản ? <a href="{{ route('dang-nhap') }}" class="font-weight-medium text-primary"> Đăng nhập</a> </p>
+            </div>
         </div>
+<!--End of Register Form-->
     </div>
-    <!--End of Register Form-->
 </div>
-</div>
-
 @stop

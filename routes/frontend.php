@@ -17,8 +17,16 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function () {
 	Route::get('/dang-nhap.html', 'HomeController@dang_nhap')->name('dang-nhap');
 	Route::post('/dang-nhap.html', 'HomeController@post_dang_nhap');
 	Route::get('/dang-xuat.html', 'HomeController@dang_xuat')->name('dang-xuat');
-	Route::get('/tai-khoan-cua-toi.html', 'HomeController@profile')->name('profile');
 	// end login
+	
+	// profile 
+	Route::get('/tai-khoan-cua-toi.html/{id}', 'UserController@profile')->name('profile');
+	Route::post('/tai-khoan-cua-toi.html/{id}', 'UserController@post_profile');
+	
+
+	Route::get('/tai-khoan-cua-toi.html/change-pass/{id}', 'UserController@change_pass')->name('change-pass');
+	Route::post('/tai-khoan-cua-toi.html/change-pass/{id}', 'UserController@post_change_pass');
+	// end profile
 	
 	// cart
 	Route::get('cart', 'CartController@index')->name('cart');

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 26, 2020 lúc 12:16 PM
+-- Thời gian đã tạo: Th7 29, 2020 lúc 03:32 PM
 -- Phiên bản máy phục vụ: 10.4.13-MariaDB
 -- Phiên bản PHP: 7.4.7
 
@@ -83,6 +83,15 @@ CREATE TABLE `banners` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `banners`
+--
+
+INSERT INTO `banners` (`id`, `name`, `slug`, `image`, `content`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Banner1', 'banner1', 'Banners/banner1.jpg', NULL, 1, '2020-07-26 04:03:13', '2020-07-26 04:03:13'),
+(2, 'Banner2', 'banner2', 'Banners/banner2.jpg', NULL, 1, '2020-07-26 04:05:50', '2020-07-26 04:05:50'),
+(3, 'Banner3', 'banner3', 'Banners/banner3.jpg', NULL, 1, '2020-07-26 04:17:05', '2020-07-26 04:17:05');
+
 -- --------------------------------------------------------
 
 --
@@ -127,12 +136,13 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `status`, `type`, `parent_id`, `created_at`, `updated_at`) VALUES
-(1, 'Trà hoa', 'tra-hoa', 1, 1, NULL, '2020-07-24 02:45:25', '2020-07-24 02:45:25'),
+(1, 'Trà hoa', 'tra-hoa', 1, 1, 0, '2020-07-24 02:45:25', '2020-07-26 22:51:25'),
 (2, 'Trà mix', 'tra-mix', 1, 1, 1, '2020-07-24 02:45:38', '2020-07-24 02:45:38'),
 (3, 'Trà mộc', 'tra-moc', 1, 1, 1, '2020-07-24 02:45:54', '2020-07-24 02:45:54'),
-(4, 'Dụng cụ pha trà', 'dung-cu-pha-tra', 1, 1, NULL, '2020-07-24 02:46:02', '2020-07-24 02:46:02'),
-(5, 'Tin tức mới', 'tin-tuc-moi', 1, 0, NULL, '2020-07-24 02:46:14', '2020-07-24 02:46:37'),
-(6, 'Nguyên liệu nấu chè', 'nguyen-lieu-nau-che', 1, 1, NULL, '2020-07-24 02:46:23', '2020-07-24 02:46:23');
+(4, 'Dụng cụ pha trà', 'dung-cu-pha-tra', 1, 1, 0, '2020-07-24 02:46:02', '2020-07-26 22:51:33'),
+(5, 'Tin tức mới', 'tin-tuc-moi', 1, 0, 0, '2020-07-24 02:46:14', '2020-07-26 22:51:40'),
+(6, 'Nguyên liệu nấu chè', 'nguyen-lieu-nau-che', 1, 1, 0, '2020-07-24 02:46:23', '2020-07-26 22:51:47'),
+(7, 'Dụng cụ', 'dung-cu', 1, 1, 4, '2020-07-27 02:17:57', '2020-07-27 02:17:57');
 
 -- --------------------------------------------------------
 
@@ -174,7 +184,7 @@ CREATE TABLE `failed_jobs` (
 CREATE TABLE `feedback_pros` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_product` int(10) UNSIGNED NOT NULL,
-  `id_admin` int(10) UNSIGNED NULL,
+  `id_admin` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `id_user` int(10) UNSIGNED NOT NULL,
   `star` int(11) NOT NULL,
   `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -183,6 +193,16 @@ CREATE TABLE `feedback_pros` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `feedback_pros`
+--
+
+INSERT INTO `feedback_pros` (`id`, `id_product`, `id_admin`, `id_user`, `star`, `content`, `parent_id`, `status`, `created_at`, `updated_at`) VALUES
+(6, 1, 0, 10, 1, 'n;klsng;', NULL, 1, '2020-07-28 00:36:49', '2020-07-28 00:36:49'),
+(7, 2, 0, 10, 3, 'bnflnasf\'', NULL, 1, '2020-07-28 00:37:20', '2020-07-28 00:37:20'),
+(8, 1, 0, 9, 4, 'ơawidfhpa]d.', NULL, 1, '2020-07-28 00:43:18', '2020-07-28 00:43:18'),
+(9, 2, 0, 9, 5, 'bkbnlknblknblnbnkl', NULL, 1, '2020-07-28 00:43:43', '2020-07-28 00:43:43');
 
 -- --------------------------------------------------------
 
@@ -351,7 +371,7 @@ CREATE TABLE `product_details` (
   `id_attr` int(10) UNSIGNED NOT NULL,
   `sku` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double(16,2) NOT NULL,
-  `discount` double(8,2) DEFAULT NULL,
+  `discount` double(3,2) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1 là Hiện, 0 là Ẩn',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -383,6 +403,7 @@ INSERT INTO `product_details` (`id`, `id_product`, `id_attr`, `sku`, `price`, `d
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -394,6 +415,14 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `avatar`, `email`, `email_verified_at`, `password`, `remember_token`, `phone`, `gender`, `birthday`, `address`, `created_at`, `updated_at`) VALUES
+(9, 'Tran Van Hoan', '1595962424chupcung-vbk.jpg', 'demo1@gmail.com', NULL, '$2y$10$1V9DV.QGK3dwpK.bZobc3eXrLDCUyQp0NCnhxXNKBIzTv0okAIJKq', NULL, '+84348053999', 1, '2020-07-21', 'Phu Cuong, Soc Son, Ha Noi', '2020-07-28 00:26:43', '2020-07-28 21:38:30'),
+(10, 'Tran Van B', '', 'kh@gmail.com', NULL, '$2y$10$eccQw.E77b.y1/66RioGIOS1wefo.p4i/nb6g2RS.LjsSLKHj2qpe', NULL, '321654987', 1, '2020-07-10', '1L1mVEmJGSBSowYttjTQbhVddhzsbjFxy2', '2020-07-28 00:30:21', '2020-07-28 00:30:21');
 
 -- --------------------------------------------------------
 
@@ -562,7 +591,7 @@ ALTER TABLE `attrs`
 -- AUTO_INCREMENT cho bảng `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `blogs`
@@ -574,7 +603,7 @@ ALTER TABLE `blogs`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `configs`
@@ -592,7 +621,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT cho bảng `feedback_pros`
 --
 ALTER TABLE `feedback_pros`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `img_pros`
@@ -634,7 +663,7 @@ ALTER TABLE `product_details`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `wishlists`
@@ -652,14 +681,6 @@ ALTER TABLE `wishlists`
 ALTER TABLE `blogs`
   ADD CONSTRAINT `blogs_id_admin_foreign` FOREIGN KEY (`id_admin`) REFERENCES `admins` (`id`),
   ADD CONSTRAINT `blogs_id_cate_foreign` FOREIGN KEY (`id_cate`) REFERENCES `categories` (`id`);
-
---
--- Các ràng buộc cho bảng `feedback_pros`
---
-ALTER TABLE `feedback_pros`
-  ADD CONSTRAINT `feedback_pros_id_admin_foreign` FOREIGN KEY (`id_admin`) REFERENCES `admins` (`id`),
-  ADD CONSTRAINT `feedback_pros_id_product_foreign` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `feedback_pros_id_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 
 --
 -- Các ràng buộc cho bảng `img_pros`

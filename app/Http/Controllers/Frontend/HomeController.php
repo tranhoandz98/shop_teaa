@@ -39,8 +39,6 @@ class HomeController extends Controller {
 		else{
 			$file_name='';
 		}
-
-		
 		$request->validate([
 			'name' => 'required',
 			'email' => 'required|unique:users',
@@ -92,8 +90,5 @@ class HomeController extends Controller {
 		Auth::guard('user')->logout();
 		return redirect()->route('dang-nhap')->with('success', 'Đăng xuất thành công');
 	}
-	public function profile() {
-
-		return view('frontend.pages.profile');
-	}
+	
 }
