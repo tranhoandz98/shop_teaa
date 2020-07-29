@@ -36,6 +36,8 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function () {
 	Route::get('cart/destroy', 'CartController@destroy')->name('destroy-cart');
 	// end cart
 	
-
+	// //banner
+	// Route::get('banner', 'HomeController@banner')->name('banner');
+	// // Route::post('banner', 'CartController@add')->name('add-cart');
 
 });
