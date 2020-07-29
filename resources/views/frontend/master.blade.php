@@ -118,7 +118,7 @@
                                             </span>
                                             <span class="cart-price">{{ number_format($cart->price) }} đ</span>
                                         </div>
-                                        <button type="button"><i class="fa fa-close"></i></button>
+                                        <a href="{{ route('remove-cart',$cart->rowId) }}"><i class="fa fa-close"></i></a>
                                     </div>
                                 </div>
                                 @endforeach
