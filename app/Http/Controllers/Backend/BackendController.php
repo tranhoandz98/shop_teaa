@@ -9,14 +9,15 @@ use App\Models\Admin;
 class BackendController extends Controller {
 	public function index() {
 		// dump((Auth::guard('admin')->check()));
+		// 	dd(	Auth::guard('admin')->user());
 		// dd((Auth::guard('user')->check()));
 
 		return view('backend.index');
 	}
 	public function login() {
 		// Admin::create([
-		// 	'name' => 'admin',
-		// 	'email' => 'tranhoan.dz98@geail.com',
+		// 	'name' => 'admin2',
+		// 	'email' => 'tranhoan.dz@geail.com',
 		// 	'password' => bcrypt('123456'),
 		// ]);
 		return view('backend.login');

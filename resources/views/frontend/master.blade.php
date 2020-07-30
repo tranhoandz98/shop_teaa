@@ -37,13 +37,13 @@
                                 <li><a href="#">Trà<i class="fa fa-angle-down"></i></a>
                                     <ul class="ht-mega-menu menu-con">
                                         @foreach($category_pro as $value)
-                                        <li>
+                                      <li>
                                             <ul>
                                                 @if($value->parent_id==0)
                                                 <li class="mega-menu-title">{{$value->name}}</li>
                                                 @foreach($category_pa as $valu)
                                                 @if($valu->parent_id==$value->id)
-                                                <li><a href="shop.html">{{$valu->name}}</a></li>
+                                                <li><a href="{{ route('danh-muc', ['slug'=>$valu->slug]) }}">{{$valu->name}}</a></li>
                                                 @endif
                                                 @endforeach
                                                 @endif
@@ -99,7 +99,7 @@
                         <div class="cart-wrapper">
                             <a href="#">
                                 <i class="icon icon-FullShoppingCart"></i>
-                                <span>2</span>
+                                <span>{{ $carts->count() }}</span>
                             </a>
                             <div class="cart-item-wrapper">
                                 @foreach ($carts as $cart)
