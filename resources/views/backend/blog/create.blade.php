@@ -22,30 +22,37 @@
 							
 								<div class="form-group">
 									<label for="slug">Slug</label>
-									<input type="text" class="form-control" id="slug" placeholder="Slug"  name="slug">
+									<input type="text" class="form-control" id="slug" placeholder="Slug"  name="slug" >
 								</div>
 							
-						
-						
-							
-							
-								<div class="form-group">
-									<label for="">Danh mục tin tức</label>
-									<div class="form-group">
-										<select class="custom-select" id="classCoverageDistribution" aria-label="Example select with button addon" name="id_cate">
-											<option value="">---Trống---</option>
-											@foreach($category as $value)
-											<option value="{{$value->id}}">{{$value->name}}</option>
-											@endforeach
-										</select>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="">Danh mục tin tức</label>
+											<div class="form-group">
+												<select class="custom-select text-center" id="classCoverageDistribution" aria-label="Example select with button addon" name="id_cate">
+													<option value="">---Trống---</option>
+													@foreach($category as $value)
+													<option value="{{$value->id}}">{{$value->name}}</option>
+													@endforeach
+												</select>
+											</div>
+											@error('id_cate')
+											<span class="text-red">{{$message}}</span>
+											@enderror
+			
+										</div>
+									
 									</div>
-									@error('id_cate')
-									<span class="text-red">{{$message}}</span>
-									@enderror
-	
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="id_admin">Người đăng bài</label>				
+										<input type="text" class="form-control" value="{{$admin}}" readonly>		
+										</div>
+									</div>
+									
 								</div>
-							
-							
+
 								<div class="form-group">
 									<label for="get_image">Hình ảnh </label>
 									<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalImage" id="get_image">

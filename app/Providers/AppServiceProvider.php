@@ -31,6 +31,8 @@ class AppServiceProvider extends ServiceProvider {
 		View::composer('*', function ($view) {
 			$view->with('category_pro', Category::where([['status', '=', '1'], ['parent_id', '=', '0'], ['type', '=', '1']])->orderby('name')->get());
 			$view->with('category_pa', Category::where([['status', '=', '1'], ['parent_id', '>', '0'], ['type', '=', '1']])->orderby('name')->get());
+			$view->with('category_blog', Category::where([['status', '=', '1'], ['parent_id', '=', '0'], ['type', '=', '0']])->orderby('name')->get());
+			$view->with('category_parent', Category::where([['status', '=', '1'], ['parent_id', '>', '0'], ['type', '=', '0']])->orderby('name')->get());
 			$view->with('fee_ship', 20000);
 			$view->with('carts', \Cart::content());
 			$subtotal=0;

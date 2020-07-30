@@ -36,8 +36,9 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function () {
 	Route::get('cart/destroy', 'CartController@destroy')->name('destroy-cart');
 	// end cart
 	
-	// //banner
-	// Route::get('banner', 'HomeController@banner')->name('banner');
-	// // Route::post('banner', 'CartController@add')->name('add-cart');
-
+	//blog
+	Route::get('blog','BlogController@index')->name('blog');
+	Route::post('/blog','BlogController@loc_data');
+	Route::get('blog/danh-muc/{slug}','BlogController@danh_muc')->name('danh-muc');
+	Route::get('blog/{slug}/{id}','BlogController@blog_detail')->name('blog_detail');
 });

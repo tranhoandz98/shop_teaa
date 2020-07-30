@@ -16,7 +16,7 @@ class FrontendController extends Controller {
 	 */
 	public function index() {
 		$product=Product::all();
-		$banner=Banner::all();
+		$banner=Banner::where('status',1)->get();
 		return view('frontend.pages.home',compact('product','banner'));
 	}
 }

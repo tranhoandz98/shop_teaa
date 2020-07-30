@@ -54,7 +54,7 @@
                                 </li>
                                 <li><a href="{{route('shop')}}">Shop</a>
                                 </li>
-                                <li><a href="blog.html">Tin tức</a></li>
+                                <li><a href="{{route('blog')}}">Tin tức</a></li>
                                 <li><a href="contact.html">Liên hệ</a></li>
                             </ul>
                         </nav>
