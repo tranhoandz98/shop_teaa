@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Models\Banner;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -91,4 +92,8 @@ class HomeController extends Controller {
 		return redirect()->route('dang-nhap')->with('success', 'Đăng xuất thành công');
 	}
 	
+	// public function banner(){
+	// 	$banner = Banner::all();
+	// 	return view('frontend.pages.home',compact('banner'));
+	// }
 }
