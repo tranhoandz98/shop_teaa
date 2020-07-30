@@ -7,7 +7,6 @@ use App\Models\Product;
 use App\Models\Product_detail;
 use App\Models\Img_pro;
 use App\Models\Banner;
-use App\Models\Admin;
 use App\Models\Blog;
 use App\Models\Attr;
 
@@ -19,9 +18,8 @@ class BlogController extends Controller {
 	 * @return [type] [description]
 	 */
 	public function index() {
-        $blog=Blog::where('status','=','1')->paginate(3);
-		$admin=Admin::all();
-		return view('frontend.pages.blog',compact('blog','admin'));
+        $blog=Blog::where('status','=','1')->paginate(4);
+		return view('frontend.pages.blog',compact('blog'));
 	}
 	public function loc_data(Request $req){
 		$page= $req->number?$req->number:6;
@@ -36,7 +34,6 @@ class BlogController extends Controller {
 	public function blog_detail($slug, $id){
 		$blog=Blog::where('slug','=',$slug)->first();
 		$blog_detail=Blog::find($id);
-		$admin=Admin::all();
-		return view('frontend.pages.blog_detail',compact('blog','blog_detail','admin'));
+		return view('frontend.pages.blog_detail',compact('blog','blog_detail'));
 	}
 }

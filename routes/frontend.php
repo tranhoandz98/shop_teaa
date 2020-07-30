@@ -4,7 +4,7 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function () {
 	// shop
 	Route::get('/shop','ShopController@shop')->name('shop');
 	Route::post('/shop','ShopController@loc_data');
-	Route::get('shop/danh-muc/{slug}','ShopController@danh_muc')->name('danh-muc');
+	Route::get('shop/danh-muc-san-pham/{slug}','ShopController@danh_muc')->name('danh-muc');
 	Route::get('shop/{slug}/{id_detail}','ShopController@product_detail')->name('product_detail');
 	// Route::post('shop/{slug}/{id_detail}','ShopController@post_product_detail');
 	
@@ -45,6 +45,6 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function () {
 	//blog
 	Route::get('blog','BlogController@index')->name('blog');
 	Route::post('/blog','BlogController@loc_data');
-	Route::get('blog/danh-muc/{slug}','BlogController@danh_muc')->name('danh-muc');
+	Route::get('blog/danh-muc-tin-tuc/{slug}','BlogController@danh_muc')->name('danh-muc-blog');
 	Route::get('blog/{slug}/{id}','BlogController@blog_detail')->name('blog_detail');
 });

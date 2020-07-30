@@ -24,10 +24,10 @@
                             <div class="col-lg-6 col-md-6">
                                 <div class="single-blog">
                                     <div class="blog-image">
-                                        <a href="blog-details.html"><img src="{{url('public/uploads')}}/{{$value->image}}" alt=""></a>
+                                        <a href="{{route('blog_detail',['slug'=>$value->slug,'id'=>$value->id])}}"><img src="{{url('public/uploads')}}/{{$value->image}}" alt=""></a>
                                     </div>
                                     <div class="blog-text">
-                                    <h4><a href="blog-details.html">{{$value->name}}</a></h4>
+                                    <h4><a href="{{route('blog_detail',['slug'=>$value->slug,'id'=>$value->id])}}">{{$value->name}}</a></h4>
                                         <div class="post-meta">
                                         <span class="author-name">post by: <span>{{$value->admins->name}}</span></span>
                                        - <span class="post-date"> {{$value->created_at}}</span>
@@ -80,7 +80,7 @@
                                         <div class="sidebar-widget-option">
                                             <ul>
                                                 <li>
-                                                    <a href="{{ route('danh-muc', ['slug'=>$value->slug]) }}" class="font-weight-bold">
+                                                    <a href="{{ route('danh-muc-blog', ['slug'=>$value->slug]) }}" class="font-weight-bold">
                                                         <h5 class="text-cate">
                                                          <i class="fa fa-list-alt mr-2" aria-hidden="true"></i>
                                                          {{$value->name}} 
@@ -95,7 +95,7 @@
                                                 @if($valu->parent_id==$value->id)
                                                 <ul>
                                                     <li class="ml-4">
-                                                        <a href="{{ route('danh-muc', ['slug'=>$valu->slug]) }}">
+                                                        <a href="{{ route('danh-muc-blog', ['slug'=>$valu->slug]) }}">
                                                             <h6 class="text-cate-s">
                                                                 <i class="fa fa-bars mr-2" aria-hidden="true"></i>
                                                                 {{$valu->name}} 
