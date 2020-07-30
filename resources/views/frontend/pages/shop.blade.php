@@ -251,13 +251,13 @@
                 <p>Showing {{ $products->firstItem() }} to {{ $products->lastItem() }} of {{ $products->total() }} ({{ $products->lastPage() }} Pages)</p>
                 <nav aria-label="navigation">
                     <ul class="pagination">
-                        @if ($products->currentPage()>1)
+                        @if ($products->currentPage() -1 >0)
                         <li class="page-item"><a class="page-link" href="{{ $products->previousPageUrl() }}"><</a></li>
                         @endif
-                        @for ($i = 1; $i <= $products->lastPage(); $i++)
-
-                        <li class="page-item active"><a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a></li>
-                        @endfor
+                            @for ($i = 1; $i <= $products->lastPage(); $i++)
+                           
+                    <li class="page-item {{(($products->currentPage() == $i)? 'active' :'')}}"><a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a></li>
+                            @endfor
                         @if ($products->currentPage()<$products->lastPage())
                         <li class="page-item"><a class="page-link" href="{{ $products->nextPageUrl() }}">></a></li>
                         <li class="page-item"><a class="page-link" href="{{ $products->url($products->lastPage())}}">>|</a></li>

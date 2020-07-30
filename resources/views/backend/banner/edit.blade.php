@@ -15,7 +15,7 @@
 								{{-- tên banner --}}
 								<div class="form-group">
 									<label for="name">Tên Banner</label>
-									<input type="text" class="form-control" id="name" placeholder="Nhập tiêu đề" name="name" onkeyup="ChangeToSlug()" value={{$banner->name}}>
+									<input type="text" class="form-control" id="name" placeholder="Nhập tiêu đề" name="name" onkeyup="ChangeToSlug()" value="{{$banner->name}}">
 									@error('name')
 									<span class="text-red">{{$message}}</span>
 									@enderror

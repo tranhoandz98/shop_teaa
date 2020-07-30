@@ -22,14 +22,14 @@
     <header class="header-area header-two header-sticky">
         <div class="header-container">
             <div class="row">
-                <div class="col-lg-2 col-sm-4">
+                <div class="col-lg-2 col-md-4 col-12">
                     <div class="logo text-center logo-img">
                         <a href="{{route('home')}}"><img src="{{url('public/uploads')}}/logo_03.png" alt="NatureCircle" class="w-25"></a>
                     </div>
                 </div>
                 {{-- menu --}}
                 <div class="col-lg-8 display-none-md display-none-xs">
-                    <div class="ht-main-menu">
+                    <div class="ht-main-menu justify-content-center">
                         <nav class="d-flex justify-content-center">
                             <ul>
                                 <li class="active"><a href="{{route('home')}}">Trang chủ</a></li>
@@ -55,7 +55,7 @@
                                         @endforeach
                                     </ul> 
                                 </li>
-                                <li><a href="blog.html">Tin tức</a></li>
+                                <li><a href="{{route('blog')}}">Tin tức</a></li>
                                 <li><a href="contact.html">Liên hệ</a></li>
                             </ul>
                         </nav>

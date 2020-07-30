@@ -111,3 +111,11 @@
 .img-pro > a > img {
  width: 80px!important;
 }
+.blog-text p{
+    display: -webkit-box !important;
+    height: 75px !important ;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
