@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 29, 2020 lúc 03:32 PM
+-- Thời gian đã tạo: Th7 30, 2020 lúc 08:37 AM
 -- Phiên bản máy phục vụ: 10.4.13-MariaDB
 -- Phiên bản PHP: 7.4.7
 
@@ -42,7 +42,8 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `password`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'tranhoan.dz98@geail.com', '$2y$10$6IvbmKBpDc7FHq8RDYpUZutInKdR7nfgnJzrilKb1AsohzQTWwC/y', 1, '2020-07-24 02:18:45', '2020-07-24 02:18:45');
+(1, 'admin', 'tranhoan.dz98@geail.com', '$2y$10$6IvbmKBpDc7FHq8RDYpUZutInKdR7nfgnJzrilKb1AsohzQTWwC/y', 1, '2020-07-24 02:18:45', '2020-07-24 02:18:45'),
+(2, 'admin2', 'tranhoan.dz@geail.com', '$2y$10$vCHAcdEgyLq8FK17Zp.q6OiVWUJv1GUn1z5fD57rq3F1it.r8YOWq', 1, '2020-07-29 20:45:39', '2020-07-29 20:45:39');
 
 -- --------------------------------------------------------
 
@@ -371,7 +372,7 @@ CREATE TABLE `product_details` (
   `id_attr` int(10) UNSIGNED NOT NULL,
   `sku` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double(16,2) NOT NULL,
-  `discount` double(3,2) DEFAULT NULL,
+  `discount` double(8,2) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1 là Hiện, 0 là Ẩn',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -579,7 +580,7 @@ ALTER TABLE `wishlists`
 -- AUTO_INCREMENT cho bảng `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `attrs`

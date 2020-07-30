@@ -13,12 +13,12 @@ class CreateWishlistsTable extends Migration {
     public function up() {
         Schema::create('wishlists', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('id_product');
+            $table->unsignedInteger('id_product_detail');
             $table->unsignedInteger('id_user');
             $table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_product')->references('id')->on('products');
+            $table->foreign('id_product_detail')->references('id')->on('product_details');
         });
     }
 
