@@ -18,7 +18,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="text-sm-left">
-							<a href="{{route('blog.create')}}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-plus mr-1"></i>Thêm mới sản phẩm</a>
+							<a href="{{route('blog.create')}}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-plus mr-1"></i>Thêm mới Tin tức</a>
 						</div>
 					</div>
 					<div class="col-sm-12">

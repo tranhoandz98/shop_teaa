@@ -5,6 +5,7 @@ Route::group(['prefix' => 'backend', 'namespace' => 'Backend', 'middleware' => '
 	Route::resources(['category' => 'CategoryController']);
 	Route::resources(['product' => 'ProductController']);
 	Route::resources(['attr' => 'AttrController']);
+	Route::resources(['user' => 'UserController']);
 	// Product_detail
 	Route::get('product/{id}/product_detail', 'Product_detailController@index')->name('product_detail_backend');
 	Route::post('product/{id}/product_detail/', 'Product_detailController@store');
