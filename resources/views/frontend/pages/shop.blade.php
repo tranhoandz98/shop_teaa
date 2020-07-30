@@ -155,7 +155,7 @@
                                             <li>
                                                 <a href="{{ route('shop') }}"><i class="icon icon-Restart"></i></a>
                                             </li>
-                                            <li><a href="{{url('public')}}/frontend/img/product/1.jpg" data-toggle="modal" data-target="#productModal"><i class="icon icon-Search"></i></a></li>
+                                            
                                         </ul>
                                         <form action="{{ route('add-cart',$value->id_detail) }}" method="POST">
                                             @csrf

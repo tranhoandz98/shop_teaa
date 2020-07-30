@@ -52,8 +52,6 @@
                         </div>
                     </div>
                     <!--Product Tab Menu End-->
-
-
                 </div>
             </div>
             <div class="col-lg-7 col-md-7">
@@ -99,12 +97,14 @@
                             <input type="number" placeholder="1" name="qty">
                             <button type="submit" class="default-btn">Thêm vào giỏ hàng</button>
                             <button type="button"><i class="icon icon-Heart"></i></button>
+                            <a href="{{ route('product_detail',['slug'=>$product->slug,'id_detail'=>$value->id]) }}">
                             <button type="button"><i class="icon icon-Restart"></i></button>
+                            </a>
                         </div>
                         <div class="product-tag-cat">
                             <div class="single-tag-cat">
                                 <span class="p-d-title">Categories:</span>  
-                                <a href="#">{{$product->categories->name}}</a>,
+                                <a href="{{ route('danh-muc',$product->categories->slug) }}">{{$product->categories->name}}</a>
                             </div>
                         </div>
                         <div class="product-share">
@@ -360,7 +360,7 @@
                                 <li>
                                     <a href="#"><i class="icon icon-Restart"></i></a>
                                 </li>
-                                <li><a href="{{url('public')}}/frontend/img/product/20.jpg" data-toggle="modal" data-target="#productModal"><i class="icon icon-Search"></i></a></li>
+                                
                             </ul>
                             <button type="button" class="p-cart-btn">Add to cart</button>
                         </div>
@@ -385,7 +385,7 @@
                 <div class="single-product-item">
                     <div class="product-image">
                         <a href="shop.html">
-                            <img src="{{url('public')}}/frontend/img/product/2.jpg" alt="">
+                            <img src="{{url('public')}}/frontend/img/product/20.jpg" alt="">
                         </a>  
                         <div class="product-hover">
                             <ul class="hover-icon-list">
@@ -395,7 +395,7 @@
                                 <li>
                                     <a href="#"><i class="icon icon-Restart"></i></a>
                                 </li>
-                                <li><a href="{{url('public')}}/frontend/img/product/2.jpg" data-toggle="modal" data-target="#productModal"><i class="icon icon-Search"></i></a></li>
+                                
                             </ul>
                             <button type="button" class="p-cart-btn">Add to cart</button>
                         </div>
@@ -408,252 +408,7 @@
                             <i class="fa fa-star-o"></i>
                             <i class="fa fa-star-o"></i>
                         </div>
-                        <h5><a href="shop.html">Fresh Banana</a></h5>
-                        <div class="pro-price">
-                            <span class="new-price">$40.00</span> 
-                            <span class="old-price">$43.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="custom-col">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="shop.html">
-                            <img src="{{url('public')}}/frontend/img/product/3.jpg" alt="">
-                        </a>  
-                        <div class="product-hover">
-                            <ul class="hover-icon-list">
-                                <li>
-                                    <a href="wishlist.html"><i class="icon icon-Heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon icon-Restart"></i></a>
-                                </li>
-                                <li><a href="{{url('public')}}/frontend/img/product/3.jpg" data-toggle="modal" data-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                            </ul>
-                            <button type="button" class="p-cart-btn">Add to cart</button>
-                        </div>
-                    </div>
-                    <div class="product-text">
-                        <div class="product-rating">
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <h5><a href="shop.html">Red Capsicum</a></h5>
-                        <div class="pro-price">
-                            <span class="new-price">$34.00</span> 
-                            <span class="old-price">$37.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="custom-col">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="shop.html">
-                            <img src="{{url('public')}}/frontend/img/product/4.jpg" alt="">
-                        </a>  
-                        <div class="product-hover">
-                            <ul class="hover-icon-list">
-                                <li>
-                                    <a href="wishlist.html"><i class="icon icon-Heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon icon-Restart"></i></a>
-                                </li>
-                                <li><a href="{{url('public')}}/frontend/img/product/4.jpg" data-toggle="modal" data-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                            </ul>
-                            <button type="button" class="p-cart-btn">Add to cart</button>
-                        </div>
-                    </div>
-                    <div class="product-text">
-                        <div class="product-rating">
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <h5><a href="shop.html">Rippen Mango</a></h5>
-                        <div class="pro-price">
-                            <span class="new-price">$20.00</span> 
-                            <span class="old-price">$28.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="custom-col">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="shop.html">
-                            <img src="{{url('public')}}/frontend/img/product/5.jpg" alt="">
-                        </a>  
-                        <div class="product-hover">
-                            <ul class="hover-icon-list">
-                                <li>
-                                    <a href="wishlist.html"><i class="icon icon-Heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon icon-Restart"></i></a>
-                                </li>
-                                <li><a href="{{url('public')}}/frontend/img/product/5.jpg" data-toggle="modal" data-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                            </ul>
-                            <button type="button" class="p-cart-btn">Add to cart</button>
-                        </div>
-                    </div>
-                    <div class="product-text">
-                        <div class="product-rating">
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <h5><a href="shop.html">Farm's Onion</a></h5>
-                        <div class="pro-price">
-                            <span class="new-price">$40.00</span> 
-                            <span class="old-price">$50.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="custom-col">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="shop.html">
-                            <img src="{{url('public')}}/frontend/img/product/6.jpg" alt="">
-                        </a>  
-                        <div class="product-hover">
-                            <ul class="hover-icon-list">
-                                <li>
-                                    <a href="wishlist.html"><i class="icon icon-Heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon icon-Restart"></i></a>
-                                </li>
-                                <li><a href="{{url('public')}}/frontend/img/product/6.jpg" data-toggle="modal" data-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                            </ul>
-                            <button type="button" class="p-cart-btn">Add to cart</button>
-                        </div>
-                    </div>
-                    <div class="product-text">
-                        <div class="product-rating">
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <h5><a href="shop.html">Fresh Coconut</a></h5>
-                        <div class="pro-price">
-                            <span class="new-price">$50.00</span> 
-                            <span class="old-price">$80.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="custom-col">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="shop.html">
-                            <img src="{{url('public')}}/frontend/img/product/7.jpg" alt="">
-                        </a>  
-                        <div class="product-hover">
-                            <ul class="hover-icon-list">
-                                <li>
-                                    <a href="wishlist.html"><i class="icon icon-Heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon icon-Restart"></i></a>
-                                </li>
-                                <li><a href="{{url('public')}}/frontend/img/product/7.jpg" data-toggle="modal" data-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                            </ul>
-                            <button type="button" class="p-cart-btn">Add to cart</button>
-                        </div>
-                    </div>
-                    <div class="product-text">
-                        <div class="product-rating">
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <h5><a href="shop.html">Tangerin Juice</a></h5>
-                        <div class="pro-price">
-                            <span class="new-price">$44.00</span> 
-                            <span class="old-price">$47.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="custom-col">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="shop.html">
-                            <img src="{{url('public')}}/frontend/img/product/8.jpg" alt="">
-                        </a>  
-                        <div class="product-hover">
-                            <ul class="hover-icon-list">
-                                <li>
-                                    <a href="wishlist.html"><i class="icon icon-Heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon icon-Restart"></i></a>
-                                </li>
-                                <li><a href="{{url('public')}}/frontend/img/product/8.jpg" data-toggle="modal" data-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                            </ul>
-                            <button type="button" class="p-cart-btn">Add to cart</button>
-                        </div>
-                    </div>
-                    <div class="product-text">
-                        <div class="product-rating">
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <h5><a href="shop.html">Pine Apple</a></h5>
-                        <div class="pro-price">
-                            <span class="new-price">$33.00</span> 
-                            <span class="old-price">$37.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="custom-col">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="shop.html">
-                            <img src="{{url('public')}}/frontend/img/product/9.jpg" alt="">
-                        </a>  
-                        <div class="product-hover">
-                            <ul class="hover-icon-list">
-                                <li>
-                                    <a href="wishlist.html"><i class="icon icon-Heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon icon-Restart"></i></a>
-                                </li>
-                                <li><a href="{{url('public')}}/frontend/img/product/9.jpg" data-toggle="modal" data-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                            </ul>
-                            <button type="button" class="p-cart-btn">Add to cart</button>
-                        </div>
-                    </div>
-                    <div class="product-text">
-                        <div class="product-rating">
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o color"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <h5><a href="shop.html">Fresh Cucumber</a></h5>
+                        <h5><a href="shop.html">Juicy Grapes</a></h5>
                         <div class="pro-price">
                             <span class="new-price">$86.00</span> 
                             <span class="old-price">$92.00</span>
@@ -665,7 +420,7 @@
                 <div class="single-product-item">
                     <div class="product-image">
                         <a href="shop.html">
-                            <img src="{{url('public')}}/frontend/img/product/10.jpg" alt="">
+                            <img src="{{url('public')}}/frontend/img/product/20.jpg" alt="">
                         </a>  
                         <div class="product-hover">
                             <ul class="hover-icon-list">
@@ -675,7 +430,7 @@
                                 <li>
                                     <a href="#"><i class="icon icon-Restart"></i></a>
                                 </li>
-                                <li><a href="{{url('public')}}/frontend/img/product/10.jpg" data-toggle="modal" data-target="#productModal"><i class="icon icon-Search"></i></a></li>
+                                
                             </ul>
                             <button type="button" class="p-cart-btn">Add to cart</button>
                         </div>
@@ -688,10 +443,115 @@
                             <i class="fa fa-star-o"></i>
                             <i class="fa fa-star-o"></i>
                         </div>
-                        <h5><a href="shop.html">Fresh Grape</a></h5>
+                        <h5><a href="shop.html">Juicy Grapes</a></h5>
                         <div class="pro-price">
-                            <span class="new-price">$40.00</span> 
-                            <span class="old-price">$43.00</span>
+                            <span class="new-price">$86.00</span> 
+                            <span class="old-price">$92.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-col">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="shop.html">
+                            <img src="{{url('public')}}/frontend/img/product/20.jpg" alt="">
+                        </a>  
+                        <div class="product-hover">
+                            <ul class="hover-icon-list">
+                                <li>
+                                    <a href="wishlist.html"><i class="icon icon-Heart"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icon icon-Restart"></i></a>
+                                </li>
+                                
+                            </ul>
+                            <button type="button" class="p-cart-btn">Add to cart</button>
+                        </div>
+                    </div>
+                    <div class="product-text">
+                        <div class="product-rating">
+                            <i class="fa fa-star-o color"></i>
+                            <i class="fa fa-star-o color"></i>
+                            <i class="fa fa-star-o color"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <h5><a href="shop.html">Juicy Grapes</a></h5>
+                        <div class="pro-price">
+                            <span class="new-price">$86.00</span> 
+                            <span class="old-price">$92.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-col">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="shop.html">
+                            <img src="{{url('public')}}/frontend/img/product/20.jpg" alt="">
+                        </a>  
+                        <div class="product-hover">
+                            <ul class="hover-icon-list">
+                                <li>
+                                    <a href="wishlist.html"><i class="icon icon-Heart"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icon icon-Restart"></i></a>
+                                </li>
+                                
+                            </ul>
+                            <button type="button" class="p-cart-btn">Add to cart</button>
+                        </div>
+                    </div>
+                    <div class="product-text">
+                        <div class="product-rating">
+                            <i class="fa fa-star-o color"></i>
+                            <i class="fa fa-star-o color"></i>
+                            <i class="fa fa-star-o color"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <h5><a href="shop.html">Juicy Grapes</a></h5>
+                        <div class="pro-price">
+                            <span class="new-price">$86.00</span> 
+                            <span class="old-price">$92.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-col">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="shop.html">
+                            <img src="{{url('public')}}/frontend/img/product/20.jpg" alt="">
+                        </a>  
+                        <div class="product-hover">
+                            <ul class="hover-icon-list">
+                                <li>
+                                    <a href="wishlist.html"><i class="icon icon-Heart"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icon icon-Restart"></i></a>
+                                </li>
+                                
+                            </ul>
+                            <button type="button" class="p-cart-btn">Add to cart</button>
+                        </div>
+                    </div>
+                    <div class="product-text">
+                        <div class="product-rating">
+                            <i class="fa fa-star-o color"></i>
+                            <i class="fa fa-star-o color"></i>
+                            <i class="fa fa-star-o color"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <h5><a href="shop.html">Juicy Grapes</a></h5>
+                        <div class="pro-price">
+                            <span class="new-price">$86.00</span> 
+                            <span class="old-price">$92.00</span>
                         </div>
                     </div>
                 </div>
