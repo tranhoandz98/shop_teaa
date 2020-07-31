@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use Auth;
 use App\Models\Category;
+use App\Models\Admin;
 use Illuminate\Validation\Rule;
 
 class BlogController extends Controller
@@ -18,8 +20,9 @@ class BlogController extends Controller
     public function index()
     {
         $blog=Blog::all();
+        $admin=Admin::all();
         $category = Category::all();
-        return view('backend.blog.index',compact('blog','category'));
+        return view('backend.blog.index',compact('blog','category','admin'));
     }
 
     /**
@@ -30,8 +33,8 @@ class BlogController extends Controller
     public function create()
     {
         $category=Category::where('type',0)->get();
-
-        return view('backend.blog.create',compact('category'));
+        $admin=Auth::guard('admin')->user()->name;
+        return view('backend.blog.create',compact('category','admin'));
     }
 
     /**
@@ -55,12 +58,13 @@ class BlogController extends Controller
             'image.required' =>'Hình ảnh không được bỏ trống',
             'content.required' =>'Nội dung tiêu đề không được bỏ trống',   
         ]);
+     
         $blog= Blog::create([
             'name'=>$request->name,
             'slug'=>$request->slug,
             
             'id_cate'=>$request->id_cate,
-           
+            'id_admin'=>Auth::guard('admin')->user()->id,
             'image'=>$image,
             'content'=>$request->content,
             'meta_title'=>$request->meta_title,
@@ -94,8 +98,9 @@ class BlogController extends Controller
     {
         $blog=Blog::find($id);
         $category = Category::where('type',0)->get();
+        $admin=Admin::all();
         // dd($img_pro);
-        return view('backend.blog.edit',compact('category','blog'));
+        return view('backend.blog.edit',compact('category','blog','admin'));
     }
 
     /**
@@ -128,7 +133,7 @@ class BlogController extends Controller
             'slug'=>$request->slug,
             
             'id_cate'=>$request->id_cate,
-           
+            'id_admin'=>Auth::guard('admin')->user()->id,
             'image'=>$image,
             'content'=>$request->content,
             'meta_title'=>$request->meta_title,

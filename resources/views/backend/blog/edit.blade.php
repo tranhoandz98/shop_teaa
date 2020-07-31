@@ -13,33 +13,43 @@
                         @method('PUT')
 								<div class="form-group">
 									<label for="name">Tiêu đề</label>
-									<input type="text" class="form-control" id="name" placeholder="Nhập tiêu đề" name="name" onkeyup="ChangeToSlug()" value={{$blog->name}}>
+									<input type="text" class="form-control" id="name" placeholder="Nhập tiêu đề" name="name" onkeyup="ChangeToSlug()" value="{{$blog->name}}">
 									@error('name')
 									<span class="text-red">{{$message}}</span>
 									@enderror
 								</div>
 							
-							
 								<div class="form-group">
 									<label for="slug">Slug</label>
 									<input type="text" class="form-control" id="slug" placeholder="Slug"  name="slug" value={{$blog->slug}}>
 								</div>
-							
-								<div class="form-group">
-									<label for="">Danh mục tin tức</label>
-									<div class="form-group">
-										<select class="custom-select" id="classCoverageDistribution" aria-label="Example select with button addon" name="id_cate">
-											<option value="">---Trống---</option>
-											@foreach($category as $value)
-                                        <option value="{{$value->id}}" {{($blog->id_cate==$value->id)?'selected':''}}>{{$value->name}}</option>
-											@endforeach
-										</select>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="">Danh mục tin tức</label>
+											<div class="form-group">
+												<select class="custom-select" id="classCoverageDistribution" aria-label="Example select with button addon" name="id_cate">
+													<option value="">---Trống---</option>
+													@foreach($category as $value)
+												<option value="{{$value->id}}" {{($blog->id_cate==$value->id)?'selected':''}}>{{$value->name}}</option>
+													@endforeach
+												</select>
+											</div>
+											@error('id_cate')
+											<span class="text-red">{{$message}}</span>
+											@enderror
+			
+										</div>
 									</div>
-									@error('id_cate')
-									<span class="text-red">{{$message}}</span>
-									@enderror
-	
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="id_admin">Người đăng bài</label>				
+										<input type="text" class="form-control" value="{{$blog->admins->name}}" readonly>		
+										</div>
+									</div>
+									
 								</div>
+							
 							
                                 <div class="form-group">
                                     <label for="get_image">Hình ảnh</label>
@@ -72,18 +82,18 @@
 	
 							<div class="form-group">
 								<label for="meta_title">Meta title</label>
-								<input type="text" class="form-control" id="meta_title" placeholder=""  name="meta_title" multiple="multiple">
+								<input type="text" class="form-control" id="meta_title" placeholder=""  name="meta_title" multiple="multiple" value="{{$blog->meta_title}}">
 							</div>
 							<div class="form-group">
 								<label for="meta_key">Meta keyword</label>
-								<input type="text" class="form-control" id="meta_key" placeholder=""  name="meta_keyword" multiple="multiple">
+								<input type="text" class="form-control" id="meta_key" placeholder=""  name="meta_keyword" multiple="multiple" value="{{$blog->meta_keyword}}">
 							</div>
 							<div class="form-group">
 								<label for="meta_desc">Meta description</label>
-								<textarea name="meta_desc" id="meta_desc" class="form-control" rows="5"></textarea>
+								<textarea name="meta_desc" id="meta_desc" class="form-control" rows="5" >{{$blog->meta_desc}}</textarea>
 							</div>
 	
-							<button class="btn btn-info" type="submit">Thêm mới</button>
+							<button class="btn btn-info" type="submit">Cập nhật</button>
 						
 					</form>
 				</div>

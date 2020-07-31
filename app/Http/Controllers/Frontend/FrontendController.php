@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Product_detail;
 use App\Models\Img_pro;
+use App\Models\Banner;
 use App\Models\Attr;
 use Illuminate\Http\Request;
 class FrontendController extends Controller {
@@ -15,6 +16,7 @@ class FrontendController extends Controller {
 	 */
 	public function index() {
 		$product=Product::all();
-		return view('frontend.pages.home',compact('product'));
+		$banner=Banner::where('status',1)->get();
+		return view('frontend.pages.home',compact('product','banner'));
 	}
 }

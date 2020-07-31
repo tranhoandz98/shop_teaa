@@ -2,31 +2,24 @@
 @section('title','Trang chủ')
 @section('main')
 	        <!-- Hero Area Start -->
-        <div class="ht-hero-section fix ht-hero-two">
-            <div class="ht-hero-slider">
-                <!-- Single Slide Start -->
-                <div class="ht-single-slide" style="background-image: url({{url('public')}}/frontend/img/slider/3.jpg)">
-                    <div class="ht-hero-content-one container">
-                        <h3>Organic products</h3>
-                        <h1 class="cssanimation leDoorCloseLeft sequence">Fresh mango</h1>
-                        <p>We believe that healthy eating, clean air, and gentle character is the best start to genuine wellbeing.</p>
-                        <a href="shop.html" class="default-btn large circle blue hover-blue uppercase">Shop now</a>
+            <div class="ht-hero-section fix">
+                <div class="ht-hero-slider">
+                    @foreach ($banner as $value)
+                        <!-- Single Slide Start -->
+                    <div class="ht-single-slide" style="background-image: url({{url('public/uploads')}}/{{$value->image}})">
+                        <div class="ht-hero-content-one container">
+                            <h3>For Get Me Not</h3>
+                            <h1 class="cssanimation leDoorCloseLeft sequence">{{$value->name}}</h1>
+                         <p>{!!$value->content!!}</p>
+                            <a href="{{route('shop')}}" class="default-btn large circle blue hover-blue uppercase">XEM NGAY</a>
+                        </div>
                     </div>
+                    <!-- Single Slide End -->
+                    @endforeach
+                    
                 </div>
-                <!-- Single Slide End -->
-                <!-- Single Slide Start -->
-                <div class="ht-single-slide" style="background-image: url({{url('public')}}/frontend/img/slider/4.jpg)">
-                    <div class="ht-hero-content-one container">
-                        <h3>Organic products</h3>
-                        <h1 class="cssanimation leDoorCloseLeft sequence">Coconut Oil</h1>
-                        <p>We believe that healthy eating, clean air, and gentle character is the best start to genuine wellbeing.</p>
-                        <a href="shop.html" class="default-btn">Shop now</a>
-                    </div>
-                </div>
-                <!-- Single Slide End -->
             </div>
-        </div>
-        <!-- Hero Area End -->
+            <!-- Hero Area End -->
         <!-- Shop Banner Area Start -->
         <div class="shop-banner-area pt-60 pb-60">
             <div class="container">

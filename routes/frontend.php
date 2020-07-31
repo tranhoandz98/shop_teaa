@@ -35,15 +35,18 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function () {
 	Route::post('cart/update/{rowId}', 'CartController@update')->name('update-cart');
 	Route::get('cart/destroy', 'CartController@destroy')->name('destroy-cart');
 	// end cart
-	
-	//wishlist
-	// cart
+  
+		//wishlist
 	Route::get('wishlist', 'WishlistController@index')->name('wishlist');
 	Route::get('wishlist/{id_user}/{id_detail}', 'WishlistController@add')->name('add-wishlist');
 	// Route::get('wishlist/remove/{Id}', 'WishlistController@remove')->name('remove-wishlist');
 	// Route::get('wishlist/destroy', 'WishlistController@destroy')->name('destroy-wishlist');
 	//end wishlist
-	
 
+	//blog
+	Route::get('blog','BlogController@index')->name('blog');
+	Route::post('/blog','BlogController@loc_data');
+	Route::get('blog/danh-muc/{slug}','BlogController@danh_muc')->name('danh-muc');
+	Route::get('blog/{slug}/{id}','BlogController@blog_detail')->name('blog_detail');
 
 });

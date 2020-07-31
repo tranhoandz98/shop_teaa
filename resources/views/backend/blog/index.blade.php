@@ -27,7 +27,8 @@
 								<tr>
 									<th class="sorting">STT</th>
 									<th class="sorting">Tiêu đề</th>
-									<th class="sorting">Slug</th>									
+									{{-- <th class="sorting">Slug</th>--}}
+									<th class="sorting">Người đăng bài</th>
 									<th class="sorting">Danh mục tin tức</th>								
 									<th class="sorting">Hình ảnh</th>
 								
@@ -39,7 +40,8 @@
 								<tr>
 									<td class="" tabindex="0">{{$loop->index+1}}</td>				
 									<td class="sorting_1">{{$value->name}}</td>
-									<td class="sorting_1">{{$value->slug}}</td>
+									{{-- <td class="sorting_1">{{$value->slug}}</td> --}}
+									<td class="sorting_1">{{$value->admins->name}}</td>
 									<td class="sorting_1">{{$value->categories->name}}</td>
 									<td><img src="{{url('public/uploads')}}/{{$value->image}}" alt="" width="100px"></td>	
 																	

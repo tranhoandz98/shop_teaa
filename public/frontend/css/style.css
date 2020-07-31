@@ -1173,7 +1173,7 @@
     02. Header Area
     -----------------------------------------*/
     .header-area {
-      position: absolute;
+
       left: 0;
       top: 0;
       right: 0;
@@ -1204,7 +1204,7 @@
                                 flex: 0 0 100%;
                                 max-width: 100%; } }
                                 .header-area .header-container .logo {
-                                  padding: 48px 0; }
+                                  padding: 24px 0; }
                                   @media only screen and (min-width: 768px) and (max-width: 991px) {
                                     .header-area .header-container .logo {
                                       overflow: hidden;
@@ -1241,11 +1241,14 @@
                                                               width: 100%;
                                                               z-index: 999; }
                                                               .header-area.header-sticky.sticky .logo {
-                                                                padding: 10px 0; }
+                                                                padding:0; }
                                                                 .header-area.header-sticky.sticky .ht-main-menu {
-                                                                  padding: 3px 0; }
+                                                                  padding: 17px 0; }
                                                                   .header-area.header-sticky.sticky .header-content {
                                                                     padding: 11px 0 6px; }
+                                                                    .w-25{
+                                                                      width:40% !important
+                                                                    }
                                                                     @media only screen and (min-width: 768px) and (max-width: 991px) {
                                                                       .header-area.header-sticky.sticky {
                                                                         position: relative;
@@ -1361,7 +1364,7 @@
                                                                                                                                                                               color: #444444;
                                                                                                                                                                               display: block;
                                                                                                                                                                               font-family: "Oswald", sans-serif;
-                                                                                                                                                                              font-size: 13px;
+                                                                                                                                                                              font-size: 15px;
                                                                                                                                                                               font-weight: 500;
                                                                                                                                                                               line-height: 50px;
                                                                                                                                                                               position: relative;
