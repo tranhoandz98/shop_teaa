@@ -142,41 +142,49 @@
                 <div class="ht-product-shop tab-content text-center">
                     <div class="tab-pane active show fade" id="grid" role="tabpanel">
                         <div class="custom-row">
-                            @foreach ($products as $value)
-                                @if ($value->id_detail != 0)
+                            @foreach ($products as $product)
+                                @if ($product->id_detail != 0)
                                     <div class="custom-col">
                                         <div class="single-product-item">
                                             <div class="product-image image-cus">
                                                 <a
-                                                    href="{{ route('product_detail', ['slug' => $value->slug, 'id_detail' => $value->id_detail]) }}">
-                                                    <img src="{{ url('public/uploads') }}/{{ $value->image }}" alt="">
-                                                    @if ($value->discount > 0)
-                                                        <div class="pro-discount text-center">-{{ $value->discount }}%</div>
+                                                    href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">
+                                                    <img src="{{ url('public/uploads') }}/{{ $product->image }}" alt="">
+                                                    @if ($product->discount > 0)
+                                                        <div class="pro-discount text-center">-{{ $product->discount }}%</div>
                                                     @endif
                                                 </a>
-                                                <div class="product-hover">
-                                                    <ul class="hover-icon-list">
-                                                        <li>
-                                                            @if (Auth::check())
-                                                                <a
-                                                                    href="{{ route('add-wishlist', ['id_user' => Auth::guard('user')->user()->id, 'id_detail' => $value->id_detail]) }}"><i
-                                                                        class="icon icon-Heart"></i></a>
-                                                            @else
-                                                                <a class="" data-toggle="modal" href='#dang-nhap'><i
-                                                                        class="icon icon-Heart"></i></a>
-                                                            @endif
-                                                        </li>
-                                                        <li>
-                                                            <a href="{{ route('shop') }}"><i class="icon icon-Restart"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                    <form action="{{ route('add-cart', $value->id_detail) }}" method="POST">
-                                                        @csrf
-                                                        {{-- <input type="hidden" name="qty" value="1"> --}}
-                                                        <button type="submit" class="p-cart-btn">Thêm vào giỏ hàng</button>
-                                                       
-                                                    </form>
-                                                </div>
+                                                @if ($product->quantity > 0)
+                                                    <div class="product-hover">
+                                                        <ul class="hover-icon-list">
+                                                            <li>
+                                                                @if (Auth::check())
+                                                                    <a
+                                                                        href="{{ route('add-wishlist', ['id_user' => Auth::guard('user')->user()->id, 'id_detail' => $product->id_detail]) }}"><i
+                                                                            class="icon icon-Heart"></i></a>
+                                                                @else
+                                                                    <a class="" data-toggle="modal" href='#dang-nhap'><i
+                                                                            class="icon icon-Heart"></i></a>
+                                                                @endif
+                                                            </li>
+                                                            <li>
+                                                                <a href="{{ route('shop') }}"><i class="icon icon-Restart"></i></a>
+                                                            </li>
+                                                            <li><a href="{{ url('public') }}/frontend/img/product/1.jpg"
+                                                                    data-toggle="modal" data-target="#productModal"><i
+                                                                        class="icon icon-Search"></i></a></li>
+                                                        </ul>
+                                                        <button type="button" class="p-cart-btn">Thêm vào giỏ hàng</button>
+                                                    </div>
+                                                @else
+                                                    <div class="product-hover">
+                                                        <ul class="hover-icon-list bg-danger p-5">
+                                                            <li>
+                                                                <h3 >Hết hàng</h3>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                @endif
                                             </div>
                                             <div class="product-text">
                                                 <div class="product-rating">
@@ -187,18 +195,17 @@
                                                     <i class="fa fa-star-o"></i>
                                                 </div>
                                                 <h5><a
-                                                        href="{{ route('product_detail', ['slug' => $value->slug, 'id_detail' => $value->id_detail]) }}">{{ $value->name }}</a>
+                                                        href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">{{ $product->name }}</a>
                                                 </h5>
-                                                
-                                                @if ($value->discount > 0)
+                                                @if ($product->discount > 0)
                                                     <div class="pro-price">
                                                         <span
-                                                            class="new-price">{{ number_format($value->price - ($value->price * $value->discount) / 100) }}đ</span>
-                                                        <span class="old-price">{{ number_format($value->price) }}đ</span>
+                                                            class="new-price">{{ number_format($product->price - ($product->price * $product->discount) / 100) }}đ</span>
+                                                        <span class="old-price">{{ number_format($product->price) }}đ</span>
                                                     </div>
                                                 @else
                                                     <div class="pro-price">
-                                                        <span class="new-price">{{ number_format($value->price) }}đ</span>
+                                                        <span class="new-price">{{ number_format($product->price) }}đ</span>
                                                     </div>
                                                 @endif
                                             </div>
@@ -209,36 +216,46 @@
                         </div>
                     </div>
                     <div class="tab-pane fade text-left" id="list" role="tabpanel">
-                        @foreach ($products as $value)
-                            @if ($value->id_detail != 0)
+                        @foreach ($products as $product)
+                            @if ($product->id_detail != 0)
                                 <div class="single-product-item">
                                     <div class="product-image image-cus">
                                         <a href="product-details.html">
-                                            <img src="{{ url('public/uploads') }}/{{ $value->image }}" alt="">
-                                            @if ($value->discount > 0)
-                                                <div class="pro-discount text-center hide">-{{ $value->discount }}%</div>
+                                            <img src="{{ url('public/uploads') }}/{{ $product->image }}" alt="">
+                                            @if ($product->discount > 0)
+                                                <div class="pro-discount text-center hide">-{{ $product->discount }}%</div>
                                             @endif
                                         </a>
-                                        <div class="product-hover">
-                                            <ul class="hover-icon-list">
-                                                <li>
-                                                    @if (Auth::check())
-                                                        <a
-                                                            href="{{ route('add-wishlist', ['id_user' => Auth::guard('user')->user()->id, 'id_detail' => $value->id_detail]) }}"><i
-                                                                class="icon icon-Heart"></i></a>
-                                                    @else
-                                                        <a class="" data-toggle="modal" href='#dang-nhap'><i
-                                                                class="icon icon-Heart"></i></a>
-                                                    @endif
-                                                </li>
-                                                <li>
-                                                    <a href="{{ route('shop') }}"><i class="icon icon-Restart"></i></a>
-                                                </li>
-                                                <li><a href="{{ url('public') }}/frontend/img/product/1.jpg" data-toggle="modal"
-                                                        data-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                            </ul>
-                                            <button type="button" class="p-cart-btn">Thêm vào giỏ hàng</button>
-                                        </div>
+                                        @if ($product->quantity > 0)
+                                            <div class="product-hover">
+                                                <ul class="hover-icon-list">
+                                                    <li>
+                                                        @if (Auth::check())
+                                                            <a
+                                                                href="{{ route('add-wishlist', ['id_user' => Auth::guard('user')->user()->id, 'id_detail' => $product->id_detail]) }}"><i
+                                                                    class="icon icon-Heart"></i></a>
+                                                        @else
+                                                            <a class="" data-toggle="modal" href='#dang-nhap'><i
+                                                                    class="icon icon-Heart"></i></a>
+                                                        @endif
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ route('shop') }}"><i class="icon icon-Restart"></i></a>
+                                                    </li>
+                                                    <li><a href="{{ url('public') }}/frontend/img/product/1.jpg" data-toggle="modal"
+                                                            data-target="#productModal"><i class="icon icon-Search"></i></a></li>
+                                                </ul>
+                                                <button type="button" class="p-cart-btn">Thêm vào giỏ hàng</button>
+                                            </div>
+                                        @else
+                                            <div class="product-hover">
+                                                <ul class="hover-icon-list bg-danger p-3">
+                                                    <li>
+                                                        <h3 >Hết hàng</h3>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        @endif
                                     </div>
                                     <div class="product-text">
                                         <div class="product-rating">
@@ -249,21 +266,21 @@
                                             <i class="fa fa-star-o"></i>
                                         </div>
                                         <h5><a
-                                                href="{{ route('product_detail', ['slug' => $value->slug, 'id_detail' => $value->id_detail]) }}">{{ $value->name }}</a>
+                                                href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">{{ $product->name }}</a>
                                         </h5>
-                                        @if ($value->discount > 0)
+                                        @if ($product->discount > 0)
                                             <div class="pro-price">
                                                 <span
-                                                    class="new-price">{{ number_format($value->price - ($value->price * $value->discount) / 100) }}đ</span>
-                                                <span class="old-price">{{ number_format($value->price) }}đ</span>
+                                                    class="new-price">{{ number_format($product->price - ($product->price * $product->discount) / 100) }}đ</span>
+                                                <span class="old-price">{{ number_format($product->price) }}đ</span>
                                             </div>
                                         @else
                                             <div class="pro-price">
-                                                <span class="new-price">{{ number_format($value->price) }}đ</span>
+                                                <span class="new-price">{{ number_format($product->price) }}đ</span>
                                             </div>
                                         @endif
                                         <div class="text-desc">
-                                            <p>{{ $value->meta_desc }}</p>
+                                            <p>{{ $product->meta_desc }}</p>
                                         </div>
                                         <div class="pro-btn">
                                             <button type="button" class="p-cart-btn default-btn">Add to cart</button>

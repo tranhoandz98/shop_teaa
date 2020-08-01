@@ -1,49 +1,119 @@
 @extends('frontend.master')
-@section('title','Wishlist')
+@section('title', 'Wishlist')
 @section('main')
-<!-- Breadcrumb Area Start -->
-<div class="breadcrumb-area bg-12 text-center">
-    <div class="container">
-        <h1>Sản phẩm yêu thích</h1>
-        <nav aria-label="breadcrumb">
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Wishlist</li>
-            </ul>
-        </nav>
+    <!-- Breadcrumb Area Start -->
+    <div class="breadcrumb-area bg-12 text-center">
+        <div class="container">
+            <h1>Sản phẩm yêu thích</h1>
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Wishlist</li>
+                </ul>
+            </nav>
+        </div>
     </div>
-</div>
-<!-- Breadcrumb Area End -->
-<!-- Wishlist Area Start -->
-        <div class="wishlist-area table-area pt-110 pb-95">
-            <div class="container">
+    <!-- Breadcrumb Area End -->
+    <!-- Wishlist Area Start -->
+    <div class="wishlist-area table-area pt-110 pb-95">
+        <div class="container">
+            @if ($wishlist->count() > 0)
+                @if (Session::has('success'))
+                    <div class="alert bg-green text-white alert-dismissible fade show" role="alert">
+                        {{ Session::get('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                @endif
                 <div class="table-responsive">
                     <table class="table product-table text-center">
                         <thead>
                             <tr>
-                                <th class="table-remove">remove</th>
+                                <th>Stt</th>
                                 <th class="table-image">image</th>
                                 <th class="table-p-name">Product Name</th>
                                 <th>size</th>
                                 <th class="table-p-price">Unit Price</th>
                                 <th class="table-stock">Stock Status</th>
                                 <th class="table-add-cart">Add</th>
+                                <th class="table-remove">remove</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="table-remove"><button><i class="fa fa-trash"></i></button></td>
-                                <td class="table-image"><a href="product-details.html"><img src="assets/img/product/3.jpg" alt=""></a></td>
-                                <td class="table-p-name"><a href="product-details.html">Habitasse dictumst</a></td>
-                                <td>100</td>
-                                <td class="table-p-price"><p><span class="line-through">$85.00</span> $79.00</p></td>
-                                <td class="table-stock"><span>In Stock</span></td>
-                                <td class="table-add-cart"><a href="cart.html">Add to cart</a></td>
-                            </tr>
+                            @foreach ($wishlist as $item)
+                                <tr>
+                                    <td>{{ $loop->index+1 }}</td>
+                                    <td class="table-image">
+                                        <a
+                                            href="{{ route('product_detail', ['slug' => $item->product_details->products->slug, 'id_detail' => $item->product_details->id]) }}">
+                                            <img src="{{ url('public/uploads') }}/{{ $item->product_details->products->image }}"
+                                                alt="">
+                                        </a>
+                                    </td>
+                                    <td class="table-p-name">
+                                        <a
+                                            href="{{ route('product_detail', ['slug' => $item->product_details->products->slug, 'id_detail' => $item->product_details->id]) }}">
+                                            {{ $item->product_details->products->name }}
+                                        </a>
+                                    </td>
+                                    <td>{{ is_numeric($item->product_details->attrs->value) ? $item->product_details->attrs->value . 'g' : $item->product_details->attrs->value }}
+                                    </td>
+                                    <td class="table-p-price">
+                                        @if ($item->product_details->discount > 0)
+                                            <p>
+                                                <span class="line-through">
+                                                    {{ number_format($item->product_details->price) }} đ
+                                                </span>
+                                                {{ number_format($item->product_details->price - ($item->product_details->discount / 100) * $item->product_details->price) }}
+                                                đ</p>
+                                        @else
+                                            <p>{{ number_format($item->product_details->price) }} đ</p>
+                                        @endif
+                                    </td>
+                                    @if ($item->product_details->quantity > 0)
+                                        <td class="table-stock">
+                                            <span>
+                                                Còn hàng
+                                            </span></td>
+                                        <td class="table-add-cart product-hover">
+                                            <form action="{{ route('add-cart', $item->product_details->id) }}" method="POST">
+                                                @csrf
+                                                {{-- <input type="hidden" name="qty" value="1"> --}}
+                                                <button type="submit" class="btn-cart ">Thêm vào giỏ hàng</button>
+                                            </form>
+                                        </td>
+                                    @else
+                                        <td class="table-stock">
+                                            <span class="text-red">
+                                                Hết hàng
+                                            </span></td>
+                                        <td class="table-add-cart"><a href="{{ route('shop') }}">Shop</a></td>
+                                    @endif
+                                    <td class="table-remove">
+                                        <a href="{{ route('remove-wishlist', $item->id) }}"
+                                            onclick="return confirm('Xóa sản phẩm -{{ $item->product_details->products->name }}- không?')""><i
+                                                    class=" fa fa-trash">
+                                            </i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
-            </div>
+                <div class="table-update d-flex justify-content-end mt-3">
+                    <a href="{{ route('destroy-wishlist', Auth::user()->id) }}" class="btn btn-danger btn-lg">Xóa tất cả</a>
+                </div>
+            @else
+                <div class="" role="alert">
+                    <h4>
+                        <strong>Giỏ hàng trống</strong>
+                        , quay lại <strong><a href="{{ route('shop') }}">shop</a></strong> để tiếp tục mua hàng.
+                    </h4>
+                    <a href="{{ route('shop') }}" class="btn btn-green text-white btn-lg">Quay lại</a>
+                </div>
+            @endif
         </div>
-        <!-- Wishlist Area End -->
+    </div>
+    <!-- Wishlist Area End -->
 @stop
