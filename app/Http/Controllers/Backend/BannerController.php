@@ -40,11 +40,13 @@ class BannerController extends Controller
     {
         $image= trim($request->image,url('/public/uploads/'));
         $request->validate([
-            'name' => 'required',
-            'image' => 'required',         
+            'name' => 'required|unique',
+            'image' => 'required|unique',         
         ],[
             'name.required' =>'Tên banner không được bỏ trống',
             'image.required' =>'Hình ảnh không được bỏ trống',
+            'name.unique' =>'Tên banner đã tồn tại',                   
+            'slug.unique' =>'Tên slug đã tồn tại', 
         ]);
         
         $banner= Banner::create([

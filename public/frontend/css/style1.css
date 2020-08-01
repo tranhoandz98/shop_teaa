@@ -145,3 +145,12 @@
     border-color: #78a206;
     color: #ffffff;
 }
+.ht-hero-content-one .title-logo{
+    color: #2c2c2c;
+    font-family: "Playfair Display",serif;
+    font-size: 5em;
+    font-weight: 700;
+    line-height: 0.85;
+    visibility: hidden;
+    margin-bottom: 30px;
+}

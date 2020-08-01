@@ -69,8 +69,8 @@
 						</div>	{{-- end hình ảnh --}}
 						{{-- nội dung - content --}}
 						<div class="form-group">
-							<label for="description">Nội dung</label>
-							<textarea name="content" id="description" class="form-control" rows="5" >
+							<label for="text-arena">Nội dung</label>
+							<textarea name="content" id="text-arena" class="form-control" rows="10" >
 								{{$banner->content}}
 							</textarea>
 						</div>{{-- end nội dung -content --}}

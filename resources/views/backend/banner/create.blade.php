@@ -62,8 +62,8 @@
 						@enderror	{{-- end hình ảnh --}}
 						{{-- Nội dung --}}
 						<div class="form-group">
-							<label for="description">Nội dung</label>
-							<textarea name="content" id="description" class="form-control" rows="5" ></textarea>
+							<label for="text-arena">Nội dung</label>
+							<textarea name="content" id="text-arena" class="form-control" rows="10" ></textarea>
 						</div>	{{-- end nội dung --}}
 						<button class="btn btn-info" type="submit">Thêm mới</button>
 					</form>
