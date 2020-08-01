@@ -55,8 +55,6 @@
                                         @endforeach
                                     </ul> 
                                 </li>
-                                <li><a href="{{route('shop')}}">Shop</a>
-                                </li>
                                 <li><a href="{{route('blog')}}">Tin tức</a></li>
 
                                 <li><a href="contact.html">Liên hệ</a></li>
@@ -159,7 +157,7 @@
                     <ul class="menu-overflow">
                         <li class="active"><a href="{{route('home')}}">Trang chủ</a></li>
                         <li ><a href="#">Hàng mới về</a></li>
-                        <li><a href="{{route('shop')}}">Shop</a>
+                        <li><a href="{{route('shop')}}">Trà</a>
                         </li>
                         <li><a href="blog.html">Tin tức</a></li>
                         <li><a href="contact.html">Liên hệ</a></li>
@@ -171,6 +169,25 @@
     </header>
     <!-- Header Area End -->
     @yield('main');
+     {{-- modal đăng nhập --}}
+     <div id="dang-nhap" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+             <div class="modal-header">
+                     <button type="button" class="close bg-green text-white" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                     </button>
+             </div>
+             <div class="modal-body">
+                 <div class="container p-5 text-center">
+                     <h4>Bạn chưa đăng nhập</h4>
+                     <a href="{{ route('dang-nhap') }}" class="btn btn-green text-white">Đăng nhập</a>
+                 </div>
+             </div>
+            </div>
+        </div>
+    </div>
+     {{-- end modal đăng nhập --}}
     <!-- Footer Area Start -->
     <footer class="footer-area">
         <!-- Footer Top Area Start -->

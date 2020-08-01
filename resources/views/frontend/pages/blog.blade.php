@@ -80,7 +80,7 @@
                                         <div class="sidebar-widget-option">
                                             <ul>
                                                 <li>
-                                                    <a href="{{ route('danh-muc', ['slug'=>$value->slug]) }}" class="font-weight-bold">
+                                                    <a href="{{ route('danh-muc-blog', ['slug'=>$value->slug]) }}" class="font-weight-bold">
                                                         <h5 class="text-cate">
                                                          <i class="fa fa-list-alt mr-2" aria-hidden="true"></i>
                                                          {{$value->name}} 
@@ -95,7 +95,7 @@
                                                 @if($valu->parent_id==$value->id)
                                                 <ul>
                                                     <li class="ml-4">
-                                                        <a href="{{ route('danh-muc', ['slug'=>$valu->slug]) }}">
+                                                        <a href="{{ route('danh-muc-blog', ['slug'=>$valu->slug]) }}">
                                                             <h6 class="text-cate-s">
                                                                 <i class="fa fa-bars mr-2" aria-hidden="true"></i>
                                                                 {{$valu->name}} 
