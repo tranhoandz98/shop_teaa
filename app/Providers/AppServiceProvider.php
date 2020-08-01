@@ -33,7 +33,6 @@ class AppServiceProvider extends ServiceProvider {
 			$view->with('category_pa', Category::where([['status', '=', '1'], ['parent_id', '>', '0'], ['type', '=', '1']])->orderby('name')->get());
 			$view->with('category_blog', Category::where([['status', '=', '1'], ['parent_id', '=', '0'], ['type', '=', '0']])->orderby('name')->get());
 			$view->with('category_parent', Category::where([['status', '=', '1'], ['parent_id', '>', '0'], ['type', '=', '0']])->orderby('name')->get());
-			$view->with('fee_ship', 20000);
 			$view->with('carts', \Cart::content());
 			$subtotal=0;
 			$carts=\Cart::content();
@@ -41,6 +40,8 @@ class AppServiceProvider extends ServiceProvider {
 				$subtotal+=$value->price*$value->qty;
 			}
 			$view->with('subtotal', $subtotal);
+			$ship=$subtotal>0?20000:0;
+			$view->with('fee_ship', $ship);
 		});
 	}
 

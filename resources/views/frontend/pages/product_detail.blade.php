@@ -375,254 +375,92 @@
     @endif
     <!-- Product Review Tab Area End -->
     <!-- Protuct Area Start -->
-    {{-- <div class="product-area bg-gray pb-80 mb-95 related-product">
+    <div class="product-area bg-gray pb-80 related-product">
         <div class="container">
             <div class="section-title text-center">
                 <div class="section-img d-flex justify-content-center">
                     <img src="{{ url('public') }}/frontend/img/icon/title.png" alt="">
                 </div>
-                <h2><span>Organic </span>Related products</h2>
+                <h2><span>Organic </span>Products new</h2>
             </div>
         </div>
         <div class="container text-center">
             <div class="product-carousel">
-                <div class="custom-col">
-                    <div class="single-product-item">
-                        <div class="product-image">
-                            <a href="shop.html">
-                                <img src="{{ url('public') }}/frontend/img/product/20.jpg" alt="">
-                            </a>  
-                            <div class="product-hover">
-                                <ul class="hover-icon-list">
-                                    <li>
-                                        @if (Auth::check())
-                                    <a href="{{ route('add-wishlist', ['id_user' => Auth::guard('user')->user()->id, 'id_detail' => $product_detail_id->id_detail]) }}"><i class="icon icon-Heart"></i></a>
-                                    @else
-                                    <a href="{{ route('dang-nhap') }}"><i class="icon icon-Heart"></i></a>
-                                        @endif
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="icon icon-Restart"></i></a>
-                                    </li>
-                                    
-                                </ul>
-                                <button type="button" class="p-cart-btn">Add to cart</button>
+                @foreach ($product_news as $product)
+                @if ($product->id_detail != 0)
+                    <div class="custom-col">
+                        <div class="single-product-item">
+                            <div class="product-image image-cus">
+                                <a
+                                    href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">
+                                    <img src="{{ url('public/uploads') }}/{{ $product->image }}" alt="">
+                                    @if ($product->discount > 0)
+                                        <div class="pro-discount text-center">-{{ $product->discount }}%</div>
+                                    @endif
+                                </a>
+                                @if ($product->quantity > 0)
+                                    <div class="product-hover">
+                                        <ul class="hover-icon-list">
+                                            <li>
+                                                @if (Auth::check())
+                                                    <a
+                                                        href="{{ route('add-wishlist', ['id_user' => Auth::guard('user')->user()->id, 'id_detail' => $product->id_detail]) }}"><i
+                                                            class="icon icon-Heart"></i></a>
+                                                @else
+                                                    <a class="" data-toggle="modal" href='#dang-nhap'><i
+                                                            class="icon icon-Heart"></i></a>
+                                                @endif
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('shop') }}"><i class="icon icon-Restart"></i></a>
+                                            </li>
+                                            <li><a href="{{ url('public') }}/frontend/img/product/1.jpg"
+                                                    data-toggle="modal" data-target="#productModal"><i
+                                                        class="icon icon-Search"></i></a></li>
+                                        </ul>
+                                        <button type="button" class="p-cart-btn">Thêm vào giỏ hàng</button>
+                                    </div>
+                                @else
+                                    <div class="product-hover">
+                                        <ul class="hover-icon-list bg-danger p-5">
+                                            <li>
+                                                <h3 >Hết hàng</h3>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                @endif
                             </div>
-                        </div>
-                        <div class="product-text">
-                            <div class="product-rating">
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5><a href="shop.html">Juicy Grapes</a></h5>
-                            <div class="pro-price">
-                                <span class="new-price">$86.00</span> 
-                                <span class="old-price">$92.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="custom-col">
-                    <div class="single-product-item">
-                        <div class="product-image">
-                            <a href="shop.html">
-                                <img src="{{ url('public') }}/frontend/img/product/20.jpg" alt="">
-                            </a>  
-                            <div class="product-hover">
-                                <ul class="hover-icon-list">
-                                    <li>
-                                        @if (Auth::check())
-                                    <a href="{{ route('add-wishlist', ['id_user' => Auth::guard('user')->user()->id, 'id_detail' => $value->id_detail]) }}"><i class="icon icon-Heart"></i></a>
-                                    @else
-                                    <a href="{{ route('dang-nhap') }}"><i class="icon icon-Heart"></i></a>
-                                        @endif
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="icon icon-Restart"></i></a>
-                                    </li>
-                                    
-                                </ul>
-                                <button type="button" class="p-cart-btn">Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-text">
-                            <div class="product-rating">
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5><a href="shop.html">Juicy Grapes</a></h5>
-                            <div class="pro-price">
-                                <span class="new-price">$86.00</span> 
-                                <span class="old-price">$92.00</span>
+                            <div class="product-text">
+                                <div class="product-rating">
+                                    <i class="fa fa-star-o color"></i>
+                                    <i class="fa fa-star-o color"></i>
+                                    <i class="fa fa-star-o color"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                </div>
+                                <h5><a
+                                        href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">{{ $product->name }}</a>
+                                </h5>
+                                @if ($product->discount > 0)
+                                    <div class="pro-price">
+                                        <span
+                                            class="new-price">{{ number_format($product->price - ($product->price * $product->discount) / 100) }}đ</span>
+                                        <span class="old-price">{{ number_format($product->price) }}đ</span>
+                                    </div>
+                                @else
+                                    <div class="pro-price">
+                                        <span class="new-price">{{ number_format($product->price) }}đ</span>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="custom-col">
-                    <div class="single-product-item">
-                        <div class="product-image">
-                            <a href="shop.html">
-                                <img src="{{ url('public') }}/frontend/img/product/20.jpg" alt="">
-                            </a>  
-                            <div class="product-hover">
-                                <ul class="hover-icon-list">
-                                    <li>
-                                        @if (Auth::check())
-                                    <a href="{{ route('add-wishlist', ['id_user' => Auth::guard('user')->user()->id, 'id_detail' => $value->id_detail]) }}"><i class="icon icon-Heart"></i></a>
-                                    @else
-                                    <a href="{{ route('dang-nhap') }}"><i class="icon icon-Heart"></i></a>
-                                        @endif
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="icon icon-Restart"></i></a>
-                                    </li>
-                                    
-                                </ul>
-                                <button type="button" class="p-cart-btn">Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-text">
-                            <div class="product-rating">
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5><a href="shop.html">Juicy Grapes</a></h5>
-                            <div class="pro-price">
-                                <span class="new-price">$86.00</span> 
-                                <span class="old-price">$92.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="custom-col">
-                    <div class="single-product-item">
-                        <div class="product-image">
-                            <a href="shop.html">
-                                <img src="{{ url('public') }}/frontend/img/product/20.jpg" alt="">
-                            </a>  
-                            <div class="product-hover">
-                                <ul class="hover-icon-list">
-                                    <li>
-                                        @if (Auth::check())
-                                    <a href="{{ route('add-wishlist', ['id_user' => Auth::guard('user')->user()->id, 'id_detail' => $value->id_detail]) }}"><i class="icon icon-Heart"></i></a>
-                                    @else
-                                    <a href="{{ route('dang-nhap') }}"><i class="icon icon-Heart"></i></a>
-                                        @endif
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="icon icon-Restart"></i></a>
-                                    </li>
-                                    
-                                </ul>
-                                <button type="button" class="p-cart-btn">Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-text">
-                            <div class="product-rating">
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5><a href="shop.html">Juicy Grapes</a></h5>
-                            <div class="pro-price">
-                                <span class="new-price">$86.00</span> 
-                                <span class="old-price">$92.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="custom-col">
-                    <div class="single-product-item">
-                        <div class="product-image">
-                            <a href="shop.html">
-                                <img src="{{ url('public') }}/frontend/img/product/20.jpg" alt="">
-                            </a>  
-                            <div class="product-hover">
-                                <ul class="hover-icon-list">
-                                    <li>
-                                        @if (Auth::check())
-                                    <a href="{{ route('add-wishlist', ['id_user' => Auth::guard('user')->user()->id, 'id_detail' => $value->id_detail]) }}"><i class="icon icon-Heart"></i></a>
-                                    @else
-                                    <a href="{{ route('dang-nhap') }}"><i class="icon icon-Heart"></i></a>
-                                        @endif
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="icon icon-Restart"></i></a>
-                                    </li>
-                                    
-                                </ul>
-                                <button type="button" class="p-cart-btn">Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-text">
-                            <div class="product-rating">
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5><a href="shop.html">Juicy Grapes</a></h5>
-                            <div class="pro-price">
-                                <span class="new-price">$86.00</span> 
-                                <span class="old-price">$92.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="custom-col">
-                    <div class="single-product-item">
-                        <div class="product-image">
-                            <a href="shop.html">
-                                <img src="{{ url('public') }}/frontend/img/product/20.jpg" alt="">
-                            </a>  
-                            <div class="product-hover">
-                                <ul class="hover-icon-list">
-                                    <li>
-                                        @if (Auth::check())
-                                    <a href="{{ route('add-wishlist', ['id_user' => Auth::guard('user')->user()->id, 'id_detail' => $value->id_detail]) }}"><i class="icon icon-Heart"></i></a>
-                                    @else
-                                    <a href="{{ route('dang-nhap') }}"><i class="icon icon-Heart"></i></a>
-                                        @endif
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="icon icon-Restart"></i></a>
-                                    </li>
-                                    
-                                </ul>
-                                <button type="button" class="p-cart-btn">Add to cart</button>
-                            </div>
-                        </div>
-                        <div class="product-text">
-                            <div class="product-rating">
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5><a href="shop.html">Juicy Grapes</a></h5>
-                            <div class="pro-price">
-                                <span class="new-price">$86.00</span> 
-                                <span class="old-price">$92.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endif
+            @endforeach
+               
             </div>
         </div>
-    </div> --}}
+    </div> 
     <!-- Protuct Area End -->
     <!-- Footer Area Start -->
 @stop

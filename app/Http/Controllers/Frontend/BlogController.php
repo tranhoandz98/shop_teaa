@@ -20,8 +20,7 @@ class BlogController extends Controller {
 	 */
 	public function index() {
         $blog=Blog::where('status','=','1')->paginate(3);
-		$admin=Admin::all();
-		return view('frontend.pages.blog',compact('blog','admin'));
+		return view('frontend.pages.blog',compact('blog'));
 	}
 	public function loc_data(Request $req){
 		$page= $req->number?$req->number:6;
@@ -31,12 +30,11 @@ class BlogController extends Controller {
 		$category=Category::where([['status','=','1'],['type','=','0']])->orderby('name')->get();
 		$category_id=Category::where('slug','=',$slug)->first();
 		$blog=Blog::where([['status','=','1'],['id_cate','=',$category_id->id]])->paginate(6);
-		return view('frontend.pages.danh-muc-blog',compact('category','blog','category_id'));
+		return view('frontend.pages.blog',compact('blog'));
 	}
 	public function blog_detail($slug, $id){
 		$blog=Blog::where('slug','=',$slug)->first();
 		$blog_detail=Blog::find($id);
-		$admin=Admin::all();
-		return view('frontend.pages.blog_detail',compact('blog','blog_detail','admin'));
+		return view('frontend.pages.blog_detail',compact('blog','blog_detail'));
 	}
 }

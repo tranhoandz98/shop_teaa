@@ -18,23 +18,6 @@
         <div class="post-area blog-area pt-110 pb-95 post-details">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-9 col-lg-8">
-                        <div class="single-post-item text-center pb-70">
-                            <h3 class="single-post-title"><a href="blog-details.html">{{$blog->name}}</a></h3>
-                            <div class="single-post-meta">
-                            <span> Posts by : {{$blog->admins->name}}</span>
-                                <span>{{$blog->created_at}}</span>
-                            </div>
-                            <div class="single-post-img">
-                                <img src="{{url('public/uploads')}}/{{$blog->image}}" alt="">
-                            </div>
-                            <div class="single-post-info-text text-left">
-                                <p>{!!$blog->content!!}</p>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
                     <div class="col-xl-3 col-lg-4">
                         <div class="sidebar-wrapper">
                             <div class="sidebar-widget sidebar-search-widget">
@@ -93,6 +76,24 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-xl-9 col-lg-8">
+                        <div class="single-post-item text-center pb-70">
+                            <h3 class="single-post-title"><a href="blog-details.html">{{$blog->name}}</a></h3>
+                            <div class="single-post-meta">
+                            <span> Posts by : {{$blog->admins->name}}</span>
+                                <span>{{$blog->created_at}}</span>
+                            </div>
+                            <div class="single-post-img">
+                                <img src="{{url('public/uploads')}}/{{$blog->image}}" alt="">
+                            </div>
+                            <div class="single-post-info-text text-left">
+                                <p>{!!$blog->content!!}</p>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
                 </div>
             </div>
         </div>
