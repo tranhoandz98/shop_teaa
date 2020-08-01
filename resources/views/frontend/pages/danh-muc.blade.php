@@ -1,3 +1,4 @@
+
 @extends('frontend.master')
 @section('title','Danh sách sản phẩm')
 @section('main')
@@ -84,8 +85,8 @@
                         <div class="sidebar-widget-option-wrapper">
                             @foreach($attr as $value)
                             <div class="sidebar-widget-option">
-                                <input type="checkbox" id="{{$value->value}}{{$value->id}}" name="attr" value="{{$value->id}}">
-                                <label for="{{$value->value}}{{$value->id}}">{{$value->value}} <span>(4)</span></label>
+                                <input type="checkbox" id="{{$value->value}}-{{$value->id}}" name="attr" value="{{$value->id}}">
+                                <label for="{{$value->value}}-{{$value->id}}">{{$value->value}} <span>(4)</span></label>
                             </div>
                             @endforeach
                         </div>
@@ -159,15 +160,19 @@
                                     <div class="product-hover">
                                         <ul class="hover-icon-list">
                                             <li>
-                                                <a href="wishlist.html"><i class="icon icon-Heart"></i></a>
+                                                @if (Auth::check())
+                                                    <a href="{{ route('add-wishlist', ['id_user'=>Auth::guard('user')->user()->id,'id_detail'=>$value->id_detail]) }}"><i class="icon icon-Heart"></i></a>
+                                                @else
+                                                    <a class="" data-toggle="modal" href='#dang-nhap'><i class="icon icon-Heart"></i></a>
+                                                @endif
                                             </li>
                                             <li>
                                                 <a href="{{ route('shop') }}"><i class="icon icon-Restart"></i></a>
                                             </li>
-                                            <li><a href="{{url('public')}}/frontend/img/product/1.jpg" data-toggle="modal" data-target="#productModal"><i class="icon icon-Search"></i></a></li>
                                         </ul>
                                         <button type="button" class="p-cart-btn">Thêm vào giỏ hàng</button>
                                     </div>
+                                    
                                 </div>
                                 <div class="product-text">
                                     <div class="product-rating">
@@ -209,12 +214,15 @@
                             <div class="product-hover">
                                 <ul class="hover-icon-list">
                                     <li>
-                                        <a href="wishlist.html"><i class="icon icon-Heart"></i></a>
+                                        @if (Auth::check())
+                                            <a href="{{ route('add-wishlist', ['id_user'=>Auth::guard('user')->user()->id,'id_detail'=>$value->id_detail]) }}"><i class="icon icon-Heart"></i></a>
+                                        @else
+                                            <a class="" data-toggle="modal" href='#dang-nhap'><i class="icon icon-Heart"></i></a>
+                                        @endif
                                     </li>
                                     <li>
                                         <a href="{{ route('shop') }}"><i class="icon icon-Restart"></i></a>
                                     </li>
-                                    <li><a href="{{url('public')}}/frontend/img/product/1.jpg" data-toggle="modal" data-target="#productModal"><i class="icon icon-Search"></i></a></li>
                                 </ul>
                                 <button type="button" class="p-cart-btn">Thêm vào giỏ hàng</button>
                             </div>

@@ -27,24 +27,20 @@
 								<tr>
 									<th class="sorting">STT</th>
 									<th class="sorting">Tiêu đề</th>
-									{{-- <th class="sorting">Slug</th>--}}
 									<th class="sorting">Người đăng bài</th>
-									<th class="sorting">Danh mục tin tức</th>								
 									<th class="sorting">Hình ảnh</th>
-								
+									<th class="sorting">Trạng thái</th>
 									<th class="sorting">Hành động</th>
 								</tr>
 							</thead>
 							<tbody>
 								@foreach($blog as $value)
 								<tr>
-									<td class="" tabindex="0">{{$loop->index+1}}</td>				
 									<td class="sorting_1">{{$value->name}}</td>
-									{{-- <td class="sorting_1">{{$value->slug}}</td> --}}
 									<td class="sorting_1">{{$value->admins->name}}</td>
 									<td class="sorting_1">{{$value->categories->name}}</td>
 									<td><img src="{{url('public/uploads')}}/{{$value->image}}" alt="" width="100px"></td>	
-																	
+									<td>{!!($value->status==1)?'<span class="badge badge-pill badge-soft-success font-size-12">Hiện</span>':'<span class="badge badge-pill badge-soft-danger font-size-12">Ẩn</span>'!!}</td>
 									<td>
 										<div class="row">
 											<div class="col">
@@ -53,17 +49,14 @@
 											</div>
 											<div class="col">
 												<!-- Xóa -->
-										<form action="{{route('blog.destroy',$value->id)}}" method="POST">
-											@csrf
-											@method('DELETE')
-											<button class="btn btn-danger mdi mdi-close" onclick="return confirm('Xóa tin {{$value->name}} không?')" type="submit" title="" data-original-title="Xóa" data-toggle="tooltip">
-											</button>
-											
-										</form>
+												<form action="{{route('blog.destroy',$value->id)}}" method="POST">
+													@csrf
+													@method('DELETE')
+													<button class="btn btn-danger mdi mdi-close" onclick="return confirm('Xóa tin {{$value->name}} không?')" type="submit" title="" data-original-title="Xóa" data-toggle="tooltip">
+													</button>
+												</form>
 											</div>
 										</div>
-										
-										
 									</td>
 								</tr>
 								@endforeach
