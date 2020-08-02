@@ -15,7 +15,9 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-centered table-nowrap" id="datatable">
+                    <table id="datatable-buttons"
+                                    class="table table-bordered dt-responsive nowrap dataTable no-footer dtr-inline table-hover"
+                                    role="grid" aria-describedby="datatable-buttons_info">
                         <thead>
                             <tr>
                                 <th>STT</th>

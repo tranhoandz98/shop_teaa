@@ -27,21 +27,38 @@
 									<input type="text" class="form-control" id="slug" placeholder="Slug"  name="slug">
 								</div> {{-- end tên slug --}}
 							</div>
-						</div>	
-						{{-- Trạng thái		 --}}
-						<div class="form-group">
-							<label for="">Status</label>
-							<div class="radio ml-3">
-								<label>
-									<input type="radio" name="status" id="input" value="1" checked="checked">
-									Hiện
-								</label>
-								<label>
-									<input type="radio" name="status" id="input" value="0">
-									Ẩn
-								</label>
+						</div>
+						<div class="row">
+							<div class="col">
+								{{-- tên title --}}
+								<div class="form-group">
+									<label for="title">Title</label>
+									<input type="text" class="form-control" id="title" placeholder="Nhập tiêu đề"
+										name="title" onkeyup="ChangeToSlug()" >
+									@error('title')
+									<span class="text-red">{{ $message }}</span>
+									@enderror
+								</div>
+								{{-- end tên title --}}
+							</div> {{-- end col --}}
+							<div class="col">
+								<div class="form-group">
+									<label for="">Status</label>
+									<div class="radio">
+										<label>
+											<input type="radio" name="status" id="input" value="1" checked>
+											Hiện
+										</label>
+										<label>
+											<input type="radio" name="status" id="input" value="0">
+											Ẩn
+										</label>
+									</div>
+								</div>
+								{{-- end trạng thái --}}
 							</div>
-						</div> {{-- end trạng thái --}}
+						</div>
+
 						{{-- Hình ảnh --}}
 						<div class="form-group">
 							<label for="get_image">Hình ảnh </label>
@@ -62,9 +79,9 @@
 						@enderror	{{-- end hình ảnh --}}
 						{{-- Nội dung --}}
 						<div class="form-group">
-							<label for="text-arena">Nội dung</label>
-							<textarea name="content" id="text-arena" class="form-control" rows="10" ></textarea>
-						</div>	{{-- end nội dung --}}
+							<label for="content">Nội dung</label>
+							<textarea name="content" id="content" class="form-control" rows="5"></textarea>
+						</div>
 						<button class="btn btn-info" type="submit">Thêm mới</button>
 					</form>
 				</div>
