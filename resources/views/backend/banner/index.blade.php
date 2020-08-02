@@ -2,7 +2,6 @@
 @section('title', 'Banner')
 @section('namepage', 'Banner')
 @section('main')
-
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -24,7 +23,9 @@
                             </div>
 						</div>
                         <div class="col-sm-12">
-                            <table class="table table-bordered table-hover">
+                            <table id="datatable-buttons"
+                            class="table table-bordered dt-responsive nowrap dataTable no-footer dtr-inline table-hover"
+                            role="grid" aria-describedby="datatable-buttons_info">
                                 <thead>
                                     <tr >
                                         <th >STT</th>
@@ -49,14 +50,14 @@
                                                 !!}</td>
                                             <td>
                                                 <div class="row">
-                                                    <div class="ml-2">
+                                                    <div class="col-4">
                                                         <!-- Sửa -->
                                                         <a href="{{ route('banner.edit', $value->id) }}"
                                                             class=" text-primary" data-toggle="tooltip" data-placement="top"
                                                             title="" data-original-title="Sửa"><i
                                                                 class="mdi mdi-pencil btn-success btn "></i></a>
                                                     </div>
-                                                    <div class="ml-3">
+                                                    <div class="col">
                                                         <!-- Xóa -->
                                                         <form action="{{ route('banner.destroy', $value->id) }}"
                                                             method="POST">

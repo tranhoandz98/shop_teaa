@@ -27,7 +27,7 @@
 									<input type="text" class="form-control" id="slug" placeholder="Slug"  name="slug">
 								</div> {{-- end tên slug --}}
 							</div>
-						</div>	
+						</div>
 						<div class="row">
 							<div class="col">
 								{{-- tên title --}}
