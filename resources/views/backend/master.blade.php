@@ -153,7 +153,7 @@
                             </li>
 
                             <li>
-                                <li class=""><a href="#" aria-expanded="false"><i class="bx bx-message"></i>Feedback</a>
+                                <li class=""><a href="{{route('feedback.index')}}" aria-expanded="false"><i class="bx bx-message"></i>Feedback</a>
                                 </li>
                             </li>
 

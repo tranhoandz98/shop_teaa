@@ -10,7 +10,7 @@ class Feedback_pro extends Model
 {
      protected $guarded=[];
      public function products() {
-  		return $this->hasMany(Product::class, 'id_product', 'id');
+  		return $this->belongsTo(Product::class, 'id_product', 'id');
   	}
   	public function users() {
       return $this->belongsTo(User::class, 'id_user', 'id');
