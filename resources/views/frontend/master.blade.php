@@ -153,8 +153,8 @@
                                     </div>
                                 </div>
                                 <div class="cart-links">
-                                    <a href="{{ route('cart') }}">View cart</a>
-                                    <a href="#">Checkout</a>
+                                    <a href="{{ route('cart') }}">Xem giỏ hàng</a>
+                                    <a href="{{ route('checkout') }}">Đặt hàng</a>
                                 </div>
                             </div>
                         </div>
@@ -307,30 +307,30 @@
                             <div class="single-footer-widget">
                                 <h3>Facebook</h3>
                                 <div class="instagram-image">
-                                        <div class="col-inner">
-                                            <script async="" defer="" crossorigin="anonymous"
-                                                src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&amp;version=v5.0">
-                                            </script>
-                                            <div class="fb-page fb_iframe_widget"
-                                                data-href="https://www.facebook.com/forgetmenotteashop/" data-tabs=""
-                                                data-width="280" data-height="" data-small-header="false"
-                                                data-adapt-container-width="false" data-hide-cover="false"
-                                                data-show-facepile="false" fb-xfbml-state="rendered"
-                                                fb-iframe-plugin-query="adapt_container_width=false&amp;app_id=&amp;container_width=0&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fforgetmenotteashop%2F&amp;locale=vi_VN&amp;sdk=joey&amp;show_facepile=false&amp;small_header=false&amp;tabs=&amp;width=280">
-                                                <span style="vertical-align: bottom; width: 280px; height: 130px;">
-                                                    <iframe name="f278dc05bb189c8" width="280px" height="1000px"
-                                                        data-testid="fb:page Facebook Social Plugin"
-                                                        title="fb:page Facebook Social Plugin" frameborder="0"
-                                                        allowtransparency="true" allowfullscreen="true" scrolling="no"
-                                                        allow="encrypted-media" src="
+                                    <div class="col-inner">
+                                        <script async="" defer="" crossorigin="anonymous"
+                                            src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&amp;version=v5.0">
+                                        </script>
+                                        <div class="fb-page fb_iframe_widget"
+                                            data-href="https://www.facebook.com/forgetmenotteashop/" data-tabs=""
+                                            data-width="280" data-height="" data-small-header="false"
+                                            data-adapt-container-width="false" data-hide-cover="false"
+                                            data-show-facepile="false" fb-xfbml-state="rendered"
+                                            fb-iframe-plugin-query="adapt_container_width=false&amp;app_id=&amp;container_width=0&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fforgetmenotteashop%2F&amp;locale=vi_VN&amp;sdk=joey&amp;show_facepile=false&amp;small_header=false&amp;tabs=&amp;width=280">
+                                            <span style="vertical-align: bottom; width: 280px; height: 130px;">
+                                                <iframe name="f278dc05bb189c8" width="280px" height="1000px"
+                                                    data-testid="fb:page Facebook Social Plugin"
+                                                    title="fb:page Facebook Social Plugin" frameborder="0"
+                                                    allowtransparency="true" allowfullscreen="true" scrolling="no"
+                                                    allow="encrypted-media" src="
                                                         https://www.facebook.com/v5.0/plugins/page.php?adapt_container_width=false&amp;app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df73cbe7e905db4%26domain%3Dforgetmenotmart.com%26origin%3Dhttps%253A%252F%252Fforgetmenotmart.com%252Fffe63b4b3e71f4%26relation%3Dparent.parent&amp;container_width=0&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fforgetmenotteashop%2F&amp;locale=vi_VN&amp;sdk=joey&amp;show_facepile=false&amp;small_header=false&amp;tabs=&amp;width=280
                                                         "
-                                                        style="border: none; visibility: visible; width: 280px; height: 130px;"
-                                                        class="">
-                                                    </iframe>
-                                                </span>
-                                            </div>
+                                                    style="border: none; visibility: visible; width: 280px; height: 130px;"
+                                                    class="">
+                                                </iframe>
+                                            </span>
                                         </div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -360,7 +360,8 @@
     <!-- Footer Area End -->
     <!-- All js here -->
     <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0" nonce="sT5Hk7WI"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0"
+        nonce="sT5Hk7WI"></script>
     <script src="{{ url('public') }}/frontend/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="{{ url('public') }}/frontend/js/vendor/jquery-3.2.1.min.js"></script>
     <script src="{{ url('public') }}/frontend/js/popper.min.js"></script>
@@ -383,6 +384,15 @@
     </script>
     {{-- end submit form --}}
     <script>
+        $("#addr").click( function(){
+		if($(this).is(':checked') ){
+			var old_addr = $("#old_addr").val();
+			$("#new_addr").val(old_addr);
+		}
+        else{
+            $("#new_addr").val('');
+        }
+	});
     </script>
 </body>
 

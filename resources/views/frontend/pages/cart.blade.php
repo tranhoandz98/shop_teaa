@@ -23,13 +23,13 @@
                 <thead>
                     <tr>
                         <th class="">stt</th>
-                        <th class="table-image">image</th>
-                        <th class="table-p-name">product</th>
+                        <th class="table-image">Hình ảnh</th>
+                        <th class="table-p-name">Tên sản phẩm</th>
                         <th class="">size</th>
-                        <th class="table-p-price">price</th>
-                        <th class="table-p-qty">quantity</th>
-                        <th class="table-total">total</th>
-                        <th class="table-remove">remove</th>
+                        <th class="table-p-price">Giá</th>
+                        <th class="table-p-qty">Số lượng</th>
+                        <th class="table-total">Tổng</th>
+                        <th class="table-remove">Loại bỏ</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,27 +81,27 @@
         <div class="container">
             <div class="table-total-wrapper d-flex justify-content-end pt-60">
                 <div class="table-total-content">
-                    <h2>Cart totals</h2>
+                    <h2>Tổng giỏ hàng</h2>
                     <div class="table-total-amount">
                         <div class="single-total-content d-flex justify-content-between">
-                            <span>Subtotal</span>
+                            <span>Tổng tiền</span>
                             <span class="c-total-price">
                             {{ number_format($subtotal) }} đ</span>
                         </div>
                         <div class="single-total-content d-flex justify-content-between">
-                            <span>Shipping</span>
+                            <span>Phí ship</span>
                             <span class="c-total-price"> 
                             {{ number_format($fee_ship) }} đ</span>
                         </div>
                         <div class="single-total-content d-flex justify-content-end">
-                            <a href="#">Calculate shipping</a>
+                            {{-- <a href="#">Calculate shipping</a> --}}
                         </div>
                         <div class="single-total-content d-flex justify-content-between">
-                            <span>Total</span>
+                            <span>Tổng</span>
                             <span class="c-total-price"> 
                             {{ number_format($subtotal+$fee_ship) }} đ</span>
                         </div>
-                        <a href="#">Proceed to checkout</a>
+                        <a href="{{ route('checkout') }}">Tiến hành thanh toán</a>
                     </div>
                 </div>
             </div>

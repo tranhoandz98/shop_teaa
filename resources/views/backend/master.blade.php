@@ -62,7 +62,7 @@
                     <!-- LOGO -->
                     <div class="navbar-brand-box">
                         <a href="{{ route('backend') }}" class="logo logo-light">
-                            <h2 class="text-white mt-3">Trang chủ</h2>
+                            <h4 class="text-white mt-3 font-weight-bold">Trang chủ</h4>
                         </a>
                     </div>
                     <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect"
