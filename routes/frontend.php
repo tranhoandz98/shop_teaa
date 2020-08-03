@@ -48,6 +48,11 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function () {
 	Route::get('blog/danh-muc-tin-tuc/{slug}', 'BlogController@danh_muc')->name('danh-muc-blog');
 	Route::get('blog/{slug}/{id}', 'BlogController@blog_detail')->name('blog_detail');
 
-	Route::get('/contact', 'FrontendController@contact')->name('contact');
+	Route::get('/lien-he.html', 'FrontendController@contact')->name('contact');
+	Route::get('/dat-hang.html', 'CheckoutController@index')->name('checkout');
+	Route::post('/dat-hang.html', 'CheckoutController@checkout');
+	//Đăng nhập phần checkout
+	Route::post('/dang-nhap.html', 'HomeController@post_check_out')->name('post-dang-nhap');
+
 
 });

@@ -18,6 +18,98 @@
     <div class="shop-area pt-110 pb-100 mb-95 blog-column">
         <div class="container">
             <div class="row">
+                <div class="col-xl-3 col-lg-4">
+                    <div class="sidebar-wrapper">
+                        {{-- <h3>Layered Navigation</h3> --}}
+                        <form action="{{ route('shop') }}" method="post">
+                            @csrf
+                            <div class="sidebar-widget danh-muc">
+                                <h3>Danh mục</h3>
+                                <div class="sidebar-widget-option-wrapper">
+                                    @foreach ($category_pro as $value)
+                                        @if ($value->parent_id == 0)
+                                            <div class="sidebar-widget-option">
+                                                <ul>
+                                                    <li>
+                                                        <a href="{{ route('danh-muc', ['slug' => $value->slug]) }}"
+                                                            class="font-weight-bold">
+                                                            <h5 class="text-cate">
+                                                                <i class="fa fa-list-alt mr-2" aria-hidden="true"></i>
+                                                                {{ $value->name }}
+                                                                <span>
+                                                                    @if ($value->products->count() != 0)
+                                                                        {{ $value->products->count() }}
+                                                                    @endif
+                                                                </span>
+                                                            </h5>
+                                                        </a>
+                                                        @foreach ($category_pa as $valu)
+                                                            @if ($valu->parent_id == $value->id)
+                                                                <ul>
+                                                                    <li class="ml-4">
+                                                                        <a
+                                                                            href="{{ route('danh-muc', ['slug' => $valu->slug]) }}">
+                                                                            <h6 class="text-cate-s">
+                                                                                <i class="fa fa-bars mr-2"
+                                                                                    aria-hidden="true"></i>
+                                                                                {{ $valu->name }}
+                                                                                <span>
+                                                                                    @if ($valu->products->count() != 0)
+                                                                                        ({{ $valu->products->count() }})
+                                                                                    @endif
+                                                                                </span>
+                                                                            </h6>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            @endif
+                                                        @endforeach
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                            {{-- <div class="sidebar-widget price-widget">
+                                <h3>Lọc theo giá</h3>
+                                <div class="price-slider-container">
+                                    <div id="slider-range"></div>
+                                    <div class="price_slider_amount">
+                                        <div class="slider-values">
+                                            <input type="text" id="amount" name="price" placeholder="Add Your Price" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
+                            {{-- <div class="sidebar-widget">
+                                <h3>Size</h3>
+                                <div class="sidebar-widget-option-wrapper">
+                                    @foreach ($attr as $value)
+                                        <div class="sidebar-widget-option">
+                                            <input type="checkbox" id="{{ $value->value }}-{{ $value->id }}" name="attr"
+                                                value="{{ $value->id }}">
+                                            <label for="{{ $value->value }}-{{ $value->id }}">{{ $value->value }}
+                                                <span>(4)</span></label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div> --}}
+                            <span class="qty-hide">
+                                <button class="btn bg-green text-white" type="submit" id="submit">
+                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                </button>
+                            </span>
+                    </div>
+                    <div class="sidebar-banner-img">
+                        @foreach ($ads as $item)
+                            <img src="{{ url('public/uploads') }}/{{ $item->value }}" alt="" class="w-100 mb-10">
+                        @endforeach
+                        <div class="fb-page" data-href="https://www.facebook.com/forgetmenotteashop/" data-width="380"
+                            data-hide-cover="false" data-show-facepile="false">
+                        </div>
+                    </div>
+                </div>
                 <div class="order-xl-2 order-lg-2 col-xl-9 col-lg-8">
                     <div class="ht-product-tab">
                         <div class="ht-tab-content">
@@ -250,100 +342,6 @@
                         </div>
                     @endif
                 </div>
-                <div class="col-xl-3 col-lg-4">
-                    <div class="sidebar-wrapper">
-                        {{-- <h3>Layered Navigation</h3> --}}
-                        <form action="{{ route('shop') }}" method="post">
-                            @csrf
-                            <div class="sidebar-widget danh-muc">
-                                <h3>Danh mục</h3>
-                                <div class="sidebar-widget-option-wrapper">
-                                    @foreach ($category_pro as $value)
-                                        @if ($value->parent_id == 0)
-                                            <div class="sidebar-widget-option">
-                                                <ul>
-                                                    <li>
-                                                        <a href="{{ route('danh-muc', ['slug' => $value->slug]) }}"
-                                                            class="font-weight-bold">
-                                                            <h5 class="text-cate">
-                                                                <i class="fa fa-list-alt mr-2" aria-hidden="true"></i>
-                                                                {{ $value->name }}
-                                                                <span>
-                                                                    @if ($value->products->count() != 0)
-                                                                        {{ $value->products->count() }}
-                                                                    @endif
-                                                                </span>
-                                                            </h5>
-                                                        </a>
-                                                        @foreach ($category_pa as $valu)
-                                                            @if ($valu->parent_id == $value->id)
-                                                                <ul>
-                                                                    <li class="ml-4">
-                                                                        <a
-                                                                            href="{{ route('danh-muc', ['slug' => $valu->slug]) }}">
-                                                                            <h6 class="text-cate-s">
-                                                                                <i class="fa fa-bars mr-2"
-                                                                                    aria-hidden="true"></i>
-                                                                                {{ $valu->name }}
-                                                                                <span>
-                                                                                    @if ($valu->products->count() != 0)
-                                                                                        ({{ $valu->products->count() }})
-                                                                                    @endif
-                                                                                </span>
-                                                                            </h6>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            @endif
-                                                        @endforeach
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </div>
-                            {{-- <div class="sidebar-widget price-widget">
-                                <h3>Lọc theo giá</h3>
-                                <div class="price-slider-container">
-                                    <div id="slider-range"></div>
-                                    <div class="price_slider_amount">
-                                        <div class="slider-values">
-                                            <input type="text" id="amount" name="price" placeholder="Add Your Price" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
-                            {{-- <div class="sidebar-widget">
-                                <h3>Size</h3>
-                                <div class="sidebar-widget-option-wrapper">
-                                    @foreach ($attr as $value)
-                                        <div class="sidebar-widget-option">
-                                            <input type="checkbox" id="{{ $value->value }}-{{ $value->id }}" name="attr"
-                                                value="{{ $value->id }}">
-                                            <label for="{{ $value->value }}-{{ $value->id }}">{{ $value->value }}
-                                                <span>(4)</span></label>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div> --}}
-                            <span class="qty-hide">
-                                <button class="btn bg-green text-white" type="submit" id="submit">
-                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                </button>
-                            </span>
-                        </form>
-                    </div>
-                    <div class="sidebar-banner-img">
-                        @foreach ($ads as $item)
-                            <img src="{{ url('public/uploads') }}/{{ $item->value }}" alt="" class="w-100 mb-10">
-                        @endforeach
-                        <div class="fb-page" data-href="https://www.facebook.com/forgetmenotteashop/" data-width="380"
-                            data-hide-cover="false" data-show-facepile="false">
-                        </div>
-                    </div>
-                </div>
-                
             </div>
         </div>
     </div>

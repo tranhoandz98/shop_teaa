@@ -41,7 +41,7 @@
                                 </a>
                             </li>
                             <li aria-expanded="false">
-                                <a class="nav-link" href="{{ route('wishlist') }}">
+                                <a class="nav-link" href="{{ route('wishlist',Auth::user()->id) }}">
                                     <p class="font-weight-bold">Sản phẩm ưa thích</p>
                                 </a>
                             </li>

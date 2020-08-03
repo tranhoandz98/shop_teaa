@@ -77,7 +77,11 @@
                 <div class="form-group">
                     <label for="avatar">Avatar</label>
                     <input type="file" name="image" id="avatar" value="">
+                   
                 </div>
+                @error('image')
+				<span class="text-red">{{$message}}</span>
+				@enderror
                 <div class="form-group">
                     <img src="{{ url('public/uploads/Users') }}/{{ $user->avatar }}" alt="" class="w-25">
                 </div>        
