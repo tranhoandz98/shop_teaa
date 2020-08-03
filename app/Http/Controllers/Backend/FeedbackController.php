@@ -59,7 +59,6 @@ class FeedbackController extends Controller
      */
     public function edit($id)
     {
-         
     }
 
     /**
@@ -71,11 +70,12 @@ class FeedbackController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $feedback=Feedback_pro::find($id);
         $feedback->update([
-            'status','0'
+            'status'=>$request->status,
         ]);
-            return redirect()->route('feedback.index')->with('success','Xóa thành công');   
+            return redirect()->back()->with('success','Cập nhật thành công');
     }
 
     /**
