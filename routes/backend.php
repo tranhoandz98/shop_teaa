@@ -15,6 +15,7 @@ Route::group(['prefix' => 'backend', 'namespace' => 'Backend', 'middleware' => '
 	Route::resources(['blog' => 'BlogController']);
 	Route::resources(['banner' => 'BannerController']);
 	Route::resources(['config' => 'ConfigController']);
+	Route::resources(['feedback' => 'FeedbackController']);
 		Route::resources(['logo' => 'LogoController']);
 		Route::resources(['ads' => 'AdsController']);
 		Route::resources(['contact' => 'ContactController']);
