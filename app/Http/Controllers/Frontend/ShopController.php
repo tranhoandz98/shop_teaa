@@ -75,8 +75,7 @@ class ShopController extends Controller
 				$product->setAttribute('quantity', '0');
 			}
 		}
-		
-		return view('frontend.pages.danh-muc',compact('category','products','attr','category_id'));
+		return view('frontend.pages.shop',compact('category','products','attr','category_id'));
 	}
 	/**
 	 * [product_detail description]
@@ -93,7 +92,25 @@ class ShopController extends Controller
 		$product_detail_id=Product_detail::find($id_detail);
 		$feedback_pro=Feedback_pro::where('id_product','=',$product->id)->get();
 		$user=User::all();
-		return view('frontend.pages.product_detail',compact('product','product_detail','product_detail_id','img_pro','attr','feedback_pro','user'));
+
+		$product_news=Product::where([['status','=','1']])->orderby('created_at','desc')->limit(12)->get();
+		// dd($product_news);
+		foreach ($product_news as $key=> $item) {
+			$details = isset($item->product_details)?$item->product_details:[];
+			if (isset($details[0])){
+				$item->setAttribute('price', $details[0]['price']);
+				$item->setAttribute('discount', $details[0]['discount']);
+				$item->setAttribute('id_detail', $details[0]['id']);
+				$item->setAttribute('quantity', $details[0]['quantity']);
+			}
+			else{
+				$item->setAttribute('price', '0');
+				$item->setAttribute('discount', '0');
+				$item->setAttribute('id_detail', '0');
+				$item->setAttribute('quantity', '0');
+			}
+		}
+		return view('frontend.pages.product_detail',compact('product','product_news','product_detail','product_detail_id','img_pro','attr','feedback_pro','user'));
 	}
 	public function comment(Request $req,$id,$id_user){
 		Feedback_pro::create([

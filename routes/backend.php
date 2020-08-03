@@ -15,6 +15,10 @@ Route::group(['prefix' => 'backend', 'namespace' => 'Backend', 'middleware' => '
 	Route::resources(['blog' => 'BlogController']);
 	Route::resources(['banner' => 'BannerController']);
 	Route::resources(['config' => 'ConfigController']);
+		Route::resources(['logo' => 'LogoController']);
+		Route::resources(['ads' => 'AdsController']);
+		Route::resources(['contact' => 'ContactController']);
+
 });
 Route::get('/backend/login', 'Backend\BackendController@login')->name('login');
 Route::post('/backend/login', 'Backend\BackendController@postLogin');

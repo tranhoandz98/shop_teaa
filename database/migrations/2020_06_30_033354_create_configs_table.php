@@ -15,7 +15,8 @@ class CreateConfigsTable extends Migration {
 			$table->increments('id');
 			$table->string('name',100)->unique();
 			$table->string('slug',100)->unique();
-			$table->string('value');
+			$table->text('value')->nullable();
+			$table->tinyInteger('type')->default(1)->comment('1 là hình ảnh, 2 là ads, 3 là contact, 4 là about us');
 			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->timestamps();
 		});

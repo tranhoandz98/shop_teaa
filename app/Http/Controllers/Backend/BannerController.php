@@ -16,8 +16,8 @@ class BannerController extends Controller
      */
     public function index()
     {
-        $banner=Banner::all();
-        return view('backend.banner.index',compact('banner'));
+        $banner = Banner::all();
+        return view('backend.banner.index', compact('banner'));
     }
 
     /**
@@ -38,24 +38,26 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        $image= trim($request->image,url('/public/uploads/'));
+        $image = trim($request->image, url('/public/uploads/'));
         $request->validate([
-            'name' => 'required',
-            'image' => 'required',         
-        ],[
-            'name.required' =>'Tên banner không được bỏ trống',
-            'image.required' =>'Hình ảnh không được bỏ trống',
+            'name' => 'required|unique',
+            'image' => 'required|unique',
+        ], [
+            'name.required' => 'Tên banner không được bỏ trống',
+            'image.required' => 'Hình ảnh không được bỏ trống',
+            'name.unique' => 'Tên banner đã tồn tại',
+            'slug.unique' => 'Tên slug đã tồn tại',
         ]);
-        
-        $banner= Banner::create([
-            'name'=>$request->name,
-            'slug'=>$request->slug,
-            'image'=>$image,
-            'content'=>$request->content,
-            'status'=>$request->status
-        ]);
-        return redirect()->route('banner.index')->with('success','Thêm mới thành công');
 
+        $banner = Banner::create([
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'title' => $request->title,
+            'image' => $image,
+            'content' => $request->content,
+            'status' => $request->status
+        ]);
+        return redirect()->route('banner.index')->with('success', 'Thêm mới thành công');
     }
 
     /**
@@ -77,9 +79,8 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        $banner=Banner::find($id);
-        return view('backend.banner.edit',compact('banner'));
-        
+        $banner = Banner::find($id);
+        return view('backend.banner.edit', compact('banner'));
     }
 
     /**
@@ -91,30 +92,31 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $banner=Banner::find($id);
-        if ($request->image=='') {
-            $image=$banner->image;
-        }else{
-           $image= trim($request->image,url('/public/uploads/'));
-       }
+        $banner = Banner::find($id);
+        if ($request->image == '') {
+            $image = $banner->image;
+        } else {
+            $image = trim($request->image, url('/public/uploads/'));
+        }
         $request->validate([
-            'name' => ['required',Rule::unique('banners')->ignore($id)],                
-            'slug' => ['required',Rule::unique('banners')->ignore($id)],                
-        ],[
-            'name.required' =>'Tên banner không được bỏ trống',                   
-            'name.unique' =>'Tên banner đã tồn tại',                   
-            'slug.required' =>'Tên banner không được bỏ trống',                   
-            'slug.unique' =>'Tên slug đã tồn tại',                   
+            'name' => ['required', Rule::unique('banners')->ignore($id)],
+            'slug' => ['required', Rule::unique('banners')->ignore($id)],
+        ], [
+            'name.required' => 'Tên banner không được bỏ trống',
+            'name.unique' => 'Tên banner đã tồn tại',
+            'slug.required' => 'Tên banner không được bỏ trống',
+            'slug.unique' => 'Tên slug đã tồn tại',
         ]);
         $banner->update([
-            'name'=>$request->name,
-            'slug'=>$request->slug,
-            'image'=>$image,
-            'content'=>$request->content,
-            'status'=>$request->status,
-            
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'title' => $request->title,
+            'image' => $image,
+            'content' => $request->content,
+            'status' => $request->status,
+
         ]);
-        return redirect()->route('banner.index')->with('success','Cập nhật thành công');
+        return redirect()->route('banner.index')->with('success', 'Cập nhật thành công');
     }
 
     /**
@@ -125,8 +127,8 @@ class BannerController extends Controller
      */
     public function destroy($id)
     {
-        $banner=Banner::find($id);
+        $banner = Banner::find($id);
         $banner->delete();
-        return redirect()->route('banner.index')->with('success','Xóa thành công');
+        return redirect()->route('banner.index')->with('success', 'Xóa thành công');
     }
 }

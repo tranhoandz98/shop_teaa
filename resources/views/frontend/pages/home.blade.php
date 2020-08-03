@@ -8,10 +8,10 @@
                         <!-- Single Slide Start -->
                     <div class="ht-single-slide" style="background-image: url({{url('public/uploads')}}/{{$value->image}})">
                         <div class="ht-hero-content-one container">
-                            <h3>For Get Me Not</h3>
-                            <h1 class="cssanimation leDoorCloseLeft sequence">{{$value->name}}</h1>
-                         <p>{!!$value->content!!}</p>
-                            <a href="{{route('shop')}}" class="default-btn large circle blue hover-blue uppercase">XEM NGAY</a>
+                            {{-- <h3>For Get Me Not</h3> --}}
+                            <h1 class="cssanimation leDoorCloseLeft sequence title-logo">{{$value->title}}</h1>
+                         <p>{{$value->content}}</p>
+                            {{-- <a href="{{route('shop')}}" class="default-btn large circle blue hover-blue uppercase">Shop now</a> --}}
                         </div>
                     </div>
                     <!-- Single Slide End -->

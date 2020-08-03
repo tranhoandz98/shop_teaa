@@ -26,6 +26,7 @@ class CreateBlogsTable extends Migration {
 			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
 			$table->timestamps();
 			$table->foreign('id_cate')->references('id')->on('categories');
+			// $table->foreign('id_cate')->references('id')->on('categories')->onDelete('cascade');
 			   $table->foreign('id_admin')->references('id')->on('admins');
 		});
 	}

@@ -18,23 +18,6 @@
         <div class="post-area blog-area pt-110 pb-95 post-details">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-9 col-lg-8">
-                        <div class="single-post-item text-center pb-70">
-                            <h3 class="single-post-title"><a href="blog-details.html">{{$blog->name}}</a></h3>
-                            <div class="single-post-meta">
-                            <span> Posts by : {{$blog->admins->name}}</span>
-                                <span>{{$blog->created_at}}</span>
-                            </div>
-                            <div class="single-post-img">
-                                <img src="{{url('public/uploads')}}/{{$blog->image}}" alt="">
-                            </div>
-                            <div class="single-post-info-text text-left">
-                                <p>{!!$blog->content!!}</p>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
                     <div class="col-xl-3 col-lg-4">
                         <div class="sidebar-wrapper">
                             <div class="sidebar-widget sidebar-search-widget">
@@ -54,7 +37,7 @@
                                         <div class="sidebar-widget-option">
                                             <ul>
                                                 <li>
-                                                    <a href="{{ route('danh-muc', ['slug'=>$value->slug]) }}" class="font-weight-bold">
+                                                    <a href="{{ route('danh-muc-blog', ['slug'=>$value->slug]) }}" class="font-weight-bold">
                                                         <h5 class="text-cate">
                                                          <i class="fa fa-list-alt mr-2" aria-hidden="true"></i>
                                                          {{$value->name}} 
@@ -69,7 +52,7 @@
                                                 @if($valu->parent_id==$value->id)
                                                 <ul>
                                                     <li class="ml-4">
-                                                        <a href="{{ route('danh-muc', ['slug'=>$valu->slug]) }}">
+                                                        <a href="{{ route('danh-muc-blog', ['slug'=>$valu->slug]) }}">
                                                             <h6 class="text-cate-s">
                                                                 <i class="fa fa-bars mr-2" aria-hidden="true"></i>
                                                                 {{$valu->name}} 
@@ -93,6 +76,24 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-xl-9 col-lg-8">
+                        <div class="single-post-item text-center pb-70">
+                            <h3 class="single-post-title"><a href="blog-details.html">{{$blog->name}}</a></h3>
+                            <div class="single-post-meta">
+                            <span> Posts by : {{$blog->admins->name}}</span>
+                                <span>{{$blog->created_at}}</span>
+                            </div>
+                            <div class="single-post-img">
+                                <img src="{{url('public/uploads')}}/{{$blog->image}}" alt="">
+                            </div>
+                            <div class="single-post-info-text text-left">
+                                <p>{!!$blog->content!!}</p>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
                 </div>
             </div>
         </div>
