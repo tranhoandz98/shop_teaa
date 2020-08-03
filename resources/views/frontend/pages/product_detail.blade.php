@@ -126,12 +126,12 @@
                             </div>
                             <div class="product-tag-cat">
                                 <div class="single-tag-cat">
-                                    <span class="p-d-title">Categories:</span>
+                                    <span class="p-d-title">Danh mục:</span>
                                     <a
                                         href="{{ route('danh-muc', $product->categories->slug) }}">{{ $product->categories->name }}</a>
                                 </div>
                             </div>
-                            <div class="product-share">
+                            {{-- <div class="product-share">
                                 <span class="p-d-title">Share this product</span>
                                 <ul class="p-social-links">
                                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -140,7 +140,7 @@
                                     <li><a href="#"><i class="fa fa-google"></i></a></li>
                                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </form>
                     </div>
                 </div>
@@ -173,19 +173,27 @@
                             <div class="p-review-wrapper">
                                 <div class="style-rating row">
                                     <div class="card text-center col mr-1">
-                                        <div class="card-body">
+                                        <div class="card-body ">
                                             <h4 class="title">Đánh giá trung bình</h4>
-                                            <p class="score text-red">4/5</p>
-                                            <div class="rating-number">
-                                                <i class="fa fa-star color"></i>
-                                                <i class="fa fa-star color"></i>
-                                                <i class="fa fa-star color"></i>
-                                                <i class="fa fa-star color"></i>
-                                                <i class="fa fa-star "></i>
+                                            <p class="score text-red">
+                                                <span>{{ $star }}</span>
+                                                /5</p>
+                                            <div clas="p-review-text">
+                                                <div class="rating-number">
+                                                    @for ($i = 0; $i < $star; $i++)
+                                                        <i class="fa fa-star text-green"></i>
+                                                    @endfor
+                                                    @for ($i = 0; $i < 5 - $star; $i++)
+                                                        {{-- <label for="rate1"></label>
+                                                        --}}
+                                                        <i class="fa fa-star"></i>
+                                                    @endfor
+                                                </div>
                                             </div>
-                                            <p>(21 nhận xét)</p>
+                                            <p>({{ $count_star }} nhận xét)</p>
                                         </div>
                                     </div>
+                                    @if ($star>0)
                                     <div class="card col mr-1">
                                         <div class="card-body">
                                             <div class="row">
@@ -196,14 +204,13 @@
                                                 <div class="col btn-lg">
                                                     <div class="progress">
                                                         <div class="progress-bar bg-green" role="progressbar"
-                                                            style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                                                            aria-valuemax="100">
-
+                                                            style="width: {{ ($five / $count_star) * 100 }}%;"
+                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-2">
-                                                    25%
+                                                    {{ ($five / $count_star) * 100 }} %
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -214,13 +221,13 @@
                                                 <div class="col btn-lg">
                                                     <div class="progress">
                                                         <div class="progress-bar bg-primary" role="progressbar"
-                                                            style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                                                            aria-valuemax="100">
+                                                            style="width: {{ ($four / $count_star) * 100 }}%;"
+                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-2">
-                                                    25%
+                                                    {{ ($four / $count_star) * 100 }} %
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -231,13 +238,13 @@
                                                 <div class="col btn-lg">
                                                     <div class="progress">
                                                         <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                                                            aria-valuemax="100">
+                                                            style="width: {{ ($three / $count_star) * 100 }}%;"
+                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-2">
-                                                    25%
+                                                    {{ ($three / $count_star) * 100 }}%
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -248,13 +255,13 @@
                                                 <div class="col btn-lg">
                                                     <div class="progress">
                                                         <div class="progress-bar bg-warning" role="progressbar"
-                                                            style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                                                            aria-valuemax="100">
+                                                            style="width: {{ ($two / $count_star) * 100 }}%;"
+                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-2">
-                                                    25%
+                                                    {{ ($two / $count_star) * 100 }}%
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -265,33 +272,124 @@
                                                 <div class="col btn-lg">
                                                     <div class="progress">
                                                         <div class="progress-bar bg-danger" role="progressbar"
-                                                            style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                                                            aria-valuemax="100">
+                                                            style="width: {{ ($one / $count_star) * 100 }}%;"
+                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-2">
-                                                    25%
+                                                    {{ ($one / $count_star) * 100 }}%
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
+                                    @else
+                                    <div class="card col mr-1">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <span>5</span>
+                                                    <i class="fa fa-star color"></i>
+                                                </div>
+                                                <div class="col btn-lg">
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-green" role="progressbar"
+                                                            style="width: 0%;"
+                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                  0%
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <span>4</span>
+                                                    <i class="fa fa-star color"></i>
+                                                </div>
+                                                <div class="col btn-lg">
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-primary" role="progressbar"
+                                                            style="width: 0%;"
+                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    0%
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <span>3</span>
+                                                    <i class="fa fa-star color"></i>
+                                                </div>
+                                                <div class="col btn-lg">
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                            style="width: 0%;"
+                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                   0%
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <span>2</span>
+                                                    <i class="fa fa-star color"></i>
+                                                </div>
+                                                <div class="col btn-lg">
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-warning" role="progressbar"
+                                                            style="width:0%;"
+                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    0%
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <span>1</span>
+                                                    <i class="fa fa-star color"></i>
+                                                </div>
+                                                <div class="col btn-lg">
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-danger" role="progressbar"
+                                                            style="width: 0%;"
+                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    0%
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
+                                    
                                     <div class="card text-center col">
                                         <div class="card-body">
                                             <p>Chia sẻ nhận xét về sản phẩm</p>
                                             <!-- Button trigger modal -->
                                             @if (Auth::check())
-                                            <button type="button" class="btn btn-green text-white" data-toggle="modal"
-                                                data-target="#exampleModal">
-                                                Viết nhận xét của bạn
-                                            </button>
-                                                @else
                                                 <button type="button" class="btn btn-green text-white" data-toggle="modal"
-                                                data-target="#dang-nhap">
-                                                Viết nhận xét của bạn
-                                            </button>
-                                                @endif
+                                                    data-target="#exampleModal">
+                                                    Viết nhận xét của bạn
+                                                </button>
+                                            @else
+                                                <button type="button" class="btn btn-green text-white" data-toggle="modal"
+                                                    data-target="#dang-nhap">
+                                                    Viết nhận xét của bạn
+                                                </button>
+                                            @endif
                                             <!-- End Button trigger modal -->
                                         </div>
                                     </div>
@@ -309,13 +407,15 @@
                                         <div class="p-review-text">
                                             <div class="rating-number">
                                                 @for ($i = 0; $i < $feedback->star; $i++)
-                                                        {{-- <label for="rate1"></label> --}}
-                                                        <i class="fa fa-star color"></i>
-                                                    @endfor
-                                                    @for ($i = 0; $i < 5 - $feedback->star; $i++)
-                                                            {{-- <label for="rate1"></label> --}}
-                                                            <i class="fa fa-star"></i>
-                                                        @endfor
+                                                    {{-- <label for="rate1"></label>
+                                                    --}}
+                                                    <i class="fa fa-star color"></i>
+                                                @endfor
+                                                @for ($i = 0; $i < 5 - $feedback->star; $i++)
+                                                    {{-- <label for="rate1"></label>
+                                                    --}}
+                                                    <i class="fa fa-star"></i>
+                                                @endfor
                                             </div>
                                             <span class="p-review-info"><span>{{ $feedback->users->name }}</span> –
                                                 {{ $feedback->created_at }}</span>
@@ -332,46 +432,46 @@
     </div>
     <!-- Modal -->
     @if (Auth::check())
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button type="button" class="close bg-green text-white" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-                <div class="modal-body">
-                    <div class="container p-5">
-                        <h4>Nhận xét của bạn:</h4>
-                        <form
-                            action="{{ route('comment', ['id' => $product->id, 'id_user' => Auth::guard('user')->user()->id]) }}"
-                            method="POST" role="form">
-                            @csrf
-                            <fieldset class="starability-fade">
-                                <input type="radio" id="rate1" name="rating" value="1" />
-                                <label for="rate1" title="Rất tệ">1 star</label>
-                                <input type="radio" id="rate2" name="rating" value="2" />
-                                <label for="rate2" title="Không tốt">2 stars</label>
-                                <input type="radio" id="rate3" name="rating" value="3" />
-                                <label for="rate3" title="Bình thường">3 stars</label>
-                                <input type="radio" id="rate4" name="rating" value="4" />
-                                <label for="rate4" title="Rất tốt">4 stars</label>
-                                <input type="radio" id="rate5" name="rating" value="5" checked />
-                                <label for="rate5" title="Tuyệt">5 stars</label>
-                            </fieldset>
-                            <div class="form-group">
-                                <label for="content">Nhận xét</label>
-                                <textarea name="content" id="content" class="form-control" rows="7"> </textarea>
-                            </div>
-                            <button type="submit" class="btn btn-green text-white">Gửi</button>
-                        </form>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="close bg-green text-white" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container p-5">
+                            <h4>Nhận xét của bạn:</h4>
+                            <form
+                                action="{{ route('comment', ['id' => $product->id, 'id_user' => Auth::guard('user')->user()->id]) }}"
+                                method="POST" role="form">
+                                @csrf
+                                <fieldset class="starability-fade">
+                                    <input type="radio" id="rate1" name="rating" value="1" />
+                                    <label for="rate1" title="Rất tệ">1 star</label>
+                                    <input type="radio" id="rate2" name="rating" value="2" />
+                                    <label for="rate2" title="Không tốt">2 stars</label>
+                                    <input type="radio" id="rate3" name="rating" value="3" />
+                                    <label for="rate3" title="Bình thường">3 stars</label>
+                                    <input type="radio" id="rate4" name="rating" value="4" />
+                                    <label for="rate4" title="Rất tốt">4 stars</label>
+                                    <input type="radio" id="rate5" name="rating" value="5" checked />
+                                    <label for="rate5" title="Tuyệt">5 stars</label>
+                                </fieldset>
+                                <div class="form-group">
+                                    <label for="content">Nhận xét</label>
+                                    <textarea name="content" id="content" class="form-control" rows="7"> </textarea>
+                                </div>
+                                <button type="submit" class="btn btn-green text-white">Gửi</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
-</div>
     @endif
     <!-- Product Review Tab Area End -->
     <!-- Protuct Area Start -->
@@ -381,86 +481,86 @@
                 <div class="section-img d-flex justify-content-center">
                     <img src="{{ url('public') }}/frontend/img/icon/title.png" alt="">
                 </div>
-                <h2><span>Organic </span>Products new</h2>
+                <h2><span></span>Sản phẩm mới nhất</h2>
             </div>
         </div>
         <div class="container text-center">
             <div class="product-carousel">
                 @foreach ($product_news as $product)
-                @if ($product->id_detail != 0)
-                    <div class="custom-col">
-                        <div class="single-product-item">
-                            <div class="product-image image-cus">
-                                <a
-                                    href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">
-                                    <img src="{{ url('public/uploads') }}/{{ $product->image }}" alt="">
-                                    @if ($product->discount > 0)
-                                        <div class="pro-discount text-center">-{{ $product->discount }}%</div>
+                    @if ($product->id_detail != 0)
+                        <div class="custom-col">
+                            <div class="single-product-item">
+                                <div class="product-image image-cus">
+                                    <a
+                                        href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">
+                                        <img src="{{ url('public/uploads') }}/{{ $product->image }}" alt="">
+                                        @if ($product->discount > 0)
+                                            <div class="pro-discount text-center">-{{ $product->discount }}%</div>
+                                        @endif
+                                    </a>
+                                    @if ($product->quantity > 0)
+                                        <div class="product-hover">
+                                            <ul class="hover-icon-list">
+                                                <li>
+                                                    @if (Auth::check())
+                                                        <a
+                                                            href="{{ route('add-wishlist', ['id_user' => Auth::guard('user')->user()->id, 'id_detail' => $product->id_detail]) }}"><i
+                                                                class="icon icon-Heart"></i></a>
+                                                    @else
+                                                        <a class="" data-toggle="modal" href='#dang-nhap'><i
+                                                                class="icon icon-Heart"></i></a>
+                                                    @endif
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('shop') }}"><i class="icon icon-Restart"></i></a>
+                                                </li>
+                                                <li><a href="{{ url('public') }}/frontend/img/product/1.jpg"
+                                                        data-toggle="modal" data-target="#productModal"><i
+                                                            class="icon icon-Search"></i></a></li>
+                                            </ul>
+                                            <button type="button" class="p-cart-btn">Thêm vào giỏ hàng</button>
+                                        </div>
+                                    @else
+                                        <div class="product-hover">
+                                            <ul class="hover-icon-list bg-danger p-5">
+                                                <li>
+                                                    <h3>Hết hàng</h3>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     @endif
-                                </a>
-                                @if ($product->quantity > 0)
-                                    <div class="product-hover">
-                                        <ul class="hover-icon-list">
-                                            <li>
-                                                @if (Auth::check())
-                                                    <a
-                                                        href="{{ route('add-wishlist', ['id_user' => Auth::guard('user')->user()->id, 'id_detail' => $product->id_detail]) }}"><i
-                                                            class="icon icon-Heart"></i></a>
-                                                @else
-                                                    <a class="" data-toggle="modal" href='#dang-nhap'><i
-                                                            class="icon icon-Heart"></i></a>
-                                                @endif
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('shop') }}"><i class="icon icon-Restart"></i></a>
-                                            </li>
-                                            <li><a href="{{ url('public') }}/frontend/img/product/1.jpg"
-                                                    data-toggle="modal" data-target="#productModal"><i
-                                                        class="icon icon-Search"></i></a></li>
-                                        </ul>
-                                        <button type="button" class="p-cart-btn">Thêm vào giỏ hàng</button>
-                                    </div>
-                                @else
-                                    <div class="product-hover">
-                                        <ul class="hover-icon-list bg-danger p-5">
-                                            <li>
-                                                <h3 >Hết hàng</h3>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="product-text">
-                                <div class="product-rating">
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
                                 </div>
-                                <h5><a
-                                        href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">{{ $product->name }}</a>
-                                </h5>
-                                @if ($product->discount > 0)
-                                    <div class="pro-price">
-                                        <span
-                                            class="new-price">{{ number_format($product->price - ($product->price * $product->discount) / 100) }}đ</span>
-                                        <span class="old-price">{{ number_format($product->price) }}đ</span>
+                                <div class="product-text">
+                                    <div class="product-rating">
+                                        <i class="fa fa-star-o color"></i>
+                                        <i class="fa fa-star-o color"></i>
+                                        <i class="fa fa-star-o color"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
                                     </div>
-                                @else
-                                    <div class="pro-price">
-                                        <span class="new-price">{{ number_format($product->price) }}đ</span>
-                                    </div>
-                                @endif
+                                    <h5><a
+                                            href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">{{ $product->name }}</a>
+                                    </h5>
+                                    @if ($product->discount > 0)
+                                        <div class="pro-price">
+                                            <span
+                                                class="new-price">{{ number_format($product->price - ($product->price * $product->discount) / 100) }}đ</span>
+                                            <span class="old-price">{{ number_format($product->price) }}đ</span>
+                                        </div>
+                                    @else
+                                        <div class="pro-price">
+                                            <span class="new-price">{{ number_format($product->price) }}đ</span>
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endif
-            @endforeach
-               
+                    @endif
+                @endforeach
+
             </div>
         </div>
-    </div> 
+    </div>
     <!-- Protuct Area End -->
     <!-- Footer Area Start -->
 @stop

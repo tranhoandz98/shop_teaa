@@ -47,7 +47,6 @@
                             </td>
                             <td class="table-p-name">
                                 {{ is_numeric($cart->options['size'])?$cart->options['size'].'g':$cart->options['size'] }}
-
                             </td>
                             <td class="table-p-price">
                                 <p>{{ number_format($cart->price) }} đ</p>
@@ -59,7 +58,7 @@
                                     <span class="qty-hide">
                                         <button class="" type="submit" id="submit">
                                             <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                        </button>  
+                                        </button>
                                     </span>
                                 </td>
                             </form>
