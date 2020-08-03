@@ -46,14 +46,14 @@
                                     <td>{{ $loop->index+1 }}</td>
                                     <td class="table-image">
                                         <a
-                                            href="{{ route('product_detail', ['slug' => $item->product_details->products->slug, 'id_detail' => $item->product_details->id]) }}">
+                                            href="{{ route('product-detail', ['slug' => $item->product_details->products->slug, 'id_detail' => $item->product_details->id]) }}">
                                             <img src="{{ url('public/uploads') }}/{{ $item->product_details->products->image }}"
                                                 alt="">
                                         </a>
                                     </td>
                                     <td class="table-p-name">
                                         <a
-                                            href="{{ route('product_detail', ['slug' => $item->product_details->products->slug, 'id_detail' => $item->product_details->id]) }}">
+                                            href="{{ route('product-detail', ['slug' => $item->product_details->products->slug, 'id_detail' => $item->product_details->id]) }}">
                                             {{ $item->product_details->products->name }}
                                         </a>
                                     </td>

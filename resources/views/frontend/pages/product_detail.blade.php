@@ -96,10 +96,10 @@
                             @foreach ($product_detail as $value)
                                 @if ($product_detail_id->attrs->name == 'size')
                                     <a class="btn text-white mr-2 {{ $value->id == $product_detail_id->id ? 'btn-success' : 'btn-green' }}"
-                                        href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $value->id]) }}">{{ $value->attrs->value }}</a>
+                                        href="{{ route('product-detail', ['slug' => $product->slug, 'id_detail' => $value->id]) }}">{{ $value->attrs->value }}</a>
                                 @else
                                     <a class="btn text-white mr-2 {{ $value->id == $product_detail_id->id ? 'btn-success' : 'btn-green' }}"
-                                        href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $value->id]) }}">{{ $value->attrs->value }}g</a>
+                                        href="{{ route('product-detail', ['slug' => $product->slug, 'id_detail' => $value->id]) }}">{{ $value->attrs->value }}g</a>
                                 @endif
                             @endforeach
                         </div>
@@ -120,7 +120,7 @@
                                     @endif
                                 </button>
                                 <a
-                                    href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $value->id]) }}">
+                                    href="{{url()->current()}}">
                                     <button type="button"><i class="icon icon-Restart"></i></button>
                                 </a>
                             </div>
@@ -131,16 +131,17 @@
                                         href="{{ route('danh-muc', $product->categories->slug) }}">{{ $product->categories->name }}</a>
                                 </div>
                             </div>
-                            {{-- <div class="product-share">
-                                <span class="p-d-title">Share this product</span>
+                            <div class="product-share">
+                                <span class="p-d-title">Chia sẻ lên facebook</span>
                                 <ul class="p-social-links">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    {{-- <li><a href="#"><i class="fa fa-facebook"></i></a></li> --}}
+                                    <div class="fb-share-button"
+                                    data-href="{{ url()->current() }}"
+                                    data-layout="button_count" data-size="small">
+                                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+                                            Chia sẻ</a></div>
                                 </ul>
-                            </div> --}}
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -210,7 +211,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-2">
-                                                    {{ ($five / $count_star) * 100 }} %
+                                                    {{ ($five / $count_star) * 100 }}%
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -374,7 +375,6 @@
                                         </div>
                                     </div>
                                     @endif
-                                    
                                     <div class="card text-center col">
                                         <div class="card-body">
                                             <p>Chia sẻ nhận xét về sản phẩm</p>
@@ -492,7 +492,7 @@
                             <div class="single-product-item">
                                 <div class="product-image image-cus">
                                     <a
-                                        href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">
+                                        href="{{ route('product-detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">
                                         <img src="{{ url('public/uploads') }}/{{ $product->image }}" alt="">
                                         @if ($product->discount > 0)
                                             <div class="pro-discount text-center">-{{ $product->discount }}%</div>
@@ -512,11 +512,8 @@
                                                     @endif
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('shop') }}"><i class="icon icon-Restart"></i></a>
+                                                    <a href="{{ url()->current() }}"><i class="icon icon-Restart"></i></a>
                                                 </li>
-                                                <li><a href="{{ url('public') }}/frontend/img/product/1.jpg"
-                                                        data-toggle="modal" data-target="#productModal"><i
-                                                            class="icon icon-Search"></i></a></li>
                                             </ul>
                                             <button type="button" class="p-cart-btn">Thêm vào giỏ hàng</button>
                                         </div>
@@ -539,7 +536,7 @@
                                         <i class="fa fa-star-o"></i>
                                     </div>
                                     <h5><a
-                                            href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">{{ $product->name }}</a>
+                                            href="{{ route('product-detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">{{ $product->name }}</a>
                                     </h5>
                                     @if ($product->discount > 0)
                                         <div class="pro-price">

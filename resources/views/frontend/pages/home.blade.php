@@ -64,7 +64,7 @@
                                         <div class="single-product-item">
                                             <div class="product-image image-cus">
                                                 <a
-                                                    href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">
+                                                    href="{{ route('product-detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">
                                                     <img src="{{ url('public/uploads') }}/{{ $product->image }}" alt="">
                                                     @if ($product->discount > 0)
                                                         <div class="pro-discount text-center">-{{ $product->discount }}%</div>
@@ -84,7 +84,7 @@
                                                                 @endif
                                                             </li>
                                                             <li>
-                                                                <a href="{{ route('home') }}"><i class="icon icon-Restart"></i></a>
+                                                                <a href="{{ url()->current() }}"><i class="icon icon-Restart"></i></a>
                                                             </li>
                                                         </ul>
                                                         <button type="button" class="p-cart-btn">Thêm vào giỏ hàng</button>
@@ -108,7 +108,7 @@
                                                     <i class="fa fa-star-o"></i>
                                                 </div>
                                                 <h5><a
-                                                        href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">{{ $product->name }}</a>
+                                                        href="{{ route('product-detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">{{ $product->name }}</a>
                                                 </h5>
                                                 @if ($product->discount > 0)
                                                     <div class="pro-price">
@@ -136,7 +136,7 @@
                                         <div class="single-product-item">
                                             <div class="product-image image-cus">
                                                 <a
-                                                    href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">
+                                                    href="{{ route('product-detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">
                                                     <img src="{{ url('public/uploads') }}/{{ $product->image }}" alt="">
                                                     @if ($product->discount > 0)
                                                         <div class="pro-discount text-center">-{{ $product->discount }}%</div>
@@ -156,7 +156,7 @@
                                                                 @endif
                                                             </li>
                                                             <li>
-                                                                <a href="{{ route('home') }}"><i class="icon icon-Restart"></i></a>
+                                                                <a href="{{ url()->current() }}"><i class="icon icon-Restart"></i></a>
                                                             </li>
                                                         </ul>
                                                         <button type="button" class="p-cart-btn">Thêm vào giỏ hàng</button>
@@ -180,7 +180,7 @@
                                                     <i class="fa fa-star-o"></i>
                                                 </div>
                                                 <h5><a
-                                                        href="{{ route('product_detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">{{ $product->name }}</a>
+                                                        href="{{ route('product-detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">{{ $product->name }}</a>
                                                 </h5>
                                                 @if ($product->discount > 0)
                                                     <div class="pro-price">

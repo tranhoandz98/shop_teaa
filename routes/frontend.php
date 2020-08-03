@@ -1,15 +1,17 @@
 <?php
 Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function () {
 	Route::get('/', 'FrontendController@index')->name('home');
+	//hàng mới về
+	Route::get('/hang-moi-ve', 'ShopController@shop_new')->name('shop-new');
 	// shop
 	Route::get('/shop', 'ShopController@shop')->name('shop');
-	Route::post('/shop', 'ShopController@loc_data');
+	Route::post('/shop', 'SearchController@loc_data');
 	Route::get('shop/danh-muc-san-pham/{slug}', 'ShopController@danh_muc')->name('danh-muc');
-	Route::get('shop/{slug}/{id_detail}', 'ShopController@product_detail')->name('product_detail');
-	// Route::post('shop/{slug}/{id_detail}','ShopController@post_product_detail');
+	//Chi tiết sản phẩm
+	Route::get('shop/{slug}/{id_detail}', 'Product_detailController@product_detail')->name('product-detail');
 
 	// cmt
-	Route::post('shop/{id}/{id_user}', 'ShopController@comment')->name('comment');
+	Route::post('shop/{id}/{id_user}', 'Product_detailController@comment')->name('comment');
 	// end comment
 	// login,register
 	Route::get('/dang-ky.html', 'HomeController@dang_ky')->name('dang-ky');
@@ -46,7 +48,6 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function () {
 	Route::get('blog/danh-muc-tin-tuc/{slug}', 'BlogController@danh_muc')->name('danh-muc-blog');
 	Route::get('blog/{slug}/{id}', 'BlogController@blog_detail')->name('blog_detail');
 
-	// Route::get('/about', 'FrontendController@about')->name('about');
 	Route::get('/contact', 'FrontendController@contact')->name('contact');
 
 });
