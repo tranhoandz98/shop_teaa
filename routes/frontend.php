@@ -45,4 +45,8 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function () {
 	Route::post('/blog', 'BlogController@loc_data');
 	Route::get('blog/danh-muc-tin-tuc/{slug}', 'BlogController@danh_muc')->name('danh-muc-blog');
 	Route::get('blog/{slug}/{id}', 'BlogController@blog_detail')->name('blog_detail');
+
+	// Route::get('/about', 'FrontendController@about')->name('about');
+	Route::get('/contact', 'FrontendController@contact')->name('contact');
+
 });

@@ -154,3 +154,10 @@
     visibility: hidden;
     margin-bottom: 30px;
 }
+.footer-area .footer-top .footer-widget-area .ft-logo .footer-logo{
+    margin-bottom: 14px!important;
+}
+
+/* .footer-area .footer-top .footer-widget-area .single-footer-widget {
+    padding-top: 108px;
+} */

@@ -37,13 +37,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($logo as $value)
+                                        @foreach ($logos as $logo)
                                             <tr>
                                                 <td class="" tabindex="0">{{ $loop->index + 1 }}</td>
-                                                <td class="sorting_1">{{ $value->name }}</td>
-                                                <td class="sorting_1"><img src="{{ url('public/uploads') }}/{{ $value->value }}" alt=""
+                                                <td class="sorting_1">{{ $logo->name }}</td>
+                                                <td class="sorting_1"><img src="{{ url('public/uploads') }}/{{ $logo->value }}" alt=""
                                                     width="100px"></td>
-                                                <td>{!! $value->status == 1 ? '<span
+                                                <td>{!! $logo->status == 1 ? '<span
                                                         class="badge badge-pill badge-soft-success font-size-12">Hiện</span>'
                                                     : '<span
                                                         class="badge badge-pill badge-soft-danger font-size-12">Ẩn</span>'
@@ -52,27 +52,25 @@
                                                     <div class="row">
                                                         <div class="col">
                                                             <!-- Sửa -->
-                                                            <a href="{{ route('logo.edit', $value->id) }}"
+                                                            <a href="{{ route('logo.edit', $logo->id) }}"
                                                                 class=" text-primary" data-toggle="tooltip"
                                                                 data-placement="top" title="" data-original-title="Sửa"><i
                                                                     class="mdi mdi-pencil btn-success btn "></i></a>
                                                         </div>
                                                         <div class="col">
                                                             <!-- Xóa -->
-                                                            <form action="{{ route('logo.destroy', $value->id) }}"
+                                                            <form action="{{ route('logo.destroy', $logo->id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button class="btn btn-danger mdi mdi-close"
-                                                                    onclick="return confirm('Xóa logo -{{ $value->name }}- không?')"
+                                                                    onclick="return confirm('Xóa logo -{{ $logo->name }}- không?')"
                                                                     type="submit" title="" data-original-title="Xóa"
                                                                     data-toggle="tooltip">
                                                                 </button>
                                                             </form>
                                                         </div>
                                                     </div>
-
-
                                                 </td>
                                             </tr>
                                         @endforeach
