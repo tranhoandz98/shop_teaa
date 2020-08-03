@@ -37,7 +37,7 @@
                         <nav class="d-flex justify-content-center">
                             <ul>
                                 <li class="active"><a href="{{ route('home') }}">Trang chủ</a></li>
-                                <li><a href="#">Hàng mới về</a></li>
+                                <li><a href="{{ route('shop-new') }}">Hàng mới về</a></li>
                                 <li><a href="{{ route('shop') }}">Trà<i class="fa fa-angle-down"></i></a>
                                     <ul class="ht-mega-menu menu-con">
                                         @foreach ($category_pro as $value)
@@ -117,7 +117,7 @@
                                     <div class="single-cart-item">
                                         <div class="cart-img img-pro">
                                             <a
-                                                href="{{ route('product_detail', ['slug' => $cart->slug, 'id_detail' => $cart->id]) }}">
+                                                href="{{ route('product-detail', ['slug' => $cart->slug, 'id_detail' => $cart->id]) }}">
                                                 <img src="{{ url('public/uploads') }}/{{ $cart->image }}" alt=""
                                                     class="">
                                             </a>
@@ -125,7 +125,7 @@
                                         <div class="cart-text-btn">
                                             <div class="cart-text">
                                                 <h5><a
-                                                        href="{{ route('product_detail', ['slug' => $cart->slug, 'id_detail' => $cart->id]) }}">{{ $cart->name }}</a>
+                                                        href="{{ route('product-detail', ['slug' => $cart->slug, 'id_detail' => $cart->id]) }}">{{ $cart->name }}</a>
                                                 </h5>
                                                 <span class="cart-qty col">×{{ $cart->qty }}</span>
                                                 <span class="col">
@@ -169,7 +169,7 @@
                 <nav id="mobile-menu-active">
                     <ul class="menu-overflow">
                         <li class="active"><a href="{{ route('home') }}">Trang chủ</a></li>
-                        <li><a href="#">Hàng mới về</a></li>
+                        <li><a href="{{ route('shop-new') }}">Hàng mới về</a></li>
                         <li><a href="{{ route('shop') }}">Trà</a>
                         </li>
                         <li><a href="{{ route('blog') }}">Tin tức</a></li>
@@ -359,6 +359,8 @@
     </footer>
     <!-- Footer Area End -->
     <!-- All js here -->
+    <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0" nonce="sT5Hk7WI"></script>
     <script src="{{ url('public') }}/frontend/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="{{ url('public') }}/frontend/js/vendor/jquery-3.2.1.min.js"></script>
     <script src="{{ url('public') }}/frontend/js/popper.min.js"></script>

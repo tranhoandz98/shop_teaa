@@ -93,6 +93,11 @@
                         <div class="single-post-meta">
                             <span> Posts by : {{ $blog->admins->name }}</span>
                             <span>{{ $blog->created_at }}</span>
+                                    <div class="fb-share-button"
+                                    data-href="{{ url()->current() }}"
+                                    data-layout="button_count" data-size="small">
+                                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+                                            Chia sẻ</a></div>
                         </div>
                         <div class="single-post-img">
                             <img src="{{ url('public/uploads') }}/{{ $blog->image }}" alt="">
