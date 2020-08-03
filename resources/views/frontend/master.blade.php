@@ -307,39 +307,10 @@
                             <div class="single-footer-widget">
                                 <h3>Facebook</h3>
                                 <div class="instagram-image">
-                                    {{-- <div class="col col-md-3 col-sm-12 ">
                                         <div class="col-inner">
-                                            <p>
-                                                <script async="" defer="" crossorigin="anonymous"
-                                                    src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&amp;version=v5.0">
-                                                </script>
-                                            </p>
-                                            <div class="fb-page fb_iframe_widget"
-                                                data-href="https://www.facebook.com/forgetmenotteashop/" data-tabs=""
-                                                data-width="280" data-height="" data-small-header="false"
-                                                data-adapt-container-width="false" data-hide-cover="false"
-                                                data-show-facepile="false" fb-xfbml-state="rendered"
-                                                fb-iframe-plugin-query="adapt_container_width=false&amp;app_id=&amp;container_width=0&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fforgetmenotteashop%2F&amp;locale=vi_VN&amp;sdk=joey&amp;show_facepile=false&amp;small_header=false&amp;tabs=&amp;width=280">
-                                                <span
-                                                    style="vertical-align: bottom; width: 280px; height: 130px;"><iframe
-                                                        name="f278dc05bb189c8" width="280px" height="1000px"
-                                                        data-testid="fb:page Facebook Social Plugin"
-                                                        title="fb:page Facebook Social Plugin" frameborder="0"
-                                                        allowtransparency="true" allowfullscreen="true" scrolling="no"
-                                                        allow="encrypted-media"
-                                                        src="https://www.facebook.com/v5.0/plugins/page.php?adapt_container_width=false&amp;app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df73cbe7e905db4%26domain%3Dforgetmenotmart.com%26origin%3Dhttps%253A%252F%252Fforgetmenotmart.com%252Fffe63b4b3e71f4%26relation%3Dparent.parent&amp;container_width=0&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fforgetmenotteashop%2F&amp;locale=vi_VN&amp;sdk=joey&amp;show_facepile=false&amp;small_header=false&amp;tabs=&amp;width=280"
-                                                        style="border: none; visibility: visible; width: 280px; height: 130px;"
-                                                        class=""></iframe></span></div>
-
-                                        </div>
-                                    </div> --}}
-                                    <div class="col medium-3 small-12 large-3">
-                                        <div class="col-inner">
-
                                             <script async="" defer="" crossorigin="anonymous"
                                                 src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&amp;version=v5.0">
                                             </script>
-
                                             <div class="fb-page fb_iframe_widget"
                                                 data-href="https://www.facebook.com/forgetmenotteashop/" data-tabs=""
                                                 data-width="280" data-height="" data-small-header="false"
@@ -351,8 +322,7 @@
                                                         data-testid="fb:page Facebook Social Plugin"
                                                         title="fb:page Facebook Social Plugin" frameborder="0"
                                                         allowtransparency="true" allowfullscreen="true" scrolling="no"
-                                                        allow="encrypted-media"
-                                                        src="
+                                                        allow="encrypted-media" src="
                                                         https://www.facebook.com/v5.0/plugins/page.php?adapt_container_width=false&amp;app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df73cbe7e905db4%26domain%3Dforgetmenotmart.com%26origin%3Dhttps%253A%252F%252Fforgetmenotmart.com%252Fffe63b4b3e71f4%26relation%3Dparent.parent&amp;container_width=0&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fforgetmenotteashop%2F&amp;locale=vi_VN&amp;sdk=joey&amp;show_facepile=false&amp;small_header=false&amp;tabs=&amp;width=280
                                                         "
                                                         style="border: none; visibility: visible; width: 280px; height: 130px;"
@@ -361,14 +331,15 @@
                                                 </span>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Footer Widget Area End -->
+        </div>
+        <!-- Footer Widget Area End -->
         </div>
         <!-- Footer Top Area End -->
         <!-- Footer Bottom Area Start -->
@@ -377,7 +348,8 @@
                 <div class="row">
                     <div class="col-lg-6 d-flex col-md-6">
                         <div class="footer-text-bottom">
-                            <p>Copyright &copy; <a href="#">Tran Van Hoan & Nguyen Thi Thanh Thuy</a>. All Rights Reserved</p>
+                            <p>Copyright &copy; <a href="#">Tran Van Hoan & Nguyen Thi Thanh Thuy</a>. All Rights
+                                Reserved</p>
                         </div>
                     </div>
                 </div>

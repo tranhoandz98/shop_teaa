@@ -55,34 +55,33 @@
                                         <li class="page-item"><a class="page-link" href="{{ $blog->previousPageUrl() }}">
                                                 << /a>
                                         </li>
-                        @endif
-                        @for ($i = 1; $i <= $blog->lastPage(); $i++)
+                                    @endif
+                                    @for ($i = 1; $i <= $blog->lastPage(); $i++)
 
-                            <li class="page-item {{ $blog->currentPage() == $i ? 'active' : '' }}"><a class="page-link"
-                                    href="{{ $blog->url($i) }}">{{ $i }}</a></li>
-                        @endfor
-                        @if ($blog->currentPage()
-                            < $blog->lastPage())
-                                <li class="page-item"><a class="page-link" href="{{ $blog->nextPageUrl() }}">></a></li>
-                                <li class="page-item"><a class="page-link" href="{{ $blog->url($blog->lastPage()) }}">>|</a>
-                                </li>
-                        @endif
-                        </ul>
-                        </nav>
-                    </div>
-                @endif
-            </div>
-            <div class="col-xl-3 col-lg-4">
-                <div class="sidebar-wrapper">
-                    <div class="sidebar-widget sidebar-search-widget">
-                        <h3>Search</h3>
-                        <form action="#" class="sidebar-search-box">
-                            <input type="text" placeholder="Search...">
-                            <button type="button"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
-                    <form action="{{ route('blog') }}" method="post">
-                        @csrf
+                                        <li class="page-item {{ $blog->currentPage() == $i ? 'active' : '' }}"><a
+                                                class="page-link" href="{{ $blog->url($i) }}">{{ $i }}</a></li>
+                                    @endfor
+                                    @if ($blog->currentPage() < $blog->lastPage())
+                                        <li class="page-item"><a class="page-link" href="{{ $blog->nextPageUrl() }}">></a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link"
+                                                href="{{ $blog->url($blog->lastPage()) }}">>|</a>
+                                        </li>
+                                    @endif
+                                </ul>
+                            </nav>
+                        </div>
+                    @endif
+                </div>
+                <div class="col-xl-3 col-lg-4">
+                    <div class="sidebar-wrapper">
+                        <div class="sidebar-widget sidebar-search-widget">
+                            <h3>Search</h3>
+                            <form action="#" class="sidebar-search-box">
+                                <input type="text" placeholder="Search...">
+                                <button type="button"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
                         <div class="sidebar-widget danh-muc">
                             <h3>Danh mục</h3>
                             <div class="sidebar-widget-option-wrapper">
@@ -107,9 +106,11 @@
                                                         @if ($valu->parent_id == $value->id)
                                                             <ul>
                                                                 <li class="ml-4">
-                                                                    <a href="{{ route('danh-muc-blog', ['slug' => $valu->slug]) }}">
+                                                                    <a
+                                                                        href="{{ route('danh-muc-blog', ['slug' => $valu->slug]) }}">
                                                                         <h6 class="text-cate-s">
-                                                                            <i class="fa fa-bars mr-2" aria-hidden="true"></i>
+                                                                            <i class="fa fa-bars mr-2"
+                                                                                aria-hidden="true"></i>
                                                                             {{ $valu->name }}
                                                                             <span>
                                                                                 @if ($valu->blog != 0)
@@ -121,18 +122,26 @@
                                                                 </li>
                                                             </ul>
                                                         @endif
-                                        @endforeach
-                                        </li>
-                                        </ul>
-                                    </div>
-                                @endif
-                            @endforeach
+                                                    @endforeach
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
                         </div>
+                        <div class="sidebar-banner-img">
+                            @foreach ($ads as $item)
+                            <img src="{{ url('public/uploads') }}/{{ $item->value }}" alt="" class="w-100 mb-10">
+                            @endforeach
+                            <div class="fb-page" data-href="https://www.facebook.com/forgetmenotteashop/"
+                                    data-width="380" data-hide-cover="false" data-show-facepile="false">
+                                </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
     <!-- Post Area End -->
 @stop
