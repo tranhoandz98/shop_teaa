@@ -170,9 +170,6 @@
                                                             <li>
                                                                 <a href="{{ route('shop') }}"><i class="icon icon-Restart"></i></a>
                                                             </li>
-                                                            <li><a href="{{ url('public') }}/frontend/img/product/1.jpg"
-                                                                    data-toggle="modal" data-target="#productModal"><i
-                                                                        class="icon icon-Search"></i></a></li>
                                                         </ul>
                                                         <button type="button" class="p-cart-btn">Thêm vào giỏ hàng</button>
                                                     </div>
@@ -242,8 +239,6 @@
                                                     <li>
                                                         <a href="{{ route('shop') }}"><i class="icon icon-Restart"></i></a>
                                                     </li>
-                                                    <li><a href="{{ url('public') }}/frontend/img/product/1.jpg" data-toggle="modal"
-                                                            data-target="#productModal"><i class="icon icon-Search"></i></a></li>
                                                 </ul>
                                                 <button type="button" class="p-cart-btn">Thêm vào giỏ hàng</button>
                                             </div>

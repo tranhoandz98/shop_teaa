@@ -16,10 +16,7 @@ class ContactController extends Controller
     public function index()
     {
     $config=Config::where([['type','=','3']])->get();
-    $contact=Config::where([['type','=','3'],['name','=','contact']])->first();
-    $gmap=Config::where([['type','=','3'],['name','=','gmap']])->first();
-    $worktime=Config::where([['type','=','3'],['name','=','worktime']])->first();
-        return view('backend.config.contact.index', compact('contact','gmap','worktime','config'));
+        return view('backend.config.contact.index', compact('config'));
     }
 
     /**
@@ -89,10 +86,10 @@ class ContactController extends Controller
     {
         $contact = Config::find($id);
         $contact->update([
-            'name' => $request->name,
-            'slug' => $request->slug,
+            // 'name' => $request->name,
+            // 'slug' => $request->slug,
+            // 'type' => $request->type,
             'value' => $request->value,
-            'type' => $request->type,
             'status' => $request->status,
         ]);
         return redirect()->route('contact.index')->with('success', 'Cập nhật thành công');
