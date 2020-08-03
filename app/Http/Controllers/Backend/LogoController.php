@@ -15,9 +15,9 @@ class LogoController extends Controller
      */
     public function index()
     {
-$logo=Config::where('type','=','1')->get();
-// dd('a');
-        return view('backend.config.logo.index', compact('logo'));
+$logos=Config::where('type','=','1')->get();
+// dd($logo);
+        return view('backend.config.logo.index', compact('logos'));
     }
     
 
@@ -51,7 +51,6 @@ $logo=Config::where('type','=','1')->get();
             'value.unique' => 'Hình ảnh đã tồn tại',
         ]);
         // dd($request->all());
-
         Config::create([
             'name' => $request->name,
             'slug' => $request->slug,
@@ -82,6 +81,7 @@ $logo=Config::where('type','=','1')->get();
     public function edit($id)
     {
         $logo = Config::find($id);
+        // dd($logo->id);
         return view('backend.config.logo.edit', compact('logo'));
     }
 

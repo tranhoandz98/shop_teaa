@@ -3,20 +3,21 @@
 @section('namepage', 'Cấu hình')
 @section('main')
     <div class="row">
-        <div class="col-xl-8">
+        @if (!$intro)
+        <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
                     <div class="container">
                         <form action="{{ route('contact.store') }}" method="POST" role="form" enctype="multipart/form-data">
-                            <h3 class="text-red">Thêm mới contact</h3>
+                            <h4 class="text-red">Thêm mới intro</h4>
                             @csrf
                             <input type="hidden" class="form-control" id="name" placeholder="Tên contact" name="name"
-                                value="contact">
+                                value="intro">
                             @error('name')
                             <span class="text-red">{{ $message }}</span>
                             @enderror
                             <input type="hidden" class="form-control" id="slug" placeholder="Slug" name="slug"
-                                value="contact">
+                                value="intro">
                             <input type="hidden" class="form-control" readonly id="" placeholder="Slug" name="type"
                                 value="3">
                             <div class="form-group">
@@ -33,8 +34,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="description">Nội dung</label>
-                                <textarea name="value" id="description" class="form-control ckedit" rows="5"></textarea>
+                                <label for="intro">Nội dung</label>
+                                <textarea name="value" id="intro" class="form-control ckedit" rows="5"></textarea>
                             </div>
                             <button class="btn btn-info" type="submit" title="Thêm mới">Thêm mới</button>
                         </form>
@@ -42,12 +43,139 @@
                 </div>
             </div> <!-- end card body -->
         </div> <!-- end card	 -->
-        <div class="col-xl-4">
+        @endif
+        @if(!$email)
+        <div class="col-xl-6">
             <div class="card">
                 <div class="card-body">
                     <div class="container">
                         <form action="{{ route('contact.store') }}" method="POST" role="form" enctype="multipart/form-data">
-                            <h3 class="text-red">Thêm mới Work time</h3>
+                            <h4 class="text-red">Thêm mới Email</h4>
+                            @csrf
+                            <input type="hidden" class="form-control" id="name" placeholder="Tên contact" name="name"
+                                value="email">
+                            @error('name')
+                            <span class="text-red">{{ $message }}</span>
+                            @enderror
+                            <input type="hidden" class="form-control" id="slug" placeholder="Slug" name="slug"
+                                value="email">
+                            <input type="hidden" class="form-control" readonly id="" placeholder="Slug" name="type"
+                                value="3">
+                            <div class="form-group">
+                                <label for="">Status</label>
+                                <div class="radio ml-3">
+                                    <label>
+                                        <input type="radio" name="status" id="input" value="1" checked="checked">
+                                        Hiện
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="status" id="input" value="0">
+                                        Ẩn
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Nội dung</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email" name="value">
+
+                            </div>
+                            <button class="btn btn-info" type="submit" title="Thêm mới">Thêm mới</button>
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- end card body -->
+        </div> <!-- end card	 -->
+        @endif
+        @if(!$phone)
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container">
+                        <form action="{{ route('contact.store') }}" method="POST" role="form" enctype="multipart/form-data">
+                            <h4 class="text-red">Thêm mới phone</h4>
+                            @csrf
+                            <input type="hidden" class="form-control" id="name" placeholder="Tên contact" name="name"
+                                value="phone">
+                            @error('name')
+                            <span class="text-red">{{ $message }}</span>
+                            @enderror
+                            <input type="hidden" class="form-control" id="slug" placeholder="Slug" name="slug"
+                                value="phone">
+                            <input type="hidden" class="form-control" readonly id="" placeholder="Slug" name="type"
+                                value="3">
+                            <div class="form-group">
+                                <label for="">Status</label>
+                                <div class="radio ml-3">
+                                    <label>
+                                        <input type="radio" name="status" id="input" value="1" checked="checked">
+                                        Hiện
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="status" id="input" value="0">
+                                        Ẩn
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Nội dung</label>
+                                <input type="text" class="form-control" id="phone" placeholder="phone" name="value">
+                            </div>
+                            <button class="btn btn-info" type="submit" title="Thêm mới">Thêm mới</button>
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- end card body -->
+        </div> <!-- end card	 -->
+        @endif
+        @if(!$address)
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container">
+                        <form action="{{ route('contact.store') }}" method="POST" role="form" enctype="multipart/form-data">
+                            <h4 class="text-red">Thêm mới Address</h4>
+                            @csrf
+                            <input type="hidden" class="form-control" id="name" placeholder="Tên contact" name="name"
+                                value="address">
+                            @error('name')
+                            <span class="text-red">{{ $message }}</span>
+                            @enderror
+                            <input type="hidden" class="form-control" id="slug" placeholder="Slug" name="slug"
+                                value="address">
+                            <input type="hidden" class="form-control" readonly id="" placeholder="Slug" name="type"
+                                value="3">
+                            <div class="form-group">
+                                <label for="">Status</label>
+                                <div class="radio ml-3">
+                                    <label>
+                                        <input type="radio" name="status" id="input" value="1" checked="checked">
+                                        Hiện
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="status" id="input" value="0">
+                                        Ẩn
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Nội dung</label>
+                                <input type="text" class="form-control" id="address" placeholder="Address" name="value">
+
+                            </div>
+                            <button class="btn btn-info" type="submit" title="Thêm mới">Thêm mới</button>
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- end card body -->
+        </div> <!-- end card	 -->
+        @endif
+        @if(!$worktime)
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container">
+                        <form action="{{ route('contact.store') }}" method="POST" role="form" enctype="multipart/form-data">
+                            <h4 class="text-red">Thêm mới Work time</h4>
                             @csrf
                             <input type="hidden" class="form-control" id="name" placeholder="Tên contact" name="name"
                                 value="worktime">
@@ -72,8 +200,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="description">Nội dung</label>
-                                <textarea name="value" id="description" class="form-control ckedit" rows="5"></textarea>
+                                <label for="worktime">Nội dung</label>
+                                <input type="text" class="form-control" id="worktime" placeholder="work time" name="value">
                             </div>
                             <button class="btn btn-info" type="submit" title="Thêm mới">Thêm mới</button>
                         </form>
@@ -81,14 +209,16 @@
                 </div>
             </div> <!-- end card body -->
         </div> <!-- end card	 -->
-    </div><!-- end col -->
+        @endif
+    </div><!-- end row -->
+    @if(!$gmap)
     <div class="row">
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
                     <div class="container">
                         <form action="{{ route('contact.store') }}" method="POST" role="form" enctype="multipart/form-data">
-                            <h3 class="text-red">Thêm mới Google map</h3>
+                            <h4 class="text-red">Thêm mới Google map</h4>
                             @csrf
                             <input type="hidden" class="form-control" id="name" placeholder="Tên contact" name="name"
                                 value="gmap">
@@ -133,4 +263,5 @@
             </div> <!-- end card body -->
         </div> <!-- end card	 -->
     </div><!-- end col -->
+        @endif
 @stop

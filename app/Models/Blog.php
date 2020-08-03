@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Amin;
 use Illuminate\Database\Eloquent\Model;
 
 class Blog extends Model
@@ -12,6 +12,6 @@ class Blog extends Model
           return $this->belongsTo('App\Models\Category','id_cate');
      }
      public function admins(){
-          return $this->belongsTo('App\Models\Admin','id_admin');
+          return $this->belongsTo(Admin::class, 'id_admin', 'id');
      }
 }
