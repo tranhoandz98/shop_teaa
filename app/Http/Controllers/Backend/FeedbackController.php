@@ -75,7 +75,7 @@ class FeedbackController extends Controller
         $feedback->update([
             'status'=>$request->status,
         ]);
-            return redirect()->back()->with('success','Cập nhật thành công');   
+            return redirect()->back()->with('success','Cập nhật thành công');
     }
 
     /**
