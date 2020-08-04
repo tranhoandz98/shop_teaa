@@ -76,8 +76,9 @@
                         <div class="search-wrapper">
                             <a href="#"><span class="icon icon-Search"></span></a>
                             <form action="{{route('search')}}" class="search-form" method="get">
+                                @csrf
                                 <input type="text" name="key" placeholder="Nhập từ tìm kiếm ...">
-                                <button type="button">Tìm kiếm</button>
+                                <button type="submit">Tìm kiếm</button>
                             </form>
                         </div>
                         <div class="settings-wrapper">
@@ -371,15 +372,15 @@
     <script src="{{ url('public') }}/frontend/js/main.js"></script>
     {{-- submit form --}}
     <script>
-        $('#page').change(function(event) {
-            $('#submit').click();
-        });
-        $('#sort').change(function(event) {
-            $('#submit').click();
-        });
-        $('#qty').change(function(event) {
-            $('#submit').click();
-        });
+        // $('#page').change(function(event) {
+        //     $('#submit').click();
+        // });
+        // $('#sort').change(function(event) {
+        //     $('#submit').click();
+        // });
+        // $('#qty').change(function(event) {
+        //     $('#submit').click();
+        // });
 
     </script>
     {{-- end submit form --}}

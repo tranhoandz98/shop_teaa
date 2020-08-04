@@ -7,7 +7,7 @@
             <h1>Đặt hàng</h1>
             <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Đặt hàng</li>
                 </ul>
             </nav>

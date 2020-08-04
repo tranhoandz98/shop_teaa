@@ -7,7 +7,7 @@
             <h1>Hàng mới về</h1>
             <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Hàng mới về</li>
                 </ul>
             </nav>
@@ -33,7 +33,7 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="shop-results-wrapper">
+                        {{-- <div class="shop-results-wrapper">
                             <div class="shop-results"><span>Show:</span>
                                 <div class="shop-select">
                                     <select name="page" id="page">
@@ -49,12 +49,11 @@
                                     <select name="sort" id="sort">
                                         <option value="position">Sắp xếp mặc định</option>
                                         <option value="p-name">Sắp xếp theo mới nhất</option>
-                                        <option value="p-price">Sắp xếp theo giá tăng dần</option>
-                                        <option value="p-price">Sắp xếp theo giá giảm dần</option>
+                                        <option value="p-name-za">Sắp xếp theo giảm dần</option>
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         </form>
                     </div>
                     <div class="ht-product-shop tab-content text-center">
@@ -253,8 +252,8 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="sidebar-wrapper">
                         {{-- <h3>Layered Navigation</h3> --}}
-                        <form action="{{ route('shop') }}" method="post">
-                            @csrf
+                        {{-- <form action="{{ route('sort') }}" method="">
+                            @csrf --}}
                             <div class="sidebar-widget danh-muc">
                                 <h3>Danh mục</h3>
                                 <div class="sidebar-widget-option-wrapper">

@@ -8,8 +8,8 @@
             <h1>Chi tiết sản phẩm</h1>
             <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('shop') }}">Shop</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('shop') }}">Cửa hàng</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
                 </ul>
             </nav>

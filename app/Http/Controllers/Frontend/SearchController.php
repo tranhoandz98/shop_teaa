@@ -19,16 +19,47 @@ class SearchController extends Controller
 	 * @param  Request $req [description]
 	 * @return [type]       [description]
 	 */
-	public function loc_data(Request $req){
-		$page= $req->number?$req->number:6;
-		// dump($page);
-		// dd($req->all());
-		return redirect()->route('shop');
+	public function sort(Request $req){
+		$sort=$req->sort=='p-name-za'?'desc':'asc';
+		// dd($sort);
+		$products=Product::where('status','=','1')->orderby('created_at',$sort)->paginate(9)->get();
+		foreach ($products as $key=> $product) {
+			$details = isset($product->product_details)?$product->product_details:[];
+			if (isset($details[0])){
+				$product->setAttribute('price', $details[0]['price']);
+				$product->setAttribute('discount', $details[0]['discount']);
+				$product->setAttribute('id_detail', $details[0]['id']);
+				$product->setAttribute('quantity', $details[0]['quantity']);
+			}
+			else{
+				$product->setAttribute('price', '0');
+				$product->setAttribute('discount', '0');
+				$product->setAttribute('id_detail', '0');
+				$product->setAttribute('quantity', '0');
+			}
+		}
+		return view('frontend.pages.sort',compact('products'));
 	}
 	public function getsearch(Request $request){
-		$product=Product::where('name','like','%'.$request->key.'%')->get();
-		dd($product);
-		return view('frontend.pages.search',compact('product'));
+		// dd($request->all());
+		$products=Product::where([['name','like','%'.$request->key.'%'],['status','=','1']])
+		->paginate(9);
+		foreach ($products as $key=> $product) {
+			$details = isset($product->product_details)?$product->product_details:[];
+			if (isset($details[0])){
+				$product->setAttribute('price', $details[0]['price']);
+				$product->setAttribute('discount', $details[0]['discount']);
+				$product->setAttribute('id_detail', $details[0]['id']);
+				$product->setAttribute('quantity', $details[0]['quantity']);
+			}
+			else{
+				$product->setAttribute('price', '0');
+				$product->setAttribute('discount', '0');
+				$product->setAttribute('id_detail', '0');
+				$product->setAttribute('quantity', '0');
+			}
+		}
+		return view('frontend.pages.search',compact('products'));
 
 	}
 }

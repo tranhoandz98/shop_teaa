@@ -19,25 +19,6 @@
                     
                 </div>
             </div>
-            <!-- Hero Area End -->
-        <!-- Shop Banner Area Start -->
-        {{-- <div class="shop-banner-area pt-60 pb-60">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="shop-banner-img">
-                            <a href="shop.html"><img src="{{url('public')}}/frontend/img/banner/2.jpg" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="shop-banner-img">
-                            <a href="shop.html"><img src="{{url('public')}}/frontend/img/banner/3.jpg" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-        <!-- Shop Banner Area End -->
         <!-- Protuct Area Start -->
         <div class="product-area bg-1 pt-110 pb-80 product-two-area">
             <div class="container">

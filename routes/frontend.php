@@ -59,5 +59,6 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function () {
 	Route::post('/dang-nhap.html', 'HomeController@post_check_out')->name('post-dang-nhap');
 	//tìm kiếm
 	Route::get('search', 'SearchController@getsearch')->name('search');
+	Route::get('sort', 'SearchController@sort')->name('sort');
 
 });

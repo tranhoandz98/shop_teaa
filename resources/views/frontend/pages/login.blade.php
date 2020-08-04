@@ -6,7 +6,7 @@
                 <h1>Đăng nhập</h1>
                 <nav aria-label="breadcrumb">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
                         <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('dang-nhap') }}">Đăng nhập</a></li>
                     </ul>
                 </nav>

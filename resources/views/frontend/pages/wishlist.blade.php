@@ -7,8 +7,8 @@
             <h1>Sản phẩm yêu thích</h1>
             <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Wishlist</li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Sản phẩm yêu thích</li>
                 </ul>
             </nav>
         </div>
