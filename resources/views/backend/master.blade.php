@@ -160,7 +160,7 @@
                         </ul>
                     </li>
                     <li>
-                        <li class=""><a href="#" aria-expanded="false"><i class="bx bx-cart"></i>Quản lý Đơn hàng</a></li>
+                        <li class=""><a href="{{route('order.index')}}" aria-expanded="false"><i class="bx bx-cart"></i>Quản lý đơn hàng</a></li>
                     </li>
                     <li>
                         <li class=""><a href="#" aria-expanded="false"><i class="bx bx-terminal"></i>Thống kê</a></li>
