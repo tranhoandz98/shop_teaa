@@ -111,12 +111,4 @@
             </div>
         </div>
     </div> <!-- end col -->
-    <script>
-        function greetme(message) {
-
-            alert(message);
-
-        }
-
-    </script>
 @stop
