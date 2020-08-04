@@ -75,9 +75,9 @@
                     <div class="header-content d-flex justify-content-end">
                         <div class="search-wrapper">
                             <a href="#"><span class="icon icon-Search"></span></a>
-                            <form action="#" class="search-form">
-                                <input type="text" placeholder="Search entire store here ...">
-                                <button type="button">Search</button>
+                            <form action="{{route('search')}}" class="search-form" method="get">
+                                <input type="text" name="key" placeholder="Nhập từ tìm kiếm ...">
+                                <button type="button">Tìm kiếm</button>
                             </form>
                         </div>
                         <div class="settings-wrapper">

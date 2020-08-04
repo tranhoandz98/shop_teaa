@@ -25,4 +25,10 @@ class SearchController extends Controller
 		// dd($req->all());
 		return redirect()->route('shop');
 	}
+	public function getsearch(Request $request){
+		$product=Product::where('name','like','%'.$request->key.'%')->get();
+		dd($product);
+		return view('frontend.pages.search',compact('product'));
+
+	}
 }
