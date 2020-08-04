@@ -70,11 +70,18 @@
                         <h3>{{ $product->name }}</h3>
                         <div class="p-rating-review">
                             <div class="product-rating">
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o color"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
+                                @if($star==0)
+                                Sản phẩm chưa có đánh giá
+                                @else
+                                @for ($i = 0; $i < $star; $i++)
+                                                        <i class="fa fa-star text-green"></i>
+                                                    @endfor
+                                                    @for ($i = 0; $i < 5 - $star; $i++)
+                                                        {{-- <label for="rate1"></label>
+                                                        --}}
+                                                        <i class="fa fa-star"></i>
+                                                    @endfor
+                                                    @endif
                             </div>
                         </div>
                         @if ($product_detail_id->discount > 0)
@@ -527,13 +534,13 @@
                                         </div>
                                     @endif
                                 </div>
-                                <div class="product-text">
+                                <div class="product-text mt-3">
                                     <div class="product-rating">
-                                        <i class="fa fa-star-o color"></i>
+                                        {{-- <i class="fa fa-star-o color"></i>
                                         <i class="fa fa-star-o color"></i>
                                         <i class="fa fa-star-o color"></i>
                                         <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i> --}}
                                     </div>
                                     <h5><a
                                             href="{{ route('product-detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">{{ $product->name }}</a>

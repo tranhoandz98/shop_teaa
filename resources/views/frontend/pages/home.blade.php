@@ -80,13 +80,13 @@
                                                     </div>
                                                 @endif
                                             </div>
-                                            <div class="product-text">
+                                            <div class="product-text mt-3">
                                                 <div class="product-rating">
-                                                    <i class="fa fa-star-o color"></i>
+                                                    {{-- <i class="fa fa-star-o color"></i>
                                                     <i class="fa fa-star-o color"></i>
                                                     <i class="fa fa-star-o color"></i>
                                                     <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i> --}}
                                                 </div>
                                                 <h5><a
                                                         href="{{ route('product-detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">{{ $product->name }}</a>
@@ -152,13 +152,13 @@
                                                     </div>
                                                 @endif
                                             </div>
-                                            <div class="product-text">
+                                            <div class="product-text mt-3">
                                                 <div class="product-rating">
-                                                    <i class="fa fa-star-o color"></i>
+                                                    {{-- <i class="fa fa-star-o color"></i>
                                                     <i class="fa fa-star-o color"></i>
                                                     <i class="fa fa-star-o color"></i>
                                                     <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i> --}}
                                                 </div>
                                                 <h5><a
                                                         href="{{ route('product-detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">{{ $product->name }}</a>
