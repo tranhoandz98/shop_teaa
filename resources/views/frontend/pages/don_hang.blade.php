@@ -50,21 +50,21 @@
                                 {{ $order->created_at }}
                             </td>
                             <td class="table-p-price">
-                                    @if($order->status==0)
-                                    <span class="badge badge-secondary ">Chưa xử lý</span>
-                                    @endif
-                                    @if($order->status==1)
-                                    <span class="badge badge-warning">Đang xử lý</span>
-                                    @endif
-                                    @if($order->status==2)
-                                    <span class="badge badge-success">Đã xử lý</span>
-                                    @endif
-                                    @if($order->status==3)
-                                    <span class="badge badge-success">Đang giao hàng</span>
-                                    @endif
-                                    @if($order->status==4)
-                                    <span class="badge badge-danger">Đã hủy hàng</span>
-                                    @endif
+                                @if ($order->status == 0)
+                                <span class="badge badge-pill badge-soft-secondary  font-size-12">Chưa xử lý</span>
+                            @endif
+                            @if ($order->status == 1)
+                                <span class="badge badge-pill badge-soft-warning font-size-12">Đã xử lý</span>
+                            @endif
+                            @if ($order->status == 2)
+                                <span class="badge badge-pill badge-soft-success font-size-12">Đang giao hàng</span>
+                            @endif
+                            @if ($order->status == 3)
+                                <span class="badge badge-pill badge-soft-success font-size-12">Đã nhận hàng</span>
+                            @endif
+                            @if ($order->status == 4)
+                                <span class="badge badge-pill badge-soft-danger font-size-12">Đã hủy hàng</span>
+                            @endif
                             </td>
                             <td class="table-remove">
                                 <a href="{{ route('order-detail-frontend', ['id'=>$order->id]) }}"><i class="fa fa-eye btn"></i></a>

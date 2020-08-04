@@ -1,5 +1,5 @@
 @extends('backend.master')
-@section('title','Đơn hàng')
+@section('title','Danh sách đơn hàng')
 @section('namepage','Đơn hàng')
 @section('main')
 
@@ -31,23 +31,31 @@
 								</tr>
 							</thead>
 							<tbody>
-								@foreach($order as $value)
+								@foreach($orders as $order)
 								<tr role="row" class="odd">
 									<td class="dtr-control" tabindex="0">{{$loop->index+1}}</td>
-									<td class="sorting_1">{{$value->users->name}}</td>
-									<td class="sorting_1">{{$value->total_price}}</td>
-									<td class="sorting_1">{{$value->address_ship}}</td>
-									<td class="sorting_1">{{$value->note}}</td>
-									<td>{!!($value->status==1)?'<span class="badge badge-pill badge-soft-success font-size-12">Hiện</span>':'<span class="badge badge-pill badge-soft-danger font-size-12">Ẩn</span>'!!}</td>
+									<td class="sorting_1">{{$order->users->name}}</td>
+									<td class="sorting_1">{{number_format($order->total_price)}} đ</td>
+									<td class="sorting_1">{{$order->address_ship}}</td>
+									<td class="sorting_1">{{$order->note}}</td>
 									<td>
-										<div class="row">
-											<div class="col">
-												<a href="{{route('order_detail_backend',$value->id)}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Chi tiết đơn hàng"><i class="mdi mdi-eye btn-info btn"></i></a>
-											</div>
-																					
-										</div>
-										
-										
+										@if ($order->status == 0)
+							<span class="badge badge-secondary ">Chưa xử lý</span>
+						@endif
+						@if ($order->status == 1)
+							<span class="badge badge-warning">Đã xử lý</span>
+						@endif
+						@if ($order->status == 2)
+							<span class="badge badge-success">Đang giao hàng</span>
+						@endif
+						@if ($order->status == 3)
+							<span class="badge badge-success">Đã nhận hàng</span>
+						@endif
+						@if ($order->status == 4)
+							<span class="badge badge-danger">Đã hủy hàng</span>
+						@endif
+									<td class="text-center">
+										<a href="{{route('order_detail_backend',$order->id)}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Chi tiết đơn hàng"><i class="mdi mdi-eye btn-info btn"></i></a>
 									</td>
 								</tr>
 								@endforeach

@@ -20,13 +20,10 @@ Route::group(['prefix' => 'backend', 'namespace' => 'Backend', 'middleware' => '
 		Route::resources(['ads' => 'AdsController']);
 		Route::resources(['contact' => 'ContactController']);
 	//order
-	Route::resources(['order' => 'OrderController']);
-	// Order_detail
+
+	Route::get('order', 'OrderController@index')->name('order_backend');
 	Route::get('order/{id}/order_detail', 'Order_detailController@index')->name('order_detail_backend');
-	Route::post('order/{id}/order_detail/', 'Order_detailController@store');
-	Route::get('order/{id}/order_detail/{id_detail}/edit', 'Order_detailController@edit')->name('edit_order_detail_backend');
-	Route::post('order/{id}/order_detail/{id_detail}/edit', 'Order_detailController@update');
-	Route::get('order/{id}/order_detail/{id_detail}/delete', 'Order_detailController@destroy')->name('destroy_order_detail_backend');
+	Route::post('order/{id}/order_detail', 'Order_detailController@update');
 
 });
 Route::get('/backend/login', 'Backend\BackendController@login')->name('login');

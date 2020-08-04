@@ -1,5 +1,5 @@
 @extends('backend.master')
-@section('title','Danh mục')
+@section('title','Danh sách danh mục')
 @section('namepage','Danh mục')
 @section('main')
 
@@ -44,7 +44,6 @@
 									<td>{!!($value->status==1)?'<span class="badge badge-pill badge-soft-success font-size-12">Hiện</span>':'<span class="badge badge-pill badge-soft-danger font-size-12">Ẩn</span>'!!}</td>
 									<td>{{$value->created_at}}</td>
 									<td>
-										
 										<div class="row">
 											<div class="col">
 												<!-- Sửa -->

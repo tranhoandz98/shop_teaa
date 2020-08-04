@@ -1,5 +1,5 @@
   @extends('backend.master')
-  @section('title','User')
+  @section('title','Danh sách user')
   @section('namepage','User')
   @section('main')
   @if(Session::has('success'))
@@ -33,7 +33,9 @@
                             @foreach ($users as $user)
                                 <tr>
                                 <td>{{ $loop->index+1 }}</td>
-                                <td><img src="{{ url('public/uploads/Users') }}/{{ $user->avatar }}" class="w-50"></td>
+                                <td>
+                                    <img src="{{ url('public/uploads/Users') }}/{{ $user->avatar }}" class="w-50">
+                                </td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->gender==1?'Nam':'Nữ' }}</td>
                                 <td>
@@ -47,8 +49,6 @@
                                 </td>
                             </tr>
                             @endforeach
-                            
-                           
                         </tbody>
                     </table>
                 </div>

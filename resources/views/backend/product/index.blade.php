@@ -1,5 +1,5 @@
 @extends('backend.master')
-@section('title','Sản phẩm')
+@section('title','Danh sách sản phẩm')
 @section('namepage','Sản phẩm')
 @section('main')
 

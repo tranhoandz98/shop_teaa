@@ -39,20 +39,20 @@
                             <h5 class="card-text">Trạng thái:
                                 <span class="ml-2">
                                     @if ($order->status == 0)
-                                        <span class="badge badge-secondary ">Chưa xử lý</span>
-                                    @endif
-                                    @if ($order->status == 1)
-                                        <span class="badge badge-warning">Đang xử lý</span>
-                                    @endif
-                                    @if ($order->status == 2)
-                                        <span class="badge badge-success">Đã xử lý</span>
-                                    @endif
-                                    @if ($order->status == 3)
-                                        <span class="badge badge-success">Đang giao hàng</span>
-                                    @endif
-                                    @if ($order->status == 4)
-                                        <span class="badge badge-danger">Đã hủy hàng</span>
-                                    @endif
+                                    <span class="badge badge-pill badge-soft-secondary  font-size-12">Chưa xử lý</span>
+                                @endif
+                                @if ($order->status == 1)
+                                    <span class="badge badge-pill badge-soft-warning font-size-12">Đã xử lý</span>
+                                @endif
+                                @if ($order->status == 2)
+                                    <span class="badge badge-pill badge-soft-success font-size-12">Đang giao hàng</span>
+                                @endif
+                                @if ($order->status == 3)
+                                    <span class="badge badge-pill badge-soft-success font-size-12">Đã nhận hàng</span>
+                                @endif
+                                @if ($order->status == 4)
+                                    <span class="badge badge-pill badge-soft-danger font-size-12">Đã hủy hàng</span>
+                                @endif
                                 </span>
                             </h5>
                             <hr>
@@ -90,11 +90,10 @@
                             <tr>
                                 <td class="table-p-name">{{ $loop->index + 1 }}</td>
                                 <td class="table-p-name">{{ $item->product_details->products->name }}</td>
-                                <td class="table-image"><span class="">
-                                        <img class="w-25"
+                                <td class="table-image">
+                                        <img class="w-50"
                                             src="{{ url('public/uploads') }}/{{ $item->product_details->products->image }}"
                                             alt="">
-                                    </span>
                                 </td>
                                 <td class="table-p-name">{{ $item->quantity }}</td>
                                 <td class="table-price">{{ number_format($item->price) }} đ</td>
