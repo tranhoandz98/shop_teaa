@@ -14,6 +14,14 @@
 				</button>
 			</div>
 			@endif
+			@if(Session::has('error'))
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				{{Session::get('error')}}
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			@endif
 			<div class="card-body">
 				<div class="row">
 					<div class="col-sm-12">
@@ -53,7 +61,6 @@
 											<div class="col">
 												<a href="{{route('product_detail_backend',$value->id)}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Chi tiết sản phẩm"><i class="mdi mdi-eye btn-info btn"></i></a>
 											</div>
-											
 											<div class="col">
 												<!-- Sửa -->
 												<a href="{{route('product.edit',$value->id)}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa"><i class="mdi mdi-pencil btn-success btn"></i></a>
@@ -69,8 +76,6 @@
 												</form>
 											</div>
 										</div>
-										
-										
 									</td>
 								</tr>
 								@endforeach
