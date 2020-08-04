@@ -179,9 +179,9 @@
                                                 </div>
                                                 <div class="product-text">
                                                     <div class="product-rating">
-                                                        <i class="fa fa-star-o color"></i>
-                                                        <i class="fa fa-star-o color"></i>
-                                                        <i class="fa fa-star-o color"></i>
+                                                        <i class="fa fa-star-o text-green"></i>
+                                                        <i class="fa fa-star-o text-green"></i>
+                                                        <i class="fa fa-star-o text-green"></i>
                                                         <i class="fa fa-star-o"></i>
                                                         <i class="fa fa-star-o"></i>
                                                     </div>
@@ -299,7 +299,7 @@
                                     @if ($products->currentPage() - 1 > 0)
                                         <li class="page-item"><a class="page-link"
                                                 href="{{ $products->previousPageUrl() }}">
-                                                << /a>
+                                               < </a>
                                         </li>
                                     @endif
                                     @for ($i = 1; $i <= $products->lastPage(); $i++)

@@ -19,7 +19,7 @@ class BlogController extends Controller {
 	 * @return [type] [description]
 	 */
 	public function index() {
-        $blog=Blog::where('status','=','1')->paginate(3);
+        $blog=Blog::where('status','=','1')->paginate(4);
 		return view('frontend.pages.blog',compact('blog'));
 	}
 	public function loc_data(Request $req){
