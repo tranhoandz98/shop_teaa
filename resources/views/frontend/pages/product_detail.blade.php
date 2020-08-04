@@ -416,12 +416,12 @@
                                                 @for ($i = 0; $i < $feedback->star; $i++)
                                                     {{-- <label for="rate1"></label>
                                                     --}}
-                                                    <i class="fa fa-star color"></i>
+                                                    <i class="fa fa-star text-green"></i>
                                                 @endfor
                                                 @for ($i = 0; $i < 5 - $feedback->star; $i++)
                                                     {{-- <label for="rate1"></label>
                                                     --}}
-                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star "></i>
                                                 @endfor
                                             </div>
                                             <span class="p-review-info"><span>{{ $feedback->users->name }}</span> –

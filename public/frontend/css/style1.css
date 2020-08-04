@@ -167,3 +167,6 @@
 .fb_ads{
     width: 100%;
 }
+.blog-area.post-area .single-blog .blog-image a img{
+    height: 250px;
+}

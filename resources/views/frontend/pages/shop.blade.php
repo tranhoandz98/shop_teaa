@@ -299,7 +299,7 @@
                                     @if ($products->currentPage() - 1 > 0)
                                         <li class="page-item"><a class="page-link"
                                                 href="{{ $products->previousPageUrl() }}">
-                                                << /a>
+                                               < </a>
                                         </li>
                                     @endif
                                     @for ($i = 1; $i <= $products->lastPage(); $i++)

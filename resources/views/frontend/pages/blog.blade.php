@@ -53,7 +53,7 @@
                                 <ul class="pagination">
                                     @if ($blog->currentPage() > 1)
                                         <li class="page-item"><a class="page-link" href="{{ $blog->previousPageUrl() }}">
-                                                << /a>
+                                                < </a>
                                         </li>
                                     @endif
                                     @for ($i = 1; $i <= $blog->lastPage(); $i++)
