@@ -46,7 +46,6 @@
     <div class="contact-form pt-110">
         {!! $gmap->value !!}
     </div>
-   
 </div>
 <!-- Contact Area End -->
     @stop

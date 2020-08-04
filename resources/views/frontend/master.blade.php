@@ -91,7 +91,7 @@
                                 <ul>
                                     <li><a href="{{ route('profile', Auth::user()->id) }}">Tài khoản của tôi</a></li>
                                     <li><a href="{{ route('wishlist', Auth::user()->id) }}">Sản phẩm yêu thích</a></li>
-                                    <li><a href="">Đơn mua</a></li>
+                                    <li><a href="{{ route('order-frontend', Auth::user()->id) }}">Đơn mua</a></li>
                                     <li><a href="">Lịch sử mua hàng</a></li>
                                     <li><a href="{{ route('dang-xuat') }}">Đăng xuất</a></li>
                                 </ul>

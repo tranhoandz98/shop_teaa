@@ -31,15 +31,7 @@ class HomeController extends Controller {
 		return view('frontend.pages.register');
 	}
 	public function post_dang_ky(Request $request) {
-		if (isset($request->image)){
-			$file_name = time().$request->image->getClientOriginalName();
-        // đẩy file vào thư mục uploads
-        dd($request->image);
-        $request->image->move(base_path('public/uploads/Users'),$file_name);
-		}
-		else{
-			$file_name='';
-		}
+		
 		$request->validate([
 			'name' => 'required',
 			'email' => 'required|unique:users',
@@ -67,6 +59,15 @@ class HomeController extends Controller {
 			'image.mimes'=>'Ảnh phải là jpg,jpeg,gif, png',
 
 		]);
+		if (isset($request->image)){
+			$file_name = time().$request->image->getClientOriginalName();
+        // đẩy file vào thư mục uploads
+        // dd($request->image);
+        $request->image->move(base_path('public/uploads/Users'),$file_name);
+		}
+		else{
+			$file_name='';
+		}
 		// dd($file_name);
 		User::create([
 			'name' => $request->name,
