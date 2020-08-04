@@ -218,7 +218,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-2">
-                                                    {{ ($five / $count_star) * 100 }}%
+                                                    {{ ceil(($five / $count_star) * 100) }}%
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -235,7 +235,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-2">
-                                                    {{ ($four / $count_star) * 100 }} %
+                                                    {{ ceil(($four / $count_star) * 100) }} %
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -252,7 +252,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-2">
-                                                    {{ ($three / $count_star) * 100 }}%
+                                                    {{ ceil(($three / $count_star) * 100) }}%
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -269,7 +269,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-2">
-                                                    {{ ($two / $count_star) * 100 }}%
+                                                    {{ ceil(($two / $count_star) * 100) }}%
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -286,7 +286,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-2">
-                                                    {{ ($one / $count_star) * 100 }}%
+                                                    {{ ceil(($one / $count_star) * 100) }}%
                                                 </div>
                                             </div>
                                         </div>
