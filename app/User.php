@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Feedback_pro;
+use App\Models\Order;
 
 class User extends Authenticatable
 {
@@ -39,5 +40,8 @@ class User extends Authenticatable
     ];
     public function feedback_pros() {
         return $this->hasOne(Product::class, 'id_user', 'id');
+    }
+    public function orders() {
+        return $this->hasMany(Order::class, 'id_user', 'id');
     }
 }

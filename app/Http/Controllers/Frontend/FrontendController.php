@@ -11,6 +11,9 @@ use App\Models\Attr;
 use App\Models\Blog;
 use App\Models\Admin;
 use App\Models\Config;
+use App\Models\Order;
+use App\Models\Order_detail;
+use Auth;
 
 
 use Illuminate\Http\Request;
@@ -59,7 +62,25 @@ class FrontendController extends Controller {
 		return view('frontend.pages.home',compact('product_mix','product_moc','banner','blog'));
 	}
 	public function contact(){
-		// $about=Config::where([['slug', '=', 'about'], ['type', '=', '4']])->first();
 		return view('frontend.pages.contact');
+	}
+	public function order(){
+		$orders=Order::where('id_user','=',Auth::user()->id)->get();
+		// $order_detail=Order::where('id_order','=',$order->id)->get();
+		return view('frontend.pages.don_hang',compact('orders'));
+	}
+	public function order_detail($id){
+		$order=Order::find($id);
+		$order_details=Order_detail::where('id_order','=',$id)->get();
+		// dd($order_details);
+		return view('frontend.pages.don_hang_chi_tiet',compact('order_details','order'));
+	}
+	public function post_order_detail(Request $request, $id){
+		$order=Order::find($id);
+		$order->update([
+			'status'=>$request->status,
+		]);
+		// dd($order->status);
+	return redirect()->route('order-frontend',$id)->with('success','Hủy hàng thành công');
 	}
 }

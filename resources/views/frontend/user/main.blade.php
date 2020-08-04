@@ -31,7 +31,7 @@
                                 </a>
                             </li>
                             <li aria-expanded="false">
-                                <a class="nav-link" href="">
+                                <a class="nav-link" href="{{ route('order-frontend', Auth::user()->id) }}">
                                     <p class="font-weight-bold">Đơn mua</p>
                                 </a>
                             </li>

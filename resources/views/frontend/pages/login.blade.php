@@ -48,7 +48,7 @@
 				<span class="text-red">{{$message}}</span>
 				@enderror
 			</div>
-			<div><a href="" class="text-primary">Quên mật khẩu?</a></div>
+			{{-- <div><a href="" class="text-primary">Quên mật khẩu?</a></div> --}}
 			<div class="form-group form-check">
 				<input type="checkbox" class="form-check-input" id="exampleCheck1">
 				<label class="form-check-label" for="exampleCheck1">Remember me</label>
