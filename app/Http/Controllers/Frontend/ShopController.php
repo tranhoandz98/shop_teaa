@@ -61,7 +61,7 @@ class ShopController extends Controller
 				$product->setAttribute('quantity', '0');
 			}
 		}
-		return view('frontend.pages.shop',compact('products'));
+		return view('frontend.pages.danh_muc_shop',compact('products','slug'));
 	}
 	/**
 	 * [shop description]

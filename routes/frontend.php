@@ -20,7 +20,12 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function () {
 	Route::post('/dang-nhap.html', 'HomeController@post_dang_nhap');
 	Route::get('/dang-xuat.html', 'HomeController@dang_xuat')->name('dang-xuat');
 	// end login
+	Route::get('/reset-password','ResetPasswordController@recover')->name('recover');
 
+    Route::post('/reset-password', 'ResetPasswordController@sendMail');
+
+    Route::get('/dat-lai-mat-khau/{token}','ResetPasswordController@resetPassword');
+    Route::post('/dat-lai-mat-khau/{token}','ResetPasswordController@newPass');
 	// profile
 	Route::get('/tai-khoan-cua-toi.html/{id}', 'UserController@profile')->name('profile');
 	Route::post('/tai-khoan-cua-toi.html/{id}', 'UserController@post_profile');
@@ -56,7 +61,7 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function () {
 	Route::get('/dat-hang.html', 'CheckoutController@index')->name('checkout');
 	Route::post('/dat-hang.html', 'CheckoutController@checkout');
 	//Đăng nhập phần checkout
-	Route::post('/dang-nhap.html', 'HomeController@post_check_out')->name('post-dang-nhap');
+	Route::post('/dang-nhap-check-out.html', 'HomeController@post_check_out')->name('post-dang-nhap');
 	//tìm kiếm
 	Route::get('search', 'SearchController@getsearch')->name('search');
 	Route::get('sort', 'SearchController@sort')->name('sort');

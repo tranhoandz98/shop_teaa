@@ -2,18 +2,9 @@
 @section('title','Danh sách tin tức')
 @section('namepage','Tin tức')
 @section('main')
-
 <div class="row">
 	<div class="col-12">
 		<div class="card">
-			@if(Session::has('success'))
-			<div class="alert alert-success alert-dismissible fade show" role="alert">
-				{{Session::get('success')}}
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">×</span>
-				</button>
-			</div>
-			@endif
 			<div class="card-body">
 				<div class="row">
 					<div class="col-sm-12">
@@ -27,7 +18,6 @@
 								<tr>
 									<th class="sorting">STT</th>
 									<th class="sorting">Tiêu đề</th>
-									{{-- <th class="sorting">Người đăng bài</th> --}}
 									<th class="sorting">Danh mục</th>
 									<th class="sorting">Hình ảnh</th>
 									<th class="sorting">Trạng thái</th>
@@ -39,7 +29,6 @@
 								<tr>
 									<td class="sorting_1">{{$loop->index+1}}</td>
 									<td class="sorting_1">{{$value->name}}</td>
-									{{-- <td class="sorting_1">{{$value->admins->name}}</td> --}}
 									<td class="sorting_1">{{$value->categories->name}}</td>
 									<td><img src="{{url('public/uploads')}}/{{$value->image}}" alt="" width="100px"></td>	
 									<td>{!!($value->status==1)?'<span class="badge badge-pill badge-soft-success font-size-12">Hiện</span>':'<span class="badge badge-pill badge-soft-danger font-size-12">Ẩn</span>'!!}</td>

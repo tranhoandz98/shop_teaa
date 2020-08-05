@@ -21,34 +21,25 @@ class UserController extends Controller
 		$request->validate([
 			'name' => 'required',
 			'email' => ['required',Rule::unique('users')->ignore($id)],
-			'password' => 'required|min:8',
-			're_password' => 'required|min:8',
 			'phone' => ['required','max:15',Rule::unique('users')->ignore($id)],
 			'birthday' => 'required',
 			'address' => 'required',
-			'image'=>'required|mimes:jpg,png,gif,jpeg'
 		], [
 			'name.required' => 'Tên không được bỏ trống',
 			'email.required' => 'Email không được bỏ trống',
 			'email.unique' => 'Email đã tồn tại',
-			'password.required' => 'Mật khẩu không được bỏ trống',
-			're_password.required' => 'Mật khẩu không được bỏ trống',
-			'password.min' => 'Mật khẩu phải có đủ 8 ký tự không được bỏ trống',
-			're_password.min' => 'Mật khẩu phải có đủ 8 ký tự không được bỏ trống',
 			'phone.required' => 'Số điện thoại không được bỏ trống',
 			'phone.unique' => 'Số điện thoại đã tồn tại',
 			'phone.max' => 'Số điện thoại không vượt quá 15 kí tự',
 			'birthday.required' => 'Ngày sinh không được bỏ trống',
 			'address.required' => 'Địa chỉ không được bỏ trống',
-			'image.required'=>'Ảnh không được bỏ trống',
-			'image.mimes'=>'Ảnh phải là jpg,jpeg,gif, png',
 		]);
 		// dd($request->image);
 		if(empty($request->image)){
 			$file_name=$user->avatar;
 		}
 		else{
-			unlink('public/uploads/Users/'.$user->avatar);
+				unlink('public/uploads/Users/'.$user->avatar);
 			$file_name = time().$request->image->getClientOriginalName();
         // đẩy file vào thư mục uploads
 			$request->image->move(base_path('public/uploads/Users'),$file_name);
@@ -71,13 +62,9 @@ class UserController extends Controller
 	public function post_change_pass(Request $request,$id) {
 		$user=User::find($id);
 		$request->validate([
-
             'password' => ['required','min:8', new MatchOldPassword],
-
             'new_password' => ['required','min:8'],
-
             'r_password' => ['required','same:new_password','min:8'],
-
         ],[
 			'password.required' => 'Mật khẩu không được bỏ trống',
 			'password.min' => 'Mật khẩu phải có đủ 8 ký tự',

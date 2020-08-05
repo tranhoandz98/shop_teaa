@@ -2,14 +2,6 @@
 @section('title', 'contact')
 @section('namepage', 'Cấu hình')
 @section('main')
-    @if (Session::has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ Session::get('success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-        </div>
-    @endif
     @if ($config->count() < 5)
         <a href="{{ route('contact.create') }}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2">
             <i class="mdi mdi-plus mr-1"></i>
@@ -25,7 +17,7 @@
                         <div class="card-body">
                             <h2 class="font-weight-bold">Contact</h2>
                             <hr>
-                            <p >
+                            <p>
                                 <a href="{{ route('contact.edit', $intro->id) }}" class=" text-primary"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa"><i
                                         class="mdi mdi-pencil btn-success btn btn-sm"></i>
@@ -36,7 +28,7 @@
                                         data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa"><i
                                             class="mdi mdi-pencil btn-success btn btn-sm"></i>
                                     </a></i>
-                                Address : {!! $address->value !!}
+                                    Address : {!! $address->value !!}
                                 </p>
                                 <p><a href="{{ route('contact.edit', $phone->id) }}" class=" text-primary"
                                         data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa"><i
@@ -67,8 +59,8 @@
 
                                     <a href="{{ route('contact.edit', $worktime->id) }}" class=" text-primary"
                                         data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa"><i
-                                        class="mdi mdi-pencil btn-success btn "></i></a>
-                                    </div>
+                                            class="mdi mdi-pencil btn-success btn "></i></a>
+                                </div>
                             </div>
                             <hr>
                             {{ $worktime->value }}

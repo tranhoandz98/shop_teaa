@@ -8,16 +8,7 @@ use Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller {
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	// public function __construct()
-	// {
-	//     $this->middleware('auth');
-	// }
-
+	
 	/**
 	 * Show the application dashboard.
 	 *
@@ -31,7 +22,6 @@ class HomeController extends Controller {
 		return view('frontend.pages.register');
 	}
 	public function post_dang_ky(Request $request) {
-		
 		$request->validate([
 			'name' => 'required',
 			'email' => 'required|unique:users',
@@ -41,7 +31,6 @@ class HomeController extends Controller {
 			'birthday' => 'required',
 			'address' => 'required',
 			'image'=>'required|mimes:jpg,png,gif,jpeg'
-
 		], [
 			'name.required' => 'Tên không được bỏ trống',
 			'email.required' => 'Email không được bỏ trống',
@@ -57,7 +46,6 @@ class HomeController extends Controller {
 			'address.required' => 'Địa chỉ không được bỏ trống',
 			'image.required'=>'Ảnh không được bỏ trống',
 			'image.mimes'=>'Ảnh phải là jpg,jpeg,gif, png',
-
 		]);
 		if (isset($request->image)){
 			$file_name = time().$request->image->getClientOriginalName();

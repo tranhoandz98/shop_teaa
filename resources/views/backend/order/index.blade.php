@@ -2,21 +2,11 @@
 @section('title','Danh sách đơn hàng')
 @section('namepage','Đơn hàng')
 @section('main')
-
 <div class="row">
 	<div class="col-12">
 		<div class="card">
-			@if(Session::has('success'))
-			<div class="alert alert-success alert-dismissible fade show" role="alert">
-				{{Session::get('success')}}
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">×</span>
-				</button>
-			</div>
-			@endif
 			<div class="card-body">
 				<div class="row">
-					
 					<div class="col-sm-12">
 						<table id="datatable-buttons" class="table  table-bordered dt-responsive  dataTable no-footer  table-hover" role="grid" aria-describedby="datatable-buttons_info">
 							<thead>

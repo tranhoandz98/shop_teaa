@@ -2,18 +2,9 @@
 @section('title', 'Logo')
 @section('namepage', 'Cấu hình')
 @section('main')
-
     <div class="row">
         <div class="col-12">
             <div class="card">
-                @if (Session::has('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ Session::get('success') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                @endif
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-12">
@@ -25,57 +16,56 @@
                         </div>
                         <div class="col-sm-12">
                             <table id="datatable-buttons"
-                            class="table table-bordered dt-responsive nowrap dataTable no-footer dtr-inline table-hover"
-                            role="grid" aria-describedby="datatable-buttons_info">
-                                    <thead>
-                                        <tr role="row">
-                                            <th class="sorting">STT</th>
-                                            <th class="sorting">Tên Logo</th>
-                                            <th class="sorting">Hình ảnh</th>
-                                            <th class="sorting">Trạng thái</th>
-                                            <th class="sorting">Hành động</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($logos as $logo)
-                                            <tr>
-                                                <td class="" tabindex="0">{{ $loop->index + 1 }}</td>
-                                                <td class="sorting_1">{{ $logo->name }}</td>
-                                                <td class="sorting_1"><img src="{{ url('public/uploads') }}/{{ $logo->value }}" alt=""
-                                                    width="100px"></td>
-                                                <td>{!! $logo->status == 1 ? '<span
-                                                        class="badge badge-pill badge-soft-success font-size-12">Hiện</span>'
-                                                    : '<span
-                                                        class="badge badge-pill badge-soft-danger font-size-12">Ẩn</span>'
-                                                    !!}</td>
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <!-- Sửa -->
-                                                            <a href="{{ route('logo.edit', $logo->id) }}"
-                                                                class=" text-primary" data-toggle="tooltip"
-                                                                data-placement="top" title="" data-original-title="Sửa"><i
-                                                                    class="mdi mdi-pencil btn-success btn "></i></a>
-                                                        </div>
-                                                        <div class="col">
-                                                            <!-- Xóa -->
-                                                            <form action="{{ route('logo.destroy', $logo->id) }}"
-                                                                method="POST">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button class="btn btn-danger mdi mdi-close"
-                                                                    onclick="return confirm('Xóa logo -{{ $logo->name }}- không?')"
-                                                                    type="submit" title="" data-original-title="Xóa"
-                                                                    data-toggle="tooltip">
-                                                                </button>
-                                                            </form>
-                                                        </div>
+                                class="table table-bordered dt-responsive nowrap dataTable no-footer dtr-inline table-hover"
+                                role="grid" aria-describedby="datatable-buttons_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting">STT</th>
+                                        <th class="sorting">Tên Logo</th>
+                                        <th class="sorting">Hình ảnh</th>
+                                        <th class="sorting">Trạng thái</th>
+                                        <th class="sorting">Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($logos as $logo)
+                                        <tr>
+                                            <td class="" tabindex="0">{{ $loop->index + 1 }}</td>
+                                            <td class="sorting_1">{{ $logo->name }}</td>
+                                            <td class="sorting_1"><img src="{{ url('public/uploads') }}/{{ $logo->value }}"
+                                                    alt="" width="100px"></td>
+                                            <td>{!! $logo->status == 1
+                                                ? '<span
+                                                    class="badge badge-pill badge-soft-success font-size-12">Hiện</span>'
+                                                : '<span class="badge badge-pill badge-soft-danger font-size-12">Ẩn</span>'
+                                                !!}</td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <!-- Sửa -->
+                                                        <a href="{{ route('logo.edit', $logo->id) }}" class=" text-primary"
+                                                            data-toggle="tooltip" data-placement="top" title=""
+                                                            data-original-title="Sửa"><i
+                                                                class="mdi mdi-pencil btn-success btn "></i></a>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                                    <div class="col">
+                                                        <!-- Xóa -->
+                                                        <form action="{{ route('logo.destroy', $logo->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="btn btn-danger mdi mdi-close"
+                                                                onclick="return confirm('Xóa logo -{{ $logo->name }}- không?')"
+                                                                type="submit" title="" data-original-title="Xóa"
+                                                                data-toggle="tooltip">
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 

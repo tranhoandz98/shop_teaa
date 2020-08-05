@@ -4,13 +4,13 @@
     <!-- Breadcrumb Area Start -->
     <div class="breadcrumb-area bg-12 text-center headingt">
         <div class="container">
-            <h1>Tìm kiếm</h1>
+            <h1>Shop</h1>
             <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tìm kiếm</li>
+                    <li class="breadcrumb-item"><a href="{{ route('shop') }}">Cửa hàng</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $slug }}</li>
                 </ul>
-                Tìm kiếm được ({{ $products->count()? :0 }}) kết quả
             </nav>
         </div>
     </div>
@@ -22,7 +22,7 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="sidebar-wrapper">
                         {{-- <h3>Layered Navigation</h3> --}}
-                        {{-- <form action="{{ route('sort') }}" method="post">
+                        {{-- <form action="{{ route('sort') }}" method="">
                             @csrf --}}
                             <div class="sidebar-widget danh-muc">
                                 <h3>Danh mục</h3>
@@ -126,28 +126,6 @@
                                 </span>
                             </div>
                         </div>
-                        {{-- <div class="shop-results-wrapper">
-                            <div class="shop-results"><span>Show:</span>
-                                <div class="shop-select">
-                                    <select name="page" id="page">
-                                        <option value="6">6</option>
-                                        <option value="9">9</option>
-                                        <option value="15">15</option>
-                                        <option value="30">30</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="shop-results"><span>Sắp xếp:</span>
-                                <div class="shop-select sort-sx">
-                                    <select name="sort" id="sort">
-                                        <option value="position">Sắp xếp mặc định</option>
-                                        <option value="p-name">Sắp xếp theo mới nhất</option>
-                                        <option value="p-name-za">Sắp xếp theo giảm dần</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        </form> --}}
                     </div>
                     <div class="ht-product-shop tab-content text-center">
                         <div class="tab-pane active show fade" id="grid" role="tabpanel">
@@ -201,13 +179,13 @@
                                                     @endif
                                                 </div>
                                                 <div class="product-text mt-3">
-                                                    {{-- <div class="product-rating">
-                                                        <i class="fa fa-star-o color"></i>
+                                                    <div class="product-rating">
+                                                        {{-- <i class="fa fa-star-o color"></i>
                                                         <i class="fa fa-star-o color"></i>
                                                         <i class="fa fa-star-o color"></i>
                                                         <i class="fa fa-star-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                    </div> --}}
+                                                        <i class="fa fa-star-o"></i> --}}
+                                                    </div>
                                                     <h5><a
                                                             href="{{ route('product-detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">{{ $product->name }}</a>
                                                     </h5>
@@ -279,13 +257,13 @@
                                             @endif
                                         </div>
                                         <div class="product-text mt-3">
-                                            {{-- <div class="product-rating">
-                                                <i class="fa fa-star-o color"></i>
+                                            <div class="product-rating">
+                                                {{-- <i class="fa fa-star-o color"></i>
                                                 <i class="fa fa-star-o color"></i>
                                                 <i class="fa fa-star-o color"></i>
                                                 <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div> --}}
+                                                <i class="fa fa-star-o"></i> --}}
+                                            </div>
                                             <h5><a
                                                     href="{{ route('product-detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">{{ $product->name }}</a>
                                             </h5>
@@ -328,7 +306,7 @@
                                     @if ($products->currentPage() - 1 > 0)
                                         <li class="page-item"><a class="page-link"
                                                 href="{{ $products->previousPageUrl() }}">
-                                                << /a>
+                                               < </a>
                                         </li>
                                     @endif
                                     @for ($i = 1; $i <= $products->lastPage(); $i++)

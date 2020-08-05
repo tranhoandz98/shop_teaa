@@ -10,6 +10,7 @@
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('shop') }}">Cửa hàng</a></li>
+                    <li class="breadcrumb-item "><a href="{{ route('danh-muc', $product->categories->slug) }}">{{ $product->categories->name }}</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
                 </ul>
             </nav>
@@ -77,8 +78,6 @@
                                                         <i class="fa fa-star text-green"></i>
                                                     @endfor
                                                     @for ($i = 0; $i < 5 - $star; $i++)
-                                                        {{-- <label for="rate1"></label>
-                                                        --}}
                                                         <i class="fa fa-star"></i>
                                                     @endfor
                                                     @endif
@@ -95,7 +94,6 @@
                                 {{ number_format($product_detail_id->price) }}đ
                             </h4>
                         @endif
-
                         <p>{{ $product->meta_desc }}</p>
                         <h5><i class="fa fa-check"></i>{{ $product_detail_id->quantity }} in stock</h5>
                         <strong>Size:</strong>

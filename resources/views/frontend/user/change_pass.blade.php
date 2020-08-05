@@ -30,7 +30,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                       <a href="#" class="text-danger">Quên mật khẩu</a>
+                       <a href="{{ route('recover') }}" class="text-danger">Quên mật khẩu</a>
                    </div>
                    <button type="submit" class="btn btn-success">Đổi mật khẩu</button>
                </form>

@@ -67,7 +67,6 @@
                     </div>
                     @endif
                     @yield('main-pro');
-
                 </div>
             </div>
         </div>

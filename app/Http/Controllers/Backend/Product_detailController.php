@@ -140,7 +140,12 @@ class Product_detailController extends Controller
     public function destroy($id,$id_detail)
     {
         $product_detail= Product_detail::find($id_detail);
-        $product_detail->delete();
-        return redirect()->route('product_detail_backend',$id)->with('success','Xóa thành công');
+        if($product_detail->order_details->count()>0||$product_detail->wishlists->count()>0){
+            return redirect()->back()->with('error','Không thể xóa');
+            }
+            else{
+                $product_detail->delete();
+            return redirect()->back()->with('success','Xóa thành công');
+        }
     }
 }

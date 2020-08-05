@@ -1,5 +1,5 @@
 @extends('frontend.master')
-@section('title', 'Trang đăng nhập')
+@section('title', 'Đặt lại mật khẩu')
 @section('main')
     <div class="container mt-40">
         <div class="row justify-content-center">
@@ -26,7 +26,7 @@
                             <div class="col-7">
                                 <div class="text-white p-4 mt-4">
                                     <h3 class="text-white">Chào mừng bạn !</h3>
-                                    <h4 class="text-white">Đăng nhập</h4>
+                                    <h4 class="text-white">Đặt lại mật khẩu</h4>
                                 </div>
                             </div>
                             <div class="col-5 align-self-end">
@@ -36,42 +36,44 @@
                     </div>
                     <div class="card-body pt-0">
                         <div class="p-2">
-                            <form method="POST" action="">
+                            <form class="form-horizontal" action="" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="email">Email </label>
-                                    <input type="email" class="form-control" id="email"
-                                        placeholder="Nhập email" name="email">
-                                    @error('email')
-                                    <span class="text-red">{{ $message }}</span>
-                                    @enderror
+                                    <input type="text" name="token" value="{{ $info }}" hidden="">
                                 </div>
                                 <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu"
-                                        name="password">
-                                    @error('password')
-                                    <span class="text-red">{{ $message }}</span>
-                                    @enderror
+                                    <label for="userpassword">Nhập mật khẩu mới</label>
+                                    <input type="password" class="form-control" id="userpassword"
+                                        placeholder="Nhập mật khẩu" name="password">
+                                        @error('password')
+                        <span class="text-red">{{$message}}</span>
+                        @enderror
                                 </div>
-                                 <div><a href="{{ route('recover') }}" class="text-primary">Quên mật khẩu?</a>
-                                </div>
-                                <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Ghi nhớ tôi</label>
-                                </div>
-                                <button type="submit" class="btn btn-green text-white">Đăng nhập</button>
-                            </form>
-                            <div class="mt-2">
-                                <p>Bạn chưa có tài khoản? <a href="{{ route('dang-ky') }}" class="text-primary">Đăng ký</a>
-                                </p>
 
-                            </div>
+                                <div class="form-group">
+                                    <label for="confirm">Xác nhận mật khẩu</label>
+                                    <input type="password" class="form-control" id="confirm"
+                                        placeholder="Nhập lại mật khẩu" name="confirm">
+                                        @error('confirm')
+                        <span class="text-red">{{$message}}</span>
+                        @enderror
+                                </div>
+
+                                {{-- <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customControlInline">
+                                    <label class="custom-control-label" for="customControlInline">Remember me</label>
+                                </div> --}}
+
+                                <div class="mt-3">
+                                    <button class="btn btn-green text-white btn-block waves-effect waves-light" type="submit">
+                                        Đặt lại mật khẩu
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--End of Register Form-->
-@stop
+    @stop

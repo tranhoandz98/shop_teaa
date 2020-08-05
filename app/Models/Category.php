@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product;
+use App\Models\Blog;
 
 class Category extends Model
 {
@@ -15,5 +16,9 @@ class Category extends Model
      public function products(){
     	// return $this->hasMany(Product::class);
     	return $this->hasMany(Product::class, 'id_cate', 'id');
+    }
+    public function blogs(){
+    	// return $this->hasMany(Product::class);
+    	return $this->hasMany(Blog::class, 'id_cate', 'id');
     }
 }

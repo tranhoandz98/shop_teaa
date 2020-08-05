@@ -30,11 +30,11 @@ class BlogController extends Controller {
 		$category=Category::where([['status','=','1'],['type','=','0']])->orderby('name')->get();
 		$category_id=Category::where('slug','=',$slug)->first();
 		$blog=Blog::where([['status','=','1'],['id_cate','=',$category_id->id]])->paginate(6);
-		return view('frontend.pages.blog',compact('blog'));
+		return view('frontend.pages.danh_muc_blog',compact('blog','slug'));
 	}
 	public function blog_detail($slug, $id){
 		$blog=Blog::where('slug','=',$slug)->first();
 		$blog_detail=Blog::find($id);
-		return view('frontend.pages.blog_detail',compact('blog','blog_detail'));
+		return view('frontend.pages.blog_detail',compact('blog','slug','blog_detail'));
 	}
 }

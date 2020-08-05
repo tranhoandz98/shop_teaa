@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product_detail;
 use App\Models\Feedback_pro;
+use App\Models\Category;
 
 class Product extends Model
 {
@@ -12,7 +13,7 @@ class Product extends Model
 
 	public function categories()
 	{
-		return $this->belongsTo('App\Models\Category', 'id_cate');
+		return $this->belongsTo(Category::class, 'id_cate','id');
 	}
 	public function product_details()
 	{

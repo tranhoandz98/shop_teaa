@@ -4,25 +4,14 @@
   @section('main')
   <div class="row">
     <div class="col-lg-12">
-        @if(Session::has('success'))
-	<div class="alert alert-success alert-dismissible fade show" role="alert">
-		{{Session::get('success')}}
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">×</span>
-		</button>
-	</div>
-	@endif
         <div class="card">
-            
             <div class="card-body">
                 <div class="row">
-                    
                     <div class="col-lg-4">
                         <div class="media">
                             <div class="mr-3">
                                 <img src="{{url('public')}}/backend/images/users/avatar-1.jpg" alt="" class="avatar-md rounded-circle img-thumbnail">
                             </div>
-                            
                             <div class="media-body align-self-center">
                                 <div class="text-muted">
                                     <p class="mb-2">Welcome to skote dashboard</p>
@@ -32,7 +21,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-lg-4 align-self-center">
                         <div class="text-lg-center mt-4 mt-lg-0">
                             <div class="row">

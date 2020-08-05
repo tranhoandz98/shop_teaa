@@ -143,7 +143,8 @@
                                 @if ($product->id_detail != 0)
                                     <div class="single-product-item">
                                         <div class="product-image image-cus">
-                                            <a href="product-details.html">
+                                            <a href="{{ route('product-detail', ['slug' => $product->slug,
+                                                'id_detail' => $product->id_detail]) }}">
                                                 <img src="{{ url('public/uploads') }}/{{ $product->image }}" alt="">
                                                 @if ($product->discount > 0)
                                                     <div class="pro-discount text-center hide">-{{ $product->discount }}%
@@ -210,7 +211,12 @@
                                                 <p>{{ $product->meta_desc }}</p>
                                             </div>
                                             <div class="pro-btn">
-                                                <button type="button" class="p-cart-btn default-btn">Add to cart</button>
+                                                <form action="{{ route('add-cart', $product->id_detail) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    <button type="submit" class="p-cart-btn default-btn">Thêm vào giỏ
+                                                        hàng</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

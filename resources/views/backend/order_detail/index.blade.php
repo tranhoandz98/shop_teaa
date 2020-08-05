@@ -2,15 +2,6 @@
 @section('title','Chi tiết đơn hàng')
 @section('namepage','Đơn hàng')
 @section('main')
-
-@if(Session::has('success'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-	{{Session::get('success')}}
-	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		<span aria-hidden="true">×</span>
-	</button>
-</div>
-@endif
 <div class="row">
 	<div class="col-4">
 		<div class="card">

@@ -191,7 +191,6 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product=Product::find($id);
-         // dd($product->product_details->count());
          if($product->product_details->count()>0){
             return redirect()->route('product.index')->with('error','Vui lòng xóa chi tiết sản phẩm trước');
             }

@@ -106,7 +106,12 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category=Category::find($id);
-        $category->delete();
-        return redirect()->route('category.index')->with('success','Xóa thành công');
+        if($category->products->count()>0||$category->blogs->count()>0){
+            return redirect()->back()->with('error','Không thể xóa');
+            }
+            else{
+                $category->delete();
+            return redirect()->back()->with('success','Xóa thành công');
+        }
     }
 }

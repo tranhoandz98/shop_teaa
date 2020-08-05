@@ -37,9 +37,6 @@
 									<th class="sorting">Ảnh đại diện</th>
 									<th class="sorting">Tên sản phẩm</th>
 									<th class="sorting">Danh mục</th>
-									{{-- <th class="sorting">Giá</th>
-									<th class="sorting">% giảm giá</th>
-									<th class="sorting">Số lượng</th> --}}
 									<th class="sorting">Trạng thái</th>
 									<th class="sorting">Hành động</th>
 								</tr>
@@ -51,17 +48,12 @@
 									<td><img src="{{url('public/uploads')}}/{{$value->image}}" alt="" width="100px"></td>
 									<td class="sorting_1">{{$value->name}}</td>
 									<td>{{$value->categories->name}}</td>
-								{{-- 	<td class="sorting_1">{{$value->price}}</td>
-									<td class="sorting_1">{{$value->discount}}</td>
-									<td class="sorting_1">{{$value->quantity}}</td> --}}
-
 									<td>{!!($value->status==1)?'<span class="badge badge-pill badge-soft-success font-size-12">Hiện</span>':'<span class="badge badge-pill badge-soft-danger font-size-12">Ẩn</span>'!!}</td>
 									<td>
 										<div class="row">
 											<div class="col">
 												<a href="{{route('product_detail_backend',$value->id)}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Chi tiết sản phẩm"><i class="mdi mdi-eye btn-info btn"></i></a>
 											</div>
-											
 											<div class="col">
 												<!-- Sửa -->
 												<a href="{{route('product.edit',$value->id)}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa"><i class="mdi mdi-pencil btn-success btn"></i></a>
@@ -73,12 +65,9 @@
 													@method('DELETE')
 													<button class="mdi mdi-close btn-danger btn " onclick="return confirm('Xóa danh mục -{{$value->name}}- không?')" type="submit" title="" data-original-title="Xóa" data-toggle="tooltip">
 													</button>
-
 												</form>
 											</div>
 										</div>
-										
-										
 									</td>
 								</tr>
 								@endforeach
@@ -86,7 +75,6 @@
 						</table>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
