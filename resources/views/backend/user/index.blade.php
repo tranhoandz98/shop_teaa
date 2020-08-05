@@ -45,7 +45,13 @@
 
                                 <td>{{ $user->address }}</td>
                                 <td>
-                                        <a href="{{ route('user.destroy',$user->id) }}" class="dropdown-item"><i class="mdi mdi-trash-can font-size-16 text-danger mr-1"></i></a>
+                                    <form action="{{route('user.destroy',$user->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="mdi mdi-close btn-danger btn " onclick="return confirm('Xóa danh -{{$user->name}}- không?')" type="submit" title="" data-original-title="Xóa" data-toggle="tooltip">
+                                        </button>
+
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
