@@ -82,7 +82,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user=User::find($id);
-        $user->delete();
-        return redirect()->back()->with('success','Xóa tài khoản thành công');
+        if($user->orders->count()>0){
+            return redirect()->back()->with('error','Khách hàng có đơn không thể xóa.');
+            }
+            else{
+                $user->delete();
+            return redirect()->back()->with('success','Xóa thành công');
+        }
     }
 }
