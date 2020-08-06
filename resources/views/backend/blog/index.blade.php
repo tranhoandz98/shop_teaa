@@ -13,7 +13,7 @@
 						</div>
 					</div>
                     <div class="table-responsive">
-						<table id="datatable-buttons" class="table  table-bordered dataTable no-footer dtr-inline table-hover" role="grid" aria-describedby="datatable-buttons_info">
+						<table id="datatable-buttons" class="table table-bordered dataTable dtr-inline table-hover" role="grid" aria-describedby="datatable-buttons_info">
 							<thead>
 								<tr>
 									<th class="sorting">#</th>
@@ -29,7 +29,7 @@
 								<tr>
 									<td class="sorting_1">{{$loop->index+1}}</td>
 									<td><img src="{{url('public/uploads')}}/{{$value->image}}" alt="" width="50px"></td>	
-									<td class="sorting_1">{{$value->name}}</td>
+									<td class="sorting_1 w-50">{{$value->name}}</td>
 									<td class="sorting_1">{{$value->categories->name}}</td>
 									<td>{!!($value->status==1)?'<span class="badge badge-pill badge-soft-success font-size-12">Hiện</span>':'<span class="badge badge-pill badge-soft-danger font-size-12">Ẩn</span>'!!}</td>
 									<td>

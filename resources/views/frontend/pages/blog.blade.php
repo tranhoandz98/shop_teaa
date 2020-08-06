@@ -15,7 +15,7 @@
     </div>
     <!-- Breadcrumb Area End -->
     <!-- Post Area Start -->
-    <div class="post-area blog-area pt-110 pb-95 blog-column">
+    <div class="post-area blog-area pt-110 pb-60 blog-column">
         <div class="container">
             <div class="row">
                 <div class="order-xl-2 order-lg-2 col-xl-9 col-lg-8">

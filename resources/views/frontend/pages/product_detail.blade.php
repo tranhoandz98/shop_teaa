@@ -10,7 +10,9 @@
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('shop') }}">Cửa hàng</a></li>
-                    <li class="breadcrumb-item "><a href="{{ route('danh-muc', $product->categories->slug) }}">{{ $product->categories->name }}</a></li>
+                    <li class="breadcrumb-item "><a
+                            href="{{ route('danh-muc', $product->categories->slug) }}">{{ $product->categories->name }}</a>
+                    </li>
                     <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
                 </ul>
             </nav>
@@ -18,7 +20,7 @@
     </div>
     <!-- Breadcrumb Area End -->
     <!-- Product DEtails Area Start -->
-    <div class="product-detials-area pt-20">
+    <div class="product-detials-area pt-90 pb-60">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-md-5">
@@ -71,16 +73,16 @@
                         <h3>{{ $product->name }}</h3>
                         <div class="p-rating-review">
                             <div class="product-rating">
-                                @if($star==0)
-                                Sản phẩm chưa có đánh giá
+                                @if ($star == 0)
+                                    Sản phẩm chưa có đánh giá
                                 @else
-                                @for ($i = 0; $i < $star; $i++)
-                                                        <i class="fa fa-star text-green"></i>
-                                                    @endfor
-                                                    @for ($i = 0; $i < 5 - $star; $i++)
-                                                        <i class="fa fa-star"></i>
-                                                    @endfor
-                                                    @endif
+                                    @for ($i = 0; $i < $star; $i++)
+                                        <i class="fa fa-star text-green"></i>
+                                    @endfor
+                                    @for ($i = 0; $i < 5 - $star; $i++)
+                                        <i class="fa fa-star"></i>
+                                    @endfor
+                                @endif
                             </div>
                         </div>
                         @if ($product_detail_id->discount > 0)
@@ -108,11 +110,10 @@
                                 @endif
                             @endforeach
                         </div>
-
                         <form action="{{ route('add-cart', $product_detail_id->id) }}" method="post">
                             @csrf
                             <div class="add-cart-product">
-                                <input type="number" placeholder="1" name="qty" max="{{$product_detail_id->quantity}}">
+                                <input type="number" placeholder="1" name="qty" max="{{ $product_detail_id->quantity }}">
                                 <button type="submit" class="default-btn">Thêm vào giỏ hàng</button>
                                 <button type="button">
                                     @if (Auth::check())
@@ -124,8 +125,7 @@
                                                 class="icon icon-Heart"></i></a>
                                     @endif
                                 </button>
-                                <a
-                                    href="{{url()->current()}}">
+                                <a href="{{ url()->current() }}">
                                     <button type="button"><i class="icon icon-Restart"></i></button>
                                 </a>
                             </div>
@@ -139,11 +139,13 @@
                             <div class="product-share">
                                 <span class="p-d-title">Chia sẻ lên facebook</span>
                                 <ul class="p-social-links">
-                                    {{-- <li><a href="#"><i class="fa fa-facebook"></i></a></li> --}}
-                                    <div class="fb-share-button"
-                                    data-href="{{ url()->current() }}"
-                                    data-layout="button_count" data-size="small">
-                                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+                                    {{-- <li><a href="#"><i class="fa fa-facebook"></i></a>
+                                    </li> --}}
+                                    <div class="fb-share-button" data-href="{{ url()->current() }}"
+                                        data-layout="button_count" data-size="small">
+                                        <a target="_blank"
+                                            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+                                            class="fb-xfbml-parse-ignore">
                                             Chia sẻ</a></div>
                                 </ul>
                             </div>
@@ -155,15 +157,15 @@
     </div>
     <!-- Product DEtails Area End -->
     <!-- Product Review Tab Area Start -->
-    <div class="product-review-tab-area bg-gray pt-90 pb-105">
+    <div class="product-review-tab-area pt-60 pb-30 bg-8">
         <div class="container scroll-area">
             <div class="p-d-tab-container">
-                <div class="p-tab-btn">
+                <div class="p-tab-btn ">
                     <div class="nav" role="tablist">
                         <a class="active" href="#tab1" data-toggle="tab" role="tab" aria-selected="true"
                             aria-controls="tab1">Mô tả sản phẩm</a>
                         <a href="#tab2" data-toggle="tab" role="tab" aria-selected="false" aria-controls="tab2">Đánh giá
-                            (2)</a>
+                            ({{ $count_star }})</a>
                     </div>
                 </div>
                 <div class="p-d-tab tab-content">
@@ -199,186 +201,186 @@
                                             <p>({{ $count_star }} nhận xét)</p>
                                         </div>
                                     </div>
-                                    @if ($star>0)
-                                    <div class="card col mr-1">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <span>5</span>
-                                                    <i class="fa fa-star color"></i>
-                                                </div>
-                                                <div class="col btn-lg">
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-green" role="progressbar"
-                                                            style="width: {{ ($five / $count_star) * 100 }}%;"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                    @if ($star > 0)
+                                        <div class="card col mr-1">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <span>5</span>
+                                                        <i class="fa fa-star color"></i>
+                                                    </div>
+                                                    <div class="col btn-lg">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-green" role="progressbar"
+                                                                style="width: {{ ($five / $count_star) * 100 }}%;"
+                                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-2">
-                                                    {{ ceil(($five / $count_star) * 100) }}%
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <span>4</span>
-                                                    <i class="fa fa-star color"></i>
-                                                </div>
-                                                <div class="col btn-lg">
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-primary" role="progressbar"
-                                                            style="width: {{ ($four / $count_star) * 100 }}%;"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                        </div>
+                                                    <div class="col-2">
+                                                        {{ ceil(($five / $count_star) * 100) }}%
                                                     </div>
                                                 </div>
-                                                <div class="col-2">
-                                                    {{ ceil(($four / $count_star) * 100) }} %
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <span>3</span>
-                                                    <i class="fa fa-star color"></i>
-                                                </div>
-                                                <div class="col btn-lg">
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: {{ ($three / $count_star) * 100 }}%;"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <span>4</span>
+                                                        <i class="fa fa-star color"></i>
+                                                    </div>
+                                                    <div class="col btn-lg">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-primary" role="progressbar"
+                                                                style="width: {{ ($four / $count_star) * 100 }}%;"
+                                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-2">
-                                                    {{ ceil(($three / $count_star) * 100) }}%
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <span>2</span>
-                                                    <i class="fa fa-star color"></i>
-                                                </div>
-                                                <div class="col btn-lg">
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-warning" role="progressbar"
-                                                            style="width: {{ ($two / $count_star) * 100 }}%;"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                        </div>
+                                                    <div class="col-2">
+                                                        {{ ceil(($four / $count_star) * 100) }} %
                                                     </div>
                                                 </div>
-                                                <div class="col-2">
-                                                    {{ ceil(($two / $count_star) * 100) }}%
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <span>1</span>
-                                                    <i class="fa fa-star color"></i>
-                                                </div>
-                                                <div class="col btn-lg">
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-danger" role="progressbar"
-                                                            style="width: {{ ($one / $count_star) * 100 }}%;"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <span>3</span>
+                                                        <i class="fa fa-star color"></i>
+                                                    </div>
+                                                    <div class="col btn-lg">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-info" role="progressbar"
+                                                                style="width: {{ ($three / $count_star) * 100 }}%;"
+                                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <div class="col-2">
+                                                        {{ ceil(($three / $count_star) * 100) }}%
+                                                    </div>
                                                 </div>
-                                                <div class="col-2">
-                                                    {{ ceil(($one / $count_star) * 100) }}%
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <span>2</span>
+                                                        <i class="fa fa-star color"></i>
+                                                    </div>
+                                                    <div class="col btn-lg">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-warning" role="progressbar"
+                                                                style="width: {{ ($two / $count_star) * 100 }}%;"
+                                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        {{ ceil(($two / $count_star) * 100) }}%
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <span>1</span>
+                                                        <i class="fa fa-star color"></i>
+                                                    </div>
+                                                    <div class="col btn-lg">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-danger" role="progressbar"
+                                                                style="width: {{ ($one / $count_star) * 100 }}%;"
+                                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        {{ ceil(($one / $count_star) * 100) }}%
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @else
-                                    <div class="card col mr-1">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <span>5</span>
-                                                    <i class="fa fa-star color"></i>
-                                                </div>
-                                                <div class="col btn-lg">
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-green" role="progressbar"
-                                                            style="width: 0%;"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                        <div class="card col mr-1">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <span>5</span>
+                                                        <i class="fa fa-star color"></i>
+                                                    </div>
+                                                    <div class="col btn-lg">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-green" role="progressbar"
+                                                                style="width: 0%;" aria-valuenow="25" aria-valuemin="0"
+                                                                aria-valuemax="100">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-2">
-                                                  0%
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <span>4</span>
-                                                    <i class="fa fa-star color"></i>
-                                                </div>
-                                                <div class="col btn-lg">
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-primary" role="progressbar"
-                                                            style="width: 0%;"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                        </div>
+                                                    <div class="col-2">
+                                                        0%
                                                     </div>
                                                 </div>
-                                                <div class="col-2">
-                                                    0%
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <span>3</span>
-                                                    <i class="fa fa-star color"></i>
-                                                </div>
-                                                <div class="col btn-lg">
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 0%;"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <span>4</span>
+                                                        <i class="fa fa-star color"></i>
+                                                    </div>
+                                                    <div class="col btn-lg">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-primary" role="progressbar"
+                                                                style="width: 0%;" aria-valuenow="25" aria-valuemin="0"
+                                                                aria-valuemax="100">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-2">
-                                                   0%
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <span>2</span>
-                                                    <i class="fa fa-star color"></i>
-                                                </div>
-                                                <div class="col btn-lg">
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-warning" role="progressbar"
-                                                            style="width:0%;"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                        </div>
+                                                    <div class="col-2">
+                                                        0%
                                                     </div>
                                                 </div>
-                                                <div class="col-2">
-                                                    0%
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <span>1</span>
-                                                    <i class="fa fa-star color"></i>
-                                                </div>
-                                                <div class="col btn-lg">
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-danger" role="progressbar"
-                                                            style="width: 0%;"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <span>3</span>
+                                                        <i class="fa fa-star color"></i>
+                                                    </div>
+                                                    <div class="col btn-lg">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-info" role="progressbar"
+                                                                style="width: 0%;" aria-valuenow="25" aria-valuemin="0"
+                                                                aria-valuemax="100">
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <div class="col-2">
+                                                        0%
+                                                    </div>
                                                 </div>
-                                                <div class="col-2">
-                                                    0%
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <span>2</span>
+                                                        <i class="fa fa-star color"></i>
+                                                    </div>
+                                                    <div class="col btn-lg">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-warning" role="progressbar"
+                                                                style="width:0%;" aria-valuenow="25" aria-valuemin="0"
+                                                                aria-valuemax="100">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        0%
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <span>1</span>
+                                                        <i class="fa fa-star color"></i>
+                                                    </div>
+                                                    <div class="col btn-lg">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-danger" role="progressbar"
+                                                                style="width: 0%;" aria-valuenow="25" aria-valuemin="0"
+                                                                aria-valuemax="100">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        0%
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @endif
                                     <div class="card text-center col">
                                         <div class="card-body">
@@ -399,35 +401,39 @@
                                         </div>
                                     </div>
                                 </div>
-                                @foreach ($feedback_pro as $feedback)
-                                    <div class="single-review-item">
-                                        <div class="review-logo avatar">
-                                            @if ($feedback->users->avatar)
-                                                <img src="{{ url('public/uploads/Users') }}/{{ $feedback->users->avatar }}"
-                                                    alt="">
-                                            @else
-                                                <img src="{{ url('public') }}/frontend/img/icon/logo.jpg" alt="">
-                                            @endif
-                                        </div>
-                                        <div class="p-review-text">
-                                            <div class="rating-number">
-                                                @for ($i = 0; $i < $feedback->star; $i++)
-                                                    {{-- <label for="rate1"></label>
-                                                    --}}
-                                                    <i class="fa fa-star text-green"></i>
-                                                @endfor
-                                                @for ($i = 0; $i < 5 - $feedback->star; $i++)
-                                                    {{-- <label for="rate1"></label>
-                                                    --}}
-                                                    <i class="fa fa-star "></i>
-                                                @endfor
+                                <div class="card">
+                                    <div class="card-body">
+                                        @foreach ($feedback_pro as $feedback)
+                                            <div class="single-review-item">
+                                                <div class="review-logo avatar">
+                                                    @if ($feedback->users->avatar)
+                                                        <img src="{{ url('public/uploads/Users') }}/{{ $feedback->users->avatar }}"
+                                                            alt="">
+                                                    @else
+                                                        <img src="{{ url('public') }}/frontend/img/icon/logo.jpg" alt="">
+                                                    @endif
+                                                </div>
+                                                <div class="p-review-text">
+                                                    <div class="rating-number">
+                                                        @for ($i = 0; $i < $feedback->star; $i++)
+                                                            {{-- <label for="rate1"></label>
+                                                            --}}
+                                                            <i class="fa fa-star text-green"></i>
+                                                        @endfor
+                                                        @for ($i = 0; $i < 5 - $feedback->star; $i++)
+                                                            {{-- <label for="rate1"></label>
+                                                            --}}
+                                                            <i class="fa fa-star "></i>
+                                                        @endfor
+                                                    </div>
+                                                    <span class="p-review-info"><span>{{ $feedback->users->name }}</span> –
+                                                        {{ $feedback->created_at }}</span>
+                                                    <p>{{ $feedback->content }}</p>
+                                                </div>
                                             </div>
-                                            <span class="p-review-info"><span>{{ $feedback->users->name }}</span> –
-                                                {{ $feedback->created_at }}</span>
-                                            <p>{{ $feedback->content }}</p>
-                                        </div>
+                                        @endforeach
                                     </div>
-                                @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -480,7 +486,7 @@
     @endif
     <!-- Product Review Tab Area End -->
     <!-- Protuct Area Start -->
-    <div class="product-area bg-gray pb-80 related-product">
+    <div class="product-area pb-50 pt-30 related-product">
         <div class="container">
             <div class="section-title text-center">
                 <div class="section-img d-flex justify-content-center">
@@ -540,7 +546,7 @@
                                         <i class="fa fa-star-o"></i>
                                         <i class="fa fa-star-o"></i> --}}
                                     </div>
-                                    <h5><a
+                                    <h5 class="text-two"><a
                                             href="{{ route('product-detail', ['slug' => $product->slug, 'id_detail' => $product->id_detail]) }}">{{ $product->name }}</a>
                                     </h5>
                                     @if ($product->discount > 0)

@@ -15,18 +15,18 @@
     </div>
     <!-- Breadcrumb Area End -->
     <!-- Post Area Start -->
-    <div class="post-area blog-area pt-110 pb-95 post-details">
+    <div class="post-area blog-area pt-110 pb-60 post-details">
         <div class="container">
             <div class="row">
                 <div class="col-xl-3 col-lg-4">
                     <div class="sidebar-wrapper">
-                        <div class="sidebar-widget sidebar-search-widget">
+                        {{-- <div class="sidebar-widget sidebar-search-widget">
                             <h3>Search</h3>
                             <form action="#" class="sidebar-search-box">
                                 <input type="text" placeholder="Search...">
                                 <button type="button"><i class="fa fa-search"></i></button>
                             </form>
-                        </div>
+                        </div> --}}
                         <div class="sidebar-widget danh-muc">
                             <h3>Danh mục</h3>
                             <div class="sidebar-widget-option-wrapper">

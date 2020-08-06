@@ -20,7 +20,7 @@
         href="{{ url('public') }}/frontend/starability-master/starability-minified/starability-fade.min.css">
 </head>
 
-<body>
+<body class="bg-white">
     <!-- Header Area Start -->
     <header class="header-area header-two header-sticky">
         <div class="header-container">
@@ -205,7 +205,7 @@
     <!-- Footer Area Start -->
     <footer class="footer-area">
         <!-- Footer Top Area Start -->
-        <div class="footer-top bg-4 pb-120">
+        <div class="footer-top bg-4 pt-90 pb-120 ">
             <!-- Service Area Start -->
             <div class="service-area">
                 <div class="container">
@@ -344,7 +344,7 @@
         </div>
         <!-- Footer Top Area End -->
         <!-- Footer Bottom Area Start -->
-        <div class="footer-bottom-area pt-15 pb-30">
+        <div class="footer-bottom-area pt-15 pb-30 bg-white">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 d-flex col-md-6">

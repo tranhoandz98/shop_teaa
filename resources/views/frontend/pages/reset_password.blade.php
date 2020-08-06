@@ -1,9 +1,9 @@
 @extends('frontend.master')
 @section('title', 'Đặt lại mật khẩu')
 @section('main')
-    <div class="container mt-40">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-8 col-xl-8">
+    <div class="container mt-40 bg-1">
+        <div class="row justify-content-center pb-60 pt-90">
+            <div class="col-md-8 col-lg-8 col-xl-8 ">
                 @if (Session::has('error'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ Session::get('error') }}

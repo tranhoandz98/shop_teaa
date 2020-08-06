@@ -62,35 +62,39 @@
 			<div class="card-body">
 				<div class="row">
 					<div class="col">
-						<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline" role="grid" aria-describedby="datatable-buttons_info">
+						<table id="datatable-buttons" class="table table-hover table-bordered">
 							<thead>
 								<tr role="row">
-									<th class="sorting">#</th>
-									<th class="sorting">Tên sản phẩm</th>
-									<th class="sorting">Ảnh phẩm</th>
-									<th class="sorting">Price (đ)</th>
-									<th class="sorting">Quantity</th>
-									<th class="sorting">Thành tiền</th>
+									<th >#</th>
+									<th >Ảnh phẩm</th>
+									<th >Tên sản phẩm</th>
+									<th >Price (đ)</th>
+									<th >Quantity</th>
+									<th >Thành tiền</th>
 								</tr>
 							</thead>
 							<tbody>
 								@foreach($order_details as $value)
 								<tr>
 									<td>{{$loop->index +1}}</td>
-									<td>{{$value->product_details->products->name}}</td>
 									<td class="table-image">
-                                        <img class="w-75"
+                                        <img width="50px"
                                             src="{{ url('public/uploads') }}/{{ $value->product_details->products->image }}"
                                             alt="">
                                 </td>
+									<td>{{$value->product_details->products->name}}</td>
 									<td>{{number_format($value->price)}} đ</td>
 									<td>{{$value->quantity}}</td>
 									<td>{{number_format($value->price*$value->quantity)}} đ</td>
 								</tr>
 								@endforeach
 								<tr>
+									<td class="font-weight-bold font-size-16">Phí ship</td>
+									<td colspan="5" class="font-weight-bold text-red font-size-16 text-right">{{number_format(20000)}} đ</td>
+								</tr>
+								<tr>
 									<td class="font-weight-bold font-size-16">Tổng tiền</td>
-									<td colspan="5" class="font-weight-bold text-red font-size-16">{{number_format($subtotal)}} đ</td>
+									<td colspan="5" class="font-weight-bold text-red font-size-16 text-right">{{number_format($subtotal)}} đ</td>
 								</tr>
 							</tbody>
 						</table>

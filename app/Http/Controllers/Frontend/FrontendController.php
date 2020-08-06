@@ -64,23 +64,4 @@ class FrontendController extends Controller {
 	public function contact(){
 		return view('frontend.pages.contact');
 	}
-	public function order(){
-		$orders=Order::where('id_user','=',Auth::user()->id)->get();
-		// $order_detail=Order::where('id_order','=',$order->id)->get();
-		return view('frontend.pages.don_hang',compact('orders'));
-	}
-	public function order_detail($id){
-		$order=Order::find($id);
-		$order_details=Order_detail::where('id_order','=',$id)->get();
-		// dd($order_details);
-		return view('frontend.pages.don_hang_chi_tiet',compact('order_details','order'));
-	}
-	public function post_order_detail(Request $request, $id){
-		$order=Order::find($id);
-		$order->update([
-			'status'=>$request->status,
-		]);
-		// dd($order->status);
-	return redirect()->route('order-frontend',$id)->with('success','Hủy hàng thành công');
-	}
 }

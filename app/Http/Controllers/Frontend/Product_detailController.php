@@ -22,7 +22,7 @@ class Product_detailController extends Controller
 		$product_detail=Product_detail::where('id_product','=',$product->id)->get();
 		$img_pro=Img_pro::where('id_product','=',$product->id)->get();
 		$product_detail_id=Product_detail::find($id_detail);
-		$feedback_pro=Feedback_pro::where('id_product','=',$product->id)->get();
+		$feedback_pro=Feedback_pro::where([['id_product','=',$product->id],['status','=',1]])->get();
 		$one=0;
 		$two=0;
 		$three=0;

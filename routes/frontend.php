@@ -47,9 +47,9 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function () {
 	Route::get('wishlist/remove/{id}', 'WishlistController@remove')->name('remove-wishlist');
 	Route::get('wishlist/destroy/{id_user}', 'WishlistController@destroy')->name('destroy-wishlist');
 	//end wishlist
-	Route::get('don-hang/{id_user}', 'FrontendController@order')->name('order-frontend');
-	Route::get('don-hang/chi-tiet/{id}', 'FrontendController@order_detail')->name('order-detail-frontend');
-	Route::post('don-hang/chi-tiet/{id}', 'FrontendController@post_order_detail');
+	Route::get('don-hang/{id_user}', 'OrderController@order')->name('order-frontend');
+	Route::get('don-hang/chi-tiet/{id}', 'OrderController@order_detail')->name('order-detail-frontend');
+	Route::post('don-hang/chi-tiet/{id}', 'OrderController@post_order_detail');
 
 	//blog
 	Route::get('blog', 'BlogController@index')->name('blog');

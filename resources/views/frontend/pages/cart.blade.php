@@ -15,7 +15,7 @@
     </div>
     <!-- Breadcrumb Area End -->
     <!-- Cart Area Start -->
-    <div class="cart-area table-area pt-50 pb-95">
+    <div class="cart-area table-area pt-80 pb-60">
         <div class="container">
             @if ($carts->count() > 0)
                 <div class="table-responsive">

@@ -56,7 +56,7 @@
 															<input class="form-control" type="hidden" name="status" value="0">
 															<button class="btn btn-danger mdi mdi-eye-off"
                                                                 type="submit" title="" data-original-title="Ẩn feedback"
-                                                                data-toggle="tooltip">
+                                                                data-toggle="tooltip" onclick="return confirm('Ẩn feedback không?')">
                                                             </button>
                                                         </form>
 														@else
@@ -67,7 +67,7 @@
 															<input class="form-control" type="hidden" name="status" value="1">
                                                             <button class="btn btn-success mdi mdi-eye"
                                                                 type="submit" title="" data-original-title="Hiện feedback"
-                                                                data-toggle="tooltip">
+                                                                data-toggle="tooltip" onclick="return confirm('Hiện feedback không?')">
                                                             </button>
                                                         </form>
 														@endif

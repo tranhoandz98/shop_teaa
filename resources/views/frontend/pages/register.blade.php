@@ -1,21 +1,9 @@
 @extends('frontend.master')
 @section('title', 'Trang đăng ký')
 @section('main')
-
-    {{-- <div class="breadcrumb-area bg-12 text-center">
-        <div class="container">
-            <h1>Đăng ký tài khoản</h1>
-            <nav aria-label="breadcrumb">
-                <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('dang-ky') }}">Đăng ký</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div> --}}
-    <div class="container mt-40">
+    <div class="container mt-40 bg-1">
         <div class="row justify-content-center">
-            <div class="col-md-10 col-lg-10 col-xl-10">
+            <div class="col-md-10 col-lg-10 col-xl-10 pb-60 pt-90">
                 @if (Session::has('error'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ Session::get('error') }}

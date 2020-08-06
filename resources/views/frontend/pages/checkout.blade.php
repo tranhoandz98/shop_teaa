@@ -73,14 +73,14 @@
     </div>
     <!-- coupon-area end -->
     <!-- checkout-area start -->
-    <div class="checkout-area pb-90">
+    <div class="checkout-area pb-30">
         <div class="container">
             <form action="" method="POST">
                 @csrf
                 <div class="row">
                     @if(Auth::check())
                     <div class="col-lg-6 col-md-12 col-sm-12">
-                        <div class="checkbox-form your-order">
+                        <div class="checkbox-form your-order bg-white">
                             <h3>Thông tin thanh toán<a href="{{ route('profile',Auth::user()->id) }}"><span class="ml-4 btn btn-green text-white">Sửa</span></a></h3>
                             <div class="row">
                                 <div class="col-lg-12">

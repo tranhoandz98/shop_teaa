@@ -2,8 +2,8 @@
 @section('title', 'Xác nhận email')
 @section('main')
     <div class="account-pages my-5 pt-sm-5">
-        <div class="container">
-            <div class="row justify-content-center">
+        <div class="container bg-1">
+            <div class="row justify-content-center pb-60 pt-90">
                 <div class="col-md-8 col-lg-8 col-xl-8">
                     @if (Session::has('error'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">

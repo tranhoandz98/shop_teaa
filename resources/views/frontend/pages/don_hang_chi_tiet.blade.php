@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-5">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body bg-gray">
                             <h3 class="font-weight-bold text-green">Đơn hàng số:
                                 <span class="ml-2">{{ $order->id }}</span>
                             </h3>
@@ -61,7 +61,7 @@
                                 <form action="" method="post">
                                     @csrf
                                     <input type="hidden" name="status" value="4">
-                                    <button class="btn btn-danger" type="submit">Hủy hàng</button>
+                                    <button class="btn btn-danger" type="submit" onclick="return confirm('Bạn muốn hủy hàng?')">Hủy hàng</button>
                                 </form>
                             </h5>
                             @endif
@@ -71,10 +71,10 @@
             </div>
         </div>
     </div>
-    <div class="cart-area table-area pt-50 pb-95">
+    <div class="cart-area table-area pt-50 pb-60">
         <div class="container">
             <div class="table-responsive">
-                <table class="table product-table text-center">
+                <table class="table product-table text-center bg-white">
                     <thead>
                         <tr>
                             <th class="table-p-name">Stt</th>
@@ -101,8 +101,12 @@
                             </tr>
                         @endforeach
                         <tr>
+                            <td class=""><h3 class="font-weight-bold text-green">Phí ship</h3></td>
+                            <td colspan="5"><h3 class="font-weight-bold text-green text-right">{{ number_format(20000) }} đ</h3></td>
+                        </tr>
+                        <tr>
                             <td class=""><h3 class="font-weight-bold text-green">Tổng tiền</h3></td>
-                            <td colspan="5"><h3 class="font-weight-bold text-green">{{ number_format($order->total_price) }} đ</h3></td>
+                            <td colspan="5"><h3 class="font-weight-bold text-green text-right">{{ number_format($order->total_price) }} đ</h3></td>
                         </tr>
                     </tbody>
                 </table>

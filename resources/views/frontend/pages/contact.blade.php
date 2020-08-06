@@ -15,8 +15,8 @@
 </div>
 <!-- Breadcrumb Area End -->
 <!-- Contact Area Start -->
-<div class="contact-area fix mb-95">
-    <div class="contact-address pt-110 bg-contact">
+<div class="contact-area fix mb-60">
+    <div class="contact-address pt-110 bg-white">
         <h1 class="contact-title">CONTACT US</h1>
         <div class="contact-info">
             <p>

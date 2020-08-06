@@ -15,7 +15,7 @@
     </div>
     <!-- Breadcrumb Area End -->
     <!-- Wishlist Area Start -->
-    <div class="wishlist-area table-area pt-110 pb-95">
+    <div class="wishlist-area table-area pt-90 pb-30">
         <div class="container">
             @if ($wishlist->count() > 0)
                 @if (Session::has('success'))
@@ -30,25 +30,23 @@
                     <table class="table product-table text-center">
                         <thead>
                             <tr>
-                                <th>Stt</th>
                                 <th class="table-image">image</th>
                                 <th class="table-p-name">Product Name</th>
                                 <th>size</th>
                                 <th class="table-p-price">Unit Price</th>
                                 <th class="table-stock">Stock Status</th>
-                                <th class="table-add-cart">Add</th>
                                 <th class="table-remove">remove</th>
+                                <th class="table-add-cart">Add</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($wishlist as $item)
                                 <tr>
-                                    <td>{{ $loop->index+1 }}</td>
                                     <td class="table-image">
                                         <a
                                             href="{{ route('product-detail', ['slug' => $item->product_details->products->slug, 'id_detail' => $item->product_details->id]) }}">
                                             <img src="{{ url('public/uploads') }}/{{ $item->product_details->products->image }}"
-                                                alt="">
+                                                alt="" width="50px">
                                         </a>
                                     </td>
                                     <td class="table-p-name">
@@ -71,31 +69,37 @@
                                             <p>{{ number_format($item->product_details->price) }} đ</p>
                                         @endif
                                     </td>
-                                    @if ($item->product_details->quantity > 0)
-                                        <td class="table-stock">
+                                    <td class="table-stock">
+                                        @if ($item->product_details->quantity > 0)
                                             <span>
                                                 Còn hàng
-                                            </span></td>
-                                        <td class="table-add-cart product-hover">
-                                            <form action="{{ route('add-cart', $item->product_details->id) }}" method="POST">
-                                                @csrf
-                                                {{-- <input type="hidden" name="qty" value="1"> --}}
-                                                <button type="submit" class="btn-cart ">Thêm vào giỏ hàng</button>
-                                            </form>
-                                        </td>
-                                    @else
-                                        <td class="table-stock">
+                                            </span>
+                                        @else
                                             <span class="text-red">
                                                 Hết hàng
-                                            </span></td>
-                                        <td class="table-add-cart"><a href="{{ route('shop') }}">Shop</a></td>
-                                    @endif
+                                            </span>
+                                        @endif
+                                    </td>
                                     <td class="table-remove">
                                         <a href="{{ route('remove-wishlist', $item->id) }}"
                                             onclick="return confirm('Xóa sản phẩm -{{ $item->product_details->products->name }}- không?')""><i
-                                                    class=" fa fa-trash">
+                                                                class=" fa fa-trash">
                                             </i></a>
                                     </td>
+                                    <td class="table-add-cart product-hover">
+                                        @if ($item->product_details->quantity > 0)
+                                            <form action="{{ route('add-cart', $item->product_details->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                {{-- <input type="hidden" name="qty"
+                                                    value="1"> --}}
+                                                <button type="submit" class="btn-cart table-add-cart">Thêm giỏ hàng</button>
+                                            </form>
+                                        @else
+                                            <a href="{{ route('shop') }}" class="table-add-cart">Shop</a>
+                                        @endif
+                                    </td>
+                                    
                                 </tr>
                             @endforeach
                         </tbody>

@@ -16,7 +16,7 @@
     </div>
     <!-- Breadcrumb Area End -->
     <!-- Shop Area Start -->
-    <div class="shop-area pt-110 pb-100 mb-95 blog-column">
+    <div class="shop-area pt-110 mt-30 pb-60 blog-column bg-1">
         <div class="container">
             <div class="row">
                 <div class="col-xl-3 col-lg-4">
