@@ -59,7 +59,7 @@
                                             <input value="{{ $cart->qty }}" name="qty" type="number" id="qty" max="">
                                             {{-- <span class="qty-hide"> --}}
                                                 <button class="btn btn-green text-white btn-lg" type="submit" id="submit">
-                                                    Cập nhật
+                                                    
                                                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                                                 </button>
                                             {{-- </span> --}}

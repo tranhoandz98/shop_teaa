@@ -188,7 +188,7 @@
 } */
 .single-product-item .product-text > h5{
     display: -webkit-box !important;
-    height: 40px !important ;
+    height: 57px !important ;
     -webkit-line-clamp: 2 !important;
     -webkit-box-orient: vertical !important;
     overflow: hidden !important;
