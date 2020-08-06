@@ -123,16 +123,20 @@
 }
 
 /* css nút thêm giỏ hàng là buuton */
+.table-add-cart{
+    width: 126px;
+}
 .table-add-cart .btn-cart{
+    max-width: 450px;
     border: 2px solid #f6f5f1;
     background: #ffffff;
     color: #211e1e;
-    display: block;
+    /* display: block; */
     font-size: 12px;
     font-weight: 600;
     padding: 0 20px;
-    height: 43px;
-    line-height: 39px;
+    /* height: 43px; */
+    line-height: 19px;
     text-align: center;
     width: 100%;
     border-radius: 30px;

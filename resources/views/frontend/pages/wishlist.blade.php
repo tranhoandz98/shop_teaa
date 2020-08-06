@@ -30,6 +30,7 @@
                     <table class="table product-table text-center">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th class="table-image">image</th>
                                 <th class="table-p-name">Product Name</th>
                                 <th>size</th>
@@ -42,6 +43,7 @@
                         <tbody>
                             @foreach ($wishlist as $item)
                                 <tr>
+                                    <td>{{ $loop->index+1 }}</td>
                                     <td class="table-image">
                                         <a
                                             href="{{ route('product-detail', ['slug' => $item->product_details->products->slug, 'id_detail' => $item->product_details->id]) }}">
@@ -93,7 +95,7 @@
                                                 @csrf
                                                 {{-- <input type="hidden" name="qty"
                                                     value="1"> --}}
-                                                <button type="submit" class="btn-cart table-add-cart">Thêm giỏ hàng</button>
+                                                <button type="submit" class="btn-cart table-add-cart">Thêm vào giỏ hàng</button>
                                             </form>
                                         @else
                                             <a href="{{ route('shop') }}" class="table-add-cart">Shop</a>
