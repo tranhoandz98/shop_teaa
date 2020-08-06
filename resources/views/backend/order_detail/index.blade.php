@@ -94,7 +94,7 @@
 								</tr>
 								<tr>
 									<td class="font-weight-bold font-size-16">Tổng tiền</td>
-									<td colspan="5" class="font-weight-bold text-red font-size-16 text-right">{{number_format($subtotal)}} đ</td>
+									<td colspan="5" class="font-weight-bold text-red font-size-16 text-right">{{number_format($order->total_price)}} đ</td>
 								</tr>
 							</tbody>
 						</table>
