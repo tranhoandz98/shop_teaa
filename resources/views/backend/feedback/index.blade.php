@@ -19,7 +19,7 @@
                                 aria-describedby="datatable-buttons_info">
                                 <thead>
                                     <tr role="row">
-                                        <th class="sorting">STT</th>
+                                        <th class="sorting">#</th>
                                         <th class="sorting">Tên sản phẩm</th>
                                         <th class="sorting">Người đánh giá</th>
                                         <th class="sorting">Star</th>

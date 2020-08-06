@@ -372,16 +372,15 @@
     <script src="{{ url('public') }}/frontend/js/main.js"></script>
     {{-- submit form --}}
     <script>
-        // $('#page').change(function(event) {
-        //     $('#submit').click();
-        // });
-        // $('#sort').change(function(event) {
-        //     $('#submit').click();
-        // });
-        // $('#qty').change(function(event) {
-        //     $('#submit').click();
-        // });
-
+        $('#page').change(function(event) {
+            $('#submit').click();
+        });
+        $('#sort').change(function(event) {
+            $('#submit').click();
+        });
+        $('#qty').change(function(event) {
+            $('#submit').click();
+        });
     </script>
     {{-- end submit form --}}
     <script>
@@ -396,5 +395,4 @@
 	});
     </script>
 </body>
-
 </html>

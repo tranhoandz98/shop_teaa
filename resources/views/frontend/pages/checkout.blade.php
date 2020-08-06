@@ -40,29 +40,29 @@
                             <p class="coupon-text">
                                 Nếu bạn đã mua sắm với chúng tôi trước đây, vui lòng nhập thông tin của bạn vào các ô bên
                                 dưới.
-                                Nếu bạn là khách hàng mới, vui lòng tiếp tục với phần Thanh toán & Giao hàng.
+                                Nếu bạn là khách hàng mới, vui lòng đăng kí tài khoản.
                             </p>
                             <form action="{{ route('post-dang-nhap') }}" method="POST">
                                 @csrf
                                 <p class="form-row-first">
                                     <label for="email">Email <span class="required">*</span></label>
-                                    <input type="email" name="email" id="email" placeholder="Email" required />
+                                    <input type="email" name="email" id="email" placeholder="Nhập email" required />
                                 </p>
                                 <p class="form-row-last">
-                                    <label for="password">Password <span class="required">*</span></label>
-                                    <input type="password" name="password" id="password" placeholder="Password" required />
+                                    <label for="password">Mật khẩu <span class="required">*</span></label>
+                                    <input type="password" name="password" id="password" placeholder="Nhập mật khẩu" required />
                                 </p>
+                                <label>
+                                    <input type="checkbox" />
+                                    Ghi nhớ tôi
+                                </label>
                                 <p>Bạn chưa có tài khoản. <a href="{{ route('dang-ky') }}" class="text-primary">Đăng ký</a>
                                 </p>
                                 <p class="form-row">
-                                    <input type="submit" value="Login" />
-                                    <label>
-                                        <input type="checkbox" />
-                                        Remember me
-                                    </label>
+                                    <input type="submit" value="Đăng nhập" />
                                 </p>
                                 <p class="lost-password">
-                                    <a href="#">Quên mật khẩu?</a>
+                                    <a href="{{ route('recover') }}">Quên mật khẩu?</a>
                                 </p>
                             </form>
                         </div>
@@ -78,10 +78,10 @@
             <form action="" method="POST">
                 @csrf
                 <div class="row">
+                    @if(Auth::check())
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="checkbox-form your-order">
                             <h3>Thông tin thanh toán<a href="{{ route('profile',Auth::user()->id) }}"><span class="ml-4 btn btn-green text-white">Sửa</span></a></h3>
-                            
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="checkout-form-list">
@@ -119,14 +119,19 @@
                                     <div class="checkout-form-list">
                                         <label>Địa chỉ nhận hàng<span class="required">*</span></label>
                                         <input type="text" placeholder="Street address" name="address_ship"
-                                            value="" id="new_addr"/>
+                                            value="" id="new_addr"required/>
                                     </div>
-                                    <input type="checkbox" name="" id="addr" required>
+                                    <input type="checkbox" name="" id="addr" >
                                     <label for="addr">Giống địa chỉ của tôi</label>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @else
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <h3 class="mt-2 font-weight-bold">Vui lòng đăng nhập</h3>
+                    </div>
+                    @endif
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="your-order">
                             <h3>Đơn hàng của bạn</h3>

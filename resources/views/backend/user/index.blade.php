@@ -2,22 +2,6 @@
   @section('title','Danh sách user')
   @section('namepage','User')
   @section('main')
-  @if(Session::has('success'))
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
-      {{Session::get('success')}}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-       <span aria-hidden="true">×</span>
-   </button>
-</div>
-@endif
-@if(Session::has('error'))
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      {{Session::get('error')}}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-       <span aria-hidden="true">×</span>
-   </button>
-</div>
-@endif
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -42,7 +26,7 @@
                                 <tr>
                                 <td>{{ $loop->index+1 }}</td>
                                 <td>
-                                    <img src="{{ url('public/uploads/Users') }}/{{ $user->avatar }}" class="w-50">
+                                    <img src="{{ url('public/uploads/Users') }}/{{ $user->avatar }}" width="50px">
                                 </td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->gender==1?'Nam':'Nữ' }}</td>
@@ -56,7 +40,7 @@
                                     <form action="{{route('user.destroy',$user->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="mdi mdi-close btn-danger btn " onclick="return confirm('Xóa danh -{{$user->name}}- không?')" type="submit" title="" data-original-title="Xóa" data-toggle="tooltip">
+                                        <button class="mdi mdi-close btn-danger btn " onclick="return confirm('Xóa tài khoản -{{$user->name}}- không?')" type="submit" title="" data-original-title="Xóa" data-toggle="tooltip">
                                         </button>
 
                                     </form>

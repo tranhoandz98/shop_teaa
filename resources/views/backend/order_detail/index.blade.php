@@ -51,7 +51,7 @@
 							</select>
 						</div>
 					<div class="form-group">
-						<button type="submit" class="btn btn-info">Cập nhật</button>
+						<button type="submit" class="btn btn-info" onclick="return confirm('Cập nhật trạng thái đơn hàng không?')">Cập nhật</button>
 					</div>
 				</form>
 			</div> 
@@ -65,7 +65,7 @@
 						<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline" role="grid" aria-describedby="datatable-buttons_info">
 							<thead>
 								<tr role="row">
-									<th class="sorting">STT</th>
+									<th class="sorting">#</th>
 									<th class="sorting">Tên sản phẩm</th>
 									<th class="sorting">Ảnh phẩm</th>
 									<th class="sorting">Price (đ)</th>

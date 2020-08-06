@@ -5,13 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product;
 use App\Models\Blog;
+use App\Models\Category;
 
 class Category extends Model
 {
    protected $guarded=[];
-   
+
+   public function hasCate(){
+    return $this->hasMany(Category::class,'parent_id','id');
+}
     public function parentCate(){
-    	return $this->belongsTo('App\Models\Category','parent_id');
+    	return $this->belongsTo(Category::class,'parent_id','id');
     }
      public function products(){
     	// return $this->hasMany(Product::class);

@@ -4,6 +4,7 @@
 @section('main')
     <div class="row">
         <div class="col-12">
+            <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-12">
@@ -19,9 +20,9 @@
                             role="grid" aria-describedby="datatable-buttons_info">
                                     <thead>
                                         <tr role="row">
-                                            <th class="sorting">STT</th>
-                                            <th class="sorting">Tên ads</th>
+                                            <th class="sorting">#</th>
                                             <th class="sorting">Hình ảnh</th>
+                                            <th class="sorting">Tên ads</th>
                                             <th class="sorting">Trạng thái</th>
                                             <th class="sorting">Hành động</th>
                                         </tr>
@@ -30,9 +31,8 @@
                                         @foreach ($ads as $value)
                                             <tr>
                                                 <td class="" tabindex="0">{{ $loop->index + 1 }}</td>
+                                                <td class="sorting_1"><img src="{{ url('public/uploads') }}/{{ $value->value }}" alt="" width="100px"></td>
                                                 <td class="sorting_1">{{ $value->name }}</td>
-                                                <td class="sorting_1"><img src="{{ url('public/uploads') }}/{{ $value->value }}" alt=""
-                                                    width="100px"></td>
                                                 <td>{!! $value->status == 1 ? '<span
                                                         class="badge badge-pill badge-soft-success font-size-12">Hiện</span>'
                                                     : '<span

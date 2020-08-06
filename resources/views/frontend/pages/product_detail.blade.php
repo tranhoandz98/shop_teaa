@@ -95,7 +95,7 @@
                             </h4>
                         @endif
                         <p>{{ $product->meta_desc }}</p>
-                        <h5><i class="fa fa-check"></i>{{ $product_detail_id->quantity }} in stock</h5>
+                        <h5><i class="fa fa-check"></i>{{ $product_detail_id->quantity }} trong kho </h5>
                         <strong>Size:</strong>
                         <div class="mt-2 mb-2">
                             @foreach ($product_detail as $value)
@@ -112,7 +112,7 @@
                         <form action="{{ route('add-cart', $product_detail_id->id) }}" method="post">
                             @csrf
                             <div class="add-cart-product">
-                                <input type="number" placeholder="1" name="qty">
+                                <input type="number" placeholder="1" name="qty" max="{{$product_detail_id->quantity}}">
                                 <button type="submit" class="default-btn">Thêm vào giỏ hàng</button>
                                 <button type="button">
                                     @if (Auth::check())

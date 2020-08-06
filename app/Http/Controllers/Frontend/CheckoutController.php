@@ -6,16 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Order_detail;
+use App\Models\Product_detail;
 class CheckoutController extends Controller
 {
     public function index(){
-
     return view('frontend.pages.checkout');
     }
     public function checkout(Request $request){
         // dd($request->all());
         $cart=(\Cart::content());
-
             $order=Order::create([
                 'id_user' =>$request->id_user,
                 'total_price' =>$request->total_price,
@@ -29,6 +28,10 @@ class CheckoutController extends Controller
                 'id_pro_detail'=>$value->id,
                 'price'=>$value->price,
                 'quantity'=>$value->qty,
+               ]);
+               $product_detail=Product_detail::find($value->id);
+               $product_detail->update([
+                   'quantity'=>$product_detail->quantity-$value->qty,
                ]);
             }
             \Cart::destroy();

@@ -48,7 +48,8 @@
     <link href="{{ url('public') }}/backend/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
     <!-- css custom -->
     <link href="{{ url('public') }}/backend/css/style.css" rel="stylesheet" type="text/css" />
-
+<!-- tui charts Css -->
+<link href="{{ url('public') }}/backend/libs/tui-chart/tui-chart.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -69,11 +70,8 @@
                     id="vertical-menu-btn">
                     <i class="fa fa-fw fa-bars"></i>
                 </button>
-
             </div>
-
             <div class="d-flex">
-
                 <div class="dropdown d-inline-block d-lg-none ml-2">
                     <button type="button" class="btn header-item noti-icon waves-effect"
                     id="page-header-search-dropdown" data-toggle="dropdown" aria-haspopup="true"
@@ -82,7 +80,6 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
                 aria-labelledby="page-header-search-dropdown">
-
                 <form class="p-3">
                     <div class="form-group m-0">
                         <div class="input-group">
@@ -106,7 +103,7 @@
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img class="rounded-circle header-profile-user"
-                src="{{ url('public') }}/backend/images/users/avatar-1.jpg" alt="Header Avatar">
+                src="{{ url('public') }}/backend/images/companies/img-6.png" alt="Header Avatar">
                 <span class="d-none d-xl-inline-block ml-1">
                     {{ Auth::guard('admin')->user()->name }}
                 </span>
@@ -134,7 +131,7 @@
                         <span>Trang chủ</span>
                     </a>
                 </li> --}}
-                <li class="menu-title">Apps</li>
+                {{-- <li class="menu-title">Apps</li> --}}
                 <li>
                     <li class=""><a href="{{ route('category.index') }}" aria-expanded="false"><i
                         class="bx bx-data"></i>Quản lý danh mục</a></li>
@@ -151,21 +148,37 @@
                             <li class=""><a href="{{ route('attr.index') }}" aria-expanded="false"><i
                                 class="bx bx-purchase-tag-alt"></i>Thuộc tính sản phẩm</a>
                             </li>
-
                             <li>
                                 <li class=""><a href="{{route('feedback.index')}}" aria-expanded="false"><i class="bx bx-message"></i>Feedback</a>
                                 </li>
                             </li>
-
                         </ul>
                     </li>
                     <li>
                         <li class=""><a href="{{route('order_backend')}}" aria-expanded="false"><i class="bx bx-cart"></i>Quản lý đơn hàng</a></li>
                     </li>
                     <li>
-                        <li class=""><a href="#" aria-expanded="false"><i class="bx bx-terminal"></i>Thống kê</a></li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="true">
+                            <i class="bx bx-detail"></i>
+                            <span>Thống kê</span>
+                        </a>
+                        <ul class="sub-menu mm-collapse" aria-expanded="true" style="">
+                            <li class="">
+                                <a href="{{ route('thong-ke-ton-kho') }}" aria-expanded="true">
+                                    <i class="bx bxl-product-hunt"></i>Tồn kho</a>
+                            </li>
+                            <li class="">
+                                <a href="{{ route('thong-ke-ban-chay') }}" aria-expanded="false">
+                                    <i class="bx bx-star"></i>Bán chạy</a>
+                            </li>
+                            <li>
+                                <li class="">
+                                    <a href="{{route('thong-ke-doanh-thu')}}" aria-expanded="false">
+                                        <i class="bx bx-money"></i>Doanh thu</a>
+                                </li>
+                            </li>
+                        </ul>
                     </li>
-
                     <li>
                         <li class=""><a href="{{ route('blog.index') }}" aria-expanded="false"><i
                             class="bx bx-news"></i>Quản lý tin tức</a></li>
@@ -179,9 +192,6 @@
                                     class="bx bx-user"></i>Quản lý tài khoản</a></li>
                                 </li>
                                 <li>
-                    {{-- <li class=""><a href="{{ route('config.index') }}" aria-expanded="false"><i
-                                class="bx bx-cog"></i>Quản lý cấu hình</a></li>
-                            </li> --}}
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="true">
                                     <i class="bx bx-cog"></i>
@@ -197,11 +207,6 @@
                                     <li class=""><a href="{{ route('contact.index') }}" aria-expanded="false"><i
                                         class="bx bxs-contact"></i>contact</a>
                                     </li>
-                                    {{-- <li>
-                                        <li class=""><a href="#" aria-expanded="false">
-                                            <i class="bx bx-shape-triangle"></i>About us</a>
-                                        </li>
-                                    </li> --}}
                                 </ul>
                             </div>
                             <!-- Sidebar -->
@@ -212,16 +217,13 @@
                     <!-- Start right Content here -->
                     <!-- ============================================================== -->
                     <div class="main-content">
-
                         <div class="page-content">
                             <div class="container-fluid">
-
                                 <!-- start page title -->
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="page-title-box d-flex align-items-center justify-content-between">
                                             <h4 class="mb-0 font-size-18">@yield('title')</h4>
-
                                             <div class="page-title-right">
                                                 <ol class="breadcrumb m-0">
                                                     <li class="breadcrumb-item"><a
@@ -229,7 +231,6 @@
                                                         <li class="breadcrumb-item active">@yield('title')</li>
                                                     </ol>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -255,111 +256,17 @@
                                 <!-- container-fluid -->
                             </div>
                             <!-- End Page-content -->
-
-                            <!-- Modal -->
-                            <div class="modal fade exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p class="mb-2">Product id: <span class="text-primary">#SK2540</span></p>
-                                        <p class="mb-4">Billing Name: <span class="text-primary">Neal Matthews</span></p>
-
-                                        <div class="table-responsive">
-                                            <table class="table table-centered table-nowrap">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Product</th>
-                                                        <th scope="col">Product Name</th>
-                                                        <th scope="col">Price</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <div>
-                                                                <img src="{{ url('public') }}/backend/images/product/img-7.png"
-                                                                alt="" class="avatar-sm">
-                                                            </div>
-                                                        </th>
-                                                        <td>
-                                                            <div>
-                                                                <h5 class="text-truncate font-size-14">Wireless Headphone (Black)
-                                                                </h5>
-                                                                <p class="text-muted mb-0">$ 225 x 1</p>
-                                                            </div>
-                                                        </td>
-                                                        <td>$ 255</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <div>
-                                                                <img src="{{ url('public') }}/backend/images/product/img-4.png"
-                                                                alt="" class="avatar-sm">
-                                                            </div>
-                                                        </th>
-                                                        <td>
-                                                            <div>
-                                                                <h5 class="text-truncate font-size-14">Phone patterned cases</h5>
-                                                                <p class="text-muted mb-0">$ 145 x 1</p>
-                                                            </div>
-                                                        </td>
-                                                        <td>$ 145</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2">
-                                                            <h6 class="m-0 text-right">Sub Total:</h6>
-                                                        </td>
-                                                        <td>
-                                                            $ 400
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2">
-                                                            <h6 class="m-0 text-right">Shipping:</h6>
-                                                        </td>
-                                                        <td>
-                                                            Free
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2">
-                                                            <h6 class="m-0 text-right">Total:</h6>
-                                                        </td>
-                                                        <td>
-                                                            $ 400
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end modal -->
-
                         <footer class="footer">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <script>
                                             document.write(new Date().getFullYear())
-
-                                        </script> © Skote.
+                                        </script> Shop_teaa.
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="text-sm-right d-none d-sm-block">
-                                            Design & Develop by Themesbrand
+                                            Design & Develop by Tran Van Hoan & Nguyen Thi Thanh Thuy
                                         </div>
                                     </div>
                                 </div>
@@ -427,11 +334,6 @@
             <script src="{{ url('public') }}/backend/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
 
             <script src="{{ url('public') }}/backend/js/pages/ecommerce-cart.init.js"></script>
-            <!-- apexcharts -->
-    {{-- <script src="{{ url('public') }}/backend/libs/apexcharts/apexcharts.min.js"></script>
-
-    <script src="{{ url('public') }}/backend/js/pages/dashboard.init.js"></script> --}}
-    <!-- form advanced init -->
     <script src="{{ url('public') }}/backend/js/pages/form-advanced.init.js"></script>
 
     <!-- ck editor -->
@@ -452,6 +354,12 @@
     <script src="{{ url('public') }}/backend/js/getImage.js"></script>
     {{--  use jquery to build a dynamic add/ remove form  --}}
     <script src="{{ url('public') }}/backend/js/dynamic.js"></script>
+     <!-- tui charts plugins -->
+     <script src="{{ url('public') }}/backend/libs/tui-chart/tui-chart-all.min.js"></script>
+     <!-- tui charts map -->
+     <script src="{{ url('public') }}/backend/libs/tui-chart/maps/usa.js"></script>
+     <!-- tui charts plugins -->
+     <script src="{{ url('public') }}/backend/js/pages/tui-charts.init.js"></script>
     <script>
         $("#name").keyup(function(event) {
             var name = $("#name").val();

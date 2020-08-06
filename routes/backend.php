@@ -20,10 +20,12 @@ Route::group(['prefix' => 'backend', 'namespace' => 'Backend', 'middleware' => '
 		Route::resources(['ads' => 'AdsController']);
 		Route::resources(['contact' => 'ContactController']);
 	//order
-
 	Route::get('order', 'OrderController@index')->name('order_backend');
 	Route::get('order/{id}/order_detail', 'Order_detailController@index')->name('order_detail_backend');
 	Route::post('order/{id}/order_detail', 'Order_detailController@update');
+	Route::get('thong-ke/ton-kho', 'StatisticalController@tonKho')->name('thong-ke-ton-kho');
+	Route::get('thong-ke/ban-chay', 'StatisticalController@banChay')->name('thong-ke-ban-chay');
+	Route::get('thong-ke/doanh-thu', 'StatisticalController@doanhThu')->name('thong-ke-doanh-thu');
 
 });
 Route::get('/backend/login', 'Backend\BackendController@login')->name('login');

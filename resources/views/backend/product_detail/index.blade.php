@@ -97,7 +97,7 @@
 						<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline" role="grid" aria-describedby="datatable-buttons_info">
 							<thead>
 								<tr role="row">
-									<th class="sorting">STT</th>
+									<th class="sorting">#</th>
 									<th class="sorting">SKU</th>
 									<th class="sorting">Size</th>
 									<th class="sorting">Khối lượng (g)</th>
@@ -131,7 +131,7 @@
 											<div class="col">
 												<form action="{{route('destroy_product_detail_backend',['id'=>$product->id,'id_detail'=>$value->id])}}" method="GET">
 													@csrf
-													<button class="btn btn-danger mdi mdi-close" onclick="return confirm('Xóa danh mục -{{$value->name}}- không?')" type="submit" title="" data-original-title="Xóa" data-toggle="tooltip">
+													<button class="btn btn-danger mdi mdi-close" onclick="return confirm('Xóa -{{$value->sku}}- không?')" type="submit" title="" data-original-title="Xóa" data-toggle="tooltip">
 													</button>
 												</form>
 											</div>

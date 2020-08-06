@@ -16,7 +16,7 @@
 						<table id="datatable-buttons" class="table table-bordered dt-responsive nowrap dataTable no-footer dtr-inline table-hover" role="grid" aria-describedby="datatable-buttons_info">
 							<thead>
 								<tr role="row">
-									<th class="sorting">STT</th>
+									<th class="sorting">#</th>
 									<th class="sorting">Tên danh mục</th>
 									<th class="sorting">Loại danh mục</th>
 									<th class="sorting">Danh mục cha</th>

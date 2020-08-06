@@ -20,9 +20,9 @@
                                 role="grid" aria-describedby="datatable-buttons_info">
                                 <thead>
                                     <tr role="row">
-                                        <th class="sorting">STT</th>
-                                        <th class="sorting">Tên Logo</th>
+                                        <th class="sorting">#</th>
                                         <th class="sorting">Hình ảnh</th>
+                                        <th class="sorting">Tên Logo</th>
                                         <th class="sorting">Trạng thái</th>
                                         <th class="sorting">Hành động</th>
                                     </tr>
@@ -31,9 +31,8 @@
                                     @foreach ($logos as $logo)
                                         <tr>
                                             <td class="" tabindex="0">{{ $loop->index + 1 }}</td>
+                                            <td class="sorting_1"><img src="{{ url('public/uploads') }}/{{ $logo->value }}" alt="" width="100px"></td>
                                             <td class="sorting_1">{{ $logo->name }}</td>
-                                            <td class="sorting_1"><img src="{{ url('public/uploads') }}/{{ $logo->value }}"
-                                                    alt="" width="100px"></td>
                                             <td>{!! $logo->status == 1
                                                 ? '<span
                                                     class="badge badge-pill badge-soft-success font-size-12">Hiện</span>'
@@ -41,7 +40,7 @@
                                                 !!}</td>
                                             <td>
                                                 <div class="row">
-                                                    <div class="col">
+                                                    <div class="col-3">
                                                         <!-- Sửa -->
                                                         <a href="{{ route('logo.edit', $logo->id) }}" class=" text-primary"
                                                             data-toggle="tooltip" data-placement="top" title=""

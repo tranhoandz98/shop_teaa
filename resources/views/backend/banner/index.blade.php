@@ -20,10 +20,10 @@
                             role="grid" aria-describedby="datatable-buttons_info">
                                 <thead>
                                     <tr >
-                                        <th >STT</th>
+                                        <th >#</th>
+                                        <th >Hình ảnh</th>
                                         <th >Tên banner</th>
                                         <th >Tên title</th>
-                                        <th >Hình ảnh</th>
                                         <th >Trạng thái</th>
                                         <th >Hành động</th>
                                     </tr>
@@ -32,10 +32,9 @@
                                     @foreach ($banner as $value)
                                         <tr>
                                             <td >{{ $loop->index + 1 }}</td>
+                                            <td><img src="{{ url('public/uploads') }}/{{ $value->image }}" alt="" width="100px"></td>
                                             <td >{{ $value->name }}</td>
                                             <td >{{ $value->title }}</td>
-                                            <td><img src="{{ url('public/uploads') }}/{{ $value->image }}" alt=""
-                                                    width="100px"></td>
                                             <td>{!! $value->status == 1 ? '<span
                                                     class="badge badge-pill badge-soft-success font-size-12">Hiện</span>' :
                                                 '<span class="badge badge-pill badge-soft-danger font-size-12">Ẩn</span>'

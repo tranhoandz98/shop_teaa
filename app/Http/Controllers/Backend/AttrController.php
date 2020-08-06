@@ -100,7 +100,14 @@ class AttrController extends Controller
     public function destroy($id)
     {
         $attr_id=Attr::find($id);
-        $attr_id->delete();
-        return redirect()->route('attr.index');
+        // $attr_id->delete();
+        // return redirect()->route('attr.index');
+        if($attr_id->product_details->count()>0){
+            return redirect()->back()->with('error','Không thể xóa');
+            }
+            else{
+                $attr_id->delete();
+            return redirect()->back()->with('success','Xóa thành công');
+        }
     }
 }
