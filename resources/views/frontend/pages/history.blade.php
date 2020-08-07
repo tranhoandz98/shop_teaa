@@ -1,14 +1,14 @@
 @extends('frontend.master')
-@section('title', 'Đơn hàng')
+@section('title', 'Lịch sử mua hàng')
 @section('main')
     <!-- Breadcrumb Area Start -->
     <div class="breadcrumb-area bg-12 text-center">
         <div class="container">
-            <h1>Đơn hàng</h1>
+            <h1>Lịch sử mua hàng</h1>
             <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Đơn hàng</li>
+                    <li class="breadcrumb-item active" aria-current="page">Lịch sử mua hàng</li>
                 </ul>
             </nav>
         </div>

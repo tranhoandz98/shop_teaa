@@ -11,9 +11,14 @@ use Auth;
 class OrderController extends Controller
 {
     public function order(){
-		$orders=Order::where('id_user','=',Auth::user()->id)->get();
-		// $order_detail=Order::where('id_order','=',$order->id)->get();
+		$orders=Order::where([['id_user','=',Auth::user()->id],['status','!=',3]])->get();
+		// $order_details=Order::where('id_order','=',$orders->id)->get();
 		return view('frontend.pages.don_hang',compact('orders'));
+	}
+	public function history(){
+		$orders=Order::where([['id_user','=',Auth::user()->id],['status','=',3]])->get();
+		// $order_detail=Order::where('id_order','=',$order->id)->get();
+		return view('frontend.pages.history',compact('orders'));
 	}
 	public function order_detail($id){
 		$order=Order::find($id);
@@ -27,6 +32,11 @@ class OrderController extends Controller
 			'status'=>$request->status,
 		]);
 		// dd($order->status);
-	return redirect()->route('order-frontend',$id)->with('success','Hủy hàng thành công');
+		if($request->status==3){
+			return redirect()->route('order-history',$id)->with('success','Cập nhật đơn hàng thành công');
+		}
+		else{
+			return redirect()->route('order-frontend',$id)->with('success','Hủy đơn hàng thành công');
+		}
 	}
 }

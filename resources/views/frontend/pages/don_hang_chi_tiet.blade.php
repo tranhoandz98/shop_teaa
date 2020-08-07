@@ -60,8 +60,28 @@
                             <h5 class="card-text">
                                 <form action="" method="post">
                                     @csrf
-                                    <input type="hidden" name="status" value="4">
-                                    <button class="btn btn-danger" type="submit" onclick="return confirm('Bạn muốn hủy hàng?')">Hủy hàng</button>
+                                    <div class="form-group">
+                                        <input type="hidden" name="status" value="4">
+                                        <button class="btn btn-danger" type="submit" onclick="return confirm('Bạn muốn hủy hàng?')">Hủy hàng</button>
+                                    </div>
+                                </form>
+                                <form action="" method="post">
+                                    @csrf
+                                    <div class="form-group">
+                                        <input type="hidden" name="status" value="3">
+                                        <button class="btn btn-green text-white" type="submit" onclick="return confirm('Bạn đã nhận được hàng?')">Đã nhận hàng hàng</button>
+                                    </div>
+                                </form>
+                            </h5>
+                            @endif
+                            @if($order->status==4)
+                            <h5 class="card-text">
+                                <form action="" method="post">
+                                    @csrf
+                                    <div class="form-group">
+                                        <input type="hidden" name="status" value="0">
+                                        <button class="btn btn-green text-white" type="submit" onclick="return confirm('Bạn muốn đặt lại hàng?')">Đặt lại</button>
+                                    </div>
                                 </form>
                             </h5>
                             @endif
