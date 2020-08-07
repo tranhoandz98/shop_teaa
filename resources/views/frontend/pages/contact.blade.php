@@ -17,7 +17,7 @@
 <!-- Contact Area Start -->
 <div class="contact-area fix mb-60">
     <div class="contact-address pt-110 bg-white">
-        <h1 class="contact-title">CONTACT US</h1>
+        <h1 class="contact-title">LIÊN HỆ VỚI CHÚNG TÔI</h1>
         <div class="contact-info">
             <p>
             {{ $intro->value }}
@@ -28,17 +28,17 @@
                     <span>Address :  {{ $address->value }}</span>
                 </div>
                 <div class="contact-list">
-                    <i class="fa fa-phone"></i>
+                    <i class="fa fa-envelope-o"></i>
                     <span> {{ $email->value }}</span>
                 </div>
                 <div class="contact-list">
-                    <i class="fa fa-envelope-o"></i>
+                    <i class="fa fa-phone"></i>
                     <span> {{ $phone->value }}</span>
                 </div>
             </div>
         </div>
         <div class="working-time">
-            <h2>Working hours</h2>
+            <h2>Giờ làm việc</h2>
             {{ $worktime->value }}
             {{-- <span><span>Monday – Saturday:</span>  08AM – 22PM</span> --}}
         </div>

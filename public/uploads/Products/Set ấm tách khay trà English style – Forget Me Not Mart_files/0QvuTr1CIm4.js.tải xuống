@@ -1,3 +1,0 @@
-if (self.CavalryLogger) { CavalryLogger.start_js(["fKXYQ"]); }
-
-__d("SchedulerPostTask-dev.classic",["SchedulerFeatureFlags"],(function(a,b,c,d,e,f){"use strict"}),null);
