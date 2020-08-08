@@ -46,7 +46,7 @@
 							<label class="text-danger" for="">Cập nhật trạng thái</label>
 							<select name="status" id="input" class="form-control col-6" required="required">
 								<option value="1">Đã xử lý</option>
-								<option value="2">Đã Giao hàng</option>
+								<option value="2">Đang Giao hàng</option>
 								<option value="3">Đã nhận hàng</option>
 							</select>
 						</div>
