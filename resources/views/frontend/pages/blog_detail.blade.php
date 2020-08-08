@@ -75,7 +75,7 @@
                                 @endforeach
                             </div>
                         </div>
-                        <div class="sidebar-widget">
+                        <div class="sidebar-banner-img">
                             @foreach ($ads as $item)
                                 <img src="{{ url('public/uploads') }}/{{ $item->value }}" alt="" class="w-100 mb-10">
                             @endforeach
@@ -103,7 +103,7 @@
                             <img src="{{ url('public/uploads') }}/{{ $blog->image }}" alt="">
                         </div>
                         <div class="single-post-info-text text-left">
-                            <p>{!! $blog->content !!}</p>
+                            {!! $blog->content !!}
                         </div>
                     </div>
                 </div>

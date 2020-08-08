@@ -1,12 +1,12 @@
 @extends('backend.master')
-@section('title','Thêm mới tin tức')
+@section('title','Cập nhật tin tức')
 @section('namepage','Tin tức')
 @section('main')
 <div class="row">
 	<div class="col-xl-12">
 		<div class="card">
 			<div class="card-body">
-				<h4 class="card-title text-red">Cập nhật tin tức</h4>
+				{{-- <h4 class="card-title text-red">Cập nhật tin tức</h4> --}}
 				<div class="container">
 					<form action="{{route('blog.update',$blog->id)}}" method="POST" role="form" enctype="multipart/form-data">
 						@csrf					

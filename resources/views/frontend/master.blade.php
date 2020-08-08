@@ -8,7 +8,11 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
+    @if($logo==null)
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url('public/uploads') }}/Configs/logo_03.png">
+    @else
     <link rel="shortcut icon" type="image/x-icon" href="{{ url('public/uploads') }}/{{ $logo->value }}">
+    @endif
     <!-- All css here -->
     <link rel="stylesheet" href="{{ url('public') }}/frontend/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url('public') }}/frontend/css/font-awesome.min.css">
@@ -27,8 +31,13 @@
             <div class="row">
                 <div class="col-lg-2 col-md-4 col-12">
                     <div class="logo text-center logo-img">
+                        @if($logo==null)
+                        <a href="{{ route('home') }}"><img src="{{ url('public/uploads') }}/Configs/logo_03.png"
+                            alt="NatureCircle" class="w-25"></a>
+                        @else
                         <a href="{{ route('home') }}"><img src="{{ url('public/uploads') }}/{{ $logo->value }}"
                                 alt="NatureCircle" class="w-25"></a>
+                                @endif
                     </div>
                 </div>
                 {{-- menu --}}
@@ -258,14 +267,41 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single-footer-widget ft-logo">
                                 <div class="footer-logo">
+                                    @if($logo_footer==null)
+                                    <a href="#"><img src="{{ url('public/uploads') }}/Configs/logo_footer.png" alt=""
+                                        class="w-50"></a>
+                                    @else
                                     <a href="#"><img src="{{ url('public/uploads') }}/{{ $logo_footer->value }}" alt=""
                                             class="w-50"></a>
+                                            @endif
                                 </div>
+                                @if($intro==null)
+                                Giới thiệu về công ty
+                                @else
                                 {!! $intro->value !!}
+                                @endif
                                 <div class="footer-text">
-                                    <span><i class="icon icon-Pointer"></i>Address : {!! $address->value !!}</span>
-                                    <span><i class="icon icon-Phone"></i>Phone : {!! $phone->value !!}</span>
-                                    <span><i class="icon icon-Mail"></i>Email : {!! $email->value !!}</span>
+                                    <span><i class="icon icon-Pointer"></i>
+                                        @if($address==null)
+                                        Address : Địa chỉ demo
+                                        @else
+                                        Address : {!! $address->value !!}
+                                        @endif
+                                    </span>
+                                    <span><i class="icon icon-Phone"></i>
+                                        @if($phone==null)
+                                        Phone : Địa chỉ demo
+                                        @else
+                                        Phone : {!! $phone->value !!}
+                                        @endif
+                                    </span>
+                                    <span><i class="icon icon-Mail"></i>
+                                        @if($email==null)
+                                        Email : Địa chỉ demo
+                                        @else
+                                        email : {!! $email->value !!}
+                                        @endif
+                                    </span>
                                 </div>
                                 {{-- <div class="social-icon">
                                     <a href="#"><i class="fa fa-twitter"></i></a>

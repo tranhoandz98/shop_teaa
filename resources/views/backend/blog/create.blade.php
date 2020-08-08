@@ -7,11 +7,10 @@
 	<div class="col-xl-12">
 		<div class="card">
 			<div class="card-body">
-				<h4 class="card-title text-red">Thêm mới tin tức</h4>
+				{{-- <h4 class="card-title text-red">Thêm mới tin tức</h4> --}}
 				<div class="container">
 					<form action="{{route('blog.store')}}" method="POST" role="form" enctype="multipart/form-data">
-						@csrf					
-
+						@csrf
 						<div class="form-group">
 							<label for="name">Tiêu đề</label>
 							<input type="text" class="form-control" id="name" placeholder="Nhập tiêu đề" name="name" onkeyup="ChangeToSlug()">
