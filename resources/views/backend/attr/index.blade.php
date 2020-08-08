@@ -37,7 +37,7 @@
 						</form>
 					</div>
 					<div class="col-sm-8">
-						<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline" role="grid" aria-describedby="datatable-buttons_info">
+						<table id="datatable-buttons" class="table table-striped table-bordered  nowrap dataTable no-footer dtr-inline" role="grid" aria-describedby="datatable-buttons_info">
 							<thead>
 								<tr role="row">
 									<th class="sorting">#</th>

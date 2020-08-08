@@ -7,7 +7,7 @@
               <div class="card">
                 <div class="card-body">
 					<h2>Tổng doanh thu đang có là: {{ number_format($orders->sum('total_price')) }}đ</h2>
-                    <div class="table-responsive">
+                    <div class="">
                         <table id="datatable-buttons" class="table table-bordered dataTable dtr-inline table-hover">
 							<thead>
 								<tr role="row">

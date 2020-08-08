@@ -15,7 +15,7 @@
                         </div>
                         <div class="col-sm-12">
                             <table id="datatable-buttons"
-                                class="table table-bordered dt-responsive  dataTable  dtr-inline table-hover" role="grid"
+                                class="table table-bordered   dataTable  dtr-inline table-hover" role="grid"
                                 aria-describedby="datatable-buttons_info">
                                 <thead>
                                     <tr role="row">

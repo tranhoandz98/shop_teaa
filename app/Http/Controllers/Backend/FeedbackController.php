@@ -15,7 +15,7 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        $feedback=Feedback_pro::all();
+        $feedback=Feedback_pro::orderby('created_at','desc')->get();
         return view('backend.feedback.index',compact('feedback'));
     }
 

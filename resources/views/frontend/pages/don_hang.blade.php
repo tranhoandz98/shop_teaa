@@ -15,7 +15,7 @@
     </div>
     <!-- Breadcrumb Area End -->
     <!-- Cart Area Start -->
-    <div class="cart-area table-area pt-80 pb-60">
+    <div class="cart-area table-area pt-80 pb-60 bg-gray">
         <div class="container">
             @if (Session::has('success'))
                 <div class="alert bg-green text-white alert-dismissible fade show" role="alert">
@@ -55,7 +55,7 @@
                             <div class="don-hang">
                                 @foreach ($order->order_details as $item)
                                 <div class="media mt-3">
-                                    <img width="100px" class="mr-3"
+                                    <img width="50px" class="mr-3"
                                     src="{{ url('public/uploads') }}/{{ $item->product_details->products->image }}"
                                     alt="">
                                     <div class="media-body">
@@ -74,14 +74,13 @@
                                 @endforeach
                             </div>
                             <div class="text-right">
-                                <h3 class="">Tổng tiền: <span class="text-red">{{ number_format($order->total_price) }} đ</span></h3>
+                                <h4 class="">Tổng tiền: <span class="text-red">{{ number_format($order->total_price) }} đ</span></h4>
                                 <a href="{{ route('order-detail-frontend', ['id' => $order->id]) }}"
                                     class="btn btn-green text-white">Xem chi tiết
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-secondary col-12"></button>
                 @endforeach
             @else
                 <div class="" role="alert">

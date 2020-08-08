@@ -14,7 +14,6 @@ class CreateFeedbackProsTable extends Migration {
         Schema::create('feedback_pros', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('id_product');
-            $table->unsignedInteger('id_admin')->default(0);
             $table->unsignedInteger('id_user');
             $table->Integer('star');
             $table->text('content')->nullable();

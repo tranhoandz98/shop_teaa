@@ -16,7 +16,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        $banner = Banner::all();
+        $banner = Banner::orderby('created_at','desc')->get();
         return view('backend.banner.index', compact('banner'));
     }
 

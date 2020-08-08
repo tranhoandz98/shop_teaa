@@ -11,12 +11,12 @@ use Auth;
 class OrderController extends Controller
 {
     public function order(){
-		$orders=Order::where([['id_user','=',Auth::user()->id],['status','!=',3]])->get();
+		$orders=Order::where([['id_user','=',Auth::user()->id],['status','!=',3]])->orderby('created_at','desc')->get();
 		// $order_details=Order::where('id_order','=',$orders->id)->get();
 		return view('frontend.pages.don_hang',compact('orders'));
 	}
 	public function history(){
-		$orders=Order::where([['id_user','=',Auth::user()->id],['status','=',3]])->get();
+		$orders=Order::where([['id_user','=',Auth::user()->id],['status','=',3]])->orderby('created_at','desc')->get();
 		// $order_detail=Order::where('id_order','=',$order->id)->get();
 		return view('frontend.pages.history',compact('orders'));
 	}

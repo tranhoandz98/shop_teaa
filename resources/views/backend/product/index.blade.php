@@ -13,7 +13,7 @@
 							<a href="{{route('product.create')}}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-plus mr-1"></i>Thêm mới sản phẩm</a>
 						</div>
 					</div>
-                    <div class="table-responsive">
+                    <div class="col-12">
 						<table id="datatable-buttons" class="table table-bordered nowrap dataTable no-footer dtr-inline table-hover" role="grid" aria-describedby="datatable-buttons_info">
 							<thead>
 								<tr role="row">

@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <table id="datatable-buttons"
-                                class="table  table-bordered dt-responsive  dataTable no-footer  table-hover" role="grid"
+                                class="table  table-bordered  dataTable no-footer  table-hover" role="grid"
                                 aria-describedby="datatable-buttons_info">
                                 <thead>
                                     <tr role="row">

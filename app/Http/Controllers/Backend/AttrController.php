@@ -14,7 +14,7 @@ class AttrController extends Controller
      */
     public function index()
     {
-        $attr= Attr::all();
+        $attr= Attr::orderby('created_at','desc')->get();
         return view('backend.attr.index',compact('attr'));
     }
 

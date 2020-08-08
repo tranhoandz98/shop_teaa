@@ -43,7 +43,7 @@ class SearchController extends Controller
 	public function getsearch(Request $request){
 		// dd($request->all());
 		$products=Product::where([['name','like','%'.$request->key.'%'],['status','=','1']])
-		->paginate(9);
+		->orderby('created_at','desc')->paginate(9);
 		foreach ($products as $key=> $product) {
 			$details = isset($product->product_details)?$product->product_details:[];
 			if (isset($details[0])){

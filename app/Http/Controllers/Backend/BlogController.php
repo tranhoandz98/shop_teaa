@@ -19,7 +19,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blog=Blog::all();
+        $blog=Blog::orderby('created_at','desc')->get();
         $admin=Admin::all();
         $category = Category::all();
         return view('backend.blog.index',compact('blog','category','admin'));

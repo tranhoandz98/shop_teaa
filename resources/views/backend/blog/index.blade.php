@@ -12,7 +12,7 @@
 							<a href="{{route('blog.create')}}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-plus mr-1"></i>Thêm mới Tin tức</a>
 						</div>
 					</div>
-                    <div class="table-responsive">
+                    <div class="col-12">
 						<table id="datatable-buttons" class="table table-bordered dataTable dtr-inline table-hover" role="grid" aria-describedby="datatable-buttons_info">
 							<thead>
 								<tr>

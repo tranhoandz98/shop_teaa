@@ -6,8 +6,8 @@
           <div class="col-lg-12">
               <div class="card">
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="datatable-buttons" class="table table-bordered dt-responsive dataTable dtr-inline table-hover">
+                    <div class="">
+                        <table id="datatable-buttons" class="table table-bordered dataTable dtr-inline table-hover">
                             <thead>
 								<tr role="row">
 									<th class="sorting">#</th>

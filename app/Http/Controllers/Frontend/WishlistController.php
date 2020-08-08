@@ -10,7 +10,7 @@ class WishlistController extends Controller
 {
 	public function index($id_user)
 	{
-		$wishlist = Wishlist::where('id_user','=',$id_user)->get();
+		$wishlist = Wishlist::where('id_user','=',$id_user)->orderby('created_at','desc')->get();
 		// dd($wishlist->count());
 		return view('frontend.pages.wishlist', compact('wishlist'));
 	}

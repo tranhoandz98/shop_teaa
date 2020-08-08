@@ -30,7 +30,7 @@ class HomeController extends Controller {
 			'phone' => 'required|unique:users|max:15',
 			'birthday' => 'required',
 			'address' => 'required',
-			'image'=>'required|mimes:jpg,png,gif,jpeg'
+			// 'image'=>'required|mimes:jpg,png,gif,jpeg'
 		], [
 			'name.required' => 'Tên không được bỏ trống',
 			'email.required' => 'Email không được bỏ trống',
@@ -44,8 +44,8 @@ class HomeController extends Controller {
 			'phone.max' => 'Số điện thoại không vượt quá 15 kí tự',
 			'birthday.required' => 'Ngày sinh không được bỏ trống',
 			'address.required' => 'Địa chỉ không được bỏ trống',
-			'image.required'=>'Ảnh không được bỏ trống',
-			'image.mimes'=>'Ảnh phải là jpg,jpeg,gif, png',
+			// 'image.required'=>'Ảnh không được bỏ trống',
+			// 'image.mimes'=>'Ảnh phải là jpg,jpeg,gif, png',
 		]);
 		if (isset($request->image)){
 			$file_name = time().$request->image->getClientOriginalName();

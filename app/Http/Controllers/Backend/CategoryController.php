@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category=Category::all();
+        $category=Category::orderby('created_at','desc')->get();
         return view('backend.category.index',compact('category'));
     }
 

@@ -20,7 +20,7 @@ class ShopController extends Controller
 	 */
 	public function shop(){
 		$attr=Attr::all();
-		$products=Product::where('status','=','1')->paginate(9);
+		$products=Product::where('status','=','1')->orderby('created_at','desc')->paginate(9);
 		foreach ($products as $key=> $product) {
 			$details = isset($product->product_details)?$product->product_details:[];
 			if (isset($details[0])){
@@ -45,7 +45,7 @@ class ShopController extends Controller
 	 */
 	public function danh_muc($slug){
 		$category_id=Category::where('slug','=',$slug)->first();
-		$products=Product::where([['status','=','1'],['id_cate','=',$category_id->id]])->paginate(9);
+		$products=Product::where([['status','=','1'],['id_cate','=',$category_id->id]])->orderby('created_at','desc')->paginate(9);
 		foreach ($products as $key=> $product) {
 			$details = isset($product->product_details)?$product->product_details:[];
 			if (isset($details[0])){

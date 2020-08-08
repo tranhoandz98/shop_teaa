@@ -16,7 +16,7 @@ class AdsController extends Controller
      */
     public function index()
     {
-$ads=Config::where('type','=','2')->get();
+$ads=Config::where('type','=','2')->orderby('created_at','desc')->get();
 // dd('a');
         return view('backend.config.ads.index', compact('ads'));
     }
