@@ -23,7 +23,7 @@ class FrontendController extends Controller {
 	 * @return [type] [description]
 	 */
 	public function index() {
-		$banner=Banner::where('status',1)->orderby('created_at','desc')->get();
+		$banner=Banner::where('status','=','1')->orderby('created_at','desc')->get();
 		$product_mix=Product::where([['status','=','1'],['featured','=','1'],['id_cate','=','2']])->orderby('created_at','desc')->limit(5)->get();
 		$product_moc=Product::where([['status','=','1'],['featured','=','1'],['id_cate','=','3']])->orderby('created_at','desc')->limit(5)->get();
 		// dd($product_moc);
