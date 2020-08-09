@@ -54,6 +54,7 @@ class ProductController extends Controller
 
         $request->validate([
             'name' => 'required|unique:products|max:255',
+            'slug' => 'required|unique:products|max:255',
             'sku' => 'required|unique:products|max:255',
             'id_cate' => 'required',
             'image' => 'required',
@@ -62,6 +63,9 @@ class ProductController extends Controller
             'name.required' =>'Tên sản phẩm không được bỏ trống',
             'name.unique' =>'Tên sản phẩm đã tồn tại',
             'name.max' =>'Tên sản phẩm không vượt quá 255 kí tự',
+            'slug.required' =>'Slug không được bỏ trống',
+            'slug.unique' =>'Slug đã tồn tại',
+            'slug.max' =>'Slug không vượt quá 255 kí tự',
             'sku.required' =>'Mã sản phẩm không được bỏ trống',
             'sku.unique' =>'Mã sản phẩm đã tồn tại',
             'sku.max' =>'Mã sản phẩm không vượt quá 255 kí tự',
@@ -141,25 +145,25 @@ class ProductController extends Controller
        }
        $request->validate([
         'name' => ['required','max:255',Rule::unique('products')->ignore($id)],
+        'slug' => ['required','max:255',Rule::unique('products')->ignore($id)],
         'sku' => ['required','max:255',Rule::unique('products')->ignore($id)],
-        'sku' => 'required|max:255',
 
     ],[
         'name.required' =>'Tên sản phẩm không được bỏ trống',
         'name.unique' =>'Tên sản phẩm đã tồn tại',
         'name.max' =>'Tên sản phẩm không vượt quá 255 kí tự',
+        'slug.required' =>'Slug không được bỏ trống',
+        'slug.unique' =>'Slug đã tồn tại',
+        'slug.max' =>'Slug không vượt quá 255 kí tự',
         'sku.required' =>'Mã sản phẩm không được bỏ trống',
+        'sku.unique' =>'Tên sản phẩm đã tồn tại',
         'sku.max' =>'Mã sản phẩm không vượt quá 255 kí tự',
-
-
-
     ]);
        $product->update([
         'name'=>$request->name,
         'slug'=>$request->slug,
         'sku'=>$request->sku,
         'id_cate'=>$request->id_cate,
-  
         'image'=>$image,
         'description'=>$request->description,
         'meta_title'=>$request->meta_title,

@@ -39,11 +39,15 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:categories|max:100'
+            'name' => 'required|unique:categories|max:100',
+            'slug' => 'required|unique:categories|max:100'
         ],[
             'name.required' =>'Tên danh mục không được bỏ trống',
             'name.unique' =>'Tên danh mục đã tồn tại',
-            'name.max' =>'Tên danh mục không vượt quá 100 kí tự'
+            'name.max' =>'Tên danh mục không vượt quá 100 kí tự',
+            'slug.required' =>'slug không được bỏ trống',
+            'slug.unique' =>'slug đã tồn tại',
+            'slug.max' =>'slug không vượt quá 100 kí tự'
         ]);
         Category::create($request->all());
         return redirect()->route('category.index')->with('success','Thêm mới thành công');
@@ -86,10 +90,14 @@ class CategoryController extends Controller
         // dd($request);
          $request->validate([
             'name' => ['required','max:100',Rule::unique('categories')->ignore($id)],
+            'slug' => ['required','max:100',Rule::unique('categories')->ignore($id)],
         ],[
             'name.required' =>'Tên danh mục không được bỏ trống',
             'name.unique' =>'Tên danh mục đã tồn tại',
-            'name.max' =>'Tên danh mục không vượt quá 100 kí tự'
+            'name.max' =>'Tên danh mục không vượt quá 100 kí tự',
+            'slug.required' =>'slug không được bỏ trống',
+            'slug.unique' =>'slug đã tồn tại',
+            'slug.max' =>'slug không vượt quá 100 kí tự'
         ]);
         
         $category=Category::find($id);

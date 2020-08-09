@@ -23,6 +23,9 @@
 						<div class="form-group">
 							<label for="slug">Slug</label>
 							<input type="text" class="form-control" id="slug" placeholder="Slug"  name="slug" >
+							@error('slug')
+							<span class="text-red">{{$message}}</span>
+							@enderror
 						</div>
 
 						<div class="row">
@@ -47,7 +50,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="id_admin">Người đăng bài</label>				
-									<input type="text" class="form-control" value="{{Auth::guard('admin')->user()->name}}" readonly>		
+									<input type="text" class="form-control" value="{{$admin->name}}" readonly>		
 								</div>
 							</div>
 

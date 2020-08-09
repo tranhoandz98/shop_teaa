@@ -105,7 +105,7 @@
                 <img class="rounded-circle header-profile-user"
                 src="{{ url('public') }}/backend/images/companies/img-6.png" alt="Header Avatar">
                 <span class="d-none d-xl-inline-block ml-1">
-                    {{ Auth::guard('admin')->user()->name }}
+                    {{ Session::get('admin')->name }}
                 </span>
                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
             </button>

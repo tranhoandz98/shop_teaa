@@ -1,9 +1,11 @@
 <?php
 namespace App\Models;
-use App\Models\Blog;
-use Illuminate\Foundation\Auth\Admin as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Authenticatable
+use App\Models\Blog;
+
+
+class Admin extends Model
 {
     protected $guarded=[];
     public function blogs(){

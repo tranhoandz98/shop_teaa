@@ -6,7 +6,7 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title text-red">Thêm mới ads</h4>
+                    {{-- <h4 class="card-title text-red">Thêm mới ads</h4> --}}
                     <div class="container">
                         <form action="{{ route('ads.store') }}" method="POST" role="form" enctype="multipart/form-data">
                             @csrf
@@ -14,22 +14,21 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label>ads </label>
-                                        <input type="text" class="form-control"  id="name" placeholder="Tên ads"
-                                            name="name" onkeyup="ChangeToSlug()">
-                                            @error('name')
-                                    <span class="text-red">{{ $message }}</span>
-                                    @enderror
+                                        <input type="text" class="form-control" id="name" placeholder="Tên ads" name="name"
+                                            onkeyup="ChangeToSlug()">
+                                        @error('name')
+                                        <span class="text-red">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col">
                                     {{-- slug --}}
                                     <div class="form-group">
                                         <label for="slug">Slug</label>
-                                        <input type="text" class="form-control" id="slug" placeholder="Slug"
-                                            name="slug" >
-                                            @error('slug')
-                                    <span class="text-red">{{ $message }}</span>
-                                    @enderror
+                                        <input type="text" class="form-control" id="slug" placeholder="Slug" name="slug">
+                                        @error('slug')
+                                        <span class="text-red">{{ $message }}</span>
+                                        @enderror
                                     </div> {{-- end tên slug --}}
                                 </div>
                             </div>
@@ -62,11 +61,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                  <div class="form-group">
-                                {{-- <label for="">Type</label> --}}
-                                <input type="hidden" class="form-control" readonly id="" placeholder="Slug" name="type"
-                                    value="2">
-                            </div>
+                                <div class="form-group">
+                                    {{-- <label for="">Type</label>
+                                    --}}
+                                    <input type="hidden" class="form-control" readonly id="" placeholder="Slug" name="type"
+                                        value="2">
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="">

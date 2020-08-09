@@ -6,7 +6,7 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title text-red">Thêm mới logo</h4>
+                    {{-- <h4 class="card-title text-red">Thêm mới logo</h4> --}}
                     <div class="container">
                         <form action="{{ route('logo.store') }}" method="POST" role="form" enctype="multipart/form-data">
                             @csrf

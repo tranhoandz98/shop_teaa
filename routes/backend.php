@@ -1,6 +1,9 @@
 <?php
 
-Route::group(['prefix' => 'backend', 'namespace' => 'Backend', 'middleware' => 'checkAdmin'], function () {
+Route::group(['prefix' => 'backend', 'namespace' => 'Backend'], function () {
+	Route::get('login', 'BackendController@login')->name('login');
+Route::post('login', 'BackendController@postLogin');
+Route::get('logout', 'BackendController@logout')->name('logout');
 	Route::get('/', 'BackendController@index')->name('backend');
 	Route::resources(['category' => 'CategoryController']);
 	Route::resources(['product' => 'ProductController']);
@@ -26,8 +29,4 @@ Route::group(['prefix' => 'backend', 'namespace' => 'Backend', 'middleware' => '
 	Route::get('thong-ke/ton-kho', 'StatisticalController@tonKho')->name('thong-ke-ton-kho');
 	Route::get('thong-ke/ban-chay', 'StatisticalController@banChay')->name('thong-ke-ban-chay');
 	Route::get('thong-ke/doanh-thu', 'StatisticalController@doanhThu')->name('thong-ke-doanh-thu');
-
 });
-Route::get('/backend/login', 'Backend\BackendController@login')->name('login');
-Route::post('/backend/login', 'Backend\BackendController@postLogin');
-Route::get('/backend/logout', 'Backend\BackendController@logout')->name('logout');

@@ -5,7 +5,7 @@
 
 	<div class="card">
 		<div class="card-body">
-			<h4 class="card-title text-red">Cập nhật danh mục</h4>
+			{{-- <h4 class="card-title text-red">Cập nhật danh mục</h4> --}}
 			<form action="{{route('category.update',$category_id->id)}}" method="POST" role="form">
 				@csrf
 				@method('PUT')
@@ -23,6 +23,9 @@
 						<div class="form-group">
 							<label for="slug">Slug</label>
 							<input type="text" class="form-control" id="slug" placeholder="Slug"  name="slug" value="{{$category_id->slug}}">
+							@error('slug')
+							<span class="text-red">{{$message}}</span>
+							@enderror
 						</div>
 					</div>
 				</div>

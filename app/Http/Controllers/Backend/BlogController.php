@@ -9,6 +9,7 @@ use Auth;
 use App\Models\Category;
 use App\Models\Admin;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Session;
 
 class BlogController extends Controller
 {
@@ -20,9 +21,7 @@ class BlogController extends Controller
     public function index()
     {
         $blog=Blog::orderby('created_at','desc')->get();
-        $admin=Admin::all();
-        $category = Category::all();
-        return view('backend.blog.index',compact('blog','category','admin'));
+        return view('backend.blog.index',compact('blog'));
     }
 
     /**
@@ -33,7 +32,7 @@ class BlogController extends Controller
     public function create()
     {
         $category=Category::where('type',0)->get();
-        $admin=Auth::guard('admin')->user()->name;
+        $admin=Session::get('admin');
         return view('backend.blog.create',compact('category','admin'));
     }
 
@@ -45,18 +44,22 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        $admin=Session::get('admin');
         $image= trim($request->image,url('/public/uploads/'));
         $request->validate([
             'name' => 'required|unique:blogs',
+            'slug' => 'required|unique:blogs',
             'id_cate'=> 'required',
             'image' =>'required',
             'content' =>'required',
         ],[
             'name.required' =>'Tiêu đề không được bỏ trống',
-            'name.unique' =>'Tiêu đề đã tồn tại',  
+            'name.unique' =>'Tiêu đề đã tồn tại',
+            'slug.required' =>'slug không được bỏ trống',
+            'slug.unique' =>'slug đã tồn tại',
             'id_cate.required'=>'Danh mục tin tức không được bỏ trống',
             'image.required' =>'Hình ảnh không được bỏ trống',
-            'content.required' =>'Nội dung tiêu đề không được bỏ trống',   
+            'content.required' =>'Nội dung tiêu đề không được bỏ trống',
         ]);
      
         $blog= Blog::create([
@@ -64,7 +67,7 @@ class BlogController extends Controller
             'slug'=>$request->slug,
             
             'id_cate'=>$request->id_cate,
-            'id_admin'=>Auth::guard('admin')->user()->id,
+            'id_admin'=>$admin->id,
             'image'=>$image,
             'content'=>$request->content,
             'meta_title'=>$request->meta_title,
@@ -98,9 +101,8 @@ class BlogController extends Controller
     {
         $blog=Blog::find($id);
         $category = Category::where('type',0)->get();
-        $admin=Admin::all();
         // dd($img_pro);
-        return view('backend.blog.edit',compact('category','blog','admin'));
+        return view('backend.blog.edit',compact('category','blog'));
     }
 
     /**
@@ -112,6 +114,7 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $admin=Session::get('admin');
         $blog=Blog::find($id);
         if ($request->image=='') {
             $image=$blog->image;
@@ -120,11 +123,14 @@ class BlogController extends Controller
        }
         $request->validate([
             'name' => ['required',Rule::unique('blogs')->ignore($id)],
+            'slug' => ['required',Rule::unique('blogs')->ignore($id)],
             'id_cate' => 'required',
             'content' =>'required'
         ],[
             'name.required' =>'Tiêu đề không được bỏ trống',
-            'name.unique' =>'Tiêu đề đã tồn tại',  
+            'name.unique' =>'Tiêu đề đã tồn tại',
+            'slug.required' =>'Slug không được bỏ trống',
+            'slug.unique' =>'Slug đã tồn tại',
             'id_cate.required'=>'Danh mục tin tức không được bỏ trống',  
             'content.required' =>'Nội dung tiêu đề không được bỏ trống',   
         ]);
@@ -133,7 +139,7 @@ class BlogController extends Controller
             'slug'=>$request->slug,
             
             'id_cate'=>$request->id_cate,
-            'id_admin'=>Auth::guard('admin')->user()->id,
+            'id_admin'=>$admin->id,
             'image'=>$image,
             'content'=>$request->content,
             'meta_title'=>$request->meta_title,

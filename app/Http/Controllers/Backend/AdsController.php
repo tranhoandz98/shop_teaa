@@ -45,11 +45,15 @@ $ads=Config::where('type','=','2')->orderby('created_at','desc')->get();
         // dd($request->all());
         $request->validate([
             'name' => 'required|unique:configs|max:100',
+            'slug' => 'required|unique:configs|max:100',
             'value' => 'required|unique:configs',
         ], [
             'name.required' =>'Tên ads không được bỏ trống',
             'name.unique' =>'Tên ads đã tồn tại',
             'name.max' =>'Tên ads không vượt quá 100 kí tự',
+            'slug.required' =>'Slug không được bỏ trống',
+            'slug.unique' =>'Slug đã tồn tại',
+            'slug.max' =>'Slug không vượt quá 100 kí tự',
             'value.required' => 'Hình ảnh không được bỏ trống',
             'value.unique' => 'Hình ảnh đã tồn tại',
         ]);
@@ -104,11 +108,15 @@ $ads=Config::where('type','=','2')->orderby('created_at','desc')->get();
         }
         $request->validate([
             'name' => ['required','max:100',Rule::unique('configs')->ignore($id)],
+            'slug' => ['required','max:100',Rule::unique('configs')->ignore($id)],
             'value' => 'unique:configs',
         ],[
             'name.required' =>'Tên ads không được bỏ trống',
             'name.unique' =>'Tên ads đã tồn tại',
             'name.max' =>'Tên ads không vượt quá 100 kí tự',
+            'slug.required' =>'Slug không được bỏ trống',
+            'slug.unique' =>'Slug đã tồn tại',
+            'slug.max' =>'Slug không vượt quá 100 kí tự',
             'value.unique' => 'Hình ảnh đã tồn tại',
         ]);
         $ads->update([

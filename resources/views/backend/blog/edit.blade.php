@@ -18,10 +18,12 @@
 							<span class="text-red">{{$message}}</span>
 							@enderror
 						</div>
-						
 						<div class="form-group">
 							<label for="slug">Slug</label>
 							<input type="text" class="form-control" id="slug" placeholder="Slug"  name="slug" value={{$blog->slug}}>
+							@error('slug')
+							<span class="text-red">{{$message}}</span>
+							@enderror
 						</div>
 						<div class="row">
 							<div class="col-md-6">
@@ -38,7 +40,6 @@
 									@error('id_cate')
 									<span class="text-red">{{$message}}</span>
 									@enderror
-									
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -47,9 +48,7 @@
 									<input type="text" class="form-control" value="{{$blog->admins->name}}" readonly>		
 								</div>
 							</div>
-							
 						</div>
-						
 						<div class="row">
 							<div class="col">
 								<div class="form-group">
@@ -97,7 +96,6 @@
 						<div class="form-group">
 							<p class="btn btn-info col disabled text-left">Thông tin SEO</p>
 						</div>
-						
 						<div class="form-group">
 							<label for="meta_title">Meta title</label>
 							<input type="text" class="form-control" id="meta_title" placeholder=""  name="meta_title" multiple="multiple" value="{{$blog->meta_title}}">
@@ -110,12 +108,9 @@
 							<label for="meta_desc">Meta description</label>
 							<textarea name="meta_desc" id="meta_desc" class="form-control" rows="5" >{{$blog->meta_desc}}</textarea>
 						</div>
-						
 						<button class="btn btn-info" type="submit">Cập nhật</button>
-						
 					</form>
 				</div>
-				
 				<!-- Modal 1 image-->
 				<div class="modal fade" id="modalImage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document" >
@@ -135,11 +130,8 @@
 						</div>
 					</div>
 				</div> 			<!-- end modal -->
-
-				
 			</div>	<!-- end card body -->
 		</div>	<!-- end card	 -->
 	</div><!-- end col -->
 </div><!-- end row -->
-
 @stop

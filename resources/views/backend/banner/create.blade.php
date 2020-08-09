@@ -25,6 +25,9 @@
 								<div class="form-group">
 									<label for="slug">Slug</label>
 									<input type="text" class="form-control" id="slug" placeholder="Slug"  name="slug">
+									@error('slug')
+									<span class="text-red">{{$message}}</span>
+									@enderror
 								</div> {{-- end tên slug --}}
 							</div>
 						</div>

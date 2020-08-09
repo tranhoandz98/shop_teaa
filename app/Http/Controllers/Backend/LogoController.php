@@ -42,11 +42,15 @@ $logos=Config::where('type','=','1')->get();
         $value = trim($request->value, url('/public/uploads/'));
         $request->validate([
             'name' => 'required|unique:configs|max:100',
+            'slug' => 'required|unique:configs|max:100',
             'value' => 'required|unique:configs',
         ], [
             'name.required' =>'Tên logo không được bỏ trống',
             'name.unique' =>'Tên logo đã tồn tại',
             'name.max' =>'Tên logo không vượt quá 100 kí tự',
+            'slug.required' =>'Slug không được bỏ trống',
+            'slug.unique' =>'Slug đã tồn tại',
+            'slug.max' =>'Slug không vượt quá 100 kí tự',
             'value.required' => 'Hình ảnh không được bỏ trống',
             'value.unique' => 'Hình ảnh đã tồn tại',
         ]);
@@ -102,11 +106,15 @@ $logos=Config::where('type','=','1')->get();
         }
         $request->validate([
             'name' => ['required','max:100',Rule::unique('configs')->ignore($id)],
+            'slug' => ['required','max:100',Rule::unique('configs')->ignore($id)],
             'value' => 'unique:configs',
         ],[
             'name.required' =>'Tên logo không được bỏ trống',
             'name.unique' =>'Tên logo đã tồn tại',
             'name.max' =>'Tên logo không vượt quá 100 kí tự',
+             'slug.required' =>'Slug không được bỏ trống',
+            'slug.unique' =>'Slug đã tồn tại',
+            'slug.max' =>'Slug không vượt quá 100 kí tự',
             'value.unique' => 'Hình ảnh đã tồn tại',
         ]);
         $logo->update([

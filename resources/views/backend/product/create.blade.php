@@ -6,7 +6,7 @@
 	<div class="col-xl-12">
 		<div class="card">
 			<div class="card-body">
-				<h4 class="card-title text-red">Thêm mới sản phẩm</h4>
+				{{-- <h4 class="card-title text-red">Thêm mới sản phẩm</h4> --}}
 				<form action="{{route('product.store')}}" method="POST" role="form" enctype="multipart/form-data">
 					@csrf
 					<div class="row">
@@ -23,6 +23,9 @@
 							<div class="form-group">
 								<label for="slug">Slug</label>
 								<input type="text" class="form-control" id="slug" placeholder="Slug"  name="slug">
+								@error('slug')
+								<span class="text-red">{{$message}}</span>
+								@enderror
 							</div>
 						</div>
 					</div>
