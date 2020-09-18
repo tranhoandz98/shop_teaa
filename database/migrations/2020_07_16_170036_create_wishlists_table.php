@@ -5,29 +5,29 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class CreateWishlistsTable extends Migration {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up() {
-        Schema::create('wishlists', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('id_product_detail');
-            $table->unsignedInteger('id_user');
-            $table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
-            $table->timestamps();
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_product_detail')->references('id')->on('product_details');
-        });
-    }
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up() {
+		Schema::create('wishlists', function (Blueprint $table) {
+			$table->increments('id');
+			$table->unsignedInteger('id_product_detail');
+			$table->unsignedInteger('id_user');
+			$table->tinyInteger('status')->default(1)->comment('1 là Hiện, 0 là Ẩn');
+			$table->timestamps();
+			$table->foreign('id_user')->references('id')->on('users');
+			$table->foreign('id_product_detail')->references('id')->on('product_details')->onDelete('cascade');
+		});
+	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down() {
-        Schema::dropIfExists('wishlists');
-    }
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down() {
+		Schema::dropIfExists('wishlists');
+	}
 }
