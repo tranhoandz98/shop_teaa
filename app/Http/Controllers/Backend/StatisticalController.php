@@ -31,8 +31,19 @@ class StatisticalController extends Controller
     }
     public function doanhThu()
     {
+        $doanhthu=[0,0,0,0,0,0,0,0,0,0,0,0];
         $orders=Order::where('status','=',3)->get();
+        foreach ($orders as $key => $value) {
+            $time=(strtotime($value->updated_at));
+            $mon=date('ymd',$time);
+            $month=substr($mon, 2, 2);
+            foreach ($doanhthu as $ke => $valu) {
+                if ($month==$ke+1){
+                    $doanhthu[$ke+1]+=$value->total_price;
+                }
+            }
+        }
 // dd($product_details);
-        return view('backend.statistical.doanh_thu',compact('orders'));
+        return view('backend.statistical.doanh_thu',compact('orders','doanhthu'));
     }
 }

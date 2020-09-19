@@ -7,6 +7,24 @@
               <div class="card">
                 <div class="card-body">
 					<h2>Tổng doanh thu đang có là: {{ number_format($orders->sum('total_price')) }}đ</h2>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Tháng</th>
+								@foreach ($doanhthu as $item)
+									<th>{{$loop->index+1}}</th>
+								@endforeach
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>Doanh thu</th>
+								@foreach ($doanhthu as $item)
+									<th>{{number_format($item)}}</th>
+								@endforeach
+							</tr>
+						</tbody>
+					</table>
                     <div class="">
                         <table id="datatable-buttons" class="table table-bordered dataTable dtr-inline table-hover">
 							<thead>
